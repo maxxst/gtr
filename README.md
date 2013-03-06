@@ -29,16 +29,40 @@ __Der Prototyp soll eher als Tutorial fungieren__
 - Kraft (Gesundheit)
 - Glück
 - Angst?
+- Level
 
 #### Waffen
+Es gibt verschiedene Waffentypen die Namen bekommen und dann zufällige Werte bekommen
+Außerdem soll etwas wie "Sockel" vorgesehen sein, sodass man Waffen mit Items aufrüsten kann
+(z.B. Railgun des Glücks )
+
 - Schaden (sofort || per Runde)
-- Reichweite
+- Reichweite von bis
 - Durchschlagskraft (Hoher durchschlag kann meherere Gegner treffen)
 - Umgebungsschaden
 - Geschwindigkeit (Felder/Runde || sofort)
 
 ### Technik
+#### Geschichte voranbringen
+Es gibt an zufälligen Orten generierte "Storyteller" (Reihenfolge im Quellcode), die die Geschichte voran bringen sollen und Spezialisierungen ermöglichen
+
+#### Wünsche
+- Tag / Nacht Zyklus mit Sichtweitenbeschränkung
+- Alle Gebäude sind begehbar - manche beherbergen Dungeons 
+- EasterEgg `Q`, `Telefonzellen` 
+
+__Umgebungen/Szenerie/Story/Waffen/Gegner/Dialoge müssen extern geladen werden können, damit man auch andere Storylines umgesetzt werden können__
+
+
 #### Tastatur
 - `WASD` - Steuerung
 - `Leertaste` - Schießen
 - `I` Inventar
+
+#### NPC's 
+- Händler
+- Storyteller
+- Gegner
+
+
+### Aufwand
