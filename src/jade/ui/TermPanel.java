@@ -173,7 +173,6 @@ public class TermPanel extends Terminal
         public void keyPressed(KeyEvent event)
         {
             inputBuffer.offer(event.getKeyChar());
-            System.out.println("Ausgabe");
         }
 
         public char consumeKeyPress() throws InterruptedException

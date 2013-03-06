@@ -7,206 +7,214 @@ import jade.util.datatype.Coordinate;
 import java.util.HashSet;
 import java.util.Stack;
 
+import rogue.level.AsciiScreenInput;
+
 /**
- * Uses cellular automaton to generate interesting cave-like maps. This implementation always tries
- * to make a connected map. For large maps, this is usually done by removing small unconnected
- * portions of the map. For small maps, the whole map is usually scrapped and a new map generated.
- * Since the map is small, this turns out to be fairly inexpensive. However, after 100 tries, the
- * algorithm quits, most likely leaving a completely impassible {@code World}. This all but
- * guaranteed on exceptionally small maps.
+ * Uses cellular automaton to generate interesting cave-like maps. This
+ * implementation always tries to make a connected map. For large maps, this is
+ * usually done by removing small unconnected portions of the map. For small
+ * maps, the whole map is usually scrapped and a new map generated. Since the
+ * map is small, this turns out to be fairly inexpensive. However, after 100
+ * tries, the algorithm quits, most likely leaving a completely impassible
+ * {@code World}. This all but guaranteed on exceptionally small maps.
  */
-public class Cellular extends MapGenerator
-{
-    private int wallChance = 45;
-    private int minCount1 = 5;
-    private int maxCount2 = 3;
-    private ColoredChar floor;
-    private ColoredChar wall;
+public class Cellular extends MapGenerator {
+	private int wallChance = 45;
+	private int minCount1 = 5;
+	private int maxCount2 = 3;
+	private ColoredChar floor;
+	private ColoredChar wall;
 
-    /**
-     * Creates a new instance of {@code Cellular} with the default open tile of '.' and a default
-     * closed tile of '#'.
-     */
-    public Cellular()
-    {
-        this(ColoredChar.create('.'), ColoredChar.create('#'));
-    }
+	/**
+	 * Creates a new instance of {@code Cellular} with the default open tile of
+	 * '.' and a default closed tile of '#'.
+	 */
+	public Cellular() {
+		this(ColoredChar.create('.'), ColoredChar.create('#'));
+	}
 
-    /**
-     * Creates a new instance of {@code Cellular} with the specified open and closed tiles.
-     * @param floor the face of the open tiles
-     * @param wall the face of the closed tiles
-     */
-    public Cellular(ColoredChar floor, ColoredChar wall)
-    {
-        this(floor, wall, 45, 5, 3);
-    }
+	public Cellular(AsciiScreenInput _screenInput, World _world) {
+		Automata automata = new Automata(_screenInput, _world);
+	}
 
-    /**
-     * Creates a new instance of Cellular with the specified generation parameters. Great care
-     * should be taken when customizing these parameters, as certain configurations may make it
-     * impossible to generate good levels.
-     * @param floor the face of the open tiles
-     * @param wall the face of the closed tiles
-     * @param wallChance the chance out of 100 of seeding the map with a wall, as well as the
-     *        required percent of wall tiles for the map to be accepted
-     * @param minCount the minimum number of walls at distance 1 to generate a wall
-     * @param maxCount the maximum number of walls at distance 2 to generate a wall
-     */
-    public Cellular(ColoredChar floor, ColoredChar wall, int wallChance, int minCount, int maxCount)
-    {
-        this.wallChance = wallChance;
-        this.minCount1 = minCount;
-        this.maxCount2 = maxCount;
-        this.floor = floor;
-        this.wall = wall;
-    }
+	/**
+	 * Creates a new instance of {@code Cellular} with the specified open and
+	 * closed tiles.
+	 * 
+	 * @param floor
+	 *            the face of the open tiles
+	 * @param wall
+	 *            the face of the closed tiles
+	 */
+	public Cellular(ColoredChar floor, ColoredChar wall) {
+		this(floor, wall, 45, 5, 3);
+	}
 
-    @Override
-    protected void generateStep(World world, Dice dice)
-    {
-        int tries = 0;
-        do
-        {
-            Automata automata = new Automata(world, dice);
-            for(int i = 0; i < 4; i++)
-                automata.applyRule();
-            automata.growCaves();
-        }
-        while(!connected(world, dice) && tries++ < 100);
-    }
+	/**
+	 * Creates a new instance of Cellular with the specified generation
+	 * parameters. Great care should be taken when customizing these parameters,
+	 * as certain configurations may make it impossible to generate good levels.
+	 * 
+	 * @param floor
+	 *            the face of the open tiles
+	 * @param wall
+	 *            the face of the closed tiles
+	 * @param wallChance
+	 *            the chance out of 100 of seeding the map with a wall, as well
+	 *            as the required percent of wall tiles for the map to be
+	 *            accepted
+	 * @param minCount
+	 *            the minimum number of walls at distance 1 to generate a wall
+	 * @param maxCount
+	 *            the maximum number of walls at distance 2 to generate a wall
+	 */
+	public Cellular(ColoredChar floor, ColoredChar wall, int wallChance,
+			int minCount, int maxCount) {
+		this.wallChance = wallChance;
+		this.minCount1 = minCount;
+		this.maxCount2 = maxCount;
+		this.floor = floor;
+		this.wall = wall;
+	}
 
-    private boolean connected(World world, Dice dice)
-    {
-        HashSet<Coordinate> fill = getFill(world, dice);
-        if(fill.size() * 100 / (world.width() * world.height()) < wallChance)
-            return false;
-        else
-        {
-            deleteExtra(world, fill);
-            return true;
-        }
-    }
+	@Override
+	protected void generateStep(World world, Dice dice) {
+		int tries = 0;
+		do {
+			Automata automata = new Automata(world, dice);
+			for (int i = 0; i < 4; i++)
+				automata.applyRule();
+			automata.growCaves();
+		} while (!connected(world, dice) && tries++ < 100);
+	}
 
-    private HashSet<Coordinate> getFill(World world, Dice dice)
-    {
-        HashSet<Coordinate> fill = new HashSet<Coordinate>();
-        Stack<Coordinate> stack = new Stack<Coordinate>();
-        stack.push(world.getOpenTile(dice));
+	private boolean connected(World world, Dice dice) {
+		HashSet<Coordinate> fill = getFill(world, dice);
+		if (fill.size() * 100 / (world.width() * world.height()) < wallChance)
+			return false;
+		else {
+			deleteExtra(world, fill);
+			return true;
+		}
+	}
 
-        while(!stack.isEmpty())
-        {
-            Coordinate coord = stack.pop();
-            if(fill.contains(coord) || !world.passableAt(coord))
-                continue;
+	private HashSet<Coordinate> getFill(World world, Dice dice) {
+		HashSet<Coordinate> fill = new HashSet<Coordinate>();
+		Stack<Coordinate> stack = new Stack<Coordinate>();
+		stack.push(world.getOpenTile(dice));
 
-            fill.add(coord);
+		while (!stack.isEmpty()) {
+			Coordinate coord = stack.pop();
+			if (fill.contains(coord) || !world.passableAt(coord))
+				continue;
 
-            stack.push(coord.getTranslated(1, 0));
-            stack.push(coord.getTranslated(-1, 0));
-            stack.push(coord.getTranslated(0, 1));
-            stack.push(coord.getTranslated(0, -1));
-        }
-        return fill;
-    }
+			fill.add(coord);
 
-    private void deleteExtra(World world, HashSet<Coordinate> fill)
-    {
-        for(int x = 0; x < world.width(); x++)
-            for(int y = 0; y < world.height(); y++)
-                if(!fill.contains(new Coordinate(x, y)))
-                    world.setTile(wall, false, x, y);
-    }
+			stack.push(coord.getTranslated(1, 0));
+			stack.push(coord.getTranslated(-1, 0));
+			stack.push(coord.getTranslated(0, 1));
+			stack.push(coord.getTranslated(0, -1));
+		}
+		return fill;
+	}
 
-    private class Automata
-    {
-        private World world;
+	private void deleteExtra(World world, HashSet<Coordinate> fill) {
+		for (int x = 0; x < world.width(); x++)
+			for (int y = 0; y < world.height(); y++)
+				if (!fill.contains(new Coordinate(x, y)))
+					world.setTile(wall, false, x, y);
+	}
 
-        private boolean[][] cells;
-        private boolean[][] temp;
+	private class Automata {
+		private World world;
 
-        private int width()
-        {
-            return world.width();
-        }
+		private boolean[][] cells;
+		private boolean[][] temp;
 
-        private int height()
-        {
-            return world.height();
-        }
+		private int width() {
+			return world.width();
+		}
 
-        public Automata(World world, Dice dice)
-        {
-            this.world = world;
-            cells = initBuffer(dice);
-            temp = createBuffer();
-        }
+		private int height() {
+			return world.height();
+		}
 
-        public void applyRule()
-        {
-            for(int x = 1; x < width() - 1; x++)
-                for(int y = 1; y < height() - 1; y++)
-                    temp[x][y] = wallCount(x, y, 1) < minCount1 && wallCount(x, y, 2) > maxCount2;
+		public Automata(AsciiScreenInput _screenInput, World _world) {
+			world = _world;
+			int height = _screenInput.getHeight();
+			int width = _screenInput.getWidth();
+			cells = new boolean[width][height];
+			for (int x = 0; x < width; x++)
+				for (int y = 0; y < height; y++) {
+					char c = _screenInput.getScreen().get(y).charAt(x);
+					world.setTile(ColoredChar.create(c), false, x, y);
+				}
+			world.setTile(ColoredChar.create(_screenInput.getScreen().get(0).charAt(0)), true, 0, 0);
+		}
 
-            boolean[][] placeHolder = cells;
-            cells = temp;
-            temp = placeHolder;
-        }
+		public Automata(World world, Dice dice) {
+			this.world = world;
+			cells = initBuffer(dice);
+			temp = createBuffer();
+		}
 
-        public void growCaves()
-        {
-            for(int x = 0; x < width(); x++)
-                for(int y = 0; y < height(); y++)
-                {
-                    if(cells[x][y])
-                        world.setTile(floor, true, x, y);
-                    else
-                        world.setTile(wall, false, x, y);
-                }
-        }
+		public void applyRule() {
+			for (int x = 1; x < width() - 1; x++)
+				for (int y = 1; y < height() - 1; y++)
+					temp[x][y] = wallCount(x, y, 1) < minCount1
+							&& wallCount(x, y, 2) > maxCount2;
 
-        private int wallCount(int posX, int posY, int range)
-        {
-            int count = 0;
-            for(int x = posX - range; x <= posX + range; x++)
-                for(int y = posY - range; y <= posY + range; y++)
-                    if(!outsideBuffer(x, y) && !cells[x][y])
-                        count++;
-            return count;
-        }
+			boolean[][] placeHolder = cells;
+			cells = temp;
+			temp = placeHolder;
+		}
 
-        private boolean outsideBuffer(int x, int y)
-        {
-            return x < 0 || y < 0 || x >= width() || y >= height();
-        }
+		public void growCaves() {
+			for (int x = 0; x < width(); x++)
+				for (int y = 0; y < height(); y++) {
+					if (cells[x][y])
+						world.setTile(floor, true, x, y);
+					else
+						world.setTile(wall, false, x, y);
+				}
+		}
 
-        private boolean[][] initBuffer(Dice dice)
-        {
-            boolean[][] buffer = createBuffer();
+		private int wallCount(int posX, int posY, int range) {
+			int count = 0;
+			for (int x = posX - range; x <= posX + range; x++)
+				for (int y = posY - range; y <= posY + range; y++)
+					if (!outsideBuffer(x, y) && !cells[x][y])
+						count++;
+			return count;
+		}
 
-            for(int x = 1; x < width() - 1; x++)
-                for(int y = 1; y < height() - 1; y++)
-                    buffer[x][y] = !dice.chance(wallChance);
+		private boolean outsideBuffer(int x, int y) {
+			return x < 0 || y < 0 || x >= width() || y >= height();
+		}
 
-            return buffer;
-        }
+		private boolean[][] initBuffer(Dice dice) {
+			boolean[][] buffer = createBuffer();
 
-        private boolean[][] createBuffer()
-        {
-            boolean[][] buffer = new boolean[width()][height()];
+			for (int x = 1; x < width() - 1; x++)
+				for (int y = 1; y < height() - 1; y++)
+					buffer[x][y] = !dice.chance(wallChance);
 
-            for(int x = 0; x < width(); x++)
-            {
-                buffer[x][0] = false;
-                buffer[x][height() - 1] = false;
-            }
-            for(int y = 0; y < height(); y++)
-            {
-                buffer[0][y] = false;
-                buffer[width() - 1][y] = false;
-            }
+			return buffer;
+		}
 
-            return buffer;
-        }
-    }
+		private boolean[][] createBuffer() {
+			boolean[][] buffer = new boolean[width()][height()];
+
+			for (int x = 0; x < width(); x++) {
+				buffer[x][0] = false;
+				buffer[x][height() - 1] = false;
+			}
+			for (int y = 0; y < height(); y++) {
+				buffer[0][y] = false;
+				buffer[width() - 1][y] = false;
+			}
+
+			return buffer;
+		}
+	}
 }

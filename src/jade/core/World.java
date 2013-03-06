@@ -408,7 +408,6 @@ public abstract class World extends Messenger
     {
         Guard.argumentIsNotNull(face);
         Guard.argumentsInsideBounds(x, y, width, height);
-
         grid[x][y].face = face;
         grid[x][y].passable = passable;
     }
