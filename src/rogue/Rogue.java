@@ -23,7 +23,7 @@ public class Rogue
         world.addActor(new Monster(ColoredChar.create('D', Color.red)));
         term.registerCamera(player, 5, 5);
         
-        // hallo
+        // hallo ga
         
         while(!player.expired())
         {
