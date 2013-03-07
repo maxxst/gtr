@@ -31,6 +31,7 @@ public class Rogue
         term.registerTile("dungeon.png", 3, 60, ColoredChar.create('.'));
         term.registerTile("dungeon.png", 5, 20, ColoredChar.create('@'));
         term.registerTile("dungeon.png", 14, 30, ColoredChar.create('D', Color.red));
+        Warum ist das gut? 
         */
     	
         
