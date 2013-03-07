@@ -7,8 +7,6 @@ import jade.util.datatype.Coordinate;
 import java.util.HashSet;
 import java.util.Stack;
 
-import rogue.level.AsciiScreenInput;
-
 /**
  * Uses cellular automaton to generate interesting cave-like maps. This
  * implementation always tries to make a connected map. For large maps, this is
@@ -31,10 +29,6 @@ public class Cellular extends MapGenerator {
 	 */
 	public Cellular() {
 		this(ColoredChar.create('.'), ColoredChar.create('#'));
-	}
-
-	public Cellular(AsciiScreenInput _screenInput, World _world) {
-		Automata automata = new Automata(_screenInput, _world);
 	}
 
 	/**
@@ -137,19 +131,6 @@ public class Cellular extends MapGenerator {
 
 		private int height() {
 			return world.height();
-		}
-
-		public Automata(AsciiScreenInput _screenInput, World _world) {
-			world = _world;
-			int height = _screenInput.getHeight();
-			int width = _screenInput.getWidth();
-			cells = new boolean[width][height];
-			for (int x = 0; x < width; x++)
-				for (int y = 0; y < height; y++) {
-					char c = _screenInput.getScreen().get(y).charAt(x);
-					world.setTile(ColoredChar.create(c), false, x, y);
-				}
-			world.setTile(ColoredChar.create(_screenInput.getScreen().get(0).charAt(0)), true, 0, 0);
 		}
 
 		public Automata(World world, Dice dice) {
