@@ -17,7 +17,7 @@ Gestranded auf einer spärlich besiedelten Insel wacht $name auf. Nackt. Neben i
 - in Dialogen kann man sich im laufe des Spiels entscheiden wie man sich spezialisiert
 - Moral: keine … bisher
 
-### Schwierigkeitsgrad d& Speichermöglichkeiten
+### Schwierigkeitsgrad & Speichermöglichkeiten
 Jede Insel/Stadt/Stadtteil ist in sich abgeschlossen und sterben wirft an den Anfang dieser Insel. So kann jede Insel eine neue Geschichte mit anderem Schwierigkeitsgrad bieten. Der Beginn kann aber immer gleich bleiben.
 
 __Der Prototyp soll eher als Tutorial fungieren__
@@ -49,7 +49,7 @@ Es gibt an zufälligen Orten generierte "Storyteller" (Reihenfolge im Quellcode)
 #### Wünsche
 - Tag / Nacht Zyklus mit Sichtweitenbeschränkung
 - Alle Gebäude sind begehbar - manche beherbergen Dungeons 
-- EasterEgg `Q`, `Telefonzellen` 
+- EasterEggs `Q`, `Telefonzellen` 
 
 __Umgebungen/Szenerie/Story/Waffen/Gegner/Dialoge müssen extern geladen werden können, damit man auch andere Storylines umgesetzt werden können__
 
@@ -61,8 +61,5 @@ __Umgebungen/Szenerie/Story/Waffen/Gegner/Dialoge müssen extern geladen werden 
 
 #### NPC's 
 - Händler
-- Storyteller
+- Storyteller (Bringen die Story vorran)
 - Gegner
-
-
-### Aufwand
