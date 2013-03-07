@@ -18,7 +18,7 @@ public class Rogue
     	Player player = new Player(term);
     	World world = new Level(50, 30, player);
     	world.addActor(new Monster(ColoredChar.create('D', Color.red)));
-    	AsciiScreen.showAsciiScreen(gtr.util.ReadFile.readScreenFile("res/ascii_screens/start_screen.txt"), world, term);
+    	AsciiScreen.showAsciiScreen(gtr.util.ReadFile.readScreenFile("res/screens/start_screen_gtr.txt"), world, term);
     	
 //    	player.setFace(' ');
 //    	World world = new Level(69, 24, player);

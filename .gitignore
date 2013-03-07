@@ -5,6 +5,7 @@ bin/**
 tmp/**
 tmp/**/*
 *.tmp
+*.txt~
 *.bak
 *.swp
 *~.nib
