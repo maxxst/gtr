@@ -1,0 +1,21 @@
+- name: "Schwert"
+  range:
+    from: 1
+    to: 1
+- name: "Pistole"
+  range:
+    from: 2
+    to: 3
+- name: "Racketenwerfer"
+  range:
+    from: 5
+    to: 10
+  speed: 2
+  area: True
+- name: "Bogen des Robin Hood"
+  range:
+    from: 1
+    to: 12
+  speed: 4
+  breaktrough: 10
+  only_rare: True
