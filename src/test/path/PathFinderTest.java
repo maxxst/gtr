@@ -24,7 +24,13 @@ public class PathFinderTest
     public void initMock()
     {
         world = new World(10, 10)
-        {};
+        {
+
+			@Override
+			public String inLevel() {
+				// TODO Auto-generated method stub
+				return null;
+			}};
         start = new Coordinate(4, 4);
         end = new Coordinate(6, 6);
         partial = new ArrayList<Coordinate>();

@@ -29,6 +29,12 @@ public class WorldBuilder
         {
             super(width, height);
         }
+
+		@Override
+		public String inLevel() {
+			// TODO Auto-generated method stub
+			return null;
+		}
     }
 
     public static World getEmptyMap()

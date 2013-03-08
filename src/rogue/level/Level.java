@@ -20,4 +20,16 @@ public class Level extends World
     {
         return new Cellular();
     }
+
+	@Override
+	public String inLevel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getNextLevel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

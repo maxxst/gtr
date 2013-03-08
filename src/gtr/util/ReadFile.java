@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class ReadFile {
 
 	public static ArrayList<String> readScreenFile(String file) {
+		
 		int width = Integer.MIN_VALUE;
 
 		// Lese Datei ein
