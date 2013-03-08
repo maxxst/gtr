@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import rogue.creature.Player;
+
 /**
  * Represents a game world on which {@code Actor} can interact.
  */
@@ -23,6 +25,7 @@ public abstract class World extends Messenger
     private Set<Actor> register;
     private List<Class<? extends Actor>> drawOrder;
     private List<Class<? extends Actor>> actOrder;
+    private String nextLevel;
 
     /**
      * Constructs a new {@code World} with the given dimensions. Both width and height must be
@@ -570,6 +573,16 @@ public abstract class World extends Messenger
     void unregisterActor(Actor actor)
     {
         register.remove(actor);
+    }
+    
+    abstract public String inLevel();
+    
+    public String getNextLevel() {
+    	return nextLevel;
+    }
+    
+    public void setNextLevel(String nextLevel) {
+    	this.nextLevel = nextLevel;
     }
 
     private class Tile

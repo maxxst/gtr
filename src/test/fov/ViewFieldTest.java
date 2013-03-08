@@ -24,7 +24,13 @@ public class ViewFieldTest
     public void init()
     {
         world = new World(10, 10)
-        {};
+        {
+
+			@Override
+			public String inLevel() {
+				// TODO Auto-generated method stub
+				return null;
+			}};
         x = 5;
         y = 5;
         r = 5;

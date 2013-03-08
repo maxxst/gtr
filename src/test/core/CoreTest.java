@@ -64,6 +64,12 @@ public abstract class CoreTest
         {
             super(width, height);
         }
+
+		@Override
+		public String inLevel() {
+			// TODO Auto-generated method stub
+			return null;
+		}
     }
 
     public static class ConcreteActor extends Actor
