@@ -589,7 +589,7 @@ public abstract class World extends Messenger
 		term.bufferCameras();
 		term.refreshScreen();
 
-		this.tick();
+		tick();
     }
 
     private class Tile

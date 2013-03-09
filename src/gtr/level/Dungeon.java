@@ -25,6 +25,8 @@ public class Dungeon extends World
         
         monster = new Monster(ColoredChar.create('D', Color.red));
     	addActor(monster);
+    	
+    	updateLevelVariables();
     }
 
     private static Generator getLevelGenerator()
@@ -34,18 +36,19 @@ public class Dungeon extends World
     
     public String inLevel() {
 		Terminal term = player.getTerm();
-		updateLevelVariables();
+		
 		while (!player.expired()) {
 			
-			if (player.x() == monster.x() && player.y() == monster.y()) {
-        		this.removeActor(player);
-        		this.removeActor(monster);
-        		
-        		nextLevel = "StartLevel";
-        		break; // Verlassen der while-Schleife
-        	}
-			
 			changeAndRefreshScreenAndTick(term);
+			
+			if (player.x() == monster.x() && player.y() == monster.y())
+        		nextLevel = "StartLevel";
+			
+			if (nextLevel != null) {
+				this.removeActor(player);
+        		this.removeActor(monster);
+				break; // Verlassen der while-Schleife
+			}
 		}
 		return nextLevel;
 	}

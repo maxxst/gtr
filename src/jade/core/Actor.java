@@ -55,6 +55,10 @@ public abstract class Actor extends Messenger
     {
         return face;
     }
+    
+    public void setFace(ColoredChar face) {
+    	this.face = face;
+    }
 
     /**
      * Returns the {@code World} the {@code Actor} is currently bound to, or null if the

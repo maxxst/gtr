@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Keys {
 
-	private ArrayList<Object> keys;
+	private static ArrayList<Character> keys = new ArrayList<Character>();
 	
+	public static ArrayList<Character> setUniversalKeys() {
+		keys = new ArrayList<Character>();
+		keys.add('q');
+		return keys;
+	}
 	
-	public static char[] getKeys() {
-//		if (gtr.asciiscreen.AsciiScreen.getCurrentScreen() == "res/ascii_screens/start_screen.txt") {
-		
-			
-//		}
-		return null;
-		
+	public static boolean isUniversalKey(char ch) {
+		return keys.contains(ch);
 	}
 }
