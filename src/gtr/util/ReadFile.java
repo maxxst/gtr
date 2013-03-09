@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.esotericsoftware.yamlbeans.YamlReader;
+
 public class ReadFile {
 
 	/**
@@ -13,20 +15,21 @@ public class ReadFile {
 	 * 
 	 * @param file
 	 *            Dateipfad zur Datei
-	 * @return Eine
+	 * @return Eine ArrayList<String>, bei der die einzelnen Strings die Zeilen
+	 *         der Karte sind.
 	 */
 	public static ArrayList<String> readScreenFile(String file) {
 
 		int width = Integer.MIN_VALUE;
 
 		// Lese Datei ein
-		ArrayList<String> asciiScreen = new ArrayList<String>();
+		ArrayList<String> layout = new ArrayList<String>();
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(
 					file));
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
-				asciiScreen.add(line);
+				layout.add(line);
 				if (line.length() > width)
 					width = line.length();
 			}
@@ -37,11 +40,29 @@ public class ReadFile {
 
 		// Fülle zu kurze Zeilen mit Leerzeichen auf, damit alle Zeilen gleich
 		// lang sind
-		for (int i = 0; i < asciiScreen.size(); i++) {
-			while (asciiScreen.get(i).length() < width)
-				asciiScreen.set(i, asciiScreen.get(i) + " ");
+		for (int i = 0; i < layout.size(); i++) {
+			while (layout.get(i).length() < width)
+				layout.set(i, layout.get(i) + " ");
 		}
 
-		return asciiScreen;
+		return layout;
+	}
+	
+	/**
+	 * Liest eine YAML-Datei ein.
+	 * @param file Pfad zur einzulesenden YAML-Datei
+	 * @return Eine ArrayList<?>
+	 */
+	public static ArrayList<?> readYamlFile(String file) {
+
+		// Lese Datei ein
+		Object object = null;
+		try {
+			object = new YamlReader(new FileReader(file)).read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ArrayList.class.cast(object);
 	}
 }
