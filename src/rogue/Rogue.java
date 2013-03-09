@@ -31,7 +31,7 @@ public class Rogue
         		world = new Dungeon(20, 20, player);
             	nextLevel = world.inLevel();
         	}
-        	if (nextLevel.equals("StartLevel")) {
+        	else if (nextLevel.equals("StartLevel")) {
         		world = new StartLevel(player);
         		nextLevel = world.inLevel();
         	}

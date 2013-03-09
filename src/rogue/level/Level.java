@@ -26,10 +26,4 @@ public class Level extends World
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public String getNextLevel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

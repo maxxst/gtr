@@ -15,6 +15,9 @@ import java.util.List;
 public abstract class Messenger
 {
     private List<Message> cache;
+    protected String nextLevel;
+    protected String currentLevel;
+    protected String lastLevel;
 
     /**
      * Creates a new {@code Messenger}

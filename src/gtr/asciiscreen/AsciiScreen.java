@@ -6,8 +6,6 @@ import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 
-import gtr.util.ReadFile;
-
 public class AsciiScreen {
 
 	public static void showAsciiScreen(ArrayList<String> leveldesign,

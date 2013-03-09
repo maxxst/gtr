@@ -1,5 +1,6 @@
 package jade.core;
 
+import jade.ui.Terminal;
 import jade.util.Dice;
 import jade.util.Guard;
 import jade.util.Lambda;
@@ -12,8 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import rogue.creature.Player;
-
 /**
  * Represents a game world on which {@code Actor} can interact.
  */
@@ -25,7 +24,6 @@ public abstract class World extends Messenger
     private Set<Actor> register;
     private List<Class<? extends Actor>> drawOrder;
     private List<Class<? extends Actor>> actOrder;
-    private String nextLevel;
 
     /**
      * Constructs a new {@code World} with the given dimensions. Both width and height must be
@@ -577,12 +575,21 @@ public abstract class World extends Messenger
     
     abstract public String inLevel();
     
-    public String getNextLevel() {
-    	return nextLevel;
+    protected void updateLevelVariables() {
+    	lastLevel = currentLevel;
+		currentLevel = nextLevel;
+		nextLevel = null;
     }
     
-    public void setNextLevel(String nextLevel) {
-    	this.nextLevel = nextLevel;
+    protected void changeAndRefreshScreenAndTick(Terminal term) {
+    	term.clearBuffer();
+		for (int x = 0; x < this.width(); x++)
+			for (int y = 0; y < this.height(); y++)
+				term.bufferChar(x + 11, y, this.look(x, y));
+		term.bufferCameras();
+		term.refreshScreen();
+
+		this.tick();
     }
 
     private class Tile

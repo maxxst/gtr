@@ -34,25 +34,19 @@ public class Dungeon extends World
     
     public String inLevel() {
 		Terminal term = player.getTerm();
+		updateLevelVariables();
 		while (!player.expired()) {
 			
 			if (player.x() == monster.x() && player.y() == monster.y()) {
         		this.removeActor(player);
         		this.removeActor(monster);
         		
-        		this.setNextLevel("StartLevel");
-        		break;
+        		nextLevel = "StartLevel";
+        		break; // Verlassen der while-Schleife
         	}
 			
-			term.clearBuffer();
-			for (int x = 0; x < this.width(); x++)
-				for (int y = 0; y < this.height(); y++)
-					term.bufferChar(x + 11, y, this.look(x, y));
-			term.bufferCameras();
-			term.refreshScreen();
-
-			this.tick();
+			changeAndRefreshScreenAndTick(term);
 		}
-		return this.getNextLevel();
+		return nextLevel;
 	}
 }
