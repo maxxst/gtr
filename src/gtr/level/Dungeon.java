@@ -39,9 +39,10 @@ public class Dungeon extends World
 		
 		while (!player.expired()) {
 			
-			changeAndRefreshScreenAndTick(term);
-			
-			if (player.x() == monster.x() && player.y() == monster.y())
+			if (player.x() == 
+					monster.x() && 
+					player.y() == 
+					monster.y())
         		nextLevel = "StartLevel";
 			
 			if (nextLevel != null) {
@@ -49,6 +50,8 @@ public class Dungeon extends World
         		this.removeActor(monster);
 				break; // Verlassen der while-Schleife
 			}
+			
+			changeAndRefreshScreenAndTick(term);
 		}
 		return nextLevel;
 	}

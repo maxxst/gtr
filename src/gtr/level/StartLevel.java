@@ -36,13 +36,13 @@ public class StartLevel extends World {
 
 		while (!player.expired()) {
 
-			changeAndRefreshScreenAndTick(term);
-
 			if (nextLevel != null) {
 				this.removeActor(player);
 				player.setFace(player.getStandardFace());
 				break; // Verlassen der while-Schleife
 			}
+			
+			changeAndRefreshScreenAndTick(term);
 		}
 		return nextLevel;
 	}
