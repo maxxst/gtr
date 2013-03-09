@@ -1,3 +1,4 @@
+!java.util.ArrayList
 - name: "Schwert"
   range:
     from: 1
