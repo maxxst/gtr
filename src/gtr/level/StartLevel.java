@@ -1,15 +1,17 @@
 package gtr.level;
 
-import java.util.ArrayList;
-
-import rogue.creature.Player;
+import gtr.util.ReadFile;
 import jade.core.World;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 
+import java.util.ArrayList;
+
+import rogue.creature.Player;
+
 public class StartLevel extends World {
 
-	private final static ArrayList<String> leveldesign = gtr.util.ReadFile
+	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/screens/start_screen_gtr.txt");
 	private Player player;
 
