@@ -1,5 +1,7 @@
 package gtr.util;
 
+import gtr.item.weapon.Weapon;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -47,10 +49,12 @@ public class ReadFile {
 
 		return layout;
 	}
-	
+
 	/**
 	 * Liest eine YAML-Datei ein.
-	 * @param file Pfad zur einzulesenden YAML-Datei
+	 * 
+	 * @param file
+	 *            Pfad zur einzulesenden YAML-Datei
 	 * @return Eine ArrayList<?>
 	 */
 	public static ArrayList<?> readYamlFile(String file) {
@@ -64,5 +68,15 @@ public class ReadFile {
 			e.printStackTrace();
 		}
 		return ArrayList.class.cast(object);
+	}
+
+	public static void main(String[] args) {
+
+		// zum testen
+		ArrayList<?> a = readYamlFile("res/weapons/weapons.yml");
+		System.out.println(a.toString());
+
+		Weapon w = new Weapon("Bogen des Robin Hood");
+		System.out.println(w.only_rare);
 	}
 }
