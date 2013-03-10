@@ -3,6 +3,12 @@ package gtr.item.weapon;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Klasse für die Waffen
+ * 
+ * @author anti
+ * 
+ */
 public class Weapon {
 
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
@@ -15,6 +21,12 @@ public class Weapon {
 	public int breakthrough;
 	public boolean only_rare;
 
+	/**
+	 * Innere Klasse für die Reichweite der Waffen
+	 * 
+	 * @author anti
+	 * 
+	 */
 	public class Range {
 
 		public int from;
@@ -26,22 +38,27 @@ public class Weapon {
 		}
 	}
 
+	/**
+	 * Erstellt eine Waffe.
+	 * 
+	 * @param weapon
+	 *            Name der Waffe, die erstellt werden soll
+	 */
 	public Weapon(String weapon) {
 
 		for (int i = 0; i < weaponList.size(); i++)
 			if (HashMap.class.cast(weaponList.get(i)).get("name")
 					.equals(weapon)) {
+				HashMap<?, ?> hashMap = HashMap.class.cast(weaponList.get(i));
+
 				name = weapon;
-				speed = Integer.parseInt((String) HashMap.class.cast(
-						weaponList.get(i)).get("speed"));
-				area = Boolean.parseBoolean((String) HashMap.class.cast(
-						weaponList.get(i)).get("area"));
-				breakthrough = Integer.parseInt((String) HashMap.class.cast(
-						weaponList.get(i)).get("breakthrough"));
-				only_rare = Boolean.parseBoolean((String) HashMap.class.cast(
-						weaponList.get(i)).get("only_rare"));
-				range = new Range((HashMap<?, ?>) HashMap.class.cast(
-						weaponList.get(i)).get("range"));
+				speed = Integer.parseInt((String) hashMap.get("speed"));
+				area = Boolean.parseBoolean((String) hashMap.get("area"));
+				breakthrough = Integer.parseInt((String) hashMap
+						.get("breakthrough"));
+				only_rare = Boolean.parseBoolean((String) hashMap
+						.get("only_rare"));
+				range = new Range((HashMap<?, ?>) hashMap.get("range"));
 
 				break;
 			}
