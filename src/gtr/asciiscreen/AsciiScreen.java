@@ -6,9 +6,16 @@ import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 
-public class AsciiScreen {
+public abstract class AsciiScreen extends World {
 
-	public static void showAsciiScreen(ArrayList<String> leveldesign,
+	protected ScreenType screenType;
+	
+	public AsciiScreen(int width, int height) {
+		super(width, height);
+		// TODO Auto-generated constructor stub
+	}
+
+	protected static void showAsciiScreen(ArrayList<String> leveldesign,
 			World world, Terminal term) {
 
 		term.clearBuffer();
@@ -31,7 +38,7 @@ public class AsciiScreen {
 	 * @param world
 	 * @param term
 	 */
-	public static void createAsciiScreen(ArrayList<String> leveldesign,
+	protected static void createAsciiScreen(ArrayList<String> leveldesign,
 			World world, Terminal term) {
 		for (int x1 = 0; x1 < getWidth(leveldesign); x1++)
 			for (int y1 = 0; y1 < getHeight(leveldesign); y1++) {

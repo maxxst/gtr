@@ -1,7 +1,7 @@
 package rogue;
 
-import gtr.level.Dungeon;
-import gtr.level.StartLevel;
+import gtr.asciiscreen.level.Dungeon;
+import gtr.asciiscreen.other.StartScreen;
 import jade.core.World;
 import jade.ui.TiledTermPanel;
 import rogue.creature.Player;
@@ -11,7 +11,7 @@ public class Rogue {
 
 		TiledTermPanel term = TiledTermPanel.getFramedTerminal("GTR");
 		Player player = new Player(term);
-		World world = new StartLevel(player);
+		World world = new StartScreen(player);
 		String nextLevel = world.inLevel();
 
 		/*
@@ -29,7 +29,7 @@ public class Rogue {
 				world = new Dungeon(20, 20, player);
 				nextLevel = world.inLevel();
 			} else if (nextLevel.equals("StartLevel")) {
-				world = new StartLevel(player);
+				world = new StartScreen(player);
 				nextLevel = world.inLevel();
 			}
 		}

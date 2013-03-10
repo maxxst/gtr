@@ -1,8 +1,8 @@
-package gtr.level;
+package gtr.asciiscreen.level;
+
 
 import java.awt.Color;
 
-import jade.core.World;
 import jade.gen.Generator;
 import jade.gen.map.Cellular;
 import jade.ui.Terminal;
@@ -10,7 +10,7 @@ import jade.util.datatype.ColoredChar;
 import rogue.creature.Monster;
 import rogue.creature.Player;
 
-public class Dungeon extends World
+public class Dungeon extends Level
 {
     private final static Generator gen = getLevelGenerator();
     private Monster monster;

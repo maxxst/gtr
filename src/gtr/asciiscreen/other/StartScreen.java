@@ -1,7 +1,7 @@
-package gtr.level;
+package gtr.asciiscreen.other;
 
+import gtr.asciiscreen.ScreenType;
 import gtr.util.ReadFile;
-import jade.core.World;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 
@@ -9,17 +9,20 @@ import java.util.ArrayList;
 
 import rogue.creature.Player;
 
-public class StartLevel extends World {
+public class StartScreen extends OtherScreen {
 
 	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/screens/start_screen_gtr.txt");
 	private Player player;
 
-	public StartLevel(Player player) {
+	public StartScreen(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
+		
+		screenType = ScreenType.StartScreen;
+		
 		this.player = player;
-		gtr.asciiscreen.AsciiScreen.createAsciiScreen(leveldesign, this,
+		createAsciiScreen(leveldesign, this,
 				player.getTerm());
 		int i = 1;
 		this.player.setFace(ColoredChar.create(leveldesign.get(i).charAt(i)));
