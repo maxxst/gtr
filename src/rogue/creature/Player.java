@@ -35,17 +35,21 @@ public class Player extends Creature implements Camera {
 			char key;
 			key = term.getKey();
 			
-			if (currentLevel.equals("StartLevel"))
+			if (gtr.keys.Keys.isUniversalKey(key))
+				switch (key) {
+				case 'q':
+					expire();
+					break;
+				}	
+			else if (screenType.name().equals("StartScreen"))
 				switch (key) {
 				case 's':
 					nextLevel = "Dungeon";
 					break;
 				}
-			else if (currentLevel.equals("Dungeon"))
+			else if (screenType.name().equals("Level"))
 				switch (key) {
-				case 'q':
-					expire();
-					break;
+				
 				default:
 					Direction dir = Direction.keyToDir(key);
 					if (dir != null)

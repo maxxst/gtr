@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Keys {
 
-	private static ArrayList<Character> keys = new ArrayList<Character>();
+	private static ArrayList<Character> keys = setUniversalKeys();
 	
 	public static ArrayList<Character> setUniversalKeys() {
 		keys = new ArrayList<Character>();

@@ -7,8 +7,6 @@ import jade.util.datatype.ColoredChar;
 import java.util.ArrayList;
 
 public abstract class AsciiScreen extends World {
-
-	protected ScreenType screenType;
 	
 	public AsciiScreen(int width, int height) {
 		super(width, height);

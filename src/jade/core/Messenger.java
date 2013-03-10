@@ -1,5 +1,6 @@
 package jade.core;
 
+import gtr.asciiscreen.ScreenType;
 import jade.util.Guard;
 import jade.util.Lambda;
 import jade.util.Lambda.FilterFunc;
@@ -19,6 +20,7 @@ public abstract class Messenger
     protected static String currentLevel;
     protected static String lastLevel;
     protected static boolean quit = false;
+	protected static ScreenType screenType;
 
     /**
      * Creates a new {@code Messenger}
