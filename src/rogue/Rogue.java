@@ -1,6 +1,7 @@
 package rogue;
 
 import gtr.asciiscreen.level.Dungeon;
+import gtr.asciiscreen.level.Stadt;
 import gtr.asciiscreen.other.StartScreen;
 import jade.core.World;
 import jade.ui.TiledTermPanel;
@@ -31,6 +32,9 @@ public class Rogue {
 				nextLevel = world.inLevel();
 			} else if (nextLevel.equals("StartLevel")) {
 				world = new StartScreen(player);
+				nextLevel = world.inLevel();
+			} else if (nextLevel.equals("Stadt")) {
+				world = new Stadt(player);
 				nextLevel = world.inLevel();
 			}
 		}

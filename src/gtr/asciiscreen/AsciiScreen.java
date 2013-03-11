@@ -8,9 +8,24 @@ import java.util.ArrayList;
 
 public abstract class AsciiScreen extends World {
 	
+	private static ArrayList<Character> floorChars = setFloorChars();
+	
 	public AsciiScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
+	}
+
+	private static ArrayList<Character> setFloorChars() {
+		ArrayList<Character> c = new ArrayList<Character>();
+		c.add('.');
+		c.add('=');
+		c.add('+');
+		c.add('±');
+		return c;
+	}
+	
+	private static boolean isFloorChar(char c) {
+		return (floorChars.contains(c)) ? true : false;
 	}
 
 	protected static void showAsciiScreen(ArrayList<String> leveldesign,
@@ -41,7 +56,8 @@ public abstract class AsciiScreen extends World {
 		for (int x1 = 0; x1 < getWidth(leveldesign); x1++)
 			for (int y1 = 0; y1 < getHeight(leveldesign); y1++) {
 				char c = leveldesign.get(y1).charAt(x1);
-				world.setTile(ColoredChar.create(c), (c == '#')? false : true,
+				boolean b = isFloorChar(c);
+				world.setTile(ColoredChar.create(c), b,
 						x1, y1);
 			}
 	}
@@ -67,4 +83,6 @@ public abstract class AsciiScreen extends World {
 	public static int getWidth(ArrayList<String> leveldesign) {
 		return leveldesign.get(0).length();
 	}
+	
+	
 }

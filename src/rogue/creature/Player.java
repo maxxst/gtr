@@ -44,7 +44,7 @@ public class Player extends Creature implements Camera {
 			else if (screenType.name().equals("StartScreen"))
 				switch (key) {
 				case 's':
-					nextLevel = "Dungeon";
+					nextLevel = "Stadt";
 					break;
 				}
 			else if (screenType.name().equals("Level"))
