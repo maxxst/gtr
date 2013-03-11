@@ -20,7 +20,7 @@ __Eine Berechnungsgrundlage muss noch erarbeitet Werden__
 - Schadens-/Rüstungsmultiplikator: 1,5
 - max 2 Sockel
 
-### very Rare (lila)
+### mythics (lila)
 - Gegenstände mit zwei bis drei starken Aufwertungen
 - Multiplikator: 3
 - max 3 Sockel

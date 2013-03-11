@@ -1,0 +1,9 @@
+- name: "Junkie"
+  ai: "Zombie"
+  letter: "J"
+  movement:
+    start: 1
+    multi: 1
+  weapons:
+    "fists"
+  drop: "common"
