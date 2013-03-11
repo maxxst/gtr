@@ -3,8 +3,9 @@ package gtr.util;
 import gtr.item.weapon.Weapon;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.esotericsoftware.yamlbeans.YamlReader;
@@ -27,8 +28,8 @@ public class ReadFile {
 		// Lese Datei ein
 		ArrayList<String> layout = new ArrayList<String>();
 		try {
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(
-					file));
+			BufferedReader bufferedReader = new BufferedReader(
+					new InputStreamReader(new FileInputStream(file), "UTF-8"));
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
 				layout.add(line);
@@ -62,7 +63,7 @@ public class ReadFile {
 		// Lese Datei ein
 		Object object = null;
 		try {
-			object = new YamlReader(new FileReader(file)).read();
+			object = new YamlReader(new InputStreamReader(new FileInputStream(file), "UTF-8")).read();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,7 +71,7 @@ public class ReadFile {
 		return ArrayList.class.cast(object);
 	}
 
-	//TODO Unit test !
+	// TODO Unit test !
 	public static void main(String[] args) {
 
 		// zum testen
