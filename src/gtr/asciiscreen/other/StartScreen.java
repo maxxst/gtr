@@ -32,6 +32,7 @@ public class StartScreen extends OtherScreen {
 
 		// steht nur da, da momentan StartLevel nicht nur am Anfang, sondern
 		// nochmals erreichbar ist
+		/**!TODO hier */
 		if (lastLevel != null && lastLevel.equals(nextLevel))
 			updateLevelVariables();
 	}

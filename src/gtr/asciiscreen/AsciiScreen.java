@@ -41,7 +41,7 @@ public abstract class AsciiScreen extends World {
 		for (int x1 = 0; x1 < getWidth(leveldesign); x1++)
 			for (int y1 = 0; y1 < getHeight(leveldesign); y1++) {
 				char c = leveldesign.get(y1).charAt(x1);
-				world.setTile(ColoredChar.create(c), (c == '#') ? false : true,
+				world.setTile(ColoredChar.create(c), (c == '#')? false : true,
 						x1, y1);
 			}
 	}

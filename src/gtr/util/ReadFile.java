@@ -54,7 +54,7 @@ public class ReadFile {
 	 * Liest eine YAML-Datei ein.
 	 * 
 	 * @param file
-	 *            Pfad zur einzulesenden YAML-Datei
+	 *            relativer Pfad zur einzulesenden YAML-Datei
 	 * @return Eine ArrayList<?>
 	 */
 	public static ArrayList<?> readYamlFile(String file) {
@@ -70,6 +70,7 @@ public class ReadFile {
 		return ArrayList.class.cast(object);
 	}
 
+	//TODO Unit test !
 	public static void main(String[] args) {
 
 		// zum testen
