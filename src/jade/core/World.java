@@ -1,7 +1,6 @@
 package jade.core;
 
 import gtr.actor.other.Door;
-import gtr.asciiscreen.ScreenType;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
@@ -16,8 +15,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import rogue.creature.Monster;
 
 /**
  * Represents a game world on which {@code Actor} can interact.

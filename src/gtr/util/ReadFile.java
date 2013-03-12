@@ -1,7 +1,5 @@
 package gtr.util;
 
-import gtr.item.weapon.Weapon;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -91,7 +89,7 @@ public class ReadFile {
 	 * @param file
 	 *            relativer Pfad zur einzulesenden YAML-Datei
 	 * @return Eine ArrayList<?>
-	 * @decrepated
+	 * @deprecated
 	 */
 	public static ArrayList<?> readYamlFile(String file) {
 

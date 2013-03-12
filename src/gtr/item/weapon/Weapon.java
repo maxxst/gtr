@@ -13,7 +13,7 @@ import java.util.Random;
 public class Weapon {
 
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
-			.readYamlFile("res/weapons/weapons.yml");
+			.readYamlArrayList("res/weapons/weapons.yml");
 
 	private String name;
 	private String type;
@@ -120,7 +120,7 @@ public class Weapon {
 		setBoss_drop(hashMap.containsKey("boss_drop") ? Boolean
 				.parseBoolean((String) hashMap.get("boss_drop")) : false);
 		
-		dmg = (Float) (hashMap.containsKey("dmg") ? hashMap.get("dmg") : 1.0);
+		dmg = hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap.get("dmg")) : 1.0F;
 	}
 
 
