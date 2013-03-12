@@ -24,7 +24,7 @@ public class Rogue {
 		 */
 		//term.registerTile("dungeon.png", 14, 30, ColoredChar.create('D', Color.blue));
 
-		//term.registerCamera(player, 5, 5);
+		term.registerCamera(player, 5, 5);
 
 		while (!player.expired()) {
 			if (nextLevel.equals("Dungeon")) {
