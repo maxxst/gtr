@@ -1,5 +1,6 @@
 package test;
 
+import gtr.util.datatype.Location;
 import jade.core.World;
 import jade.util.datatype.ColoredChar;
 
@@ -31,7 +32,7 @@ public class WorldBuilder
         }
 
 		@Override
-		public String inLevel() {
+		public Location inLevel() {
 			// TODO Auto-generated method stub
 			return null;
 		}

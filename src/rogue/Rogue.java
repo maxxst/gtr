@@ -3,6 +3,7 @@ package rogue;
 import gtr.asciiscreen.level.Dungeon;
 import gtr.asciiscreen.level.Stadt;
 import gtr.asciiscreen.other.StartScreen;
+import gtr.util.datatype.Location;
 import jade.core.World;
 import jade.ui.TiledTermPanel;
 import rogue.creature.Player;
@@ -14,7 +15,7 @@ public class Rogue {
 		TiledTermPanel term = TiledTermPanel.getFramedTerminal("GTR");
 		Player player = new Player(term); //setzt den Spieler ins Terminal
 		World world = new StartScreen(player);
-		String nextLevel = world.inLevel(); //gtr addon
+		Location nextLevel = world.inLevel(); //gtr addon
 
 		/*
 		 * WOZU ALLES IST DIES HIER GUT? term.registerTile("dungeon.png", 5, 59,
@@ -27,18 +28,21 @@ public class Rogue {
 //		term.registerCamera(player, 5, 5);
 
 		while (!player.expired()) {
-			if (nextLevel.equals("Dungeon")) {
+			switch (nextLevel.getLevelEnum()) {
+			case Dungeon:
 				world = new Dungeon(20, 20, player);
 				nextLevel = world.inLevel();
-			} else if (nextLevel.equals("StartLevel")) {
+				break;
+			case StartScreen:
 				world = new StartScreen(player);
 				nextLevel = world.inLevel();
-			} else if (nextLevel.equals("Stadt")) {
+				break;
+			case Stadt:
 				world = new Stadt(player);
 				nextLevel = world.inLevel();
-			}
+				break;
+			}	
 		}
-
 		System.exit(0);
 	}
 }

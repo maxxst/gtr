@@ -1,5 +1,6 @@
 package rogue.level;
 
+import gtr.util.datatype.Location;
 import jade.core.World;
 import jade.gen.Generator;
 import jade.gen.map.Cellular;
@@ -22,7 +23,7 @@ public class Level extends World
     }
 
 	@Override
-	public String inLevel() {
+	public Location inLevel() {
 		// TODO Auto-generated method stub
 		return null;
 	}

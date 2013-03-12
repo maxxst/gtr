@@ -86,5 +86,10 @@ public abstract class AsciiScreen extends World {
 		return leveldesign.get(0).length();
 	}
 	
+	public enum LevelEnum {
+		StartScreen,
+		Dungeon,
+		Stadt
+	}
 	
 }

@@ -1,5 +1,8 @@
 package rogue.creature;
 
+import gtr.asciiscreen.AsciiScreen.LevelEnum;
+import gtr.util.datatype.Location;
+
 import java.util.Collection;
 import jade.fov.RayCaster;
 import jade.fov.ViewField;
@@ -44,7 +47,7 @@ public class Player extends Creature implements Camera {
 			else if (screenType.name().equals("StartScreen"))
 				switch (key) {
 				case 's':
-					nextLevel = "Stadt";
+					nextLevel = new Location(LevelEnum.Stadt, new Coordinate(14, 96));
 					break;
 				}
 			else if (screenType.name().equals("Level"))

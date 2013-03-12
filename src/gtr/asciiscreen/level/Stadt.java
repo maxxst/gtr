@@ -2,10 +2,12 @@ package gtr.asciiscreen.level;
 
 import gtr.actor.other.Door;
 import gtr.util.ReadFile;
+import gtr.util.datatype.Location;
 
-import jade.ui.TermPanel;
+import jade.core.Messenger;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
+import jade.util.datatype.Coordinate;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -23,34 +25,38 @@ public class Stadt extends Level {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
 
-		this.player = player;
+		Messenger.player = player;
+		
 		createAsciiScreen(leveldesign, this, player.getTerm());
 
-//		int x = TermPanel.DEFAULT_COLS / 2;
-//		int y = TermPanel.DEFAULT_ROWS / 2;
-		addActor(this.player, 35, 93);
-		
+		// int x = TermPanel.DEFAULT_COLS / 2;
+		// int y = TermPanel.DEFAULT_ROWS / 2;
+		if (nextLevel.getCoordinate().equals(new Coordinate(-1, -1)))
+			addActor(player);
+		else
+			addActor(player, nextLevel.getCoordinate());
+
 		monster = new Monster(ColoredChar.create('D', Color.red));
-    	addActor(monster);
-    	
-    	Door door = new Door(35,92);
-    	addActor(door, 35, 92);
-		
+		addActor(monster);
+
+		Door door = new Door(LevelEnum.Stadt, 150, 106);
+		addActor(door, 35, 92);
+
 		updateLevelVariables();
 	}
 
 	@Override
-	public String inLevel() {
+	public Location inLevel() {
 		Terminal term = player.getTerm();
 
 		while (!player.expired()) {
 
-			if (player.x() == 
-					monster.x() && 
-					player.y() == 
-					monster.y())
-	    		nextLevel = "StartLevel";
-			
+			// if (player.x() ==
+			// monster.x() &&
+			// player.y() ==
+			// monster.y())
+			// nextLevel = LevelEnum.StartScreen;
+			//
 			if (nextLevel != null) {
 				this.removeActor(player);
 				break; // Verlassen der while-Schleife

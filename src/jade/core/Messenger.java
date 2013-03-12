@@ -1,6 +1,7 @@
 package jade.core;
 
 import gtr.asciiscreen.ScreenType;
+import gtr.util.datatype.Location;
 import jade.util.Guard;
 import jade.util.Lambda;
 import jade.util.Lambda.FilterFunc;
@@ -18,9 +19,9 @@ import rogue.creature.Player;
 public abstract class Messenger
 {
     private List<Message> cache;
-    protected static String nextLevel;
-    protected static String currentLevel;
-    protected static String lastLevel;
+    protected static Location nextLevel;
+    protected static Location currentLevel;
+    protected static Location lastLevel;
     protected static boolean quit = false;
 	protected static ScreenType screenType;
 	protected static Player player;

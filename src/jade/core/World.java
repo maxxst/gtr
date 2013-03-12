@@ -1,6 +1,8 @@
 package jade.core;
 
+import gtr.actor.other.Door;
 import gtr.asciiscreen.ScreenType;
+import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
 import jade.util.Dice;
@@ -16,7 +18,6 @@ import java.util.List;
 import java.util.Set;
 
 import rogue.creature.Monster;
-import rogue.creature.Player;
 
 /**
  * Represents a game world on which {@code Actor} can interact.
@@ -52,8 +53,11 @@ public abstract class World extends Messenger {
 		drawOrder = new ArrayList<Class<? extends Actor>>();
 		drawOrder.add(Actor.class);
 
+		// Legt fest, in welcher Reihenfolge alle act()-Funktion der einzelnen
+		// Actors beim Aurufen von tick() ausgeführt werden.
 		actOrder = new ArrayList<Class<? extends Actor>>();
 		actOrder.add(Actor.class);
+		actOrder.add(Door.class);
 	}
 
 	/**
@@ -672,7 +676,7 @@ public abstract class World extends Messenger {
 	 * 
 	 * @return Das Level, in das gewechselt wird.
 	 */
-	abstract public String inLevel();
+	abstract public Location inLevel();
 
 	/**
 	 * Aktualisiert die Levelvariablen, wenn man in ein neues Level gekommen
@@ -705,7 +709,7 @@ public abstract class World extends Messenger {
 					ch = look(player.x() - TermPanel.DEFAULT_COLS / 2 + x,
 							player.y() - TermPanel.DEFAULT_ROWS / 2 + y);
 				} catch (IndexOutOfBoundsException e) {
-					// Wenn auf ein Index zugegriffen wird, was es nicht gibt
+					// Wenn auf ein Index zugegriffen wird, den es nicht gibt
 					// (weil man dem Kartenrand zu nah kommt), wird an dieser
 					// Stelle ein Leerzeichen angezeigt.
 					ch = ColoredChar.create(' ');
@@ -713,17 +717,9 @@ public abstract class World extends Messenger {
 				term.bufferChar(x, y, ch);
 			}
 		
-		if (screenType.equals(ScreenType.Level)) {
-		Monster a = getActor(Monster.class);
-		System.out.println(a.pos().toString());}
 		term.bufferCameras();
 		term.refreshScreen();
 
-		// Aktualisiere Positionen aller Actors
-//		ArrayList<Actor> actors = (ArrayList<Actor>) getActors(Actor.class);
-//		for (int i = 0; i < actors.size(); i++)
-//			actors.get(0).setPos(x, y)
-//		
 		tick();
 	}
 

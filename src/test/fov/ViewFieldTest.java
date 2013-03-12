@@ -1,5 +1,6 @@
 package test.fov;
 
+import gtr.util.datatype.Location;
 import jade.core.World;
 import jade.fov.ViewField;
 import jade.util.datatype.Coordinate;
@@ -27,7 +28,7 @@ public class ViewFieldTest
         {
 
 			@Override
-			public String inLevel() {
+			public Location inLevel() {
 				// TODO Auto-generated method stub
 				return null;
 			}};

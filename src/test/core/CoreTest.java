@@ -1,5 +1,6 @@
 package test.core;
 
+import gtr.util.datatype.Location;
 import jade.core.Actor;
 import jade.core.World;
 import jade.util.datatype.ColoredChar;
@@ -66,7 +67,7 @@ public abstract class CoreTest
         }
 
 		@Override
-		public String inLevel() {
+		public Location inLevel() {
 			// TODO Auto-generated method stub
 			return null;
 		}

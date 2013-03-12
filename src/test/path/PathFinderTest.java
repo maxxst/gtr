@@ -1,5 +1,6 @@
 package test.path;
 
+import gtr.util.datatype.Location;
 import jade.core.World;
 import jade.path.PathFinder;
 import jade.util.datatype.Coordinate;
@@ -27,7 +28,7 @@ public class PathFinderTest
         {
 
 			@Override
-			public String inLevel() {
+			public Location inLevel() {
 				// TODO Auto-generated method stub
 				return null;
 			}};
