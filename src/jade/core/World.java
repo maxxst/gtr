@@ -1,6 +1,8 @@
 package jade.core;
 
+import jade.ui.TermPanel;
 import jade.ui.Terminal;
+import jade.ui.TiledTermPanel;
 import jade.util.Dice;
 import jade.util.Guard;
 import jade.util.Lambda;
@@ -691,12 +693,35 @@ public abstract class World extends Messenger {
 	 */
 	protected void changeAndRefreshScreenAndTick(Terminal term) {
 		term.clearBuffer();
+		
+		/*
 		for (int x = 0; x < this.width(); x++)
 			for (int y = 0; y < this.height(); y++)
 				term.bufferChar(x + 11, y, this.look(x, y));
+		
+		*/
+		
+		for (int x = 0; x < TermPanel.DEFAULT_COLS; x++)
+			for (int y = 0; y < TermPanel.DEFAULT_ROWS; y++) {
+				
+				int pos_x = player.x() - TermPanel.DEFAULT_COLS / 2 + x;
+				int pos_y = player.y() - TermPanel.DEFAULT_ROWS / 2 + y;
+				ColoredChar ch;
+				try {
+					ch = tileAt(pos_x, pos_y);
+				}
+				catch (IndexOutOfBoundsException e) {
+					ch = ColoredChar.create(' ');
+				}
+				
+				
+				
+				term.bufferChar(x + 11, y, ch);
+			}
+		
 		term.bufferCameras();
 		term.refreshScreen();
-
+		
 		tick();
 	}
 

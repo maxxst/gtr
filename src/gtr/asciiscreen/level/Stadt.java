@@ -2,7 +2,9 @@ package gtr.asciiscreen.level;
 
 import gtr.util.ReadFile;
 
+import jade.ui.TermPanel;
 import jade.ui.Terminal;
+import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 
@@ -20,7 +22,9 @@ public class Stadt extends Level {
 		this.player = player;
 		createAsciiScreen(leveldesign, this, player.getTerm());
 
-		addActor(this.player, 2, 12);
+		int x = TermPanel.DEFAULT_COLS / 2;
+		int y = TermPanel.DEFAULT_ROWS / 2;
+		addActor(this.player, x, y);
 		updateLevelVariables();
 	}
 
