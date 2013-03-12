@@ -693,35 +693,29 @@ public abstract class World extends Messenger {
 	 */
 	protected void changeAndRefreshScreenAndTick(Terminal term) {
 		term.clearBuffer();
-		
-		/*
-		for (int x = 0; x < this.width(); x++)
-			for (int y = 0; y < this.height(); y++)
-				term.bufferChar(x + 11, y, this.look(x, y));
-		
-		*/
-		
 		for (int x = 0; x < TermPanel.DEFAULT_COLS; x++)
 			for (int y = 0; y < TermPanel.DEFAULT_ROWS; y++) {
-				
-				int pos_x = player.x() - TermPanel.DEFAULT_COLS / 2 + x;
-				int pos_y = player.y() - TermPanel.DEFAULT_ROWS / 2 + y;
 				ColoredChar ch;
 				try {
-					ch = tileAt(pos_x, pos_y);
-				}
-				catch (IndexOutOfBoundsException e) {
+					// Die Parameter von look geben an, welches Zeichen an der
+					// Stelle x und y angezeigt werden soll. Sie sind so
+					// gewählt, dass die Spielfigur immer in der Mitte des
+					// Kartenausschnitts bleibt und bei Bewegen dieser sich die
+					// Karte bewegt.
+					ch = look(player.x() - TermPanel.DEFAULT_COLS / 2 + x,
+							player.y() - TermPanel.DEFAULT_ROWS / 2 + y);
+				} catch (IndexOutOfBoundsException e) {
+					// Wenn auf ein Index zugegriffen wird, was es nicht gibt
+					// (weil man dem Kartenrand zu nah kommt), wird an dieser
+					// Stelle ein Leerzeichen angezeigt.
 					ch = ColoredChar.create(' ');
 				}
-				
-				
-				
-				term.bufferChar(x + 11, y, ch);
+				term.bufferChar(x, y, ch);
 			}
-		
+
 		term.bufferCameras();
 		term.refreshScreen();
-		
+
 		tick();
 	}
 
