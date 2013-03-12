@@ -2,6 +2,7 @@ package gtr.asciiscreen.other;
 
 import gtr.asciiscreen.ScreenType;
 import gtr.util.ReadFile;
+import jade.ui.TermPanel;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 
@@ -23,9 +24,12 @@ public class StartScreen extends OtherScreen {
 		this.player = player;
 		createAsciiScreen(leveldesign, this,
 				player.getTerm());
-		int i = 1;
-		this.player.setFace(ColoredChar.create(leveldesign.get(i).charAt(i)));
-		addActor(this.player, i, i);
+//		int i = 1;
+//		
+		int x = TermPanel.DEFAULT_COLS / 2;
+		int y = TermPanel.DEFAULT_ROWS / 2;
+		this.player.setFace(ColoredChar.create(leveldesign.get(y).charAt(x)));
+		addActor(this.player, x, y);
 
 		currentLevel = "StartLevel";
 
