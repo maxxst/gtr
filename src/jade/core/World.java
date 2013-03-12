@@ -1,8 +1,8 @@
 package jade.core;
 
+import gtr.asciiscreen.ScreenType;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
-import jade.ui.TiledTermPanel;
 import jade.util.Dice;
 import jade.util.Guard;
 import jade.util.Lambda;
@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import rogue.creature.Monster;
 import rogue.creature.Player;
 
 /**
@@ -27,7 +28,6 @@ public abstract class World extends Messenger {
 	private Set<Actor> register;
 	private List<Class<? extends Actor>> drawOrder;
 	private List<Class<? extends Actor>> actOrder;
-	protected Player player;
 
 	/**
 	 * Constructs a new {@code World} with the given dimensions. Both width and
@@ -712,10 +712,18 @@ public abstract class World extends Messenger {
 				}
 				term.bufferChar(x, y, ch);
 			}
-
+		
+		if (screenType.equals(ScreenType.Level)) {
+		Monster a = getActor(Monster.class);
+		System.out.println(a.pos().toString());}
 		term.bufferCameras();
 		term.refreshScreen();
 
+		// Aktualisiere Positionen aller Actors
+//		ArrayList<Actor> actors = (ArrayList<Actor>) getActors(Actor.class);
+//		for (int i = 0; i < actors.size(); i++)
+//			actors.get(0).setPos(x, y)
+//		
 		tick();
 	}
 
