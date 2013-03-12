@@ -14,7 +14,6 @@ public class Dungeon extends Level
 {
     private final static Generator gen = getLevelGenerator();
     private Monster monster;
-	private Player player;
 
     public Dungeon(int width, int height, Player player)
     {

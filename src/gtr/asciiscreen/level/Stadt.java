@@ -12,7 +12,6 @@ public class Stadt extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/maps/main_map.txt");
-	private Player player;
 
 	public Stadt(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

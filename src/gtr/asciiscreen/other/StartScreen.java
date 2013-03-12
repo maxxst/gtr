@@ -13,7 +13,6 @@ public class StartScreen extends OtherScreen {
 
 	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/screens/start_screen_gtr.txt");
-	private Player player;
 
 	public StartScreen(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

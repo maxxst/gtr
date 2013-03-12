@@ -13,6 +13,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import rogue.creature.Player;
+
 /**
  * Represents a game world on which {@code Actor} can interact.
  */
@@ -23,6 +25,7 @@ public abstract class World extends Messenger {
 	private Set<Actor> register;
 	private List<Class<? extends Actor>> drawOrder;
 	private List<Class<? extends Actor>> actOrder;
+	protected Player player;
 
 	/**
 	 * Constructs a new {@code World} with the given dimensions. Both width and
