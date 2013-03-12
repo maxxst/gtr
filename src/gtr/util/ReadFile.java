@@ -70,15 +70,4 @@ public class ReadFile {
 		}
 		return ArrayList.class.cast(object);
 	}
-
-	// TODO Unit test !
-	public static void main(String[] args) {
-
-		// zum testen
-		ArrayList<?> a = readYamlFile("res/weapons/weapons.yml");
-		System.out.println(a.toString());
-
-		Weapon w = new Weapon("Bogen des Robin Hood");
-		System.out.println(w.only_rare);
-	}
 }
