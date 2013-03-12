@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.esotericsoftware.yamlbeans.YamlReader;
 
@@ -57,6 +58,40 @@ public class ReadFile {
 	 * @param file
 	 *            relativer Pfad zur einzulesenden YAML-Datei
 	 * @return Eine ArrayList<?>
+	 */
+	public static ArrayList<?> readYamlArrayList(String file) {
+
+		// Lese Datei ein
+		Object object = null;
+		try {
+			object = new YamlReader(new InputStreamReader(new FileInputStream(file), "UTF-8")).read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ArrayList.class.cast(object);
+	}
+	
+	public static HashMap<?,?> readYamlHashMap(String file){
+		// Lese Datei ein
+		Object object = null;
+		try {
+			object = new YamlReader(new InputStreamReader(new FileInputStream(
+					file), "UTF-8")).read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return HashMap.class.cast(object);
+	}
+	
+	/**
+	 * Liest eine YAML-Datei ein.
+	 * 
+	 * @param file
+	 *            relativer Pfad zur einzulesenden YAML-Datei
+	 * @return Eine ArrayList<?>
+	 * @decrepated
 	 */
 	public static ArrayList<?> readYamlFile(String file) {
 

@@ -1,0 +1,15 @@
+fist:
+  name: "Faust"
+  type: "melee"
+  range:
+    from: 1
+    to: 1 
+  dmg: 1.0
+claw:
+  name: "Kralle"
+  type: "melee"
+  range:
+    from: 1
+    to: 1 
+  dmg: 1.2
+
