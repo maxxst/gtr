@@ -24,7 +24,6 @@ public class Stadt extends Level {
 	public Stadt(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
-		
 
 		updateLevelVariables();
 
@@ -42,13 +41,18 @@ public class Stadt extends Level {
 		monster = new Monster(ColoredChar.create('D', Color.red));
 		addActor(monster);
 
-		Door door = new Door(LevelEnum.Stadt, 150, 106);
-		addActor(door, 35, 92);
-		
-		door = new Door(LevelEnum.Stadt, 140, 106);
-		addActor(door, 55, 92);
-
-		gtr.actor.other.Door.completeDoors(this);
+		/*
+		 * Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
+		 * Dooractors anzulegen, da sich die Koordinaten der Türen beim
+		 * Überarbeiten der Karten noch ändern können.
+		 * 
+		 * Door door = new Door(LevelEnum.Stadt, 150, 106); addActor(door, 35,
+		 * 92);
+		 * 
+		 * door = new Door(LevelEnum.Stadt, 140, 106); addActor(door, 55, 92);
+		 * 
+		 * gtr.actor.other.Door.completeDoors(this);
+		 */
 	}
 
 	@Override
