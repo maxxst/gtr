@@ -1,6 +1,6 @@
 - name: "Junkie"
   ai: "Zombie"
-  char: "J"
+  face: "J"
   movement:
     start: 1
     multiplikator: 1

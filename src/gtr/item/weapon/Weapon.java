@@ -23,6 +23,7 @@ public class Weapon {
 	private int breakthrough;
 	private boolean only_rare;
 	private boolean boss_drop;
+	private float dmg;
 
 	/**
 	 * Innere Klasse für die Reichweite der Waffen
@@ -95,6 +96,9 @@ public class Weapon {
 		setName((String) hashMap.get("name"));
 		setType((String) hashMap.get("type"));
 		setRange(new Range((HashMap<?, ?>) hashMap.get("range")));
+		
+		// dmg multiplicator default: 1.0
+		
 
 		// default ist -1
 		setSpeed(hashMap.containsKey("speed") ? Integer
@@ -115,6 +119,8 @@ public class Weapon {
 		//boss_drop default false
 		setBoss_drop(hashMap.containsKey("boss_drop") ? Boolean
 				.parseBoolean((String) hashMap.get("boss_drop")) : false);
+		
+		dmg = (Float) (hashMap.containsKey("dmg") ? hashMap.get("dmg") : 1.0);
 	}
 
 
