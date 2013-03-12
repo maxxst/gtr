@@ -1,6 +1,7 @@
 package jade.core;
 
 import gtr.actor.other.Door;
+import gtr.monster.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
@@ -15,6 +16,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import rogue.creature.Player;
 
 /**
  * Represents a game world on which {@code Actor} can interact.
@@ -53,8 +56,11 @@ public abstract class World extends Messenger {
 		// Legt fest, in welcher Reihenfolge alle act()-Funktion der einzelnen
 		// Actors beim Aurufen von tick() ausgeführt werden.
 		actOrder = new ArrayList<Class<? extends Actor>>();
-		actOrder.add(Actor.class);
+		actOrder.add(Player.class);
 		actOrder.add(Door.class);
+		actOrder.add(Monster.class); // Monster aus gtr.monster.Monster
+		actOrder.add(rogue.creature.Monster.class); // Monster aus rogue.creature.Monster
+		
 	}
 
 	/**

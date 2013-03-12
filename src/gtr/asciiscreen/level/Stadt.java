@@ -24,25 +24,31 @@ public class Stadt extends Level {
 	public Stadt(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
+		
+
+		updateLevelVariables();
 
 		Messenger.player = player;
-		
+
 		createAsciiScreen(leveldesign, this, player.getTerm());
 
 		// int x = TermPanel.DEFAULT_COLS / 2;
 		// int y = TermPanel.DEFAULT_ROWS / 2;
-		if (nextLevel.getCoordinate().equals(new Coordinate(-1, -1)))
+		if (currentLevel.getCoordinate().equals(new Coordinate(-1, -1)))
 			addActor(player);
 		else
-			addActor(player, nextLevel.getCoordinate());
+			addActor(player, currentLevel.getCoordinate());
 
 		monster = new Monster(ColoredChar.create('D', Color.red));
 		addActor(monster);
 
 		Door door = new Door(LevelEnum.Stadt, 150, 106);
 		addActor(door, 35, 92);
+		
+		door = new Door(LevelEnum.Stadt, 140, 106);
+		addActor(door, 55, 92);
 
-		updateLevelVariables();
+		gtr.actor.other.Door.completeDoors(this);
 	}
 
 	@Override

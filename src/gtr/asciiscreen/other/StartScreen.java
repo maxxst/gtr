@@ -20,25 +20,24 @@ public class StartScreen extends OtherScreen {
 	public StartScreen(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
-		
+
 		screenType = ScreenType.StartScreen;
-		
+
+		currentLevel = new Location(LevelEnum.StartScreen);
+		// steht nur da, da momentan StartScreen nicht nur am Anfang, sondern
+		// nochmals erreichbar ist
+		/** !TODO hier */
+		if (lastLevel != null
+				&& lastLevel.getLevelEnum().equals(nextLevel.getLevelEnum()))
+			updateLevelVariables();
+
 		Messenger.player = player;
-		createAsciiScreen(leveldesign, this,
-				player.getTerm());
-		
+		createAsciiScreen(leveldesign, this, player.getTerm());
+
 		int x = TermPanel.DEFAULT_COLS / 2;
 		int y = TermPanel.DEFAULT_ROWS / 2;
 		player.setFace(ColoredChar.create(leveldesign.get(y).charAt(x)));
 		addActor(player, x, y);
-
-		currentLevel = new Location(LevelEnum.StartScreen);
-
-		// steht nur da, da momentan StartLevel nicht nur am Anfang, sondern
-		// nochmals erreichbar ist
-		/**!TODO hier */
-		if (lastLevel != null && lastLevel.getLevelEnum().equals(nextLevel.getLevelEnum()))
-			updateLevelVariables();
 	}
 
 	public Location inLevel() {
@@ -51,7 +50,7 @@ public class StartScreen extends OtherScreen {
 				player.setFace(player.getStandardFace());
 				break; // Verlassen der while-Schleife
 			}
-			
+
 			changeAndRefreshScreenAndTick(term);
 		}
 		return nextLevel;

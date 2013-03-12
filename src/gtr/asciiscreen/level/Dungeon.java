@@ -18,14 +18,15 @@ public class Dungeon extends Level {
 
 	public Dungeon(int width, int height, Player player) {
 		super(width, height);
+		
+		updateLevelVariables();
+		
 		Messenger.player = player;
 		gen.generate(this);
 		addActor(player);
 
 		monster = new Monster(ColoredChar.create('D', Color.red));
 		addActor(monster);
-
-		updateLevelVariables();
 	}
 
 	private static Generator getLevelGenerator() {
