@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import rogue.creature.Player;
+
 /**
  * The base class of both {@code Actor} and {@code World}. Allows for easy passing and aggregation
  * of {@code String} messages.
@@ -21,6 +23,7 @@ public abstract class Messenger
     protected static String lastLevel;
     protected static boolean quit = false;
 	protected static ScreenType screenType;
+	protected static Player player;
 
     /**
      * Creates a new {@code Messenger}
