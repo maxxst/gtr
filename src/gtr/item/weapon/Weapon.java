@@ -40,49 +40,53 @@ public class Weapon {
 			from = Integer.parseInt((String) range.get("from"));
 			to = Integer.parseInt((String) range.get("to"));
 		}
-		
-		public Range(Integer f, Integer t){
+
+		public Range(Integer f, Integer t) {
 			from = f;
 			to = t;
 		}
-		
-		public int getFrom(){
+
+		public int getFrom() {
 			return from;
 		}
-		
-		public int getTo(){
+
+		public int getTo() {
 			return to;
 		}
 	}
-	
 
 	/**
 	 * finds a matching weapon
-	 * @param string
+	 * 
+	 * @param string Name oder Typ der Waffe
 	 * @return a Weapon to generate
 	 */
-	private static HashMap<?,?> matching_weapon(String string){
+	private static HashMap<?, ?> matching_weapon(String string) {
 		ArrayList<HashMap<?, ?>> possible_weapons = new ArrayList<HashMap<?, ?>>();
-		for (int i=0; i<weaponList.size();i++) {
-			if ((HashMap.class.cast(weaponList.get(i)).get("type").equals(string)) 
-					|| (HashMap.class.cast(weaponList.get(i)).get("name").equals(string))){
-				
+		for (int i = 0; i < weaponList.size(); i++) {
+			if ((HashMap.class.cast(weaponList.get(i)).get("type")
+					.equals(string))
+					|| (HashMap.class.cast(weaponList.get(i)).get("name")
+							.equals(string))) {
+
 				// adds to possible weapons
 				possible_weapons.add(HashMap.class.cast(weaponList.get(i)));
 			}
 		}
-		
+
 		Random randomGenerator = new Random();
-		return possible_weapons.get(randomGenerator.nextInt(possible_weapons.size()));
-		
+		return possible_weapons.get(randomGenerator.nextInt(possible_weapons
+				.size()));
+
 	}
-	
-	
+
 	/**
 	 * Erstellt eine Waffe.
 	 * 
-	 * @param weapon
-	 *            Name der Waffe, die erstellt werden soll
+	 * @param string
+	 *            Name oder Typ der Waffe, die erstellt werden soll. Existieren
+	 *            mehrere mögliche Waffen, wird zufällig ausgewählt, welche
+	 *            erstellt wird.
 	 */
 	public Weapon(String string) {
 
@@ -90,15 +94,13 @@ public class Weapon {
 		this(matching_weapon(string));
 	}
 
-
-	public Weapon(HashMap<?,?> hashMap) {
+	public Weapon(HashMap<?, ?> hashMap) {
 		// these attributes must be set
 		setName((String) hashMap.get("name"));
 		setType((String) hashMap.get("type"));
 		setRange(new Range((HashMap<?, ?>) hashMap.get("range")));
-		
+
 		// dmg multiplicator default: 1.0
-		
 
 		// default ist -1
 		setSpeed(hashMap.containsKey("speed") ? Integer
@@ -112,91 +114,77 @@ public class Weapon {
 		setBreakthrough(hashMap.containsKey("breakthrough") ? Integer
 				.parseInt((String) hashMap.get("breakthrough")) : 0);
 
-		//only_rare default false
+		// only_rare default false
 		setOnly_rare(hashMap.containsKey("only_rare") ? Boolean
 				.parseBoolean((String) hashMap.get("only_rare")) : false);
-		
-		//boss_drop default false
+
+		// boss_drop default false
 		setBoss_drop(hashMap.containsKey("boss_drop") ? Boolean
 				.parseBoolean((String) hashMap.get("boss_drop")) : false);
-		
-		dmg = hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap.get("dmg")) : 1.0F;
-	}
 
+		dmg = hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap
+				.get("dmg")) : 1.0F;
+	}
 
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public Range getRange() {
 		return range;
 	}
 
-
 	public void setRange(Range range) {
 		this.range = range;
 	}
-
 
 	public String getType() {
 		return type;
 	}
 
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
 
 	public int getSpeed() {
 		return speed;
 	}
 
-
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-
 
 	public boolean isArea() {
 		return area;
 	}
 
-
 	public void setArea(boolean area) {
 		this.area = area;
 	}
-
 
 	public int getBreakthrough() {
 		return breakthrough;
 	}
 
-
 	public void setBreakthrough(int breakthrough) {
 		this.breakthrough = breakthrough;
 	}
-
 
 	public boolean isOnly_rare() {
 		return only_rare;
 	}
 
-
 	public void setOnly_rare(boolean only_rare) {
 		this.only_rare = only_rare;
 	}
 
-
 	public boolean isBoss_drop() {
 		return boss_drop;
 	}
-
 
 	public void setBoss_drop(boolean boss_drop) {
 		this.boss_drop = boss_drop;
