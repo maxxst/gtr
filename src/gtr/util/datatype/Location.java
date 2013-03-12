@@ -32,4 +32,15 @@ public class Location {
 	public void setLevelEnum(LevelEnum levelEnum) {
 		this.levelEnum = levelEnum;
 	}
+	
+	public String toString() {
+		return "LevelEnum: " + levelEnum.toString() + ", " + "Koordinaten: " + coordinate.toString();
+	}
+	
+	public boolean equals(Location location) {
+		boolean bothNull = location == null ? this == null : false;
+		boolean equalsLevelEnum = location.getLevelEnum() == levelEnum;
+		boolean equalsCoordinate = location.getCoordinate().equals(coordinate);
+		return bothNull || equalsLevelEnum && equalsCoordinate;
+	}
 }

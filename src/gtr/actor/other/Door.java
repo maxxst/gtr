@@ -30,8 +30,7 @@ public class Door extends Actor {
 		// TODO Auto-generated method stub
 		if (player.x() == this.x() && player.y() == this.y()) {
 			nextLevel = doorDestination;
-			System.out.println("x: " + nextLevel.getCoordinate().x() + " y: "
-					+ nextLevel.getCoordinate().y());
+			System.out.println(this.getDestination().toString());
 		}
 	}
 
