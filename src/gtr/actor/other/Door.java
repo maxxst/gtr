@@ -16,13 +16,46 @@ public class Door extends Actor {
 		this.doorDestination = doorDestination;
 	}
 
+	public Door(Location doorDestination, ColoredChar coloredChar) {
+		super(coloredChar);
+		this.doorDestination = doorDestination;
+	}
+
+	public Door(Location doorDestination, char character) {
+		super(ColoredChar.create(character));
+		this.doorDestination = doorDestination;
+	}
+
 	public Door(LevelEnum doorDestinationMap, Coordinate coordinate) {
 		this(new Location(doorDestinationMap, coordinate));
+	}
+
+	public Door(LevelEnum doorDestinationMap, Coordinate coordinate,
+			ColoredChar coloredChar) {
+		this(new Location(doorDestinationMap, coordinate), coloredChar);
+	}
+
+	public Door(LevelEnum doorDestinationMap, Coordinate coordinate,
+			char character) {
+		this(new Location(doorDestinationMap, coordinate), ColoredChar
+				.create(character));
 	}
 
 	public Door(LevelEnum doorDestinationMap, int destinationX, int destinationY) {
 		this(new Location(doorDestinationMap, new Coordinate(destinationX,
 				destinationY)));
+	}
+
+	public Door(LevelEnum doorDestinationMap, int destinationX,
+			int destinationY, ColoredChar coloredChar) {
+		this(new Location(doorDestinationMap, new Coordinate(destinationX,
+				destinationY)), coloredChar);
+	}
+
+	public Door(LevelEnum doorDestinationMap, int destinationX,
+			int destinationY, char character) {
+		this(new Location(doorDestinationMap, new Coordinate(destinationX,
+				destinationY)), ColoredChar.create(character));
 	}
 
 	@Override

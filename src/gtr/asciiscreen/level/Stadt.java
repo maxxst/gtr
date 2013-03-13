@@ -12,14 +12,14 @@ import jade.util.datatype.Coordinate;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import rogue.creature.Monster;
+import gtr.creature.monster.*;
 import rogue.creature.Player;
 
 public class Stadt extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/maps/main_map.txt");
-	Monster monster;
+	Monster junkie;
 
 	public Stadt(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
@@ -38,9 +38,11 @@ public class Stadt extends Level {
 		else
 			addActor(player, currentLevel.getCoordinate());
 
-		monster = new Monster(ColoredChar.create('D', Color.red));
-		addActor(monster);
-
+		junkie = new Monster(ColoredChar.create('J', Color.red));
+		
+		for (int i=0; i < 100; i++){
+			addActor(new Monster());
+		}
 		/*
 		 * Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
 		 * Dooractors anzulegen, da sich die Koordinaten der Türen beim

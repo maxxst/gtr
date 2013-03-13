@@ -40,7 +40,7 @@ public class ColoredChar
      */
     public static ColoredChar create(char ch)
     {
-        return create(ch, Color.white);
+        return create(ch, Color.black);
     }
 
     private ColoredChar(char ch, Color color)
