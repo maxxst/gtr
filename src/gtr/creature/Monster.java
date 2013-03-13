@@ -1,4 +1,4 @@
-package gtr.creature.monster;
+package gtr.creature;
 
 import gtr.item.weapon.Weapon;
 import gtr.item.weapon.Weapon.Range;

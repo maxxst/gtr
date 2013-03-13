@@ -12,7 +12,7 @@ import jade.util.datatype.Coordinate;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import gtr.creature.monster.*;
+import gtr.creature.*;
 import rogue.creature.Player;
 
 public class Stadt extends Level {

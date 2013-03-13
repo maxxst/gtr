@@ -1,7 +1,7 @@
 package jade.core;
 
 import gtr.actor.other.Door;
-import gtr.creature.monster.Monster;
+import gtr.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;

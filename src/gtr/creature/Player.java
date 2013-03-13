@@ -1,10 +1,13 @@
-package rogue.creature;
+package gtr.creature;
 
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
+import gtr.item.weapon.Weapon;
 import gtr.util.datatype.Location;
 
 import java.awt.event.KeyEvent;
 import java.util.Collection;
+
+import rogue.creature.Creature;
 import jade.fov.RayCaster;
 import jade.fov.ViewField;
 import jade.ui.Camera;
@@ -16,6 +19,7 @@ import jade.util.datatype.Direction;
 public class Player extends Creature implements Camera {
 	private Terminal term;
 	private ViewField fov;
+	private Weapon weapon;
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
@@ -23,6 +27,7 @@ public class Player extends Creature implements Camera {
 		super(standardFace);
 		this.term = term;
 		fov = new RayCaster();
+		weapon = new Weapon("Pistole"); //TODO besser!
 	}
 
 	public Terminal getTerm() {
@@ -53,6 +58,13 @@ public class Player extends Creature implements Camera {
 				}
 			else if (screenType.name().equals("Level"))
 				switch (key) {
+				case ' ':
+					System.out.println("Leertaste");
+					key = term.getKey();
+					Direction shootDir = Direction.keyToDir(key);
+					if (shootDir != null)
+						attack(shootDir, weapon.getRange(), calcDamage());
+					break;
 				default:
 					Direction dir = Direction.keyToDir(key);
 					if (dir != null)
@@ -62,6 +74,11 @@ public class Player extends Creature implements Camera {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private float calcDamage() {
+		// TODO Auto-generated method stub
+		return 1;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package gtr.creature.monster;
+package gtr.creature;
 
 import java.util.HashMap;
 
