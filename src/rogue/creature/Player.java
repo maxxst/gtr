@@ -65,7 +65,7 @@ public class Player extends Creature implements Camera {
 					key = term.getKey();
 					Direction shootDir = Direction.keyToDir(key);
 					if (shootDir != null)
-						attack(shootDir, weapon.getRange(), calcDamage());
+						attack(shootDir, weapon.getRange(), calcDamage(), 0.8F);
 					break;
 				case 'u':
 				case 'i':
