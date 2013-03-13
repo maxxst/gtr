@@ -1,16 +1,19 @@
 package gtr.creature.monster;
 
 import gtr.item.weapon.Weapon;
+import gtr.item.weapon.Weapon.Range;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
+import jade.core.World;
 import jade.util.Dice;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Direction;
 import rogue.creature.Creature;
+import rogue.creature.Player;
 
 import java.awt.Color;
 
@@ -88,6 +91,29 @@ public class Monster extends Creature {
 	//TODO Schadensberechnung
 	public void act() {
 		move(Dice.global.choose(Arrays.asList(Direction.values())));
+		Direction dir = findPlayerInRange();
+		if(dir != null){ //angreifbar
+			attack(dir, weapon.getRange(), calcDamage());
+		}
+		
+	}
+	
+	public Direction findPlayerInRange(){
+		Range range = weapon.getRange();
+		for(int i=range.getFrom();i<=range.getTo();i++){
+			for(Direction dir: Direction.values()){
+				try {
+					if(world.getActorAt(Player.class, x()+dir.dx()*i,y()+dir.dy()*i) != null){
+						return dir;
+					}
+				} catch(ArrayIndexOutOfBoundsException e){
+					
+				}
+				
+			}
+		}
+		return null;
+		
 	}
 
 	public String getName() {
@@ -104,5 +130,10 @@ public class Monster extends Creature {
 		
 		//TODO not implemented in weapon.class
 		// return new Weapon(dropType, dropRareness);
+	}
+	
+	//TODO Damage muss noch errechnet werde
+	public float calcDamage(){
+		return 1.0F;
 	}
 }
