@@ -1,5 +1,6 @@
 package gtr.keys;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Keys {
@@ -8,7 +9,7 @@ public class Keys {
 	
 	public static ArrayList<Character> setUniversalKeys() {
 		keys = new ArrayList<Character>();
-		keys.add('q');
+		keys.add((char)KeyEvent.VK_ESCAPE);
 		return keys;
 	}
 	
