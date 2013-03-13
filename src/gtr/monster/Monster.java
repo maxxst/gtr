@@ -31,6 +31,8 @@ public class Monster extends Creature {
 	private String name;
 	private Movement movement;
 	private Weapon weapon;
+	private String dropRareness;
+	private String dropType;
 	
 	/**
 	 * finds (randomized) monster with matching face
@@ -69,11 +71,13 @@ public class Monster extends Creature {
 			)
 		);
 		
-		
-		
+		dropType = weapon.getType();
+		dropRareness = (String) monster.get("drops");
 	}
 
 	@Override
+	
+	//TODO Schadensberechnung
 	public void act() {
 		move(Dice.global.choose(Arrays.asList(Direction.values())));
 	}
