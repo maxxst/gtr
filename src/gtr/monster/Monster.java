@@ -70,7 +70,7 @@ public class Monster extends Creature {
 					.get(randomGenerator.nextInt(possible_weapons.size()))
 			)
 		);
-		
+		// easy to access drop type
 		dropType = weapon.getType();
 		dropRareness = (String) monster.get("drops");
 	}
@@ -89,5 +89,12 @@ public class Monster extends Creature {
 	public int getMove() {
 		return movement.getMove(1);
 	}
-
+	
+	//TODO rareness des drops einstellen
+	public Weapon drop(){
+		return new Weapon(dropType);
+		
+		//TODO not implemented in weapon.class
+		// return new Weapon(dropType, dropRareness);
+	}
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Klasse für die Waffen
  * 
- * @author anti
+ * @author anti, mxst
  * 
  */
 public class Weapon {
@@ -122,8 +122,8 @@ public class Weapon {
 		setBoss_drop(hashMap.containsKey("boss_drop") ? Boolean
 				.parseBoolean((String) hashMap.get("boss_drop")) : false);
 
-		dmg = hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap
-				.get("dmg")) : 1.0F;
+		dmg = (float) (hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap
+				.get("dmg")) : 1.0F);
 	}
 
 	public String getName() {
