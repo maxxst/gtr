@@ -67,6 +67,19 @@ public class Player extends Creature implements Camera {
 					if (shootDir != null)
 						attack(shootDir, weapon.getRange(), calcDamage());
 					break;
+				case 'u':
+				case 'i':
+				case 'o':
+				case 'j':
+				case 'k':
+				case 'l':
+				case 'm':
+				case '.':
+					Direction shootingDir = Direction.keyToDir(key);
+					if (shootingDir != null)
+						attack(shootingDir, weapon.getRange(), calcDamage());
+				break;
+					
 				default:
 					Direction dir = Direction.keyToDir(key);
 					if (dir != null)
