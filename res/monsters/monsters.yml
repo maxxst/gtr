@@ -5,5 +5,5 @@
     start: 1
     multiplikator: 1
   weapons:
-    "fists"
-  drop: "common"
+    - "fist"
+  drops: "common"
