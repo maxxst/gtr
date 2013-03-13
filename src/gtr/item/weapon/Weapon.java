@@ -1,5 +1,7 @@
 package gtr.item.weapon;
 
+import gtr.item.Item;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -10,7 +12,7 @@ import java.util.Random;
  * @author anti, mxst
  * 
  */
-public class Weapon {
+public class Weapon extends Item {
 
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
 			.readYamlArrayList("res/weapons/weapons.yml");
