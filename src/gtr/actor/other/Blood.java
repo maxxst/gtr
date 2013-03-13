@@ -8,7 +8,7 @@ import jade.util.datatype.ColoredChar;
 public class Blood extends Actor {
 
 	public Blood() {
-		super(ColoredChar.create('靁', new Color(139,0,0)));
+		super(ColoredChar.create('☍', new Color(139,0,0)));
 		// TODO Auto-generated constructor stub
 	}
 
