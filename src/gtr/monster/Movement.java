@@ -24,6 +24,11 @@ public class Movement {
 		return this.multiplikator;
 	}
 	
+	/**
+	 * 
+	 * @param level der level in dem wir gerade sind
+	 * @return wie viele Felder gelaufen werden duerfen
+	 */
 	public int getMove(int level){
 		return multiplikator * start * level;
 	}
