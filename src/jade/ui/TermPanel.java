@@ -129,7 +129,7 @@ public class TermPanel extends Terminal
             this.tileHeight = tileHeight;
             setPreferredSize(new Dimension(columns * tileWidth, rows * tileHeight));
             setFont(new Font(Font.MONOSPACED, Font.PLAIN, tileHeight));
-            setBackground(Color.black);
+            setBackground(Color.white);
             setFocusable(true);
         }
 

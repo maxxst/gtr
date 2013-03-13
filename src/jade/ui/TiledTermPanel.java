@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 
 public class TiledTermPanel extends TermPanel
 {
-    public static final int DEFAULT_TILESIZE = 16;
+    public static final int DEFAULT_TILESIZE = 12;
 
     private Map<Coordinate, List<ColoredChar>> tileBuffer;
     private Map<Coordinate, List<ColoredChar>> savedTile;
