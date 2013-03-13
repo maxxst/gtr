@@ -1,4 +1,4 @@
-package gtr.monster;
+package gtr.creature.monster;
 
 import java.util.HashMap;
 
@@ -12,8 +12,8 @@ public class Movement {
 	}
 	
 	public Movement(HashMap<?, ?> movement) {
-		start = (Integer) movement.get("start");
-		multiplikator = (Integer) movement.get("multiplikator");
+		start = Integer.parseInt((String) movement.get("start"));
+		multiplikator = Integer.parseInt((String) movement.get("multiplikator"));
 	}
 
 	public int getStart(){

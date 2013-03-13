@@ -1,4 +1,4 @@
-package gtr.monster;
+package gtr.creature.monster;
 
 import gtr.item.weapon.Weapon;
 
@@ -12,6 +12,7 @@ import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Direction;
 import rogue.creature.Creature;
 
+import java.awt.Color;
 
 /**
  * Monster class creates a generic dumb monster
@@ -20,7 +21,6 @@ import rogue.creature.Creature;
  * @author mxst
  */
 public class Monster extends Creature {
-	Random randomGenerator = new Random();
 	
 
 	public final static ArrayList<?> monsterList = gtr.util.ReadFile
@@ -42,29 +42,37 @@ public class Monster extends Creature {
 	private HashMap<?,?> findMonsterByChar(char face){
 		ArrayList<HashMap<?, ?>> possible_monsters = new ArrayList<HashMap<?, ?>>();
 		for (int i=0; i<monsterList.size();i++) {
-			if (HashMap.class.cast(monsterList.get(i)).get("face").equals(face)){
+			if ( ((String) HashMap.class.cast(monsterList.get(i)).get("face")).charAt(0) == face ){
 				// adds to possible monsters
 				possible_monsters.add(HashMap.class.cast(monsterList.get(i)));
 			}
 		}
+		Random randomGenerator = new Random();
 		return possible_monsters.get(randomGenerator.nextInt(possible_monsters.size()));
 	}
 	
-	public Monster(ColoredChar face) {
-		super(face);
+	public Monster(char face) {
+		this(ColoredChar.create(face));
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Monster() {
+		this(ColoredChar.create('J', new Color(0,200,0)));
 		// TODO Auto-generated constructor stub
 	}
 	
 	// if its not a coloredChar
-	public Monster(char face) {
-		super(ColoredChar.create(face));
-		HashMap<?,?> monster = findMonsterByChar(face);
+	public Monster(ColoredChar face) {
+		super(face);
+		HashMap<?,?> monster = findMonsterByChar(face.ch());
 		
 		name = (String) monster.get("name");
 		movement = new Movement((HashMap<?, ?>) monster.get("movement"));
 		
+		
+		Random randomGenerator = new Random();
 		// gives one of the possible weapons to the mob
-		ArrayList<?> possible_weapons = (ArrayList<?>) monster.get("weapons");
+		ArrayList<?> possible_weapons = (ArrayList<?>) monster.get("weapons"); //liste mit waffenbezeichnungen
 		weapon = new Weapon((HashMap<?,?>) monsterWeaponList
 			.get((String) possible_weapons
 					.get(randomGenerator.nextInt(possible_weapons.size()))

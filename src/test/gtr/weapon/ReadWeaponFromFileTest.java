@@ -3,6 +3,7 @@ package test.gtr.weapon;
 import static org.junit.Assert.*;
 
 import gtr.item.weapon.Weapon;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
