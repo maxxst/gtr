@@ -3,6 +3,7 @@ package rogue.creature;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
 
+import java.awt.event.KeyEvent;
 import java.util.Collection;
 import jade.fov.RayCaster;
 import jade.fov.ViewField;
@@ -40,7 +41,7 @@ public class Player extends Creature implements Camera {
 			
 			if (gtr.keys.Keys.isUniversalKey(key))
 				switch (key) {
-				case 'q':
+				case KeyEvent.VK_ESCAPE:
 					expire();
 					break;
 				}	
