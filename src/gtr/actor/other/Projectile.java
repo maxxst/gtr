@@ -30,16 +30,16 @@ public class Projectile extends Actor {
 
 	@Override
 	public void act() {
-		System.out.print("RW");
 		int steps = weapon.getSpeed();
-		System.out.print(steps);
-		while(steps >= 0){
+		while(steps > 0){
 			Coordinate coord = new Coordinate(x()+ dir.dx(), y()+dir.dy());
-			if(world.passableAt(coord) && stepCount > 0){
+			if(world.passableAt(coord) && stepCount > 0 && (world.getActorAt(Creature.class, coord) == null)){
 				move(dir);
 			} else {
-				if(!impact(coord)) //if projectile goes not through
+				if(!impact(coord)){ //if projectile goes not through
+					world.removeActor(this);
 					break;
+				}
 			}
 			
 			steps--;
@@ -49,6 +49,7 @@ public class Projectile extends Actor {
 	
 	private boolean impact(Coordinate coord) {
 		Creature creature;
+		System.out.print("boom.");
 		if (weapon.isArea()) {
 			for(Direction dir: Direction.values()){
 				creature = world.getActorAt(Creature.class, coord.getTranslated(dir));

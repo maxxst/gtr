@@ -1,6 +1,7 @@
 package jade.core;
 
 import gtr.actor.other.Door;
+import gtr.actor.other.Projectile;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
@@ -61,7 +62,7 @@ public abstract class World extends Messenger {
 		//actOrder.add(gate.class); noch hinzufügen
 		//actOrder.add(story.class); noch hinzufügen
 		//actOrder.add(deadbody.class); noch hinzufügen
-		//actOrder.add(projectile.class; noch hinzufügen
+		actOrder.add(Projectile.class); //noch hinzufügen
 		//actOrder.add(item.class); noch hinzufügen
 		actOrder.add(rogue.creature.Monster.class); // Monster aus rogue.creature.Monster
 		
