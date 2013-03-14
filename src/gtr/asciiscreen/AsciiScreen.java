@@ -66,7 +66,7 @@ public abstract class AsciiScreen extends World {
 	}
 
 	/**
-	 * Gibt die Höhe der Karte aus.
+	 * Gibt die HÃ¶he der Karte aus.
 	 * 
 	 * @param leveldesign
 	 *            Karte

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import rogue.creature.Creature;
 
-import gtr.item.weapon.Weapon;
+import gtr.actor.item.weapon.Weapon;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
@@ -14,7 +14,8 @@ import jade.util.datatype.Direction;
 public class Projectile extends Actor {
 	
 	private Weapon weapon;
-	Direction dir;
+	private Direction dir;
+	private int stepCount;
 	
 	public Projectile(Direction dir, Weapon fromWeapon) {
 		this(ColoredChar.create(arrowForDirection(dir), new Color(100,149,237)), dir, fromWeapon);
@@ -24,14 +25,17 @@ public class Projectile extends Actor {
 		super(face);
 		this.dir = dir;
 		this.weapon = fromWeapon;
+		this.stepCount = weapon.getRangeTo();
 	}
 
 	@Override
 	public void act() {
-		int steps = weapon.getRange().getTo();
+		System.out.print("RW");
+		int steps = weapon.getSpeed();
+		System.out.print(steps);
 		while(steps >= 0){
 			Coordinate coord = new Coordinate(x()+ dir.dx(), y()+dir.dy());
-			if(world.passableAt(coord)){
+			if(world.passableAt(coord) && stepCount > 0){
 				move(dir);
 			} else {
 				if(!impact(coord)) //if projectile goes not through
