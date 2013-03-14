@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import rogue.creature.*;
-import rogue.creature.Player;
 
 public class Town extends Level {
 
@@ -40,10 +39,18 @@ public class Town extends Level {
 
 		junkie = new Monster(ColoredChar.create('J', Color.red));
 
-		for (int i=0; i < 100; i++){
+		for (int i=0; i < 100; i++)
+			{
 			addActor(new Junkie());
+			
+			}
+		for (int i=0; i < 25; i++)
+			{
+			addActor(new Ninja());
+			}
+		
+			
 
-		}
 		//
 		// Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
 		// Dooractors anzulegen, da sich die Koordinaten der Türen beim

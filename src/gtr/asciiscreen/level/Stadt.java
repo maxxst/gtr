@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import rogue.creature.*;
-import rogue.creature.Player;
 
 public class Stadt extends Level {
 
@@ -42,6 +41,10 @@ public class Stadt extends Level {
 		
 		for (int i=0; i < 100; i++){
 			addActor(new Junkie());
+		}
+		for (int i=0; i < 25; i++)
+		{
+		addActor(new Ninja());
 		}
 		/*
 		 * Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,

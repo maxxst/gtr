@@ -31,7 +31,7 @@ public class Monster extends Creature {
 	
 	private String name;
 	private Movement movement;
-	private Weapon weapon;
+	protected Weapon weapon;
 	private String dropRareness;
 	private String dropType;
 	

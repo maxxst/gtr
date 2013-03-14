@@ -1,0 +1,72 @@
+package rogue.creature;
+
+import jade.util.Dice;
+import jade.util.datatype.ColoredChar;
+import jade.util.datatype.Direction;
+
+import java.awt.Color;
+import java.util.Arrays;
+
+//Ninjas tarnen sich als schwarzes Zeichen und handeln nicht, bis der Spieler in Reichweite ist, dann springen 
+//Sie gnadenlos zu ihrem ziel und stossen zu.
+
+public class Ninja extends Monster 
+	{
+	public Ninja() {
+	super(ColoredChar.create('N', new Color(235,235,235)));
+	// TODO Auto-generated constructor stub
+	}
+	
+	public void act() 
+	{
+		int x = Math.abs(player.x()-x());
+		int y = Math.abs(player.y()-y());
+	 if (x+y<this.getMove())
+	 {
+		 if (player.x()<x())
+		 {
+			if (player.y()<y())
+			{
+				move((-1)*x,(-1)*y+1);
+			}
+			else
+			{
+				move((-1)*x,y-1);
+			}
+		 }
+		 else
+		 {
+			if (player.y()<y())
+				{
+				 move(x,(-1)*y+1);
+				}
+				else
+				{
+				move(x,y-1);
+				} 
+		 }
+	  Direction dir = findPlayerInRange();
+	  if(dir != null)
+		{ 
+		 //angreifbar
+		 attack(dir, weapon);
+		 // Immer wenn angegriffen wird soll ein Text kommen der zur Unterhaltung beiträgt. 
+		 // int i = (int) (Math.random()*x+y); erzeugt eine Zufallszahl in den grenzen y bis x
+		 int i = (int) (Math.random()*10+1);
+	     switch (i)
+			{
+			 case 1: System.out.println("Hayjaaaaaa!"); break;
+			 case 2: System.out.println("Banzai!"); break;
+			 case 3: System.out.println("Requiescat in Pache."); break;
+			 case 4: System.out.println("*PUFF*"); break;
+			 case 5: System.out.println("Du noch viel lernen musst, junger Padawan."); break;
+			}
+		}
+	 }
+	 else
+	 {
+	  move(0,0);
+	 }
+
+}
+}

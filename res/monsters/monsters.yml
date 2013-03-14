@@ -1,8 +1,15 @@
 - name: "Junkie"
-  ai: "Zombie"
   face: "J"
   movement:
     start: 1
+    multiplikator: 1
+  weapons:
+    - "fist"
+  drops: "common"
+- name: "Ninja"
+  face: "N"
+  movement:
+    start: 6
     multiplikator: 1
   weapons:
     - "fist"

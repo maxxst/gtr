@@ -12,4 +12,10 @@ claw:
     from: 1
     to: 1 
   dmg: 1.2
-
+Katana:
+  name: "Katana"
+  type: "melee"
+  range:
+    from: 1
+    to: 2 
+  dmg: 2.0
