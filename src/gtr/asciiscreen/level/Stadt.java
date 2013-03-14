@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import rogue.creature.*;
 import rogue.creature.Player;
 
-public class Town extends Level {
+public class Stadt extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/map.txt");
+			.readScreenFile("res/maps/main_map.txt");
 	Monster junkie;
 
-	public Town(Player player) {
+	public Stadt(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
 
@@ -39,29 +39,22 @@ public class Town extends Level {
 			addActor(player, currentLevel.getCoordinate());
 
 		junkie = new Monster(ColoredChar.create('J', Color.red));
-<<<<<<< HEAD
-
-		for (int i = 0; i < 100; i++) {
-			addActor(new Monster());
-=======
 		
 		for (int i=0; i < 100; i++){
 			addActor(new Junkie());
->>>>>>> 241ce2ec4fd8ddbbee15ebd6b7d8ca2e9c6fc04c
 		}
-		//
-		// Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
-		// Dooractors anzulegen, da sich die Koordinaten der Türen beim
-		// Überarbeiten der Karten noch ändern können.
-		//
-		Door door = new Door(LevelEnum.Room, 5, 5);
-		addActor(door, 35, 119);
-
-		door = new Door(LevelEnum.Room, 5, 5);
-		addActor(door, 55, 119);
-
-		gtr.actor.other.Door.completeDoors(this);
-		//
+		/*
+		 * Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
+		 * Dooractors anzulegen, da sich die Koordinaten der Türen beim
+		 * Überarbeiten der Karten noch ändern können.
+		 * 
+		 * Door door = new Door(LevelEnum.Stadt, 150, 106); addActor(door, 35,
+		 * 92);
+		 * 
+		 * door = new Door(LevelEnum.Stadt, 140, 106); addActor(door, 55, 92);
+		 * 
+		 * gtr.actor.other.Door.completeDoors(this);
+		 */
 	}
 
 	@Override
