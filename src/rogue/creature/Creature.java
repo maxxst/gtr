@@ -36,7 +36,7 @@ public abstract class Creature extends Actor
     		if( enemy != null){
     			if(randomGenerator.nextFloat() < hitProb){
 					System.out.println("Treffer"); //TODO Schaden zufuegen!
-					enemy.die();
+					enemy.getDamage();
 				} else {
 					i = range.getTo() + 1;
 					System.out.println("Vorbei"); //TODO Schaden zufuegen!
@@ -51,4 +51,14 @@ public abstract class Creature extends Actor
     	world.addActor(new DeadBody(), x(), y());
     	world.removeActor(this);
     }
+    
+    /**
+	 * 
+	 * @return isBreaktrough
+	 */
+	public boolean getDamage(){
+		die();
+		return false;
+	}
+	
 }
