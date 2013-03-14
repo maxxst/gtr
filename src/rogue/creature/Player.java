@@ -43,6 +43,7 @@ public class Player extends Creature implements Camera {
 	@Override
 	public void act() {
 		try {
+			currentLevel.setCoordinate(new Coordinate(x(), y()));
 			char key;
 			key = term.getKey();
 			

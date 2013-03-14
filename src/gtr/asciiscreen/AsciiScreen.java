@@ -24,6 +24,7 @@ public abstract class AsciiScreen extends World {
 		c.add('±');
 		c.add('[');
 		c.add(']');
+		c.add('▒');
 		return c;
 	}
 	
