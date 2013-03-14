@@ -1,7 +1,8 @@
 package rogue;
 
 import gtr.asciiscreen.level.Dungeon;
-import gtr.asciiscreen.level.Stadt;
+import gtr.asciiscreen.level.Room;
+import gtr.asciiscreen.level.Town;
 import gtr.asciiscreen.other.StartScreen;
 import gtr.util.datatype.Location;
 import jade.core.World;
@@ -37,10 +38,13 @@ public class Rogue {
 				world = new StartScreen(player);
 				nextLevel = world.inLevel();
 				break;
-			case Stadt:
-				world = new Stadt(player);
+			case Town:
+				world = new Town(player);
 				nextLevel = world.inLevel();
 				break;
+			case Room:
+				world = new Room(player);
+				nextLevel = world.inLevel();
 			}	
 		}
 		System.exit(0);
