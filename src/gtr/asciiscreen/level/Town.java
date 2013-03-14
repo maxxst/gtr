@@ -41,7 +41,7 @@ public class Town extends Level {
 		junkie = new Monster(ColoredChar.create('J', Color.red));
 		
 		for (int i=0; i < 100; i++){
-			addActor(new Monster());
+			addActor(new Junkie());
 		}
 		/*
 		 * Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,

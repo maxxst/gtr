@@ -57,7 +57,7 @@ public class Monster extends Creature {
 	}
 	
 	public Monster() {
-		this(ColoredChar.create('J', new Color(0,200,0)));
+		this(ColoredChar.create('M', new Color(0,200,0)));
 		// TODO Auto-generated constructor stub
 	}
 	
