@@ -27,22 +27,47 @@ public class Ninja extends Monster
 		 {
 			if (player.y()<y())
 			{
-				move((-1)*x,(-1)*y+1);
+				int i = (int) (Math.random()*3+1);
+				switch (i)
+				{
+				case 1:move((-1)*x-1,(-1)*y+1);break;
+				case 2:move((-1)*x,(-1)*y+1);break;
+				case 3:move((-1)*x+1,(-1)*y+1);break;
+				}
+				
 			}
 			else
 			{
-				move((-1)*x,y-1);
+				int i = (int) (Math.random()*3+1);
+				switch (i)
+				{
+				case 1:move((-1)*x+1,y+1);break;
+				case 2:move((-1)*x+1,y);break;
+				case 3:move((-1)*x+1,y-1);break;
+				}
 			}
 		 }
 		 else
 		 {
 			if (player.y()<y())
+			{
+				int i = (int) (Math.random()*3+1);
+				switch (i)
 				{
-				 move(x,(-1)*y+1);
+				case 1:move(x-1,(-1)*y-1);break;
+				case 2:move(x-1,(-1)*y);break;
+				case 3:move(x-1,(-1)*y+1);break;
+				}
 				}
 				else
 				{
-				move(x,y-1);
+					int i = (int) (Math.random()*3+1);
+					switch (i)
+					{
+					case 1:move(x-1,y-1);break;
+					case 2:move(x,y-1);break;
+					case 3:move(x+1,y-1);break;
+					}
 				} 
 		 }
 	  Direction dir = findPlayerInRange();
