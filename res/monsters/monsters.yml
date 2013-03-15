@@ -2,9 +2,9 @@
   face: "J"
   movement:
     start: 1
-    multiplikator: 1
+    multiplikator: 0
   weapons:
-    - "fist"
+    - "Faust"
   drops: "common"
 - name: "Ninja"
   face: "N"
@@ -13,4 +13,12 @@
     multiplikator: 1
   weapons:
     - "Katana"
+  drops: "common"
+- name: "Dealer"
+  face: "D"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "Schlagring"
   drops: "common"

@@ -1,4 +1,4 @@
-fist:
+Faust:
   name: "Faust"
   type: "melee"
   range:
@@ -19,3 +19,24 @@ Katana:
     from: 1
     to: 2 
   dmg: 2.0
+Schlagring:
+  name: "Schlagring"
+  type: "melee"
+  range:
+    from: 1
+    to: 1 
+  dmg: 1.2
+Baseballschläger:
+  name: "Baseballschläger"
+  type: "melee"
+  range:
+    from: 1
+    to: 1 
+  dmg: 1.5
+Messer:
+  name: "Messer"
+  type: "melee"
+  range:
+    from: 1
+    to: 1 
+  dmg: 1.5

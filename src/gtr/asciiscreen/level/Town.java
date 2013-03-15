@@ -48,7 +48,10 @@ public class Town extends Level {
 			{
 			addActor(new Ninja());
 			}
-		
+		for (int i=0; i < 50; i++)
+			{
+			addActor(new Dealer());
+			}
 			
 
 		//

@@ -46,6 +46,10 @@ public class Stadt extends Level {
 		{
 		addActor(new Ninja());
 		}
+		for (int i=0; i < 50; i++)
+		{
+		addActor(new Dealer());
+		}
 		/*
 		 * Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
 		 * Dooractors anzulegen, da sich die Koordinaten der Türen beim

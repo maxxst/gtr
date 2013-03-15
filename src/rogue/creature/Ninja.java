@@ -83,7 +83,7 @@ public class Ninja extends Monster
 			 case 1: System.out.println("Hayjaaaaaa!"); break;
 			 case 2: System.out.println("Banzai!"); break;
 			 case 3: System.out.println("Requiescat in Pache."); break;
-			 case 4: System.out.println("*PUFF*"); break;
+			 case 4: System.out.println("KAMIKAZE!"); break;
 			 case 5: System.out.println("Du noch viel lernen musst, junger Padawan."); break;
 			}
 		}
