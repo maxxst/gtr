@@ -48,7 +48,7 @@ public abstract class AsciiScreen extends World {
 	}
 
 	/**
-	 * Aus einer ArrayList<String>, was das Aussehen einer Karte enthalt, wird
+	 * Aus einer ArrayList<String>, was das Aussehen einer Karte enthält, wird
 	 * die Karte in die Welt gezeichnet.
 	 * 
 	 * @param leveldesign
@@ -67,7 +67,7 @@ public abstract class AsciiScreen extends World {
 	}
 
 	/**
-	 * Gibt die HÃ¶he der Karte aus.
+	 * Gibt die Höhe der Karte aus.
 	 * 
 	 * @param leveldesign
 	 *            Karte
