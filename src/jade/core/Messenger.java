@@ -1,6 +1,7 @@
 package jade.core;
 
 import gtr.asciiscreen.ScreenType;
+import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
 import jade.util.Guard;
 import jade.util.Lambda;
@@ -8,6 +9,7 @@ import jade.util.Lambda.FilterFunc;
 import jade.util.Lambda.MapFunc;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import rogue.creature.Player;
@@ -25,6 +27,7 @@ public abstract class Messenger
     protected static boolean quit = false;
 	protected static ScreenType screenType;
 	protected static Player player;
+	private static HashMap<LevelEnum, Actor[]> mappingLevelActor = new HashMap<LevelEnum, Actor[]>();
 
     /**
      * Creates a new {@code Messenger}
@@ -130,4 +133,16 @@ public abstract class Messenger
             }
         };
     }
+    
+    public Location getCurrentLevel() {
+    	return currentLevel;
+    }
+    
+	public HashMap<LevelEnum, Actor[]> getMappingLevelActor() {
+		return mappingLevelActor;
+	}
+
+	public void setMappingLevelActor(HashMap<LevelEnum, Actor[]> mappingLevelActor) {
+		this.mappingLevelActor = mappingLevelActor;
+	}
 }

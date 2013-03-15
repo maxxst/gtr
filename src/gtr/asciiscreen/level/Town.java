@@ -37,36 +37,36 @@ public class Town extends Level {
 		else
 			addActor(player, currentLevel.getCoordinate());
 
-		junkie = new Monster(ColoredChar.create('J', Color.red));
+		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
 
-		for (int i=0; i < 100; i++)
-			{
-			addActor(new Junkie());
-			
+			for (int i = 0; i < 100; i++) {
+				addActor(new Junkie());
+
 			}
-		for (int i=0; i < 25; i++)
-			{
-			addActor(new Ninja());
+			for (int i = 0; i < 25; i++) {
+				addActor(new Ninja());
 			}
-		for (int i=0; i < 50; i++)
-			{
-			addActor(new Dealer());
+			for (int i = 0; i < 50; i++) {
+				addActor(new Dealer());
 			}
-			
 
-		//
-		// Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich nicht,
-		// Dooractors anzulegen, da sich die Koordinaten der Türen beim
-		// Überarbeiten der Karten noch ändern können.
-		//
-		Door door = new Door(LevelEnum.Room, 5, 5);
-		addActor(door, 35, 119);
+			//
+			// Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich
+			// nicht,
+			// Dooractors anzulegen, da sich die Koordinaten der Türen beim
+			// Überarbeiten der Karten noch ändern können.
+			//
+			Door door = new Door(LevelEnum.Room, 5, 5);
+			addActor(door, 35, 119);
 
-		door = new Door(LevelEnum.Room, 5, 5);
-		addActor(door, 55, 119);
+			door = new Door(LevelEnum.Room, 5, 5);
+			addActor(door, 55, 119);
 
-		gtr.actor.other.Door.completeDoors(this);
-		//
+			gtr.actor.other.Door.completeDoors(this);
+
+		} else
+			setActorsInWorld();
+
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package jade.core;
 
 import gtr.actor.other.Door;
 import gtr.actor.other.Projectile;
+import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
@@ -14,6 +15,7 @@ import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -729,6 +731,24 @@ public abstract class World extends Messenger {
 		term.refreshScreen();
 
 		tick();
+	}
+	
+	public void setActorsInWorld() {
+		Actor[] actorArray = getMappingLevelActor().get(getCurrentLevel().getLevelEnum());
+		for (Actor a : actorArray) {
+			if (!a.getClass().equals(Player.class)) {
+				Coordinate coordinate = new Coordinate(a.x(), a.y());
+				a.setWorld(null);
+				Actor holder = null;
+				if (a.held()) {
+					holder = a.holder();
+					a.detach();
+					a.attach(holder);
+				} else
+					addActor(a, coordinate);
+					
+			}
+		}
 	}
 
 	private class Tile {

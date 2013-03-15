@@ -101,7 +101,7 @@ public class Monster extends Creature {
 		for(int i=range.getFrom();i<=range.getTo();i++){
 			for(Direction dir: Direction.values()){
 				try {
-					if(world.getActorAt(Player.class, x()+dir.dx()*i,y()+dir.dy()*i) != null){
+					if(world().getActorAt(Player.class, x()+dir.dx()*i,y()+dir.dy()*i) != null){
 						return dir;
 					}
 				} catch(ArrayIndexOutOfBoundsException e){
