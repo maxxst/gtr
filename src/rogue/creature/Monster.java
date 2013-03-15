@@ -1,8 +1,9 @@
 package rogue.creature;
 
+import gtr.actor.item.Item;
+import gtr.actor.item.weapon.Weapon;
+import gtr.actor.item.weapon.Weapon.Range;
 import gtr.creature.Movement;
-import gtr.item.weapon.Weapon;
-import gtr.item.weapon.Weapon.Range;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Monster extends Creature {
 	
 	private String name;
 	private Movement movement;
-	private Weapon weapon;
+	protected Weapon weapon;
 	private String dropRareness;
 	private String dropType;
 	
@@ -76,7 +77,7 @@ public class Monster extends Creature {
 		weapon = new Weapon((HashMap<?,?>) monsterWeaponList
 			.get((String) possible_weapons
 					.get(randomGenerator.nextInt(possible_weapons.size()))
-			)
+			), this
 		);
 		// easy to access drop type
 		dropType = weapon.getType();
@@ -90,7 +91,7 @@ public class Monster extends Creature {
 		move(Dice.global.choose(Arrays.asList(Direction.values())));
 		Direction dir = findPlayerInRange();
 		if(dir != null){ //angreifbar
-			attack(dir, weapon.getRange(), calcDamage());
+			attack(dir, weapon);
 		}
 		
 	}
@@ -121,16 +122,19 @@ public class Monster extends Creature {
 		return movement.getMove(1);
 	}
 	
-	//TODO rareness des drops einstellen
-	public Weapon drop(){
-		return new Weapon(dropType);
-		
-		//TODO not implemented in weapon.class
-		// return new Weapon(dropType, dropRareness);
+	public Item dropItem(){
+		return new Item();
 	}
 	
-	//TODO Damage muss noch errechnet werde
-	public float calcDamage(){
-		return 1.0F;
+	public String attackText(){
+		return name + " greift an mit: " + weapon.getName();
+	}
+	
+	public String hitText(){
+		return name + " trifft";
+	}
+	
+	public String missText(){
+		return name + " verfehlt";
 	}
 }

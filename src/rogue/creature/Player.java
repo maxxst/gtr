@@ -1,9 +1,9 @@
 package rogue.creature;
 
+import gtr.actor.item.weapon.Weapon;
 import gtr.actor.other.Blood;
 import gtr.actor.other.DeadBody;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
-import gtr.item.weapon.Weapon;
 import gtr.util.datatype.Location;
 
 import java.awt.event.KeyEvent;
@@ -29,7 +29,7 @@ public class Player extends Creature implements Camera {
 		super(standardFace);
 		this.term = term;
 		fov = new RayCaster();
-		weapon = new Weapon("Pistole"); //TODO besser!
+		weapon = new Weapon("Raketenwerfer", this); //TODO besser!
 	}
 
 	public Terminal getTerm() {
@@ -42,6 +42,7 @@ public class Player extends Creature implements Camera {
 
 	@Override
 	public void act() {
+		Direction dir;
 		try {
 			currentLevel.setCoordinate(new Coordinate(x(), y()));
 			char key;
@@ -64,9 +65,9 @@ public class Player extends Creature implements Camera {
 				case ' ':
 					System.out.println("Leertaste");
 					key = term.getKey();
-					Direction shootDir = Direction.keyToDir(key);
-					if (shootDir != null)
-						attack(shootDir, weapon.getRange(), calcDamage(), 0.8F);
+					dir = Direction.keyToDir(key);
+					if (dir != null)
+						attack(dir, weapon, 0.8F);
 					break;
 				case 'u':
 				case 'i':
@@ -76,13 +77,13 @@ public class Player extends Creature implements Camera {
 				case 'l':
 				case 'm':
 				case '.':
-					Direction shootingDir = Direction.keyToDir(key);
-					if (shootingDir != null)
-						attack(shootingDir, weapon.getRange(), calcDamage());
+					dir = Direction.keyToDir(key);
+					if (dir != null)
+						attack(dir, weapon);
 				break;
 					
 				default:
-					Direction dir = Direction.keyToDir(key);
+					dir = Direction.keyToDir(key);
 					if (dir != null)
 						move(dir);
 					break;
@@ -92,11 +93,6 @@ public class Player extends Creature implements Camera {
 		}
 	}
 
-	private float calcDamage() {
-		// TODO Auto-generated method stub
-		return 1;
-	}
-
 	@Override
 	public Collection<Coordinate> getViewField() {
 		return fov.getViewField(world(), pos(), 5);
@@ -104,5 +100,17 @@ public class Player extends Creature implements Camera {
 	
 	public void die(){
 		world.addActor(new Blood(), x(), y());
+	}
+	
+	public String attackText(){
+		return "Du greifst an mit: " + weapon.getName();
+	}
+	
+	public String hitText(){
+		return "Du triffst";
+	}
+	
+	public String missText(){
+		return "Du verfehlst";
 	}
 }

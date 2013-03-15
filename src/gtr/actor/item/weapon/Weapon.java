@@ -1,10 +1,16 @@
-package gtr.item.weapon;
+package gtr.actor.item.weapon;
 
-import gtr.item.Item;
+import gtr.actor.item.Item;
+import gtr.actor.other.Projectile;
+
+import jade.util.datatype.Coordinate;
+import jade.util.datatype.Direction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+
+import rogue.creature.Creature;
 
 /**
  * Klasse für die Waffen
@@ -90,10 +96,14 @@ public class Weapon extends Item {
 	 *            mehrere mögliche Waffen, wird zufällig ausgewählt, welche
 	 *            erstellt wird.
 	 */
-	public Weapon(String string) {
-
+	public Weapon(String string, Creature holder) {
 		// get a weapon-hashmap
-		this(matching_weapon(string));
+		this(matching_weapon(string), holder);
+	}
+	
+	public Weapon(HashMap<?, ?> hashMap, Creature holder){
+		this(hashMap);
+		this.attach(holder);
 	}
 
 	public Weapon(HashMap<?, ?> hashMap) {
@@ -127,6 +137,37 @@ public class Weapon extends Item {
 		dmg = (float) (hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap
 				.get("dmg")) : 1.0F);
 	}
+	
+	public void use(Direction dir, float hitProb){
+		if (holder() != null) {
+			Random randomGenerator = new Random();
+	    	System.out.println(((Creature) holder()).attackText());
+	    	if (!isProjectile()){
+	    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
+		    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
+		    		Creature enemy = world.getActorAt(Creature.class, coord);
+		    		if( enemy != null){
+		    			if(randomGenerator.nextFloat() < hitProb){
+							System.out.println(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
+							enemy.getDamage();
+						} else {
+							i = range.getTo() + 1;
+							System.out.println(((Creature) holder()).missText()); //TODO Schaden zufuegen!
+						}
+					} else {
+						System.out.println(((Creature) holder()).missText());
+					}
+		    	}
+	    	} else {
+	    		world.addActor(new Projectile(dir, this), pos());
+	    	}
+	    	
+		} else {
+			System.out.println("no weapon equipped");
+		}
+	 
+	}
+	
 
 	public String getName() {
 		return name;
@@ -139,7 +180,15 @@ public class Weapon extends Item {
 	public Range getRange() {
 		return range;
 	}
+	
+	public int getRangeFrom(){
+		return range.getFrom();
+	}
 
+	public int getRangeTo(){
+		return range.getTo();
+	}
+	
 	public void setRange(Range range) {
 		this.range = range;
 	}
@@ -190,5 +239,9 @@ public class Weapon extends Item {
 
 	public void setBoss_drop(boolean boss_drop) {
 		this.boss_drop = boss_drop;
+	}
+	
+	public boolean isProjectile(){
+		return (getSpeed() != -1);		
 	}
 }

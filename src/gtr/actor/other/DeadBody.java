@@ -1,6 +1,6 @@
 package gtr.actor.other;
 
-import gtr.item.Item;
+import gtr.actor.item.Item;
 
 import java.awt.Color;
 import java.util.ArrayList;

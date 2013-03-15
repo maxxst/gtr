@@ -1,9 +1,24 @@
 - name: "Junkie"
-  ai: "Zombie"
   face: "J"
   movement:
     start: 1
+    multiplikator: 0
+  weapons:
+    - "Faust"
+  drops: "common"
+- name: "Ninja"
+  face: "N"
+  movement:
+    start: 6
     multiplikator: 1
   weapons:
-    - "fist"
+    - "Katana"
+  drops: "common"
+- name: "Dealer"
+  face: "D"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "Schlagring"
   drops: "common"
