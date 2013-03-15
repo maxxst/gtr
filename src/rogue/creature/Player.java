@@ -99,7 +99,7 @@ public class Player extends Creature implements Camera {
 	}
 	
 	public void die(){
-		world.addActor(new Blood(), x(), y());
+		world().addActor(new Blood(), x(), y());
 	}
 	
 	public String attackText(){

@@ -34,8 +34,8 @@ public abstract class Creature extends Actor
     }
     
     public void die(){
-    	world.addActor(new DeadBody(), x(), y());
-    	world.removeActor(this);
+    	world().addActor(new DeadBody(), x(), y());
+    	world().removeActor(this);
     }
     
     /**

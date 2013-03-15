@@ -145,7 +145,7 @@ public class Weapon extends Item {
 	    	if (!isProjectile()){
 	    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
 		    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
-		    		Creature enemy = world.getActorAt(Creature.class, coord);
+		    		Creature enemy = world().getActorAt(Creature.class, coord);
 		    		if( enemy != null){
 		    			if(randomGenerator.nextFloat() < hitProb){
 							System.out.println(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
@@ -159,7 +159,7 @@ public class Weapon extends Item {
 					}
 		    	}
 	    	} else {
-	    		world.addActor(new Projectile(dir, this), pos());
+	    		world().addActor(new Projectile(dir, this), pos());
 	    	}
 	    	
 		} else {

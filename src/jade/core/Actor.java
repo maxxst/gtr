@@ -22,7 +22,7 @@ import java.util.Set;
 public abstract class Actor extends Messenger
 {
     private ColoredChar face;
-    protected World world;
+    private World world;
     private MutableCoordinate pos;
     private boolean expired;
     private Actor holder;
