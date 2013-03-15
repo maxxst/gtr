@@ -43,8 +43,7 @@ public class Room extends Level {
 	
 	public Room(Player player, int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
-		System.out.println("w: " + width + " h: " + height);
+		System.out.println("Größe des Raumes: w: " + width + " h: " + height);
 		updateLevelVariables();
 		
 		Messenger.player = player;
