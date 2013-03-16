@@ -38,6 +38,8 @@ public class Rogue {
 //		term.registerCamera(player, 5, 5);
 
 		while (!player.expired()) {
+			
+			
 			switch (nextLevel.getLevelEnum()) {
 			case Dungeon:
 				world = new Dungeon(20, 20, player);
@@ -60,8 +62,8 @@ public class Rogue {
 			world.getMappingLevelActor().put(player.getCurrentLevel().getLevelEnum(), world.getActors(Actor.class).toArray(new Actor[0]));
 			//			world.setMappingLevelActor(new HashMap<world>)
 			
-			/* Vorbereitungen
-			
+			// Vorbereitungen
+			/*
 			LevelEnum levelEnum = nextLevel.getLevelEnum();
 			Class<?> c = null;
 			Object invoker = null;
@@ -99,10 +101,12 @@ public class Rogue {
 					e.printStackTrace();
 				} catch (InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					Throwable cause = e.getCause();
+					cause.printStackTrace();
 				}
 			*/
-			
+				
 		}
 		System.exit(0);
 	}
