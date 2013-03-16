@@ -18,6 +18,8 @@ public class Dealer extends Monster {
 	
 	public void act() 
 		{
+		Dealer[] d = world().getActors(Dealer.class).toArray(new Dealer[0]);
+		System.out.println(d.length);
 		int x = Math.abs(player.x()-x());
 		int y = Math.abs(player.y()-y());
 	   if(x+y<25)
