@@ -82,6 +82,7 @@ public abstract class World extends Messenger {
 				if (actor.bound(this))
 					actor.act();
 			}
+		
 		removeExpired();
 	}
 
@@ -201,7 +202,8 @@ public abstract class World extends Messenger {
 	 */
 	public void removeActor(Actor actor) {
 		Guard.argumentIsNotNull(actor);
-		Guard.verifyState(actor.bound(this));
+		if (!actor.expired())
+			Guard.verifyState(actor.bound(this));
 		Guard.verifyState(!actor.held() || actor.expired());
 
 		unregisterActor(actor);
@@ -220,7 +222,6 @@ public abstract class World extends Messenger {
 						return element.expired();
 					}
 				});
-
 		for (Actor actor : expired)
 			removeActor(actor);
 	}
@@ -720,7 +721,7 @@ public abstract class World extends Messenger {
 					ch = look(player.x() - TermPanel.DEFAULT_COLS / 2 + x,
 							player.y() - TermPanel.DEFAULT_ROWS / 2 + y);
 				} catch (IndexOutOfBoundsException e) {
-					// Wenn auf ein Index zugegriffen wird, den es nicht gibt
+					// Wenn auf einen Index zugegriffen wird, den es nicht gibt
 					// (weil man dem Kartenrand zu nah kommt), wird an dieser
 					// Stelle ein Leerzeichen angezeigt.
 					ch = ColoredChar.create(' ');

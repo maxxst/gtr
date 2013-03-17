@@ -158,7 +158,8 @@ public abstract class Actor extends Messenger
      */
     public int x()
     {
-        Guard.verifyState(bound());
+    	if (!expired())
+    		Guard.verifyState(bound());
 
         return pos.x();
     }
@@ -169,7 +170,8 @@ public abstract class Actor extends Messenger
      */
     public int y()
     {
-        Guard.verifyState(bound());
+    	if (!expired())
+    		Guard.verifyState(bound());
 
         return pos.y();
     }
