@@ -8,8 +8,6 @@ import jade.util.datatype.ColoredChar;
 /**
  * Places playerblood on the map
  * @author maxx
- *
- * 
  */
 public class Blood extends Actor {
 
