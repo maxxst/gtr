@@ -127,24 +127,24 @@ public abstract class Terminal
     }
 
     /**
-     * Buffers a {@code String} at (x, y) on the screen with a default {@code Color} of white.
+     * Buffers a {@code String} at (x, y) on the screen with a default {@code Color}.
      * @param x the x value of the location of the first character of str
      * @param y the y value of the location of the first character of str
      * @param str the {@code String} being buffered
      */
     public final void bufferString(int x, int y, String str)
     {
-        bufferString(x, y, str, Color.white);
+        bufferString(x, y, str, jade.util.datatype.ColoredChar.getStandardFontColor());
     }
 
     /**
-     * Buffers a {@code String} at location on the screen with a default {@code Color} of white.
+     * Buffers a {@code String} at location on the screen with a default {@code Color}.
      * @param coord the location of the first character of str
      * @param str the {@code String} being buffered
      */
     public final void bufferString(Coordinate coord, String str)
     {
-        bufferString(coord, str, Color.white);
+        bufferString(coord, str, jade.util.datatype.ColoredChar.getStandardFontColor());
     }
 
     /**

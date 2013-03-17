@@ -11,6 +11,8 @@ import java.util.Map;
  */
 public class ColoredChar
 {
+	private final static Color standardFontColor = Color.black;
+	
     private final char ch;
     private final Color color;
 
@@ -33,14 +35,14 @@ public class ColoredChar
 
     /**
      * Constructs a new {@code ColoredChar} tuple with the given {@code char} value and {@code
-     * Color.white} as the default {@code Color} value. This will always return the interned
+     * standardFontColor} as the default {@code Color} value. This will always return the interned
      * canonical version of the particular {@code ColoredChar}.
      * @param ch the {@code char} value of the {@code ColoredChar}
      * @return the interned {@code ColoredChar} with the specified values
      */
     public static ColoredChar create(char ch)
     {
-        return create(ch, Color.black);
+        return create(ch, standardFontColor);
     }
 
     private ColoredChar(char ch, Color color)
@@ -90,5 +92,9 @@ public class ColoredChar
     public String toString()
     {
         return Character.toString(ch);
+    }
+    
+    public static Color getStandardFontColor() {
+    	return standardFontColor;
     }
 }
