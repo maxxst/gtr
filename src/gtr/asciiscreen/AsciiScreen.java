@@ -6,6 +6,11 @@ import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 
+/**
+ * Extension of the world by the GTR team
+ * @author anti
+ *
+ */
 public abstract class AsciiScreen extends World {
 	
 	private static ArrayList<Character> floorChars = setFloorChars();
@@ -16,6 +21,10 @@ public abstract class AsciiScreen extends World {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Sets the Chars a player can walk on
+	 * @return List of accesable Characters
+	 */
 	private static ArrayList<Character> setFloorChars() {
 		ArrayList<Character> c = new ArrayList<Character>();
 		c.add('.');
@@ -28,8 +37,13 @@ public abstract class AsciiScreen extends World {
 		return c;
 	}
 	
+	/**
+	 * Finds out if a char belongs to the Floor
+	 * @param char that possibly is a floorcharacter
+	 * @return true if it's a floorcharacter
+	 */
 	private static boolean isFloorChar(char c) {
-		return (floorChars.contains(c)) ? true : false;
+		return floorChars.contains(c);
 	}
 
 	protected static void showAsciiScreen(ArrayList<String> leveldesign,
@@ -48,7 +62,7 @@ public abstract class AsciiScreen extends World {
 	}
 
 	/**
-	 * Aus einer ArrayList<String>, was das Aussehen einer Karte enthält, wird
+	 * Aus einer {@code ArrayList<String>}, was das Aussehen einer Karte enthält, wird
 	 * die Karte in die Welt gezeichnet.
 	 * 
 	 * @param leveldesign

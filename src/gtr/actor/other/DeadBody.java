@@ -8,12 +8,18 @@ import java.util.ArrayList;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
+/**
+ * When a NPCreature dies it leaves lootable ramains 
+ * @author maxx
+ * 
+ * @version 0.1
+ */
 public class DeadBody extends Actor {
 	ArrayList<Item> loot = new ArrayList<Item>();
 	
 	public DeadBody() {
 		super(ColoredChar.create('%', new Color(139,0,0)));
-		// TODO Auto-generated constructor stub
+		// TODO add itemdrop
 	}
 
 	@Override

@@ -3,6 +3,11 @@ package gtr.actor.item;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
+/**
+ * Basic item form which weapons, potions and other things can extend
+ * @author maxx
+ * @version 0.1
+ */
 public class Item extends Actor{
 
 	public Item(ColoredChar face) {
@@ -11,7 +16,7 @@ public class Item extends Actor{
 	}
 	
 	public Item(){
-		super(ColoredChar.create('i'));
+		this(ColoredChar.create('i'));
 	}
 
 	@Override

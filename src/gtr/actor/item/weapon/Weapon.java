@@ -13,9 +13,11 @@ import java.util.Random;
 import rogue.creature.Creature;
 
 /**
- * Klasse für die Waffen
+ * Weapons that can be equipped by monsters or
+ * the player and also can be droped or just lay around
  * 
- * @author anti, mxst
+ * @author anti
+ * @author maxx
  * 
  */
 public class Weapon extends Item {
@@ -64,7 +66,7 @@ public class Weapon extends Item {
 	}
 
 	/**
-	 * finds a matching weapon
+	 * finds a matching weapon from "res/weapons/weapons.yml"
 	 * 
 	 * @param string Name oder Typ der Waffe
 	 * @return a Weapon to generate
@@ -89,23 +91,38 @@ public class Weapon extends Item {
 	}
 
 	/**
-	 * Erstellt eine Waffe.
+	 * Creates a weapon an binds it to a creature
 	 * 
 	 * @param string
-	 *            Name oder Typ der Waffe, die erstellt werden soll. Existieren
-	 *            mehrere mögliche Waffen, wird zufällig ausgewählt, welche
-	 *            erstellt wird.
+	 * 		name or type of a weapon from "res/weapons/weapons.yml"
+	 * @param holder
+	 *   	A {@code Creature} that then is able to use this Weapon
 	 */
 	public Weapon(String string, Creature holder) {
 		// get a weapon-hashmap
 		this(matching_weapon(string), holder);
 	}
 	
+	
+	/**
+	 * Creates a weapon an binds it to a creature
+	 * 
+	 * @param hashMap
+	 * 		a hashMap describing the weapon
+	 * @param holder
+	 *   	A {@code Creature} that then is able to use this Weapon
+	 */
 	public Weapon(HashMap<?, ?> hashMap, Creature holder){
 		this(hashMap);
 		this.attach(holder);
 	}
-
+	
+	/**
+	 * Creates a weapon but doesn't binds it to a creature
+	 * 
+	 * @param hashMap
+	 * 		a hashMap describing the weapon
+	 */ 
 	public Weapon(HashMap<?, ?> hashMap) {
 		// these attributes must be set
 		setName((String) hashMap.get("name"));
@@ -138,6 +155,13 @@ public class Weapon extends Item {
 				.get("dmg")) : 1.0F);
 	}
 	
+	
+	/**
+	 * allows a creature to use a weapon (attack an enemy)
+	 * 
+	 * @param direction Direction in which the weapon is used/fired 
+	 * @param hitProbability Chance to hit an enemy in range 
+	 */
 	public void use(Direction dir, float hitProb){
 		if (holder() != null) {
 			Random randomGenerator = new Random();
@@ -246,6 +270,10 @@ public class Weapon extends Item {
 		this.boss_drop = boss_drop;
 	}
 	
+	/**
+	 * getterMethod to find out if the Weapon is a "Projetile-Weapon"
+	 * @return True if it's a Projectile-Weapon
+	 */
 	public boolean isProjectile(){
 		return (getSpeed() != -1);		
 	}

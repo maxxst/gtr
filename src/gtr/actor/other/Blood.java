@@ -5,6 +5,12 @@ import java.awt.Color;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
+/**
+ * Places playerblood on the map
+ * @author maxx
+ *
+ * 
+ */
 public class Blood extends Actor {
 
 	public Blood() {
@@ -14,7 +20,7 @@ public class Blood extends Actor {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
+		// TODO make it disappear after a while
 		
 	}
 

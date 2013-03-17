@@ -7,6 +7,10 @@ import jade.core.World;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 
+/**
+ * To make Doors usable they have to be an actor
+ * @author anti
+ */
 public class Door extends Actor {
 
 	private Location doorDestination;
