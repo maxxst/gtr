@@ -5,6 +5,33 @@ Rogue-like game, written in Java. Heute nur ein Prototyp, morgen schon ein Drago
 
 Es heiße: `Grand Theft Rogue`
 
+## Installation
+Wir haben eine ausführbare JAR Datei beigefügt. Es sollte also genügen, sofern JAVA installiert ist, sich allein `gtr.jar` herunterzuladen und auzuführen.
+
+## Steuerung
+Die Hauptfigur `@` agiert wie folgt:
+
+### Laufen
+- q ↖
+- w ↑
+- e ↗
+- a ←
+- s ↓
+- d →
+- z ↙
+- c ↘
+
+### Schießen
+- u ↖
+- i ↑
+- o ↗
+- j ←
+- k ↓
+- l →
+- m ↙
+- . ↘
+
+
 ## Geschichte
 Gestranded auf einer spärlich besiedelten Insel wacht $name auf. Nackt. Neben ihm liegt nur eine Pistole mit einem halben Magazin. $name kommt langsam zu sich und nimmt entfernte Stimmen wahr…
 
@@ -23,12 +50,12 @@ Jede Insel/Stadt/Stadtteil ist in sich abgeschlossen und sterben wirft an den An
 __Der Prototyp soll eher als Tutorial fungieren__
 
 ### Attribute
-#### Person
+#### Person (noch nicht vorhanden)
 - Sehkraft (Reichweite)  
 - Ruhe (Genauigkeit)
 - Kraft (Gesundheit)
 - Glück
-- Angst?
+- Angst
 - Level
 
 #### Waffen
@@ -38,12 +65,12 @@ Außerdem soll etwas wie "Sockel" vorgesehen sein, sodass man Waffen mit Items a
 
 - Schaden (sofort || per Runde)
 - Reichweite von bis
-- Durchschlagskraft (Hoher durchschlag kann meherere Gegner treffen)
+- Durchschlagskraft (Hoher durchschlag kann meherere Gegner treffen) (fehlt noch)
 - Umgebungsschaden
 - Geschwindigkeit (Felder/Runde || sofort)
 
 ### Technik
-#### Geschichte voranbringen
+#### Geschichte voranbringen (nope)
 Es gibt an zufälligen Orten generierte "Storyteller" (Reihenfolge im Quellcode), die die Geschichte voran bringen sollen und Spezialisierungen ermöglichen
 
 #### Wünsche
