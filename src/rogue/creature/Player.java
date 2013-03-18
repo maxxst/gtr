@@ -10,6 +10,7 @@ import gtr.util.datatype.Location;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 import rogue.creature.Creature;
 import jade.core.World;
@@ -27,6 +28,7 @@ public class Player extends Creature implements Camera {
 	private Weapon weapon;
 	private int hp = 20;
 	private ArrayList<Item> items = new ArrayList<Item>();
+	private HashMap<Item, Integer> count = new HashMap<Item, Integer>();
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
