@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import rogue.creature.Creature;
+import jade.core.World;
 import jade.fov.RayCaster;
 import jade.fov.ViewField;
 import jade.ui.Camera;
@@ -25,7 +26,7 @@ public class Player extends Creature implements Camera {
 	private ViewField fov;
 	private Weapon weapon;
 	private int hp = 20;
-	private ArrayList<Item> items;
+	private ArrayList<Item> items = new ArrayList<Item>();
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
@@ -34,6 +35,11 @@ public class Player extends Creature implements Camera {
 		this.term = term;
 		fov = new RayCaster();
 		weapon = new Weapon("Raketenwerfer", this); //TODO besser!
+		
+		// testweise
+		items.add(new Weapon("Raketenwerfer", this));
+		items.add(new Weapon("Pistole", this));
+		items.add(new Weapon("Pistole", this));
 	}
 
 	public Terminal getTerm() {
@@ -85,7 +91,11 @@ public class Player extends Creature implements Camera {
 					dir = Direction.keyToDir(key);
 					if (dir != null)
 						attack(dir, weapon);
-				break;
+					break;
+					
+				case '<':
+					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
+							world(), term);
 					
 				default:
 					dir = Direction.keyToDir(key);
@@ -129,5 +139,9 @@ public class Player extends Creature implements Camera {
 	
 	public ArrayList<Item> getItems() {
 		return items;
+	}
+	
+	public void setItems(Item item) {
+		items.add(item);
 	}
 }
