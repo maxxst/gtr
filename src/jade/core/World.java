@@ -709,8 +709,9 @@ public abstract class World extends Messenger {
 	 */
 	protected void changeAndRefreshScreenAndTick(Terminal term) {
 		term.clearBuffer();
+		int n = (screenType.equals(gtr.asciiscreen.ScreenType.Level)) ? TermPanel.DEFAULT_ROWS - 1 : TermPanel.DEFAULT_ROWS;
 		for (int x = 0; x < TermPanel.DEFAULT_COLS; x++)
-			for (int y = 0; y < TermPanel.DEFAULT_ROWS; y++) {
+			for (int y = 0; y < n; y++) {
 				ColoredChar ch;
 				try {
 					// Die Parameter von look geben an, welches Zeichen an der
@@ -728,6 +729,10 @@ public abstract class World extends Messenger {
 				}
 				term.bufferChar(x, y, ch);
 			}
+		System.out.println(gtr.hud.Hud.getHud());
+		if (screenType.equals(gtr.asciiscreen.ScreenType.Level))
+			term.bufferString(0, TermPanel.DEFAULT_ROWS - 1, gtr.hud.Hud.getHud());
+		
 		
 		term.bufferCameras();
 		term.refreshScreen();
