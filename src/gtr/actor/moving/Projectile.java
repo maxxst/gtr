@@ -53,7 +53,7 @@ public class Projectile extends Moving {
 				}
 			}
 			
-			steps--;
+			steps--; stepCount--;
 		}
 
 	}
