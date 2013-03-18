@@ -1,4 +1,4 @@
-package gtr.actor.other;
+package gtr.actor.fading;
 
 import gtr.actor.item.Item;
 
@@ -14,17 +14,12 @@ import jade.util.datatype.ColoredChar;
  * 
  * @version 0.1
  */
-public class DeadBody extends Actor {
+public class DeadBody extends Fading {
 	ArrayList<Item> loot = new ArrayList<Item>();
 	
 	public DeadBody() {
 		super(ColoredChar.create('%', new Color(139,0,0)));
+	    turnsLeft = 20;
 		// TODO add itemdrop
 	}
-
-	@Override
-	public void act() {
-		// TODO Auto-generated method stud
-	}
-
 }

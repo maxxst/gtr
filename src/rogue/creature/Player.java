@@ -1,8 +1,8 @@
 package rogue.creature;
 
+import gtr.actor.fading.Blood;
+import gtr.actor.fading.DeadBody;
 import gtr.actor.item.weapon.Weapon;
-import gtr.actor.other.Blood;
-import gtr.actor.other.DeadBody;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
 

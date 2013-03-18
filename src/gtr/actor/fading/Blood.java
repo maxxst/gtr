@@ -1,4 +1,4 @@
-package gtr.actor.other;
+package gtr.actor.fading;
 
 import java.awt.Color;
 
@@ -9,17 +9,10 @@ import jade.util.datatype.ColoredChar;
  * Places playerblood on the map
  * @author maxx
  */
-public class Blood extends Actor {
-
+public class Blood extends Fading {
+	
 	public Blood() {
 		super(ColoredChar.create('☍', new Color(139,0,0)));
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void act() {
-		// TODO make it disappear after a while
-		
 	}
 
 }

@@ -1,8 +1,8 @@
 package jade.core;
 
+import gtr.actor.fading.Blood;
+import gtr.actor.fading.DeadBody;
 import gtr.actor.item.Item;
-import gtr.actor.other.Blood;
-import gtr.actor.other.DeadBody;
 import gtr.actor.other.Door;
 import gtr.actor.other.Projectile;
 import rogue.creature.Monster;
@@ -55,8 +55,8 @@ public abstract class World extends Messenger {
 				grid[x][y] = new Tile();
 		register = new HashSet<Actor>();
 
+		//Erstelle eine zeichenOrdnung
 		drawOrder = new ArrayList<Class<? extends Actor>>();
-		//drawOrder.add(Actor.class);
 		drawOrder.add(Player.class);
 		drawOrder.add(Monster.class);
 		drawOrder.add(Item.class);
@@ -73,6 +73,7 @@ public abstract class World extends Messenger {
 		//actOrder.add(gate.class); noch hinzufügen
 		//actOrder.add(story.class); noch hinzufügen
 		actOrder.add(DeadBody.class);
+		actOrder.add(Blood.class);
 		actOrder.add(Projectile.class); //noch hinzufügen
 		//actOrder.add(item.class); noch hinzufügen
 		actOrder.add(rogue.creature.Monster.class); // Monster aus rogue.creature.Monster
@@ -86,12 +87,12 @@ public abstract class World extends Messenger {
 	 * Any expired {@code Actor} are removed from the {@code World}.
 	 */
 	public void tick() {
+		//removeExpired();
 		for (Class<? extends Actor> cls : actOrder)
 			for (Actor actor : getActors(cls)) {
 				if (actor.bound(this))
 					actor.act();
 			}
-		
 		removeExpired();
 	}
 
