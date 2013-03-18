@@ -97,11 +97,15 @@ public class Monster extends Creature {
 	}
 	
 	public Direction findPlayerInRange(){
+		return findClassInRange(Player.class);
+	}
+	
+	public Direction findClassInRange(Class<? extends Creature> cls){
 		Range range = weapon.getRange();
 		for(int i=range.getFrom();i<=range.getTo();i++){
 			for(Direction dir: Direction.values()){
 				try {
-					if(world().getActorAt(Player.class, x()+dir.dx()*i,y()+dir.dy()*i) != null){
+					if(world().getActorAt(cls, x()+dir.dx()*i,y()+dir.dy()*i) != null){
 						return dir;
 					}
 				} catch(ArrayIndexOutOfBoundsException e){
