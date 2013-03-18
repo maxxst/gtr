@@ -2,6 +2,7 @@ package rogue.creature;
 
 import gtr.actor.fading.Blood;
 import gtr.actor.fading.DeadBody;
+import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
@@ -26,13 +27,13 @@ public class Player extends Creature implements Camera {
 	private Terminal term;
 	private ViewField fov;
 	private Weapon weapon;
-	private int hp = 20;
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
-	private static final ColoredChar standardFace = ColoredChar.create('@');
+	private static final ColoredChar standardFace = ColoredChar.create('☃');
 
 	public Player(Terminal term) {
 		super(standardFace);
+		setHp(20);
 		this.term = term;
 		fov = new RayCaster();
 		weapon = new Weapon("Raketenwerfer", this); //TODO besser!
@@ -41,6 +42,11 @@ public class Player extends Creature implements Camera {
 		addItem(new Weapon("Raketenwerfer", this));
 		addItem(new Weapon("Pistole", this));
 		addItem(new Weapon("Pistole", this));
+		addItem(new HealthPotion(this));
+		addItem(new HealthPotion(this));
+		
+		for(Item item: items)
+			System.out.println(item.getName() + " " + item.getCount());
 	}
 
 	public Terminal getTerm() {
@@ -94,10 +100,14 @@ public class Player extends Creature implements Camera {
 						attack(dir, weapon);
 					break;
 					
-				case '<':
+				case '<': case KeyEvent.VK_ALT:
 					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
 							world(), term);
 //					showInventar();
+					break;
+					
+				case 'h':
+					selectItem("Heiltrank");
 					break;
 					
 					
@@ -118,11 +128,29 @@ public class Player extends Creature implements Camera {
 	}
 	
 	public void die(){
-		hp--;
+		loseHp(1);
 		world().addActor(new Blood(), x(), y());
-		if(hp <= 0){
+		if(getHp() <= 0){
 			expire();
 		}
+		//System.out.println(getHp());
+	}
+	
+	public void use(Item item){
+		item.use();
+		cleanItemList();
+	}
+	
+	public void equip(Weapon weapon){
+		if(!this.weapon.equals(weapon)){
+			addItem(this.weapon);
+			this.weapon = weapon;
+			items.remove(weapon);
+		}
+	}
+	
+	public void equip(Item item){
+		//TODO implement
 	}
 	
 	public String attackText(){
@@ -135,10 +163,6 @@ public class Player extends Creature implements Camera {
 	
 	public String missText(){
 		return "Du verfehlst";
-	}
-
-	public int getHp() {
-		return hp;
 	}
 	
 	public ArrayList<Item> getItems() {
@@ -156,5 +180,27 @@ public class Player extends Creature implements Camera {
 		}
 		if (!added)
 			items.add(item);
+	}
+	
+	public void cleanItemList(){
+		for(int i=0; i < items.size(); i++) {
+			System.out.print(items.get(i).getName());
+			System.out.println(items.get(i).getCount());
+			if (items.get(i).getCount() <= 0)
+					items.remove(i);
+		}
+	}
+	
+	public void selectItem(String name){
+		for(Item itemInList: items) {
+			if(itemInList.getName() == name){
+				if(itemInList.isEquippable()){
+					equip(itemInList);
+				} else {
+					use(itemInList);
+				}
+				break;
+			}
+		}
 	}
 }
