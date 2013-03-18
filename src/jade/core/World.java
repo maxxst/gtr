@@ -5,7 +5,6 @@ import gtr.actor.other.Blood;
 import gtr.actor.other.DeadBody;
 import gtr.actor.other.Door;
 import gtr.actor.other.Projectile;
-import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
@@ -19,7 +18,6 @@ import jade.util.datatype.Coordinate;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -720,6 +718,7 @@ public abstract class World extends Messenger {
 	 */
 	protected void changeAndRefreshScreenAndTick(Terminal term) {
 		term.clearBuffer();
+		int n = (screenType.equals(gtr.asciiscreen.ScreenType.Level)) ? TermPanel.DEFAULT_ROWS - 1 : TermPanel.DEFAULT_ROWS;
 		for (int x = 0; x < TermPanel.DEFAULT_COLS; x++)
 			for (int y = 0; y < TermPanel.DEFAULT_ROWS; y++) {
 				ColoredChar ch;
@@ -739,6 +738,10 @@ public abstract class World extends Messenger {
 				}
 				term.bufferChar(x, y, ch);
 			}
+		System.out.println(gtr.hud.Hud.getHud());
+		if (screenType.equals(gtr.asciiscreen.ScreenType.Level))
+			term.bufferString(0, TermPanel.DEFAULT_ROWS - 1, gtr.hud.Hud.getHud());
+		
 		
 		term.bufferCameras();
 		term.refreshScreen();
