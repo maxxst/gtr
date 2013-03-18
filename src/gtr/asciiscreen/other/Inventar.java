@@ -1,10 +1,8 @@
 package gtr.asciiscreen.other;
 
-import jade.core.World;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import rogue.creature.Player;

@@ -1,7 +1,6 @@
 package rogue.creature;
 
 import gtr.actor.fading.Blood;
-import gtr.actor.fading.DeadBody;
 import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
@@ -11,10 +10,8 @@ import gtr.util.datatype.Location;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 
 import rogue.creature.Creature;
-import jade.core.World;
 import jade.fov.RayCaster;
 import jade.fov.ViewField;
 import jade.ui.Camera;
@@ -90,19 +87,10 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Level"))
 
-					if (key == gtr.keys.Keys.getOpenInventoryKey()) {
-						// case gtr.keys.Keys.getOpenInventoryKey():
-						// //
-						// gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term,
-						// this),
-						// // world(), term);
-						// gtr.asciiscreen.other.Inventar.showInventar(term,
-						// this);
-						// break;
-
+					if (key == gtr.keys.Keys.getOpenInventoryKey())
 						gtr.asciiscreen.other.Inventar
 								.showInventory(term, this);
-					} else {
+					else {
 						switch (key) {
 						case ' ':
 							System.out.println("Leertaste");
