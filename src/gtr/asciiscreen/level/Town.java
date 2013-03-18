@@ -38,14 +38,14 @@ public class Town extends Level {
 
 		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
 
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 200; i++) {
 				addActor(new Junkie());
 
 			}
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < 225; i++) {
 				addActor(new Ninja());
 			}
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 150; i++) {
 				addActor(new Dealer());
 			}
 
@@ -56,10 +56,10 @@ public class Town extends Level {
 			// Überarbeiten der Karten noch ändern können.
 			//
 			Door door = new Door(LevelEnum.Room, 5, 5);
-			addActor(door, 35, 119);
+			addActor(door, 35, 108);
 
 			door = new Door(LevelEnum.Room, 5, 5);
-			addActor(door, 55, 119);
+			addActor(door, 55, 108);
 
 			gtr.actor.fix.Door.completeDoors(this);
 
