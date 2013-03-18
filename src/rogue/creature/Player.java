@@ -95,9 +95,9 @@ public class Player extends Creature implements Camera {
 					break;
 					
 				case '<':
-					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
-							world(), term);
-//					showInventar();
+//					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
+//							world(), term);
+					gtr.asciiscreen.other.Inventar.showInventar(term, this);
 					break;
 					
 					
