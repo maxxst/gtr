@@ -76,7 +76,7 @@ public abstract class World extends Messenger {
 		//actOrder.add(story.class); noch hinzufügen
 		actOrder.add(Fading.class);
 		actOrder.add(Moving.class); //noch hinzufügen
-		//actOrder.add(item.class); noch hinzufügen
+		actOrder.add(Item.class); //noch hinzufügen
 		actOrder.add(Monster.class); // Monster
 		
 	}
