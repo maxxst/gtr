@@ -27,6 +27,19 @@ public class Weapon extends Item {
 	public final static String middle = "middle";
 	public final static String heavy = "heavy";
 	
+	public static String getRandomType(){
+		Random randGen = new Random();
+		switch (randGen.nextInt(2)) {
+		case 0:
+			return light;
+		case 2:
+			return middle;
+		case 3:
+			return heavy;
+		}
+		return null;
+	}
+	
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
 			.readYamlArrayList("res/weapons/weapons.yml");
 
@@ -38,7 +51,6 @@ public class Weapon extends Item {
 	private boolean only_rare;
 	private boolean boss_drop;
 	private float dmg;
-	private Ammo ammo = new Ammo(this);
 
 	/**
 	 * Innere Klasse für die Reichweite der Waffen
@@ -159,13 +171,29 @@ public class Weapon extends Item {
 		dmg = (float) (hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap
 				.get("dmg")) : 1.0F);
 		
-		setCount(ammo.getAmmo());
+		//sets random Count at creation
+		Random randomGenerator = new Random();
+		
+		setCount(randomGenerator.nextInt(79) + 21);
+		
+		if (type == melee)
+			setCount(1);
 	}
 	
+	/**
+	 * Merges two equal weapons by adding up the Ammo 
+	 * @param weapon
+	 */
 	public void add(Weapon weapon){
-		this.ammo.add(weapon.ammo);
-		setCount(ammo.getAmmo());
+		setCount(getCount() + weapon.getCount());
 		weapon.expire();
+	}
+	
+	public void add(Ammo ammo){
+		if (ammo.getType() == type){
+			setCount(getCount() + ammo.getAmmo());
+			ammo.expire();
+		}
 	}
 	
 	
@@ -177,7 +205,7 @@ public class Weapon extends Item {
 	 */
 	public void use(Direction dir, float hitProb){
 		if (holder() != null) {
-			if(getCount() > 0){
+			if(getCount() > 0 || (type == melee)){
 				Random randomGenerator = new Random();
 		    	System.out.println(((Creature) holder()).attackText());
 		    	if (!isProjectile()){
@@ -204,7 +232,8 @@ public class Weapon extends Item {
 		    	} else {
 		    		world().addActor(new Projectile(dir, this), pos());
 		    	}
-		    	super.use();
+		    	if (type != melee)
+		    		super.use();
 			} else
 				System.out.println(getName() + " is empty!");
 		} else {
