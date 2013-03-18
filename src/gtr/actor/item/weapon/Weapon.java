@@ -1,8 +1,7 @@
 package gtr.actor.item.weapon;
 
 import gtr.actor.item.Item;
-import gtr.actor.other.Projectile;
-
+import gtr.actor.moving.Projectile;
 import jade.util.datatype.Coordinate;
 import jade.util.datatype.Direction;
 

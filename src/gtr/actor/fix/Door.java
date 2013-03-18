@@ -1,4 +1,4 @@
-package gtr.actor.other;
+package gtr.actor.fix;
 
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
@@ -11,7 +11,7 @@ import jade.util.datatype.Coordinate;
  * To make Doors usable they have to be an actor
  * @author anti
  */
-public class Door extends Actor {
+public class Door extends Fix {
 
 	private Location doorDestination;
 

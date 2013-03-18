@@ -2,9 +2,10 @@ package jade.core;
 
 import gtr.actor.fading.Blood;
 import gtr.actor.fading.DeadBody;
+import gtr.actor.fading.Fading;
+import gtr.actor.fix.Door;
 import gtr.actor.item.Item;
-import gtr.actor.other.Door;
-import gtr.actor.other.Projectile;
+import gtr.actor.moving.Projectile;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
@@ -62,8 +63,7 @@ public abstract class World extends Messenger {
 		drawOrder.add(Item.class);
 		drawOrder.add(Projectile.class);
 		drawOrder.add(Door.class);
-		drawOrder.add(Blood.class);
-		drawOrder.add(DeadBody.class);
+		drawOrder.add(Fading.class);
 
 		// Legt fest, in welcher Reihenfolge alle act()-Funktion der einzelnen
 		// Actors beim Aurufen von tick() ausgeführt werden.
@@ -72,11 +72,10 @@ public abstract class World extends Messenger {
 		actOrder.add(Door.class);
 		//actOrder.add(gate.class); noch hinzufügen
 		//actOrder.add(story.class); noch hinzufügen
-		actOrder.add(DeadBody.class);
-		actOrder.add(Blood.class);
+		actOrder.add(Fading.class);
 		actOrder.add(Projectile.class); //noch hinzufügen
 		//actOrder.add(item.class); noch hinzufügen
-		actOrder.add(rogue.creature.Monster.class); // Monster aus rogue.creature.Monster
+		actOrder.add(Monster.class); // Monster aus Monster
 		
 	}
 
