@@ -24,7 +24,6 @@ public class Weapon extends Item {
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
 			.readYamlArrayList("res/weapons/weapons.yml");
 
-	private String name;
 	private String type;
 	private Range range;
 	private int speed;
@@ -194,15 +193,6 @@ public class Weapon extends Item {
 			System.out.println("no weapon equipped");
 		}
 	 
-	}
-	
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Range getRange() {

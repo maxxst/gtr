@@ -2,11 +2,13 @@ package rogue.creature;
 
 import gtr.actor.fading.Blood;
 import gtr.actor.fading.DeadBody;
+import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import rogue.creature.Creature;
@@ -23,6 +25,7 @@ public class Player extends Creature implements Camera {
 	private ViewField fov;
 	private Weapon weapon;
 	private int hp = 3;
+	private ArrayList<Item> items;
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
@@ -119,5 +122,9 @@ public class Player extends Creature implements Camera {
 
 	public int getHp() {
 		return hp;
+	}
+	
+	public ArrayList<Item> getItems() {
+		return items;
 	}
 }

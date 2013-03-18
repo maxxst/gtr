@@ -10,6 +10,8 @@ import jade.util.datatype.ColoredChar;
  */
 public class Item extends Actor{
 
+	private String name;
+	
 	public Item(ColoredChar face) {
 		super(face);
 		// TODO Auto-generated constructor stub
@@ -21,6 +23,18 @@ public class Item extends Actor{
 
 	@Override
 	public void act() {
+	}
+	
+	public String toString() {
+		return this.getName();
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
