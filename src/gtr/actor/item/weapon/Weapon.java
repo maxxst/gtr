@@ -1,5 +1,6 @@
-package gtr.actor.item.weapon;
+	package gtr.actor.item.weapon;
 
+import gtr.actor.item.Ammo;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Projectile;
 import jade.util.datatype.Coordinate;
@@ -32,6 +33,7 @@ public class Weapon extends Item {
 	private boolean only_rare;
 	private boolean boss_drop;
 	private float dmg;
+	private Ammo ammo = new Ammo(this);
 
 	/**
 	 * Innere Klasse für die Reichweite der Waffen
