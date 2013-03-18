@@ -28,7 +28,6 @@ public class Player extends Creature implements Camera {
 	private Weapon weapon;
 	private int hp = 20;
 	private ArrayList<Item> items = new ArrayList<Item>();
-	private HashMap<Item, Integer> count = new HashMap<Item, Integer>();
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
@@ -39,9 +38,9 @@ public class Player extends Creature implements Camera {
 		weapon = new Weapon("Raketenwerfer", this); //TODO besser!
 		
 		// testweise
-		items.add(new Weapon("Raketenwerfer", this));
-		items.add(new Weapon("Pistole", this));
-		items.add(new Weapon("Pistole", this));
+		addItem(new Weapon("Raketenwerfer", this));
+		addItem(new Weapon("Pistole", this));
+		addItem(new Weapon("Pistole", this));
 	}
 
 	public Terminal getTerm() {
@@ -63,7 +62,7 @@ public class Player extends Creature implements Camera {
 			if (gtr.keys.Keys.isUniversalKey(key))
 				switch (key) {
 				case KeyEvent.VK_ESCAPE:
-					expire();
+					System.exit(0);
 					break;
 				}	
 			else if (screenType.name().equals("StartScreen"))
@@ -143,7 +142,16 @@ public class Player extends Creature implements Camera {
 		return items;
 	}
 	
-	public void setItems(Item item) {
-		items.add(item);
+	public void addItem(Item item) {
+		boolean added = false;
+		for(Item itemInList: items) {
+			if (item.equals(itemInList)){
+				itemInList.add(item);
+				added = true;
+				break;
+			} 
+		}
+		if (!added)
+			items.add(item);
 	}
 }

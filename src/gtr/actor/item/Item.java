@@ -9,8 +9,9 @@ import jade.util.datatype.ColoredChar;
  * @version 0.1
  */
 public class Item extends Actor{
-
+    
 	private String name;
+	private int count;
 	
 	public Item(ColoredChar face) {
 		super(face);
@@ -35,6 +36,14 @@ public class Item extends Actor{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public void add(Item item){
+		this.count += item.getCount();
+	}
+	
+	public int getCount(){
+		return count;
 	}
 
 }
