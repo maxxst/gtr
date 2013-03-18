@@ -38,15 +38,19 @@ public class Town extends Level {
 
 		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
 
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 100; i++) {
 				addActor(new Junkie());
 
 			}
-			for (int i = 0; i < 225; i++) {
+			for (int i = 0; i < 15; i++) {
 				addActor(new Ninja());
 			}
-			for (int i = 0; i < 150; i++) {
+			for (int i = 0; i < 50; i++) {
 				addActor(new Dealer());
+			}
+			for (int i = 0; i < 20; i++) {
+				Katze k = new Katze();
+				addActor(k);
 			}
 
 			//

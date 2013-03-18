@@ -26,15 +26,19 @@ public class Junkie extends Monster {
 		  // Immer wenn angegriffen wird soll ein Text kommen der zur Unterhaltung beiträgt. 
 		  // int i = (int) (Math.random()*x+y); erzeugt eine Zufallszahl in den grenzen y bis x
 		  int i = (int) (Math.random()*12+1);
-		  switch (i)
-			{
-			 case 1: System.out.println("Das Zeug, das blaue Zeug!"); break;
-			 case 2: System.out.println("Ey man, hast du was?"); break;
-			 case 3: System.out.println("Science Bitch!"); break;
-			 case 4: System.out.println("Ich brauche Drogen den ganzen Tag... *trälla*"); break;
-			 case 5: System.out.println("Ich brauch was vom blauen Crystal, haste was für mich?"); break;
-			 case 6: System.out.println("Heisenberg ist ein Gott!"); break;
-			}
+		  if (i <= 6){
+			  System.out.print("Junkie: ");
+			  switch (i)
+				{
+				 case 1: System.out.println("Das Zeug, das blaue Zeug!"); break;
+				 case 2: System.out.println("Ey man, hast du was?"); break;
+				 case 3: System.out.println("Science Bitch!"); break;
+				 case 4: System.out.println("Ich brauche Drogen den ganzen Tag... *trälla*"); break;
+				 case 5: System.out.println("Ich brauch was vom blauen Crystal, haste was für mich?"); break;
+				 case 6: System.out.println("Heisenberg ist ein Gott!"); break;
+				} 
+		  }
+			  
 		}
 	}
 

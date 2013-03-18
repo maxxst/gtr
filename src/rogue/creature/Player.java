@@ -29,7 +29,7 @@ public class Player extends Creature implements Camera {
 	private Weapon weapon;
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
-	private static final ColoredChar standardFace = ColoredChar.create('☃');
+	private static final ColoredChar standardFace = ColoredChar.create('@');
 
 	public Player(Terminal term) {
 		super(standardFace);
@@ -100,10 +100,10 @@ public class Player extends Creature implements Camera {
 						attack(dir, weapon);
 					break;
 					
-				case '<': case KeyEvent.VK_ALT:
-					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
-							world(), term);
-//					showInventar();
+				case '<':
+//					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
+//							world(), term);
+					gtr.asciiscreen.other.Inventar.showInventar(term, this);
 					break;
 					
 				case 'h':
