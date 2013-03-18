@@ -14,12 +14,15 @@ import rogue.creature.Player;
 
 public class StartScreen extends OtherScreen {
 
-	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/screens/start_screen_gtr.txt");
+	private static ArrayList<String> leveldesign;
 
-	public StartScreen(Player player) {
-		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
-				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
+	public StartScreen(Player player, String screen) {
+		super(gtr.asciiscreen.AsciiScreen.getWidth(ReadFile
+				.readScreenFile("res/screens/"+screen+".txt")),
+				gtr.asciiscreen.AsciiScreen.getHeight(ReadFile
+						.readScreenFile("res/screens/"+screen+".txt")));
+		
+		leveldesign = ReadFile.readScreenFile("res/screens/"+screen+".txt");
 
 		screenType = ScreenType.StartScreen;
 
@@ -27,7 +30,7 @@ public class StartScreen extends OtherScreen {
 		// steht nur da, da momentan StartScreen nicht nur am Anfang, sondern
 		// nochmals erreichbar ist
 		/** !TODO hier */
-		if (lastLevel != null
+		if (lastLevel != null && nextLevel != null
 				&& lastLevel.getLevelEnum().equals(nextLevel.getLevelEnum()))
 			updateLevelVariables();
 
