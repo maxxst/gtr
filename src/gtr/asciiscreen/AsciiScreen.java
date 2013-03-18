@@ -46,7 +46,7 @@ public abstract class AsciiScreen extends World {
 		return floorChars.contains(c);
 	}
 
-	protected static void showAsciiScreen(ArrayList<String> leveldesign,
+	public static void showAsciiScreen(ArrayList<String> leveldesign,
 			World world, Terminal term) {
 
 		term.clearBuffer();
