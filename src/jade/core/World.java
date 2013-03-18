@@ -1,8 +1,8 @@
 package jade.core;
 
+import gtr.actor.other.DeadBody;
 import gtr.actor.other.Door;
 import gtr.actor.other.Projectile;
-import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
@@ -15,7 +15,6 @@ import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -63,10 +62,10 @@ public abstract class World extends Messenger {
 		actOrder.add(Door.class);
 		//actOrder.add(gate.class); noch hinzufügen
 		//actOrder.add(story.class); noch hinzufügen
-		//actOrder.add(deadbody.class); noch hinzufügen
+		actOrder.add(DeadBody.class); // droppt aber noch keine Items
 		actOrder.add(Projectile.class); //noch hinzufügen
 		//actOrder.add(item.class); noch hinzufügen
-		actOrder.add(rogue.creature.Monster.class); // Monster aus rogue.creature.Monster
+		actOrder.add(Monster.class); // Monster aus rogue.creature.Monster
 		
 	}
 
