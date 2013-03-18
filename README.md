@@ -6,7 +6,7 @@ Rogue-like game, written in Java. Heute nur ein Prototyp, morgen schon ein Drago
 Es heiße: `Grand Theft Rogue`
 
 ## Installation
-Wir haben eine ausführbare JAR Datei beigefügt. Es sollte also genügen, sofern JAVA installiert ist, sich allein `gtr.jar` herunterzuladen und auzuführen.
+Wir haben eine ausführbare JAR Datei beigefügt. Diese sollte man also herunterladen. Als zweites wird der `res` Ordner benötigt. Dann sollte es genügen, sofern JAVA installiert ist, `gtr.jar` auzuführen.
 
 ## Steuerung
 Die Hauptfigur `@` agiert wie folgt:
