@@ -145,4 +145,9 @@ public abstract class Messenger
 	public void setMappingLevelActor(HashMap<LevelEnum, Actor[]> mappingLevelActor) {
 		this.mappingLevelActor = mappingLevelActor;
 	}
+
+	public static Player getPlayer() {
+		// TODO Auto-generated method stub
+		return player;
+	}
 }
