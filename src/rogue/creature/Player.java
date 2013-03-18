@@ -28,15 +28,15 @@ public class Player extends Creature implements Camera {
 	private Weapon weapon;
 	private int hp = 20;
 	private ArrayList<Item> items = new ArrayList<Item>();
-	
+
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
 	public Player(Terminal term) {
 		super(standardFace);
 		this.term = term;
 		fov = new RayCaster();
-		weapon = new Weapon("Raketenwerfer", this); //TODO besser!
-		
+		weapon = new Weapon("Raketenwerfer", this); // TODO besser!
+
 		// testweise
 		addItem(new Weapon("Raketenwerfer", this));
 		addItem(new Weapon("Pistole", this));
@@ -46,7 +46,7 @@ public class Player extends Creature implements Camera {
 	public Terminal getTerm() {
 		return term;
 	}
-	
+
 	public ColoredChar getStandardFace() {
 		return standardFace;
 	}
@@ -54,59 +54,82 @@ public class Player extends Creature implements Camera {
 	@Override
 	public void act() {
 		Direction dir;
+
 		try {
 			currentLevel.setCoordinate(new Coordinate(x(), y()));
-			char key;
-			key = term.getKey();
-			
-			if (gtr.keys.Keys.isUniversalKey(key))
-				switch (key) {
-				case KeyEvent.VK_ESCAPE:
-					System.exit(0);
-					break;
-				}	
-			else if (screenType.name().equals("StartScreen"))
-				switch (key) {
-				case 's':
-//					nextLevel = new Location(LevelEnum.Town, new Coordinate(6, 114));
-					nextLevel = new Location(LevelEnum.Town, new Coordinate(35, 109));
-					break;
-				}
-			else if (screenType.name().equals("Level"))
-				switch (key) {
-				case ' ':
-					System.out.println("Leertaste");
-					key = term.getKey();
-					dir = Direction.keyToDir(key);
-					if (dir != null)
-						attack(dir, weapon, 0.8F);
-					break;
-				case 'u':
-				case 'i':
-				case 'o':
-				case 'j':
-				case 'k':
-				case 'l':
-				case 'm':
-				case '.':
-					dir = Direction.keyToDir(key);
-					if (dir != null)
-						attack(dir, weapon);
-					break;
-					
-				case '<':
-//					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
-//							world(), term);
-					gtr.asciiscreen.other.Inventar.showInventar(term, this);
-					break;
-					
-					
-				default:
-					dir = Direction.keyToDir(key);
-					if (dir != null)
-						move(dir);
-					break;
-				}
+			char key = 0; // NULL-Wert für char
+
+			while (key == 0) {
+				key = term.getKey();
+
+				if (gtr.keys.Keys.isUniversalKey(key))
+					switch (key) {
+					case KeyEvent.VK_ESCAPE:
+						System.exit(0);
+						break;
+					}
+				else if (screenType.name().equals("StartScreen"))
+					switch (key) {
+					case 's':
+						// nextLevel = new Location(LevelEnum.Town, new
+						// Coordinate(6, 114));
+						nextLevel = new Location(LevelEnum.Town,
+								new Coordinate(35, 109));
+						break;
+					}
+				else if (screenType.name().equals("Level"))
+
+					if (key == gtr.keys.Keys.getOpenInventoryKey()) {
+						// case gtr.keys.Keys.getOpenInventoryKey():
+						// //
+						// gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term,
+						// this),
+						// // world(), term);
+						// gtr.asciiscreen.other.Inventar.showInventar(term, this);
+						// break;
+						
+						gtr.asciiscreen.other.Inventar
+								.showInventory(term, this);
+					} else {
+						switch (key) {
+						case ' ':
+							System.out.println("Leertaste");
+							key = term.getKey();
+							dir = Direction.keyToDir(key);
+							if (dir != null)
+								attack(dir, weapon, 0.8F);
+							else {
+								key = 0;
+							}
+							break;
+						case 'u':
+						case 'i':
+						case 'o':
+						case 'j':
+						case 'k':
+						case 'l':
+						case 'm':
+						case '.':
+							dir = Direction.keyToDir(key);
+							if (dir != null)
+								attack(dir, weapon);
+							else
+								key = 0;
+							break;
+
+						default:
+							dir = Direction.keyToDir(key);
+							if (dir != null)
+								move(dir);
+							else
+								key = 0;
+							break;
+						}
+
+					}
+				else
+					key = 0;
+			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -116,43 +139,43 @@ public class Player extends Creature implements Camera {
 	public Collection<Coordinate> getViewField() {
 		return fov.getViewField(world(), pos(), 5);
 	}
-	
-	public void die(){
+
+	public void die() {
 		hp--;
 		world().addActor(new Blood(), x(), y());
-		if(hp <= 0){
+		if (hp <= 0) {
 			expire();
 		}
 	}
-	
-	public String attackText(){
+
+	public String attackText() {
 		return "Du greifst an mit: " + weapon.getName();
 	}
-	
-	public String hitText(){
+
+	public String hitText() {
 		return "Du triffst";
 	}
-	
-	public String missText(){
+
+	public String missText() {
 		return "Du verfehlst";
 	}
 
 	public int getHp() {
 		return hp;
 	}
-	
+
 	public ArrayList<Item> getItems() {
 		return items;
 	}
-	
+
 	public void addItem(Item item) {
 		boolean added = false;
-		for(Item itemInList: items) {
-			if (item.equals(itemInList)){
+		for (Item itemInList : items) {
+			if (item.equals(itemInList)) {
 				itemInList.add(item);
 				added = true;
 				break;
-			} 
+			}
 		}
 		if (!added)
 			items.add(item);

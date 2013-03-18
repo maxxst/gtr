@@ -3,30 +3,70 @@ package gtr.keys;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * Klasse zur Tastenbelegung
+ * 
+ * @author anti
+ * 
+ */
 public class Keys {
 
-	private static ArrayList<Character> keys = setUniversalKeys();
+	/**
+	 * Tasten, die in allen Spielbildschirmen dieselbe Belegung aufweisen
+	 */
+	private static ArrayList<Character> universalKeys = setUniversalKeys();
+
+	/**
+	 * Tasten für das Inventarsystem
+	 */
 	private static ArrayList<Character> inventoryKeys = setInventoryKeys();
-	
+
+	/**
+	 * Standardtaste zum Öffnen des Inventars
+	 */
+	private static char openInventoryKey = 'r';
+
+	/**
+	 * Alle Tasten, die eine Belegung aufweisen. (Muss von allen Klassenvariablen
+	 * am Ende stehen, da auf die anderen Klassenvariablen zugegriffen wird.)
+	 */
+	private static ArrayList<Character> keys = setKeys();
+
 	public static ArrayList<Character> setUniversalKeys() {
-		keys = new ArrayList<Character>();
-		keys.add((char)KeyEvent.VK_ESCAPE);
-		return keys;
+		ArrayList<Character> universalKeys = new ArrayList<Character>();
+		universalKeys.add((char) KeyEvent.VK_ESCAPE);
+		return universalKeys;
 	}
-	
+
 	public static boolean isUniversalKey(char ch) {
-		return keys.contains(ch);
+		return universalKeys.contains(ch);
 	}
-	
+
 	public static ArrayList<Character> setInventoryKeys() {
-		inventoryKeys = new ArrayList<Character>();
-		inventoryKeys.add('<');
+		ArrayList<Character> inventoryKeys = new ArrayList<Character>();
+		inventoryKeys.add(openInventoryKey);
 		inventoryKeys.add('b');
 		return inventoryKeys;
 	}
-	
+
 	public static boolean isInventoryKey(char ch) {
 		return inventoryKeys.contains(ch);
-		
+
+	}
+
+	public static ArrayList<Character> setKeys() {
+		ArrayList<Character> allKeys = new ArrayList<Character>();
+		allKeys.addAll(universalKeys);
+		allKeys.add(openInventoryKey);
+		allKeys.addAll(inventoryKeys);
+		return allKeys;
+	}
+
+	public static boolean isKey(char ch) {
+		return keys.contains(ch);
+	}
+
+	public static char getOpenInventoryKey() {
+		return openInventoryKey;
 	}
 }
