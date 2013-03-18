@@ -53,6 +53,7 @@ public class Inventar {
 		return createInventarScreen(term, player);
 	}
 	
+//	public static void showInventar()
 	
 	
 }

@@ -96,6 +96,9 @@ public class Player extends Creature implements Camera {
 				case '<':
 					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
 							world(), term);
+//					showInventar();
+					break;
+					
 					
 				default:
 					dir = Direction.keyToDir(key);
