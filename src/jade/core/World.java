@@ -4,7 +4,9 @@ import gtr.actor.fading.Blood;
 import gtr.actor.fading.DeadBody;
 import gtr.actor.fading.Fading;
 import gtr.actor.fix.Door;
+import gtr.actor.fix.Fix;
 import gtr.actor.item.Item;
+import gtr.actor.moving.Moving;
 import gtr.actor.moving.Projectile;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
@@ -61,21 +63,21 @@ public abstract class World extends Messenger {
 		drawOrder.add(Player.class);
 		drawOrder.add(Monster.class);
 		drawOrder.add(Item.class);
-		drawOrder.add(Projectile.class);
-		drawOrder.add(Door.class);
+		drawOrder.add(Moving.class);
+		drawOrder.add(Fix.class);
 		drawOrder.add(Fading.class);
 
 		// Legt fest, in welcher Reihenfolge alle act()-Funktion der einzelnen
 		// Actors beim Aurufen von tick() ausgeführt werden.
 		actOrder = new ArrayList<Class<? extends Actor>>();
 		actOrder.add(Player.class);
-		actOrder.add(Door.class);
+		actOrder.add(Fix.class);
 		//actOrder.add(gate.class); noch hinzufügen
 		//actOrder.add(story.class); noch hinzufügen
 		actOrder.add(Fading.class);
-		actOrder.add(Projectile.class); //noch hinzufügen
+		actOrder.add(Moving.class); //noch hinzufügen
 		//actOrder.add(item.class); noch hinzufügen
-		actOrder.add(Monster.class); // Monster aus Monster
+		actOrder.add(Monster.class); // Monster
 		
 	}
 

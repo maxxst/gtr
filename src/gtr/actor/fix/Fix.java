@@ -10,10 +10,4 @@ public abstract class Fix extends Actor {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void act() {
-		// TODO Auto-generated method stub
-
-	}
-
 }
