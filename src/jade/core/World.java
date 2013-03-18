@@ -72,7 +72,7 @@ public abstract class World extends Messenger {
 		actOrder.add(Door.class);
 		//actOrder.add(gate.class); noch hinzufügen
 		//actOrder.add(story.class); noch hinzufügen
-		//actOrder.add(deadbody.class); noch hinzufügen
+		actOrder.add(DeadBody.class);
 		actOrder.add(Projectile.class); //noch hinzufügen
 		//actOrder.add(item.class); noch hinzufügen
 		actOrder.add(rogue.creature.Monster.class); // Monster aus rogue.creature.Monster
