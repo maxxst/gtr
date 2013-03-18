@@ -1,5 +1,8 @@
 package jade.core;
 
+import gtr.actor.item.Item;
+import gtr.actor.other.Blood;
+import gtr.actor.other.DeadBody;
 import gtr.actor.other.Door;
 import gtr.actor.other.Projectile;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
@@ -13,6 +16,7 @@ import jade.util.Lambda;
 import jade.util.Lambda.FilterFunc;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -54,7 +58,14 @@ public abstract class World extends Messenger {
 		register = new HashSet<Actor>();
 
 		drawOrder = new ArrayList<Class<? extends Actor>>();
-		drawOrder.add(Actor.class);
+		//drawOrder.add(Actor.class);
+		drawOrder.add(Player.class);
+		drawOrder.add(Monster.class);
+		drawOrder.add(Item.class);
+		drawOrder.add(Projectile.class);
+		drawOrder.add(Door.class);
+		drawOrder.add(Blood.class);
+		drawOrder.add(DeadBody.class);
 
 		// Legt fest, in welcher Reihenfolge alle act()-Funktion der einzelnen
 		// Actors beim Aurufen von tick() ausgeführt werden.
