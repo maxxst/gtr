@@ -5,7 +5,7 @@ Faust:
     from: 1
     to: 1 
   dmg: 1.0
-claw:
+Kralle:
   name: "Kralle"
   type: "melee"
   range:
@@ -26,8 +26,8 @@ Schlagring:
     from: 1
     to: 1 
   dmg: 1.2
-Baseballschl‰ger:
-  name: "Baseballschl‰ger"
+Baseballschl√§ger:
+  name: "Baseballschl√§ger"
   type: "melee"
   range:
     from: 1

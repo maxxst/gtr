@@ -7,13 +7,11 @@ public class Hud {
 	private static String hud = createHud();
 	
 	private static String createHud() {
-		String statusBar = " LP: "; // die ersten fünf Zeichen
-		statusBar += Integer.toString(Messenger.getPlayer().getHp());
-		
+		String statusBar = " LP: " + Integer.toString(Messenger.getPlayer().getHp()); // die ersten fünf Zeichen
 		statusBar += "	";
-		
-		statusBar += " Ammo: ∞";
-		
+		statusBar += " Ammo: " + Integer.toString(Messenger.getPlayer().getWeapon().getCount());
+		statusBar += "	";
+		statusBar += " Heiltränke: " + Integer.toString(Messenger.getPlayer().getItems().get(2).getCount());
 		
 		return statusBar;
 		

@@ -12,6 +12,7 @@ import jade.util.datatype.Direction;
 
 public abstract class Creature extends Actor
 {
+	private int hp = 1;
     public Creature(ColoredChar face)
     {
         super(face);
@@ -57,6 +58,22 @@ public abstract class Creature extends Actor
 	
 	public String missText(){
 		return "Creature misses";
+	}
+
+	public int getHp() {
+		return hp;
+	}
+	
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public void addHp(int hp) {
+		this.hp += hp;
+	}
+	
+	public void loseHp(int hp) {
+		this.hp -= hp;
 	}
 	
 }

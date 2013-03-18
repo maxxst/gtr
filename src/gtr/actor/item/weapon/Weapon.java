@@ -22,6 +22,11 @@ import rogue.creature.Creature;
  */
 public class Weapon extends Item {
 
+	public final static String melee = "melee";
+	public final static String light = "light";
+	public final static String middle = "middle";
+	public final static String heavy = "heavy";
+	
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
 			.readYamlArrayList("res/weapons/weapons.yml");
 
@@ -153,6 +158,14 @@ public class Weapon extends Item {
 
 		dmg = (float) (hashMap.containsKey("dmg") ? Float.parseFloat((String) hashMap
 				.get("dmg")) : 1.0F);
+		
+		setCount(ammo.getAmmo());
+	}
+	
+	public void add(Weapon weapon){
+		this.ammo.add(weapon.ammo);
+		setCount(ammo.getAmmo());
+		weapon.expire();
 	}
 	
 	
@@ -164,33 +177,36 @@ public class Weapon extends Item {
 	 */
 	public void use(Direction dir, float hitProb){
 		if (holder() != null) {
-			Random randomGenerator = new Random();
-	    	System.out.println(((Creature) holder()).attackText());
-	    	if (!isProjectile()){
-	    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
-		    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
-		    		Creature enemy = null;
-		    		try {
-		    			enemy = world().getActorsAt(Creature.class, coord).toArray(new Creature[0])[0];
-		    		}
-		    		catch (ArrayIndexOutOfBoundsException e) {
-		    		}
-		    		if( enemy != null){
-		    			if(randomGenerator.nextFloat() < hitProb){
-							System.out.println(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
-							enemy.getDamage();
+			if(getCount() > 0){
+				Random randomGenerator = new Random();
+		    	System.out.println(((Creature) holder()).attackText());
+		    	if (!isProjectile()){
+		    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
+			    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
+			    		Creature enemy = null;
+			    		try {
+			    			enemy = world().getActorsAt(Creature.class, coord).toArray(new Creature[0])[0];
+			    		}
+			    		catch (ArrayIndexOutOfBoundsException e) {
+			    		}
+			    		if( enemy != null){
+			    			if(randomGenerator.nextFloat() < hitProb){
+								System.out.println(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
+								enemy.getDamage();
+							} else {
+								i = range.getTo() + 1;
+								System.out.println(((Creature) holder()).missText()); //TODO Schaden zufuegen!
+							}
 						} else {
-							i = range.getTo() + 1;
-							System.out.println(((Creature) holder()).missText()); //TODO Schaden zufuegen!
+							System.out.println(((Creature) holder()).missText());
 						}
-					} else {
-						System.out.println(((Creature) holder()).missText());
-					}
+			    	}
+		    	} else {
+		    		world().addActor(new Projectile(dir, this), pos());
 		    	}
-	    	} else {
-	    		world().addActor(new Projectile(dir, this), pos());
-	    	}
-	    	
+		    	super.use();
+			} else
+				System.out.println(getName() + " is empty!");
 		} else {
 			System.out.println("no weapon equipped");
 		}
@@ -267,5 +283,13 @@ public class Weapon extends Item {
 	 */
 	public boolean isProjectile(){
 		return (getSpeed() != -1);		
+	}
+	
+	public boolean isEquippable() {
+		return true;
+	}
+	
+	public boolean equals(Weapon weapon){
+		return this.getName() == weapon.getName();
 	}
 }

@@ -2,6 +2,7 @@ package rogue.creature;
 
 import gtr.actor.fading.Blood;
 import gtr.actor.fading.DeadBody;
+import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
@@ -26,13 +27,13 @@ public class Player extends Creature implements Camera {
 	private Terminal term;
 	private ViewField fov;
 	private Weapon weapon;
-	private int hp = 20;
 	private ArrayList<Item> items = new ArrayList<Item>();
 
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
 	public Player(Terminal term) {
 		super(standardFace);
+		setHp(20);
 		this.term = term;
 		fov = new RayCaster();
 		weapon = new Weapon("Raketenwerfer", this); // TODO besser!
@@ -41,6 +42,11 @@ public class Player extends Creature implements Camera {
 		addItem(new Weapon("Raketenwerfer", this));
 		addItem(new Weapon("Pistole", this));
 		addItem(new Weapon("Pistole", this));
+		addItem(new HealthPotion(this));
+		addItem(new HealthPotion(this));
+		
+		for(Item item: items)
+			System.out.println(item.getName() + " " + item.getCount());
 	}
 
 	public Terminal getTerm() {
@@ -50,6 +56,10 @@ public class Player extends Creature implements Camera {
 	public ColoredChar getStandardFace() {
 		return standardFace;
 	}
+	
+	public Weapon getWeapon(){
+		return weapon;
+	}
 
 	@Override
 	public void act() {
@@ -57,6 +67,7 @@ public class Player extends Creature implements Camera {
 
 		try {
 			currentLevel.setCoordinate(new Coordinate(x(), y()));
+<<<<<<< HEAD
 			char key = 0; // NULL-Wert für char
 
 			while (key == 0) {
@@ -130,6 +141,63 @@ public class Player extends Creature implements Camera {
 				else
 					key = 0;
 			}
+=======
+			char key;
+			key = term.getKey();
+			
+			if (gtr.keys.Keys.isUniversalKey(key))
+				switch (key) {
+				case KeyEvent.VK_ESCAPE:
+					System.exit(0);
+					break;
+				}	
+			else if (screenType.name().equals("StartScreen"))
+				switch (key) {
+				case 's':
+//					nextLevel = new Location(LevelEnum.Town, new Coordinate(6, 114));
+					nextLevel = new Location(LevelEnum.Town, new Coordinate(35, 109));
+					break;
+				}
+			else if (screenType.name().equals("Level"))
+				switch (key) {
+				case ' ':
+					System.out.println("Leertaste");
+					key = term.getKey();
+					dir = Direction.keyToDir(key);
+					if (dir != null)
+						attack(dir, weapon, 0.8F);
+					break;
+				case 'u':
+				case 'i':
+				case 'o':
+				case 'j':
+				case 'k':
+				case 'l':
+				case 'm':
+				case '.':
+					dir = Direction.keyToDir(key);
+					if (dir != null)
+						attack(dir, weapon);
+					break;
+					
+				case '<':
+//					gtr.asciiscreen.AsciiScreen.showAsciiScreen(gtr.asciiscreen.other.Inventar.getInventarScreen(term, this),
+//							world(), term);
+					gtr.asciiscreen.other.Inventar.showInventar(term, this);
+					break;
+					
+				case 'h':
+					selectItem("Heiltrank");
+					break;
+					
+					
+				default:
+					dir = Direction.keyToDir(key);
+					if (dir != null)
+						move(dir);
+					break;
+				}
+>>>>>>> 46b3c162f2cc566bb724de52676bbadfd2614fbf
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -139,13 +207,39 @@ public class Player extends Creature implements Camera {
 	public Collection<Coordinate> getViewField() {
 		return fov.getViewField(world(), pos(), 5);
 	}
+<<<<<<< HEAD
 
 	public void die() {
 		hp--;
 		world().addActor(new Blood(), x(), y());
 		if (hp <= 0) {
+=======
+	
+	public void die(){
+		loseHp(1);
+		world().addActor(new Blood(), x(), y());
+		if(getHp() <= 0){
+>>>>>>> 46b3c162f2cc566bb724de52676bbadfd2614fbf
 			expire();
 		}
+		//System.out.println(getHp());
+	}
+	
+	public void use(Item item){
+		item.use();
+		cleanItemList();
+	}
+	
+	public void equip(Weapon weapon){
+		if(!this.weapon.equals(weapon)){
+			addItem(this.weapon);
+			this.weapon = weapon;
+			items.remove(weapon);
+		}
+	}
+	
+	public void equip(Item item){
+		//TODO implement
 	}
 
 	public String attackText() {
@@ -159,11 +253,15 @@ public class Player extends Creature implements Camera {
 	public String missText() {
 		return "Du verfehlst";
 	}
+<<<<<<< HEAD
 
 	public int getHp() {
 		return hp;
 	}
 
+=======
+	
+>>>>>>> 46b3c162f2cc566bb724de52676bbadfd2614fbf
 	public ArrayList<Item> getItems() {
 		return items;
 	}
@@ -179,5 +277,27 @@ public class Player extends Creature implements Camera {
 		}
 		if (!added)
 			items.add(item);
+	}
+	
+	public void cleanItemList(){
+		for(int i=0; i < items.size(); i++) {
+			System.out.print(items.get(i).getName());
+			System.out.println(items.get(i).getCount());
+			if (items.get(i).getCount() <= 0)
+					items.remove(i);
+		}
+	}
+	
+	public void selectItem(String name){
+		for(Item itemInList: items) {
+			if(itemInList.getName() == name){
+				if(itemInList.isEquippable()){
+					equip(itemInList);
+				} else {
+					use(itemInList);
+				}
+				break;
+			}
+		}
 	}
 }

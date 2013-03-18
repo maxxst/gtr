@@ -78,6 +78,9 @@ public class Ninja extends Monster
 		 // Immer wenn angegriffen wird soll ein Text kommen der zur Unterhaltung beiträgt. 
 		 // int i = (int) (Math.random()*x+y); erzeugt eine Zufallszahl in den grenzen y bis x
 		 int i = (int) (Math.random()*10+1);
+		 if (i<=5)
+		 {
+		 System.out.print("Ninja: ");
 	     switch (i)
 			{
 			 case 1: System.out.println("Hayjaaaaaa!"); break;
@@ -86,6 +89,7 @@ public class Ninja extends Monster
 			 case 4: System.out.println("KAMIKAZE!"); break;
 			 case 5: System.out.println("Du noch viel lernen musst, junger Padawan."); break;
 			}
+		 }
 		}
 	 }
 	 else
