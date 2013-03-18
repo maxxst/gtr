@@ -49,6 +49,7 @@ public class Dealer extends Monster {
 		move(Dice.global.choose(Arrays.asList(Direction.values())));
 		if(x+y<3)
 			{
+			System.out.print("Dealer: ");
 			switch (i)
 			{
 			case 1:System.out.println("Hey Kollege, ich hab hier was Feines für dich.");i=i+1; break;

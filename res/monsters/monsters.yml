@@ -21,4 +21,15 @@
     multiplikator: 0
   weapons:
     - "Schlagring"
+    - "Messer"
+    - "Baseballschläger"
   drops: "common"
+- name: "Katze"
+  face: "K"
+  movement:
+    start: 3
+    multiplikator: 0
+  weapons:
+    - "Kralle"
+  drops: "common"
+   
