@@ -22,6 +22,7 @@ public class Player extends Creature implements Camera {
 	private Terminal term;
 	private ViewField fov;
 	private Weapon weapon;
+	private int hp;
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
 
@@ -112,5 +113,9 @@ public class Player extends Creature implements Camera {
 	
 	public String missText(){
 		return "Du verfehlst";
+	}
+
+	public int getHp() {
+		return hp;
 	}
 }
