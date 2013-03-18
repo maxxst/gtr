@@ -56,6 +56,10 @@ public class Player extends Creature implements Camera {
 	public ColoredChar getStandardFace() {
 		return standardFace;
 	}
+	
+	public Weapon getWeapon(){
+		return weapon;
+	}
 
 	@Override
 	public void act() {
