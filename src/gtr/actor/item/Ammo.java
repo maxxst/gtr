@@ -8,15 +8,15 @@ import jade.util.datatype.ColoredChar;
 public class Ammo extends Item {
 	private String type;
 	
-	public Ammo(ColoredChar face, Weapon weapon) {
+	public Ammo(ColoredChar face) {
 		super(face);
 		Random randomGenerator = new Random();
-		setCount(randomGenerator.nextInt(99) + 1);
-		type = weapon.getType();
+		setCount(randomGenerator.nextInt(79) +21);
+		type = Weapon.getRandomType();
 	}
 
-	public Ammo(Weapon weapon) {
-		this(ColoredChar.create('a'), weapon);
+	public Ammo() {
+		this(ColoredChar.create('a'));
 	}
 	
 	public String getType(){
