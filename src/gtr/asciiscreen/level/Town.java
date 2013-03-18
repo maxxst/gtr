@@ -17,7 +17,7 @@ import rogue.creature.*;
 public class Town extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/map.txt");
+			.readScreenFile("res/maps/main_map.txt");
 	Monster junkie;
 
 	public Town(Player player) {
