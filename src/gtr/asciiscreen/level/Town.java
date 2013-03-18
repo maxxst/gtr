@@ -57,10 +57,10 @@ public class Town extends Level {
 			// Überarbeiten der Karten noch ändern können.
 			//
 			Door door = new Door(LevelEnum.Room, 5, 5);
-			addActor(door, 35, 119);
+			addActor(door, 35, 108);
 
 			door = new Door(LevelEnum.Room, 5, 5);
-			addActor(door, 55, 119);
+			addActor(door, 55, 108);
 
 			gtr.actor.other.Door.completeDoors(this);
 

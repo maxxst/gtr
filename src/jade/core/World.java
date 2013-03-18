@@ -753,6 +753,7 @@ public abstract class World extends Messenger {
 		Actor[] actorArray = getMappingLevelActor().get(getCurrentLevel().getLevelEnum());
 		for (Actor a : actorArray) {
 			if (!a.getClass().equals(Player.class)) {
+				System.out.println(a.bound());
 				Coordinate coordinate = new Coordinate(a.x(), a.y());
 				a.setWorld(null);
 				Actor holder = null;
