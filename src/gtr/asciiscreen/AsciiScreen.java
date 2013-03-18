@@ -57,8 +57,6 @@ public abstract class AsciiScreen extends World {
 			}
 		term.bufferCameras();
 		term.refreshScreen();
-
-		world.tick();
 	}
 
 	/**
