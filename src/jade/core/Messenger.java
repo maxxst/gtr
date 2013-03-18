@@ -27,7 +27,7 @@ public abstract class Messenger
     protected static boolean quit = false;
 	protected static ScreenType screenType;
 	protected static Player player;
-	private static HashMap<LevelEnum, Actor[]> mappingLevelActor = new HashMap<LevelEnum, Actor[]>();
+	private HashMap<LevelEnum, Actor[]> mappingLevelActor = new HashMap<LevelEnum, Actor[]>();
 
     /**
      * Creates a new {@code Messenger}
@@ -143,7 +143,7 @@ public abstract class Messenger
 	}
 
 	public void setMappingLevelActor(HashMap<LevelEnum, Actor[]> mappingLevelActor) {
-		Messenger.mappingLevelActor = mappingLevelActor;
+		this.mappingLevelActor = mappingLevelActor;
 	}
 
 	public static Player getPlayer() {

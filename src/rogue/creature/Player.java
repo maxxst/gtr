@@ -24,7 +24,7 @@ public class Player extends Creature implements Camera {
 	private Terminal term;
 	private ViewField fov;
 	private Weapon weapon;
-	private int hp = 3;
+	private int hp = 20;
 	private ArrayList<Item> items;
 	
 	private static final ColoredChar standardFace = ColoredChar.create('@');
@@ -106,6 +106,9 @@ public class Player extends Creature implements Camera {
 	public void die(){
 		hp--;
 		world().addActor(new Blood(), x(), y());
+		if(hp <= 0){
+			expire();
+		}
 	}
 	
 	public String attackText(){
