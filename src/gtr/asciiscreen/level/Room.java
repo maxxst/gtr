@@ -7,7 +7,7 @@ import jade.util.datatype.Coordinate;
 import java.util.ArrayList;
 import java.util.Random;
 
-import gtr.actor.other.Door;
+import gtr.actor.fix.Door;
 import gtr.asciiscreen.AsciiScreen;
 import gtr.util.datatype.Location;
 import rogue.creature.Player;

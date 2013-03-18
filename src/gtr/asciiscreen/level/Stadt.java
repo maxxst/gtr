@@ -1,9 +1,8 @@
 package gtr.asciiscreen.level;
 
-import gtr.actor.other.Door;
+import gtr.actor.fix.Door;
 import gtr.util.ReadFile;
 import gtr.util.datatype.Location;
-
 import jade.core.Messenger;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;

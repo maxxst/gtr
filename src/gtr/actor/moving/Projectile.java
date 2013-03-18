@@ -1,4 +1,4 @@
-package gtr.actor.other;
+package gtr.actor.moving;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import jade.util.datatype.Direction;
  * @author maxx
  *
  */
-public class Projectile extends Actor {
+public class Projectile extends Moving {
 	
 	private Weapon weapon;
 	private Direction dir;

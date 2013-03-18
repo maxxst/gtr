@@ -1,9 +1,8 @@
 package gtr.asciiscreen.level;
 
-import gtr.actor.other.Door;
+import gtr.actor.fix.Door;
 import gtr.util.ReadFile;
 import gtr.util.datatype.Location;
-
 import jade.core.Messenger;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
@@ -62,7 +61,7 @@ public class Town extends Level {
 			door = new Door(LevelEnum.Room, 5, 5);
 			addActor(door, 55, 108);
 
-			gtr.actor.other.Door.completeDoors(this);
+			gtr.actor.fix.Door.completeDoors(this);
 
 		} else
 			setActorsInWorld();
