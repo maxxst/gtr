@@ -202,6 +202,8 @@ public class Player extends Creature implements Camera {
 		}
 		if (!added)
 			items.add(item);
+		
+		System.out.println("Du erhälst: " + item.getName());
 	}
 
 	public void cleanItemList() {

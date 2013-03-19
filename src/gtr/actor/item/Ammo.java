@@ -11,18 +11,15 @@ import jade.util.datatype.ColoredChar;
 public class Ammo extends Item {
 	private String type;
 	
-	public Ammo(ColoredChar face) {
-		super(face);
-		setAmmoType();
-	}
 	
 	public Ammo(ColoredChar face, DropType dropType) {
 		super(face);
 		setAmmoType(dropType);
+		setName("Munition (" + type + ")");
 	}
 
 	public Ammo() {
-		this(ColoredChar.create('a'));
+		this(ColoredChar.create('a'), DropType.common);
 	}
 	
 	public Ammo(DropType dropType) {
