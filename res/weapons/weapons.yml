@@ -6,7 +6,7 @@
 - name: "Pistole"
   type: "light"
   range:
-    from: 2
+    from: 1
     to: 3
 - name: "Raketenwerfer"
   type: "heavy"
@@ -16,7 +16,7 @@
   speed: 2
   area: True
 - name: "Bogen des Robin Hood"
-  type: "light"
+  type: "middle"
   range:
     from: 1
     to: 12
