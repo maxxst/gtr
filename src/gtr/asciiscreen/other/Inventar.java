@@ -17,9 +17,9 @@ public class Inventar {
 	private static final int itemListHeight = 4;
 	private static final int itemList_ArrayListSize = itemListHeight * 2 + 1;
 
-	private static int cursorAt = 1;
+	private static int cursorAt = 0;
 	private static final Coordinate cursorInRow = new Coordinate(1,
-			cursorAt * 2 + 1);
+			cursorAt * 2 + 3);
 	private static final ColoredChar standardCursor = ColoredChar.create('▶',
 			Color.red);
 	private static int width = TermPanel.DEFAULT_COLS;
@@ -124,6 +124,7 @@ public class Inventar {
 			while (key == 0) {
 
 				key = term.getKey();
+				System.out.println(KeyEvent.VK_UP);
 
 				if (key == gtr.keys.Keys.getOpenInventoryKey())
 					break;
@@ -143,8 +144,11 @@ public class Inventar {
 							showItemList();
 						}
 						break;
+					case KeyEvent.VK_ENTER:
+						player.selectItem(player.getItems().get(cursorAt).getName());
 					default:
 						break;
+					
 					}
 					System.out.println("ausgewähltes Item: " + cursorAt);
 					key = 0;
