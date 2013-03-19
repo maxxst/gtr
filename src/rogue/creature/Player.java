@@ -172,7 +172,6 @@ public class Player extends Creature implements Camera {
 			if (!this.weapon.equals(weapon)) {
 				addItem(this.weapon);
 				this.weapon = weapon;
-				items.remove(weapon);
 			} else {
 				this.weapon.add(weapon);
 			}
