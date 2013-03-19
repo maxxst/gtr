@@ -23,24 +23,6 @@ import rogue.creature.Creature;
  * 
  */
 public class Weapon extends Item {
-
-	public final static String melee = "melee";
-	public final static String light = "light";
-	public final static String middle = "middle";
-	public final static String heavy = "heavy";
-	
-	public static String getRandomType(){
-		Random randGen = new Random();
-		switch (randGen.nextInt(2)) {
-		case 0:
-			return light;
-		case 2:
-			return middle;
-		case 3:
-			return heavy;
-		}
-		return null;
-	}
 	
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
 			.readYamlArrayList("res/weapons/weapons.yml");
@@ -183,7 +165,7 @@ public class Weapon extends Item {
 		
 		setCount(randomGenerator.nextInt(79) + 21);
 		//System.out.println(type == melee);
-		if (type.equals(melee))
+		if (type.equals(WeaponType.melee.toString()))
 			setCount(1);
 	}
 	
@@ -217,7 +199,7 @@ public class Weapon extends Item {
 	 */
 	public void use(Direction dir, float hitProb){
 		if (holder() != null) {
-			if(getCount() > 0 || (type == melee)){
+			if(getCount() > 0 || (type.equals(WeaponType.melee.toString()))){
 				Random randomGenerator = new Random();
 		    	System.out.println(((Creature) holder()).attackText());
 		    	if (!isProjectile()){
@@ -244,7 +226,7 @@ public class Weapon extends Item {
 		    	} else {
 		    		world().addActor(new Projectile(dir, this), pos());
 		    	}
-		    	if (type != melee)
+		    	if (!type.equals(WeaponType.melee.toString()))
 		    		super.use();
 		    	else
 		    		setCount(1);
