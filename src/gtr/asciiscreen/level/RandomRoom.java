@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import gtr.actor.fix.Door;
-import gtr.asciiscreen.AsciiScreen;
 import gtr.util.datatype.Location;
 import rogue.creature.Player;
 
@@ -22,22 +21,22 @@ public class RandomRoom extends Level {
 		leveldesign = new ArrayList<String>();
 		String wall = "";
 		for (int i = 0; i < width; i++)
-			wall += AsciiScreen.standardWall;
+			wall += standardWall;
 		leveldesign.add(wall);
 		for (int y = 1; y < height - 1; y++) {
-			String s = Character.toString(AsciiScreen.standardWall);
+			String s = Character.toString(standardWall);
 			for (int x = 1; x < width - 1; x++)
 				s += ".";
-			s += AsciiScreen.standardWall;
+			s += standardWall;
 			leveldesign.add(s);
 		}
 		wall = "";
 		for (int i = 0; i < width / 2 - 1; i++)
-			wall += AsciiScreen.standardWall;
+			wall += standardWall;
 		posDoor = new Coordinate(wall.length(), height - 1);
 		wall += "▒▒";
 		while (wall.length() < width)
-			wall += AsciiScreen.standardWall;
+			wall += standardWall;
 		leveldesign.add(wall);
 	}
 	
@@ -52,8 +51,8 @@ public class RandomRoom extends Level {
 		createAsciiScreen(leveldesign, this, player.getTerm());
 		addActor(player, width / 2, height - 2);
 		System.out.println(lastLevel.toString());
-		addActor(new Door(lastLevel, '▒'), posDoor);
-		addActor(new Door(lastLevel, '▒'), posDoor.x() + 1, posDoor.y());
+		addActor(new Door(lastLevel, exit), posDoor);
+		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
 		
 	}
 

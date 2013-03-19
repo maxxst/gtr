@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public abstract class AsciiScreen extends World {
 	
 	private static ArrayList<Character> floorChars = setFloorChars();
-	protected static char standardWall = '#';
 	
 	public AsciiScreen(int width, int height) {
 		super(width, height);

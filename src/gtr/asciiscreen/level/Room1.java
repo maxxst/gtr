@@ -32,12 +32,12 @@ public class Room1 extends Level {
 		Coordinate posDoor = null;
 		for (int y = 0; y < height; y++)
 			for (int x = 0; x < width; x++)
-				if (leveldesign.get(y).charAt(x) == '▒') {
+				if (leveldesign.get(y).charAt(x) == exit) {
 					posDoor = new Coordinate(x, y);
 					break;
 				}
-		addActor(new Door(lastLevel, '▒'), posDoor);
-		addActor(new Door(lastLevel, '▒'), posDoor.x() + 1, posDoor.y());
+		addActor(new Door(lastLevel, exit), posDoor);
+		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
 
 		addActor(player, posDoor.x(), posDoor.y() - 1);
 
