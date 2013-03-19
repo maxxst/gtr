@@ -46,6 +46,7 @@ public class Item extends Actor{
 		this.count += item.getCount();
 	}
 	
+	// bei Waffen die Anzahl der Munition
 	public int getCount(){
 		return count;
 	}

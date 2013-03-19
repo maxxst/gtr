@@ -1,7 +1,9 @@
 package gtr.asciiscreen.other;
 
+import gtr.actor.item.Item;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
+import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 
@@ -9,8 +11,8 @@ import rogue.creature.Player;
 
 public class Inventar {
 
-	// private static ArrayList<String> inventoryScreen = new
-	// ArrayList<String>();
+	private static final int differentItemsToSee = 4;
+	private static int chosenItem = 1;
 
 	private static ArrayList<String> createInventoryScreen(Terminal term,
 			Player player) {
@@ -25,29 +27,44 @@ public class Inventar {
 		inventoryScreen.add(""); // zweite Zeile des Inventars
 
 		// Erstellt Rahmen für Einträge der Liste aller Items im Inventar
-		String borderTop = "╔═══╦";
+		String borderTop = "╔════╦";
 		while (borderTop.length() < width - 1)
 			borderTop += "═";
 		borderTop += "╗";
 
-		String borderBetween = "╠═══╬";
+		String borderBetween = "╠════╬";
 		while (borderBetween.length() < width - 1)
 			borderBetween += "═";
 		borderBetween += "╣";
 
-		String borderBottom = "╚═══╩";
+		String borderBottom = "╚════╩";
 		while (borderBottom.length() < width - 1)
 			borderBottom += "═";
 		borderBottom += "╝";
 
 		inventoryScreen.add(borderTop);
 
-		for (int i = 0; i < player.getItems().size(); i++) {
-			inventoryScreen.add(player.getItems().get(i).toString());
+		boolean itemListTooBig = player.getItems().size() > differentItemsToSee ? true : false;
+		int listHeight = itemListTooBig ? differentItemsToSee
+				: player.getItems().size();
+
+		for (int i = 0; i < listHeight; i++) {
+			Item item = player.getItems().get(i);
+			String lineWithItem = "║";
+			lineWithItem += " " + String.format("%03d", item.getCount()) + "║"
+					+ item.getName();
+			while (lineWithItem.length() < width - 1)
+				lineWithItem += " ";
+			lineWithItem += "║";
+
+			inventoryScreen.add(lineWithItem);
 			inventoryScreen.add(borderBetween);
 		}
+		
+		
 
-		inventoryScreen.add(borderBottom);
+		if (!itemListTooBig)
+			inventoryScreen.set(inventoryScreen.size() - 1, borderBottom);
 
 		while (inventoryScreen.size() < height)
 			inventoryScreen.add("");
