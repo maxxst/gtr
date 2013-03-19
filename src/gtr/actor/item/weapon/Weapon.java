@@ -3,6 +3,8 @@
 import gtr.actor.item.Ammo;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Projectile;
+import gtr.util.DropType;
+import gtr.util.WeaponType;
 import jade.util.datatype.Coordinate;
 import jade.util.datatype.Direction;
 
@@ -120,6 +122,11 @@ public class Weapon extends Item {
 		this(matching_weapon(string), holder);
 	}
 	
+	public Weapon(String string) {
+		// get a weapon-hashmap
+		this(matching_weapon(string));
+	}
+	
 	
 	/**
 	 * Creates a weapon an binds it to a creature
@@ -175,11 +182,16 @@ public class Weapon extends Item {
 		Random randomGenerator = new Random();
 		
 		setCount(randomGenerator.nextInt(79) + 21);
-		
-		if (type == melee)
+		//System.out.println(type == melee);
+		if (type.equals(melee))
 			setCount(1);
 	}
 	
+	public Weapon(DropType dropType) {
+		this(WeaponType.getRandom().toString());
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Merges two equal weapons by adding up the Ammo 
 	 * @param weapon
@@ -234,6 +246,8 @@ public class Weapon extends Item {
 		    	}
 		    	if (type != melee)
 		    		super.use();
+		    	else
+		    		setCount(1);
 			} else
 				System.out.println(getName() + " is empty!");
 		} else {

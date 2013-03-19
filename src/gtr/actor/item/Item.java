@@ -1,5 +1,7 @@
 package gtr.actor.item;
 
+import java.util.Random;
+
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
@@ -9,6 +11,18 @@ import jade.util.datatype.ColoredChar;
  * @version 0.1
  */
 public class Item extends Actor{
+	
+	//DropTypes
+	public static String common = "common";
+	public static String uncommon = "uncommon";
+	public static String rare = "rare";
+	public static String mythic = "mythic";
+	
+	//Implemented ItemTypes
+	public static String weapon = "weapon";
+	public static String potion = "potion";
+	public static String ammo = "ammo";
+	//public static String Money = "weapon";
     
 	private String name = "Item";
 	private int count = 1;

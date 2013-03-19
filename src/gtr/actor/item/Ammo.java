@@ -1,6 +1,9 @@
 package gtr.actor.item;
 
 import gtr.actor.item.weapon.Weapon;
+import gtr.util.DropType;
+import gtr.util.WeaponType;
+
 import java.util.Random;
 
 import jade.util.datatype.ColoredChar;
@@ -10,15 +13,23 @@ public class Ammo extends Item {
 	
 	public Ammo(ColoredChar face) {
 		super(face);
-		Random randomGenerator = new Random();
-		setCount(randomGenerator.nextInt(79) +21);
-		type = Weapon.getRandomType();
+		setAmmoType();
+	}
+	
+	public Ammo(ColoredChar face, DropType dropType) {
+		super(face);
+		setAmmoType(dropType);
 	}
 
 	public Ammo() {
 		this(ColoredChar.create('a'));
 	}
 	
+	public Ammo(DropType dropType) {
+		this(ColoredChar.create('a'), dropType);
+	}
+	
+
 	public String getType(){
 		return type;
 	}
@@ -47,6 +58,19 @@ public class Ammo extends Item {
 	public boolean equals(Ammo ammo){
 		return this.getType() == ammo.getType();
 		
+	}
+	
+	private void setAmmoType(DropType dropType){
+		setType(WeaponType.getRandom(dropType).toString());
+	}
+	private void setAmmoType(){
+		setType(WeaponType.getRandom().toString());
+	}
+	
+	private void setType(String type){
+		if (type.equals("melee"))
+			type = "light";
+		this.type = type;
 	}
 
 }

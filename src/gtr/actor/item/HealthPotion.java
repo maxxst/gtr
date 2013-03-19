@@ -1,5 +1,6 @@
 package gtr.actor.item;
 
+import gtr.util.DropType;
 import rogue.creature.Creature;
 import jade.util.datatype.ColoredChar;
 
@@ -20,6 +21,11 @@ public class HealthPotion extends Potion {
 		this(ColoredChar.create('¿'));
 	}
 	
+	public HealthPotion(DropType dropType) {
+		this(ColoredChar.create('¿'));
+		// TODO Auto-generated constructor stub
+	}
+
 	public void use(){
 		if(holder() != null)
 			((Creature) holder()).addHp(heals);
