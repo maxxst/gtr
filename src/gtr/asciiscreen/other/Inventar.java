@@ -164,7 +164,6 @@ public class Inventar {
 			while (key == 0) {
 
 				key = term.getKey();
-				System.out.println(KeyEvent.VK_UP);
 
 				if (key == gtr.keys.Keys.getOpenInventoryKey())
 					break;
@@ -188,7 +187,7 @@ public class Inventar {
 						Item selectedItem = player.getItems().get(cursorAt);
 						player.selectItem(selectedItem.getName());
 
-						int p = cursorAt * 2 + 1;
+						int p = cursorAt * 2 + 1; // Index ausgewähltes Item in itemList<String>
 						
 						if (selectedItem.getCount() != 0) {
 							String s = itemList.get(p);
@@ -209,14 +208,11 @@ public class Inventar {
 						break;
 
 					}
-					System.out.println("ausgewähltes Item: " + cursorAt);
+					
 					key = 0;
 
 				}
-				// else
-
 			}
-
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -82,6 +82,12 @@ public class Player extends Creature implements Camera {
 				else if (screenType.name().equals("StartScreen"))
 					switch (key) {
 					case 's':
+						nextLevel = new Location(LevelEnum.Prologue, new Coordinate(1, 1));
+						break;
+					}
+				else if (screenType.name().equals("Prologue"))
+					switch (key) {
+					case 's':
 						// nextLevel = new Location(LevelEnum.Town, new
 						// Coordinate(6, 114));
 						nextLevel = new Location(LevelEnum.Town,

@@ -10,6 +10,7 @@ import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.asciiscreen.level.Dungeon;
 import gtr.asciiscreen.level.Room;
 import gtr.asciiscreen.level.Town;
+import gtr.asciiscreen.other.Prologue;
 import gtr.asciiscreen.other.StartScreen;
 import gtr.util.datatype.Location;
 import jade.core.Actor;
@@ -58,6 +59,9 @@ public class Rogue {
 						world = new StartScreen(player, screen);
 						nextLevel = world.inLevel();
 						break;
+					case Prologue:
+						world = new Prologue(player);
+						nextLevel = world.inLevel();
 					case Town:
 						world = new Town(player);
 						nextLevel = world.inLevel();
@@ -69,52 +73,7 @@ public class Rogue {
 					}	
 					
 					world.getMappingLevelActor().put(player.getCurrentLevel().getLevelEnum(), world.getActors(Actor.class).toArray(new Actor[0]));
-					//			world.setMappingLevelActor(new HashMap<world>)
 					
-					// Vorbereitungen
-					/*
-					LevelEnum levelEnum = nextLevel.getLevelEnum();
-					Class<?> c = null;
-					Object invoker = null;
-					Method objMethod = null;
-					Class<?> arguments[] = null;
-					
-					try {
-						c = Class.forName("gtr.asciiscreen.level." + levelEnum.toString());
-						Constructor<?> constructor;
-						
-						switch (levelEnum) {
-						case Dungeon:
-							constructor = c.getConstructor(new Class[] { Integer.class, Integer.class, Player.class });
-							invoker = constructor.newInstance(new Object[] { 20, 20, player });
-							break;
-						default:
-							constructor = c.getConstructor(new Class[] { Player.class });
-							invoker = constructor.newInstance(new Object[] { player });
-							break;
-						}
-						 arguments = new Class[] { };
-						objMethod = c.getMethod("inLevel", arguments);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-						try {
-							nextLevel = (Location) objMethod.invoke(invoker, (Object[]) arguments);
-						} catch (IllegalArgumentException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IllegalAccessException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (InvocationTargetException e) {
-							// TODO Auto-generated catch block
-							//e.printStackTrace();
-							Throwable cause = e.getCause();
-							cause.printStackTrace();
-						}
-					*/
 						
 				}
 				//System.exit(0);
