@@ -10,6 +10,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import rogue.creature.Creature;
+
 /**
  * Represents anything on a Jade {@code World} that can perform an action (or be acted upon). This
  * obviously includes things like the player, NPCs, and monsters. Not as obviously, an {@code Actor}
@@ -127,8 +129,33 @@ public abstract class Actor extends Messenger
      */
     public final void move(int dx, int dy)
     {
-        setPos(x() + dx, y() + dy);
+    	     setPos(x() + dx, y() + dy);;
+    	  
+
     }
+    
+    public final void movecare(int dx, int dy)
+    {
+    	
+    	    if (world().passableAt(dx,dy) && world().getActorAt(Creature.class, dx,dy)!=null)
+    	     {move (dx,dy);}
+    	    else
+    	    { int i = (int) (Math.random()*8+1);
+    	      switch (i)
+    	      	{
+    	      	case 1: movecare (dx+1, y() + dy);break;
+    	      	case 2: movecare (dx+1, y() + dy-1);break;
+    	      	case 3: movecare (dx, y() + dy-1);break;
+    	      	case 4: movecare (dx-1, y() + dy-1);break;
+    	      	case 5: movecare (dx-1, y() + dy);break;
+    	      	case 6: movecare (dx-1, y() + dy+1);break;
+    	      	case 7: movecare (dx, y() + dy+1);break;
+    	      	case 8: movecare (dx+1, y() + dy+1);break;
+    	       }
+    	      }
+
+    }
+
 
     /**
      * Moves the {@code Actor} by the specified amount
@@ -148,7 +175,7 @@ public abstract class Actor extends Messenger
     public final void move(Direction dir)
     {
         Guard.argumentIsNotNull(dir);
-
+ 
         setPos(x() + dir.dx(), y() + dir.dy());
     }
 
