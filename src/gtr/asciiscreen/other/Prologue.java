@@ -15,7 +15,7 @@ import gtr.util.datatype.Location;
 
 public class Prologue extends OtherScreen {
 
-	private static ArrayList<String> leveldesign = ReadFile.readScreenFile("res/screens/prologue.txt");;
+	private static ArrayList<String> leveldesign = ReadFile.readScreenFile("res/screens/prologue.txt");
 
 	public Prologue(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
@@ -28,10 +28,7 @@ public class Prologue extends OtherScreen {
 		Messenger.player = player;
 		createAsciiScreen(leveldesign, this, player.getTerm());
 		
-		int x = TermPanel.DEFAULT_COLS / 2;
-		int y = TermPanel.DEFAULT_ROWS / 2;
-		player.setFace(ColoredChar.create(leveldesign.get(y).charAt(x)));
-		addActor(player, x, y);
+		setPlayerOnScreen(leveldesign);
 	}
 
 	@Override

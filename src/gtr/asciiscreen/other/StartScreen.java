@@ -37,10 +37,7 @@ public class StartScreen extends OtherScreen {
 		Messenger.player = player;
 		createAsciiScreen(leveldesign, this, player.getTerm());
 
-		int x = TermPanel.DEFAULT_COLS / 2;
-		int y = TermPanel.DEFAULT_ROWS / 2;
-		player.setFace(ColoredChar.create(leveldesign.get(y).charAt(x)));
-		addActor(player, x, y);
+		setPlayerOnScreen(leveldesign);
 	}
 
 	public Location inLevel() {
