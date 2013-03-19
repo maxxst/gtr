@@ -4,7 +4,9 @@ import gtr.actor.item.Item;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
+import jade.util.datatype.Coordinate;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -16,6 +18,10 @@ public class Inventar {
 	private static final int itemList_ArrayListSize = itemListHeight * 2 + 1;
 
 	private static int cursorAt = 1;
+	private static final Coordinate cursorInRow = new Coordinate(1,
+			cursorAt * 2 + 1);
+	private static final ColoredChar standardCursor = ColoredChar.create('▶',
+			Color.red);
 	private static int width = TermPanel.DEFAULT_COLS;
 	private static int height = TermPanel.DEFAULT_ROWS;
 	private static Terminal term;
@@ -106,7 +112,10 @@ public class Inventar {
 
 	public static void showInventory(Terminal term, Player player) {
 		gtr.asciiscreen.AsciiScreen.showAsciiScreen(
-				createInventoryScreen(term, player), player.world(), term);
+
+		createInventoryScreen(term, player), player.world(), term);
+		term.bufferChar(cursorInRow, standardCursor);
+		term.refreshScreen();
 
 		try {
 
@@ -119,20 +128,25 @@ public class Inventar {
 				if (key == gtr.keys.Keys.getOpenInventoryKey())
 					break;
 				else {
-					System.out.println("h");
+
 					switch (key) {
 					case 'o':
-						// System.out.println(Character.toString(key));
-						cursorAt -= 2;
-						showItemList();
+						if (cursorAt >= 1) {
+							cursorAt -= 1;
+							showItemList();
+						}
+
 						break;
 					case 'l':
-						cursorAt += 2;
-						showItemList();
+						if (cursorAt < itemListHeight) {
+							cursorAt += 1;
+							showItemList();
+						}
 						break;
 					default:
 						break;
 					}
+					System.out.println("ausgewähltes Item: " + cursorAt);
 					key = 0;
 
 				}
@@ -152,7 +166,7 @@ public class Inventar {
 				ColoredChar coloredChar = null;
 				try {
 					coloredChar = ColoredChar.create(itemList.get(
-							cursorAt - 1 + y).charAt(x));
+							cursorAt * 2 + y).charAt(x));
 				} catch (IndexOutOfBoundsException e) {
 					// Wenn auf einen Index zugegriffen wird, den es nicht gibt
 					// (weil man dem Kartenrand zu nah kommt), wird an dieser
@@ -161,6 +175,7 @@ public class Inventar {
 				}
 				term.bufferChar(x, y + 2, coloredChar);
 			}
+		term.bufferChar(cursorInRow, standardCursor);
 		term.bufferCameras();
 		term.refreshScreen();
 	}
