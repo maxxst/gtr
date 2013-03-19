@@ -718,7 +718,7 @@ public abstract class World extends Messenger {
 	 * @param term
 	 *            Terminal
 	 */
-	protected void changeAndRefreshScreenAndTick(Terminal term) {
+	public void changeAndRefreshScreenAndTick(Terminal term, boolean withTick) {
 		term.clearBuffer();
 		int n = (screenType.equals(gtr.asciiscreen.ScreenType.Level)) ? TermPanel.DEFAULT_ROWS - 1 : TermPanel.DEFAULT_ROWS;
 		for (int x = 0; x < TermPanel.DEFAULT_COLS; x++)
@@ -748,7 +748,12 @@ public abstract class World extends Messenger {
 		term.bufferCameras();
 		term.refreshScreen();
 
-		tick();
+		if (withTick)
+			tick();
+	}
+	
+	protected void changeAndRefreshScreenAndTick(Terminal term) {
+		changeAndRefreshScreenAndTick(term, true);
 	}
 	
 	public void setActorsInWorld() {

@@ -5,66 +5,83 @@ import jade.ui.TermPanel;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import rogue.creature.Player;
 
 public class Inventar {
 
-	private static final int differentItemsToSee = 4;
-	private static int chosenItem = 1;
+	private static final int itemListHeight = 4;
+	private static final int itemList_ArrayListSize = itemListHeight * 2 + 1;
 
-	private static ArrayList<String> createInventoryScreen(Terminal term,
-			Player player) {
-		term.clearBuffer();
+	private static int cursorAt = 1;
+	private static int width = TermPanel.DEFAULT_COLS;
+	private static int height = TermPanel.DEFAULT_ROWS;
+	private static Terminal term;
+	private static ArrayList<String> itemList;
 
-		int width = TermPanel.DEFAULT_COLS;
-		int height = TermPanel.DEFAULT_ROWS;
-
-		ArrayList<String> inventoryScreen = new ArrayList<String>();
-
-		inventoryScreen.add("Inventar"); // erste Zeile des Inventars
-		inventoryScreen.add(""); // zweite Zeile des Inventars
+	private static void createItemList(Player player) {
+		itemList = new ArrayList<String>();
 
 		// Erstellt Rahmen für Einträge der Liste aller Items im Inventar
 		String borderTop = "╔════╦";
-		while (borderTop.length() < width - 1)
+		while (borderTop.length() < width - 3)
 			borderTop += "═";
-		borderTop += "╗";
+		borderTop += "╦═╗";
 
 		String borderBetween = "╠════╬";
-		while (borderBetween.length() < width - 1)
+		while (borderBetween.length() < width - 3)
 			borderBetween += "═";
-		borderBetween += "╣";
+		borderBetween += "╬═╣";
 
 		String borderBottom = "╚════╩";
-		while (borderBottom.length() < width - 1)
+		while (borderBottom.length() < width - 3)
 			borderBottom += "═";
-		borderBottom += "╝";
+		borderBottom += "╩═╝";
 
-		inventoryScreen.add(borderTop);
+		itemList.add(borderTop);
 
-		boolean itemListTooBig = player.getItems().size() > differentItemsToSee ? true : false;
-		int listHeight = itemListTooBig ? differentItemsToSee
-				: player.getItems().size();
-
-		for (int i = 0; i < listHeight; i++) {
+		// Erstelle Aussehen der Itemliste
+		for (int i = 0; i < player.getItems().size(); i++) {
 			Item item = player.getItems().get(i);
 			String lineWithItem = "║";
 			lineWithItem += " " + String.format("%03d", item.getCount()) + "║"
 					+ item.getName();
-			while (lineWithItem.length() < width - 1)
+			while (lineWithItem.length() < width - 3)
 				lineWithItem += " ";
-			lineWithItem += "║";
+			lineWithItem += "║" + Integer.toString(i) + "║";
 
-			inventoryScreen.add(lineWithItem);
-			inventoryScreen.add(borderBetween);
+			itemList.add(lineWithItem);
+			itemList.add(borderBetween);
 		}
-		
-		
+		itemList.set(itemList.size() - 1, borderBottom);
+	}
 
-		if (!itemListTooBig)
-			inventoryScreen.set(inventoryScreen.size() - 1, borderBottom);
+	private static ArrayList<String> createInventoryScreen(Terminal term,
+			Player player) {
+
+		term.clearBuffer();
+
+		gtr.asciiscreen.other.Inventar.term = term;
+		ArrayList<String> inventoryScreen = new ArrayList<String>();
+		createItemList(player);
+
+		inventoryScreen.add("Inventar"); // erste Zeile des Inventars
+		inventoryScreen.add(""); // zweite Zeile des Inventars
+
+		for (int x = 0; x < itemList_ArrayListSize; x++) {
+			try {
+				inventoryScreen.add(itemList.get(x));
+			} catch (IndexOutOfBoundsException e) {
+				inventoryScreen.add("");
+			}
+		}
+
+		while (inventoryScreen.size() < itemList_ArrayListSize + 2)
+			inventoryScreen.add("");
+
+		showItemList();
 
 		while (inventoryScreen.size() < height)
 			inventoryScreen.add("");
@@ -95,19 +112,56 @@ public class Inventar {
 
 			char key = 0;
 
-			while (gtr.keys.Keys.isInventoryKey(key) || key == 0) {
+			while (key == 0) {
 
 				key = term.getKey();
 
 				if (key == gtr.keys.Keys.getOpenInventoryKey())
 					break;
-				else
+				else {
+					System.out.println("h");
+					switch (key) {
+					case 'o':
+						// System.out.println(Character.toString(key));
+						cursorAt -= 2;
+						showItemList();
+						break;
+					case 'l':
+						cursorAt += 2;
+						showItemList();
+						break;
+					default:
+						break;
+					}
 					key = 0;
+
+				}
+				// else
+
 			}
 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public static void showItemList() {
+		for (int y = 0; y < itemList_ArrayListSize; y++)
+			for (int x = 0; x < width; x++) {
+				ColoredChar coloredChar = null;
+				try {
+					coloredChar = ColoredChar.create(itemList.get(
+							cursorAt - 1 + y).charAt(x));
+				} catch (IndexOutOfBoundsException e) {
+					// Wenn auf einen Index zugegriffen wird, den es nicht gibt
+					// (weil man dem Kartenrand zu nah kommt), wird an dieser
+					// Stelle ein Leerzeichen angezeigt.
+					coloredChar = ColoredChar.create(' ');
+				}
+				term.bufferChar(x, y + 2, coloredChar);
+			}
+		term.bufferCameras();
+		term.refreshScreen();
 	}
 }

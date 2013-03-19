@@ -90,10 +90,12 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Level"))
 
-					if (key == gtr.keys.Keys.getOpenInventoryKey())
+					if (key == gtr.keys.Keys.getOpenInventoryKey()) {
 						gtr.asciiscreen.other.Inventar
 								.showInventory(term, this);
-					else {
+						world().changeAndRefreshScreenAndTick(term, false);
+						key = 0;
+					} else {
 						switch (key) {
 						case ' ':
 							System.out.println("Leertaste");
