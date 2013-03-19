@@ -35,9 +35,9 @@ public class Player extends Creature implements Camera {
 		this.term = term;
 		fov = new RayCaster();
 
-		// TODO besser! → jetzt besser?
-		Weapon weapon = new Weapon("Pistole", this);
-		this.weapon = weapon;
+		// TODO besser! → jetzt besser? → NEIN!
+		weapon = new Weapon("Pistole", this);
+		weapon.setCount(6); // halbes Magazin und so
 		addItem(weapon);
 
 		// testweise
