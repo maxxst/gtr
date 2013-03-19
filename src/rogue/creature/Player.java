@@ -1,6 +1,7 @@
 package rogue.creature;
 
 import gtr.actor.fading.Blood;
+import gtr.actor.item.Ammo;
 import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
@@ -33,17 +34,17 @@ public class Player extends Creature implements Camera {
 		setHp(20);
 		this.term = term;
 		fov = new RayCaster();
-		weapon = new Weapon("Raketenwerfer", this); // TODO besser!
+		weapon = new Weapon("Pistole", this); // TODO besser!
 
 		// testweise
-		addItem(new Weapon("Raketenwerfer", this));
+		//addItem(new Weapon("Raketenwerfer", this));
 //		System.out.println("Anzahl: " + items.get(0).getCount());
-		addItem(new Weapon("Pistole", this));
-		addItem(new Weapon("Pistole", this));
+		//addItem(new Weapon("Pistole", this));
+		//addItem(new Weapon("Pistole", this));
 		addItem(new HealthPotion(this));
-		addItem(new HealthPotion(this));
-		addItem(new Weapon("Schwert", this));
-		addItem(new Weapon("Bogen des Robin Hood", this));
+		//addItem(new HealthPotion(this));
+		//addItem(new Weapon("Schwert", this));
+		//addItem(new Weapon("Bogen des Robin Hood", this));
 
 		for (Item item : items)
 			System.out.println(item.getName() + " " + item.getCount());
@@ -129,8 +130,12 @@ public class Player extends Creature implements Camera {
 								key = 0;
 							break;
 
-						case 'h':
+						case 'h': //HEALs
 							selectItem("Heiltrank");
+							break;
+							
+						case 'f': //RELOAD
+							reload();
 							break;
 
 						default:
@@ -171,17 +176,27 @@ public class Player extends Creature implements Camera {
 		cleanItemList();
 	}
 
-	public void equip(Weapon weapon) {
-		if (!this.weapon.equals(weapon)) {
-			addItem(this.weapon);
-			this.weapon = weapon;
-			items.remove(weapon);
-		}
-	}
-
+	
 	public void equip(Item item) {
-		// TODO implement
+		if( item instanceof Weapon){ // Wenn es eine Waffe ist
+			Weapon weapon = (Weapon) item;
+			if (!this.weapon.equals(weapon)) {
+				addItem(this.weapon);
+				this.weapon = weapon;
+				items.remove(weapon);
+			} else {
+				this.weapon.add(weapon);
+			}
+		} else if(item instanceof Ammo){ // Wenn es Munition ist
+			Ammo ammo = (Ammo) item;
+			if(weapon.getType().equals(ammo.getType())){
+				reload(ammo);
+			}
+		}
+		
 	}
+	
+	
 
 	public String attackText() {
 		return "Du greifst an mit: " + weapon.getName();
@@ -201,16 +216,19 @@ public class Player extends Creature implements Camera {
 
 	public void addItem(Item item) {
 		boolean added = false;
-		for (Item itemInList : items) {
-			if (item.equals(itemInList)) {
-				itemInList.add(item);
-				added = true;
-				break;
+		if(item.equals(weapon)){
+			weapon.add(item);
+		} else {
+			for (Item itemInList : items) {
+				if (item.equals(itemInList)) {
+					itemInList.add(item);
+					added = true;
+					break;
+				}
 			}
+			if (!added)
+				items.add(item);
 		}
-		if (!added)
-			items.add(item);
-		
 		System.out.println("Du erhälst: " + item.getName());
 	}
 
@@ -225,14 +243,36 @@ public class Player extends Creature implements Camera {
 
 	public void selectItem(String name) {
 		for (Item itemInList : items) {
+			System.out.println(name.equals(itemInList.getName()));
 			if (name.equals(itemInList.getName())) {
+				System.out.print(itemInList.getName());
 				if (itemInList.isEquippable()) {
+					System.out.println(" equip");
 					equip(itemInList);
 				} else {
+					System.out.println(" use");
 					use(itemInList);
 				}
 				break;
 			}
+			
 		}
+	}
+	
+	private void reload(){
+		//System.out.println("Munition ("+weapon.getType()+")");
+		selectItem("Munition ("+weapon.getType()+")");
+	}
+	
+	private void reload(Ammo ammo){
+		int n = ammo.getCount();
+		if (n > 20)
+			n = 20;
+		
+		ammo.use(n);
+		weapon.add(n);
+		
+		if(ammo.getCount() <= 0)
+			ammo.expire();
 	}
 }

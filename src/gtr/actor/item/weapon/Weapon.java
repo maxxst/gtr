@@ -162,9 +162,7 @@ public class Weapon extends Item {
 		
 		//sets random Count at creation
 		Random randomGenerator = new Random();
-		
 		setCount(randomGenerator.nextInt(79) + 21);
-		//System.out.println(type == melee);
 		if (type.equals(WeaponType.melee.toString()))
 			setCount(1);
 	}
@@ -184,10 +182,15 @@ public class Weapon extends Item {
 	}
 	
 	public void add(Ammo ammo){
-		if (ammo.getType() == type){
+		if (ammo.getType().equals(type)){
 			setCount(getCount() + ammo.getAmmo());
 			ammo.expire();
 		}
+	}
+	
+	public void add(int n) {
+		setCount(getCount() + n);
+		
 	}
 	
 	
@@ -315,6 +318,6 @@ public class Weapon extends Item {
 	}
 	
 	public boolean equals(Weapon weapon){
-		return this.getName() == weapon.getName();
+		return this.getName().equals(weapon.getName());
 	}
 }

@@ -33,6 +33,10 @@ public class Item extends Actor{
 		count--; 
 	}
 	
+	public void use(int n){
+		count -= n;
+	}
+	
 	public String toString() {
 		return this.getName();
 	}
@@ -63,6 +67,6 @@ public class Item extends Actor{
 	}
 	
 	public boolean equals(Item item){
-		return getName() == item.getName();
+		return getName().equals(item.getName());
 	}
 }

@@ -16,6 +16,9 @@ public class Ammo extends Item {
 		super(face);
 		setAmmoType(dropType);
 		setName("Munition (" + type + ")");
+		
+		Random randomGenerator = new Random();
+		setCount(randomGenerator.nextInt(29) + 11);
 	}
 
 	public Ammo() {
@@ -60,14 +63,14 @@ public class Ammo extends Item {
 	private void setAmmoType(DropType dropType){
 		setType(WeaponType.getRandom(dropType).toString());
 	}
-	private void setAmmoType(){
-		setType(WeaponType.getRandom().toString());
-	}
 	
 	private void setType(String type){
 		if (type.equals("melee"))
 			type = "light";
 		this.type = type;
 	}
-
+	
+	public boolean isEquippable() {
+		return true;
+	}
 }
