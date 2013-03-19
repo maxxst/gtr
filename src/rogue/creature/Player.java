@@ -82,6 +82,12 @@ public class Player extends Creature implements Camera {
 				else if (screenType.name().equals("StartScreen"))
 					switch (key) {
 					case 's':
+						nextLevel = new Location(LevelEnum.Prologue, new Coordinate(1, 1));
+						break;
+					}
+				else if (screenType.name().equals("Prologue"))
+					switch (key) {
+					case 's':
 						// nextLevel = new Location(LevelEnum.Town, new
 						// Coordinate(6, 114));
 						nextLevel = new Location(LevelEnum.Town,
@@ -90,10 +96,12 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Level"))
 
-					if (key == gtr.keys.Keys.getOpenInventoryKey())
+					if (key == gtr.keys.Keys.getOpenInventoryKey()) {
 						gtr.asciiscreen.other.Inventar
 								.showInventory(term, this);
-					else {
+						world().changeAndRefreshScreenAndTick(term, false);
+						key = 0;
+					} else {
 						switch (key) {
 						case ' ':
 							System.out.println("Leertaste");

@@ -2,5 +2,6 @@ package gtr.asciiscreen;
 
 public enum ScreenType {
 	Level,
-	StartScreen
+	StartScreen,
+	Prologue
 }

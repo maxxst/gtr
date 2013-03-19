@@ -102,6 +102,7 @@ public abstract class AsciiScreen extends World {
 	
 	public enum LevelEnum {
 		StartScreen,
+		Prologue,
 		Dungeon,
 		Town,
 		Room
