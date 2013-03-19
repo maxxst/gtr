@@ -1,5 +1,8 @@
 package gtr.hud;
 
+import java.util.ArrayList;
+
+import gtr.actor.item.Item;
 import jade.core.Messenger;
 
 public class Hud {
@@ -11,7 +14,15 @@ public class Hud {
 		statusBar += "	";
 		statusBar += " Ammo: " + Integer.toString(Messenger.getPlayer().getWeapon().getCount());
 		statusBar += "	";
-		statusBar += " Heiltränke: " + Integer.toString(Messenger.getPlayer().getItems().get(2).getCount());
+		
+		int healthPotionCount = 0;
+		ArrayList<Item> items = Messenger.getPlayer().getItems();
+		for (int i = 0; i < items.size(); i++)
+			if ("Heiltrank".equals(items.get(i).getName())) {
+				healthPotionCount = items.get(i).getCount();
+				break;
+			}
+		statusBar += " Heiltränke: " + Integer.toString(healthPotionCount);
 		
 		return statusBar;
 		
