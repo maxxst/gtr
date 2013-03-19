@@ -14,5 +14,9 @@ public abstract class Level extends AsciiScreen {
 		
 		screenType = ScreenType.Level;
 	}
+	
+	public static char getExitChar() {
+		return exit;
+	}
 
 }
