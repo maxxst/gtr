@@ -719,8 +719,8 @@ public abstract class World extends Messenger {
 	 *            Terminal
 	 */
 	public void changeAndRefreshScreenAndTick(Terminal term, boolean withTick) {
-		term.clearBuffer();
-		int n = (screenType.equals(gtr.asciiscreen.ScreenType.Level)) ? TermPanel.DEFAULT_ROWS - 1 : TermPanel.DEFAULT_ROWS;
+		term.clearBufferWithoutOutput();
+		int n = (screenType.equals(gtr.asciiscreen.ScreenType.Level)) ? TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT - 1 : TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT;
 		for (int x = 0; x < TermPanel.DEFAULT_COLS; x++)
 			for (int y = 0; y < n; y++) {
 				ColoredChar ch;
@@ -731,7 +731,7 @@ public abstract class World extends Messenger {
 					// Kartenausschnitts bleibt und bei Bewegen dieser sich die
 					// Karte bewegt.
 					ch = look(player.x() - TermPanel.DEFAULT_COLS / 2 + x,
-							player.y() - TermPanel.DEFAULT_ROWS / 2 + y);
+							player.y() - TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT / 2 + y);
 				} catch (IndexOutOfBoundsException e) {
 					// Wenn auf einen Index zugegriffen wird, den es nicht gibt
 					// (weil man dem Kartenrand zu nah kommt), wird an dieser
@@ -742,7 +742,7 @@ public abstract class World extends Messenger {
 			}
 		
 		if (screenType.equals(gtr.asciiscreen.ScreenType.Level))
-			term.bufferString(0, TermPanel.DEFAULT_ROWS - 1, gtr.hud.Hud.getHud());
+			term.bufferString(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT - 1, gtr.hud.Hud.getHud());
 		
 		
 		term.bufferCameras();

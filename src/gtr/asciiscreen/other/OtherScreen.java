@@ -15,7 +15,7 @@ public abstract class OtherScreen extends AsciiScreen {
 	
 	protected void setPlayerOnScreen(ArrayList<String> leveldesign) {
 		int x = TermPanel.DEFAULT_COLS / 2;
-		int y = TermPanel.DEFAULT_ROWS / 2;
+		int y = TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT / 2;
 		player.setFace(ColoredChar.create(leveldesign.get(y).charAt(x)));
 		addActor(player, x, y);
 	}
