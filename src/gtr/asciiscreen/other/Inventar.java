@@ -12,11 +12,23 @@ import java.util.ArrayList;
 
 import rogue.creature.Player;
 
+/**
+ * Klasse für das Inventar
+ * 
+ * @author anti
+ * 
+ */
 public class Inventar {
 
-	private static final int itemListHeight = 4;
-	private static final int itemList_ArrayListSize = itemListHeight * 2 + 1;
+	/*
+	 * Anzahl der sichtbaren Items in der Itemliste
+	 */
+	private static final int itemListHeight = 6;
 
+	/*
+	 * Variablen, die nicht geändert werden dürfen
+	 */
+	private static final int itemList_ArrayListSize = itemListHeight * 2 + 1;
 	private static int cursorAt = 0;
 	private static final Coordinate cursorInRow = new Coordinate(1,
 			cursorAt * 2 + 3);
@@ -26,10 +38,23 @@ public class Inventar {
 	private static int height = TermPanel.DEFAULT_ROWS;
 	private static Terminal term;
 	private static ArrayList<String> itemList;
+	private static String countFormat = "%03d";
 
+	/*
+	 * ENDE: Variablen, die nicht geändert werden dürfen
+	 */
+
+	/**
+	 * Legt die Itemliste an. (Damit ist nicht nur die Aufzählung der Items
+	 * gemeint, sondern das ganze Aussehen der Liste (mit Formatierung der
+	 * Einträge usw.)
+	 * 
+	 * @param player
+	 *            Spieler, dessen Items angezeigt werden sollen
+	 */
 	private static void createItemList(Player player) {
 		itemList = new ArrayList<String>();
-
+		cursorAt = 0;
 		// Erstellt Rahmen für Einträge der Liste aller Items im Inventar
 		String borderTop = "╔════╦";
 		while (borderTop.length() < width - 3)
@@ -52,8 +77,8 @@ public class Inventar {
 		for (int i = 0; i < player.getItems().size(); i++) {
 			Item item = player.getItems().get(i);
 			String lineWithItem = "║";
-			lineWithItem += " " + String.format("%03d", item.getCount()) + "║"
-					+ item.getName();
+			lineWithItem += " " + String.format(countFormat, item.getCount())
+					+ "║" + item.getName();
 			while (lineWithItem.length() < width - 3)
 				lineWithItem += " ";
 			lineWithItem += "║" + Integer.toString(i) + "║";
@@ -64,6 +89,15 @@ public class Inventar {
 		itemList.set(itemList.size() - 1, borderBottom);
 	}
 
+	/**
+	 * Erstellt den Inventarbildschirm
+	 * 
+	 * @param term
+	 *            Terminal, wo man sich befindet
+	 * @param player
+	 *            Spieler, dessen Inventar angezeigt werden soll
+	 * @return Aussehen des Inventars
+	 */
 	private static ArrayList<String> createInventoryScreen(Terminal term,
 			Player player) {
 
@@ -110,6 +144,12 @@ public class Inventar {
 		return inventoryScreen;
 	}
 
+	/**
+	 * Funktion, die benutzt wird, um das Inventar aufzurufen.
+	 * 
+	 * @param term
+	 * @param player
+	 */
 	public static void showInventory(Terminal term, Player player) {
 		gtr.asciiscreen.AsciiScreen.showAsciiScreen(
 
@@ -139,16 +179,35 @@ public class Inventar {
 
 						break;
 					case 'l':
-						if (cursorAt < itemListHeight) {
+						if (cursorAt < player.getItems().size() - 1) {
 							cursorAt += 1;
 							showItemList();
 						}
 						break;
 					case KeyEvent.VK_ENTER:
-						player.selectItem(player.getItems().get(cursorAt).getName());
+						Item selectedItem = player.getItems().get(cursorAt);
+						player.selectItem(selectedItem.getName());
+
+						int p = cursorAt * 2 + 1;
+						
+						if (selectedItem.getCount() != 0) {
+							String s = itemList.get(p);
+							String updatedLine = s.substring(0, 2)
+									+ String.format(countFormat,
+											selectedItem.getCount())
+									+ s.substring(5, s.length());
+
+							itemList.set(p, updatedLine);
+						} else {
+							itemList.remove(p);
+							itemList.remove(p);
+						}
+
+						showItemList();
+
 					default:
 						break;
-					
+
 					}
 					System.out.println("ausgewähltes Item: " + cursorAt);
 					key = 0;
@@ -164,6 +223,10 @@ public class Inventar {
 		}
 	}
 
+	/**
+	 * Zeigt die Itemliste an. Wird immer wieder aufgerufen, wenn man in der
+	 * Liste scrollt, da ja nur ein Teil der Itemliste angezeigt wird.
+	 */
 	public static void showItemList() {
 		for (int y = 0; y < itemList_ArrayListSize; y++)
 			for (int x = 0; x < width; x++) {
@@ -176,11 +239,11 @@ public class Inventar {
 					// (weil man dem Kartenrand zu nah kommt), wird an dieser
 					// Stelle ein Leerzeichen angezeigt.
 					coloredChar = ColoredChar.create(' ');
+					term.bufferChar(cursorInRow, standardCursor);
 				}
 				term.bufferChar(x, y + 2, coloredChar);
 			}
 		term.bufferChar(cursorInRow, standardCursor);
-		term.bufferCameras();
 		term.refreshScreen();
 	}
 }
