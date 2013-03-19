@@ -126,10 +126,6 @@ public class Monster extends Creature {
 		return movement.getMove(1);
 	}
 	
-	public Item dropItem(){
-		return new Item();
-	}
-	
 	public String attackText(){
 		return name + " greift an mit: " + weapon.getName();
 	}

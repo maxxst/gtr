@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
+import rogue.creature.Player;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
@@ -22,7 +23,7 @@ import jade.util.datatype.ColoredChar;
  * @version 0.1
  */
 public class DeadBody extends Fading {
-	ArrayList<Item> loot = new ArrayList<Item>();
+	//ArrayList<Item> loot = new ArrayList<Item>();
 	Item drop;
 	
 	public DeadBody() {
@@ -48,17 +49,25 @@ public class DeadBody extends Fading {
 			break;
 		
 		}
-		
-		
-		
-	    ItemType itemType = ItemType.getRandomItemType();
-	    if (itemType.equals(Item.ammo)){
-	    	drop = new Ammo(dropType);
-	    } else if(itemType.equals(Item.potion)){
-	    	drop = new Potion();
-	    } else {
-	    	drop = new Weapon(dropType);
-	    }
-		
 	}
+	
+	@Override
+	public void act() {
+		if(!loot())
+			super.fade();
+		else
+			expire();
+	}
+	
+    /**
+     * Gives a Player the item
+     * @param item
+     */
+    private boolean loot(){
+    	boolean isPlayerThere = (world().getActorAt(Player.class, pos()) != null);
+    	if (isPlayerThere)	
+    		world().getActorAt(Player.class, pos()).addItem(drop);
+    	
+    	return isPlayerThere;
+    }
 }
