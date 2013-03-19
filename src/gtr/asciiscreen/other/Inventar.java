@@ -135,7 +135,7 @@ public class Inventar {
 
 		inventoryScreen.add("Tastenbelegung:");
 		inventoryScreen
-				.add("o: ↑ | l: ↓ | Eingabe oder Enter: Item benutzen | r: Inventar verlassen");
+				.add("w: ↑ | s: ↓ | Eingabe oder Enter: Item benutzen | r: Inventar verlassen");
 
 		for (int i = 0; i < height; i++) {
 			String s = "";
@@ -181,14 +181,14 @@ public class Inventar {
 				else {
 
 					switch (key) {
-					case 'o':
+					case 'w':
 						if (cursorAt >= 1) {
 							cursorAt -= 1;
 							showItemList();
 						}
 
 						break;
-					case 'l':
+					case 's':
 						if (cursorAt < player.getItems().size() - 1) {
 							cursorAt += 1;
 							showItemList();
