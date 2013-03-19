@@ -37,26 +37,25 @@ public class Dealer extends Monster {
 
 			move(Dice.global.choose(Arrays.asList(Direction.values())));
 			if (x + y < 3) {
-				System.out.print("Dealer: ");
 				switch (i) {
 				case 1:
 					gtr.textbox.TextBox.displayText(player.getTerm(),
-							"Hey Kollege, ich hab hier was Feines für dich.");
+							"Dealer: Hey Kollege, ich hab hier was Feines für dich.");
 					i = i + 1;
 					break;
 				case 2:
 					gtr.textbox.TextBox.displayText(player.getTerm(),
-							"Warum antwortest du mir nicht, was hast 'n du für'n Problem?");
+							"Dealer: Warum antwortest du mir nicht, was hast 'n du für'n Problem?");
 					i = i + 1;
 					break;
 				case 3:
 					gtr.textbox.TextBox.displayText(player.getTerm(),
-							"Du Penner gehst mir auf'n Sack!");
+							"Dealer: Du Penner gehst mir auf'n Sack!");
 					i = i + 1;
 					break;
 				case 4:
 					gtr.textbox.TextBox.displayText(player.getTerm(),
-							"STIRB!");
+							"Dealer: STIRB!");
 					Direction dir = findPlayerInRange();
 					if (dir != null) { // angreifbar
 						attack(dir, weapon);

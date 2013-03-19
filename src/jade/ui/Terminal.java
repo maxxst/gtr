@@ -102,6 +102,28 @@ public abstract class Terminal {
 	}
 
 	/**
+	 * Gibt den String aus, der sich aus { @code length } chars in einer Reihe
+	 * zusammensetzt, beginnend an Koordinate { @code coord }.
+	 * 
+	 * @param coord
+	 *            Koordinate des ersten chars
+	 * @param length
+	 *            Länge des Strings
+	 * @return
+	 */
+	public String stringAt(Coordinate coord, int length) {
+		String s = "";
+		for (int i = 0; i < length; i++)
+			try {
+				s += charAt(coord.x() + i, coord.y()).toString();
+			} catch (NullPointerException e) {
+				s += " ";
+			}
+
+		return s;
+	}
+
+	/**
 	 * Buffers a {@code String} at (x, y) on the screen with the given
 	 * {@code Color}
 	 * 

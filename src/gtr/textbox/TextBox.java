@@ -15,9 +15,9 @@ public class TextBox {
 		while (textWithSpaces.length() < TermPanel.DEFAULT_COLS)
 			textWithSpaces += " ";
 		
-		String s29 = stringAt(term, new Coordinate(0, 28), TermPanel.DEFAULT_COLS);
-		String s30 = stringAt(term, new Coordinate(0, 29), TermPanel.DEFAULT_COLS);
-		String s31 = stringAt(term, new Coordinate(0, 30), TermPanel.DEFAULT_COLS);
+		String s29 = term.stringAt(new Coordinate(0, 28), TermPanel.DEFAULT_COLS);
+		String s30 = term.stringAt(new Coordinate(0, 29), TermPanel.DEFAULT_COLS);
+		String s31 = term.stringAt(new Coordinate(0, 30), TermPanel.DEFAULT_COLS);
 		
 		term.bufferString(new Coordinate(0, 27), s29);
 		term.bufferString(new Coordinate(0, 28), s30);
@@ -26,17 +26,4 @@ public class TextBox {
 		
 		term.refreshScreen();
 	}
-	
-	
-    public static String stringAt(Terminal term, Coordinate coord, int length) {
-    	String s = "";
-    	for (int i = 0; i < length; i++)
-    		try {
-    			s += term.charAt(coord.x() + i, coord.y()).toString();
-    		} catch (NullPointerException e) {
-    			s += " ";
-    		}
-    		
-		return s;
-    }
 }
