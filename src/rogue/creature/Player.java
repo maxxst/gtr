@@ -34,17 +34,21 @@ public class Player extends Creature implements Camera {
 		setHp(20);
 		this.term = term;
 		fov = new RayCaster();
-		weapon = new Weapon("Pistole", this); // TODO besser!
+
+		// TODO besser! → jetzt besser?
+		Weapon weapon = new Weapon("Pistole", this);
+		this.weapon = weapon;
+		addItem(weapon);
 
 		// testweise
-		//addItem(new Weapon("Raketenwerfer", this));
-//		System.out.println("Anzahl: " + items.get(0).getCount());
-		//addItem(new Weapon("Pistole", this));
-		//addItem(new Weapon("Pistole", this));
+		addItem(new Weapon("Raketenwerfer", this));
+		System.out.println("Anzahl: " + items.get(0).getCount());
+		addItem(new Weapon("Pistole", this));
+		addItem(new Weapon("Pistole", this));
 		addItem(new HealthPotion(this));
-		//addItem(new HealthPotion(this));
-		//addItem(new Weapon("Schwert", this));
-		//addItem(new Weapon("Bogen des Robin Hood", this));
+		addItem(new HealthPotion(this));
+		addItem(new Weapon("Schwert", this));
+		addItem(new Weapon("Bogen des Robin Hood", this));
 
 		for (Item item : items)
 			System.out.println(item.getName() + " " + item.getCount());
@@ -83,7 +87,8 @@ public class Player extends Creature implements Camera {
 				else if (screenType.name().equals("StartScreen"))
 					switch (key) {
 					case 's':
-						nextLevel = new Location(LevelEnum.Prologue, new Coordinate(1, 1));
+						nextLevel = new Location(LevelEnum.Prologue,
+								new Coordinate(1, 1));
 						break;
 					}
 				else if (screenType.name().equals("Prologue"))
@@ -115,11 +120,11 @@ public class Player extends Creature implements Camera {
 							}
 							break;
 
-						case 'h': //HEALs
+						case 'h': // HEALs
 							selectItem("Heiltrank");
 							break;
-							
-						case 'f': //RELOAD
+
+						case 'f': // RELOAD
 							reload();
 							break;
 
@@ -161,9 +166,8 @@ public class Player extends Creature implements Camera {
 		cleanItemList();
 	}
 
-	
 	public void equip(Item item) {
-		if( item instanceof Weapon){ // Wenn es eine Waffe ist
+		if (item instanceof Weapon) { // Wenn es eine Waffe ist
 			Weapon weapon = (Weapon) item;
 			if (!this.weapon.equals(weapon)) {
 				addItem(this.weapon);
@@ -172,16 +176,14 @@ public class Player extends Creature implements Camera {
 			} else {
 				this.weapon.add(weapon);
 			}
-		} else if(item instanceof Ammo){ // Wenn es Munition ist
+		} else if (item instanceof Ammo) { // Wenn es Munition ist
 			Ammo ammo = (Ammo) item;
-			if(weapon.getType().equals(ammo.getType())){
+			if (weapon.getType().equals(ammo.getType())) {
 				reload(ammo);
 			}
 		}
-		
+
 	}
-	
-	
 
 	public String attackText() {
 		return "Du greifst an mit: " + weapon.getName();
@@ -201,19 +203,19 @@ public class Player extends Creature implements Camera {
 
 	public void addItem(Item item) {
 		boolean added = false;
-		if(item.equals(weapon)){
+		if (item.equals(weapon)) {
 			weapon.add(item);
-		} else {
-			for (Item itemInList : items) {
-				if (item.equals(itemInList)) {
-					itemInList.add(item);
-					added = true;
-					break;
-				}
-			}
-			if (!added)
-				items.add(item);
 		}
+		for (Item itemInList : items) {
+			if (item.equals(itemInList)) {
+				itemInList.add(item);
+				added = true;
+				break;
+			}
+		}
+		if (!added)
+			items.add(item);
+
 		System.out.println("Du erhälst: " + item.getName());
 	}
 
@@ -240,24 +242,24 @@ public class Player extends Creature implements Camera {
 				}
 				break;
 			}
-			
+
 		}
 	}
-	
-	private void reload(){
-		//System.out.println("Munition ("+weapon.getType()+")");
-		selectItem("Munition ("+weapon.getType()+")");
+
+	private void reload() {
+		// System.out.println("Munition ("+weapon.getType()+")");
+		selectItem("Munition (" + weapon.getType() + ")");
 	}
-	
-	private void reload(Ammo ammo){
+
+	private void reload(Ammo ammo) {
 		int n = ammo.getCount();
 		if (n > 20)
 			n = 20;
-		
+
 		ammo.use(n);
 		weapon.add(n);
-		
-		if(ammo.getCount() <= 0)
+
+		if (ammo.getCount() <= 0)
 			ammo.expire();
 	}
 }

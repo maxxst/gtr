@@ -31,11 +31,11 @@ public class Inventar {
 	private static final int itemList_ArrayListSize = itemListHeight * 2 + 1;
 	private static int cursorAt = 0;
 	private static final Coordinate cursorInRow = new Coordinate(1,
-			cursorAt * 2 + 3);
+			cursorAt * 2 + 4);
 	private static final ColoredChar standardCursor = ColoredChar.create('▶',
 			Color.red);
 	private static int width = TermPanel.DEFAULT_COLS;
-	private static int height = TermPanel.DEFAULT_ROWS;
+	private static int height = TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT;
 	private static Terminal term;
 	private static ArrayList<String> itemList;
 	private static String countFormat = "%03d";
@@ -81,7 +81,7 @@ public class Inventar {
 					+ "║" + item.getName();
 			while (lineWithItem.length() < width - 3)
 				lineWithItem += " ";
-			lineWithItem += "║" + Integer.toString(i) + "║";
+			lineWithItem += "║" + Integer.toString(i + 1) + "║";
 
 			itemList.add(lineWithItem);
 			itemList.add(borderBetween);
@@ -109,6 +109,13 @@ public class Inventar {
 
 		inventoryScreen.add("Inventar"); // erste Zeile des Inventars
 		inventoryScreen.add(""); // zweite Zeile des Inventars
+		
+		String tableHead = " Anz. Item";
+		while (tableHead.length() < width - 4)
+			tableHead += " ";
+		tableHead += "Nr.";
+		
+		inventoryScreen.add(tableHead);
 
 		for (int x = 0; x < itemList_ArrayListSize; x++) {
 			try {
@@ -123,8 +130,12 @@ public class Inventar {
 
 		showItemList();
 
-		while (inventoryScreen.size() < height)
+		while (inventoryScreen.size() < height - 2)
 			inventoryScreen.add("");
+
+		inventoryScreen.add("Tastenbelegung:");
+		inventoryScreen
+				.add("o: ↑ | l: ↓ | Eingabe oder Enter: Item benutzen | r: Inventar verlassen");
 
 		for (int i = 0; i < height; i++) {
 			String s = "";
@@ -187,8 +198,9 @@ public class Inventar {
 						Item selectedItem = player.getItems().get(cursorAt);
 						player.selectItem(selectedItem.getName());
 
-						int p = cursorAt * 2 + 1; // Index ausgewähltes Item in itemList<String>
-						
+						int p = cursorAt * 2 + 1; // Index ausgewähltes Item in
+													// itemList<String>
+
 						if (selectedItem.getCount() != 0) {
 							String s = itemList.get(p);
 							String updatedLine = s.substring(0, 2)
@@ -208,7 +220,7 @@ public class Inventar {
 						break;
 
 					}
-					
+
 					key = 0;
 
 				}
@@ -237,7 +249,7 @@ public class Inventar {
 					coloredChar = ColoredChar.create(' ');
 					term.bufferChar(cursorInRow, standardCursor);
 				}
-				term.bufferChar(x, y + 2, coloredChar);
+				term.bufferChar(x, y + 3, coloredChar);
 			}
 		term.bufferChar(cursorInRow, standardCursor);
 		term.refreshScreen();
