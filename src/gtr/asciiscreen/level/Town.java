@@ -5,10 +5,8 @@ import gtr.util.ReadFile;
 import gtr.util.datatype.Location;
 import jade.core.Messenger;
 import jade.ui.Terminal;
-import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 import rogue.creature.*;
@@ -17,7 +15,6 @@ public class Town extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/maps/main_map.txt");
-	Monster junkie;
 
 	public Town(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
@@ -53,11 +50,15 @@ public class Town extends Level {
 				addActor(k);
 			}
 
-			Door door = new Door(LevelEnum.Room, 15, 5);
+			Door door = new Door(LevelEnum.RandomRoom, 15, 5);
 			addActor(door, 35, 108);
 
-			door = new Door(LevelEnum.Room, 5, 5);
+			door = new Door(LevelEnum.RandomRoom, 5, 5);
 			addActor(door, 55, 108);
+			
+			// Tür des nordöstlichen Hauses im ersten Distrikt
+			door = new Door(LevelEnum.Room1, 5, 5);
+			addActor(door, 71, 111);
 
 			// Tür des Evilhauses
 			door = new Door(LevelEnum.Dungeon, 1, 1);

@@ -12,7 +12,7 @@ import gtr.asciiscreen.AsciiScreen;
 import gtr.util.datatype.Location;
 import rogue.creature.Player;
 
-public class Room extends Level {
+public class RandomRoom extends Level {
 
 	private ArrayList<String> leveldesign;
 	private Coordinate posDoor;
@@ -41,7 +41,7 @@ public class Room extends Level {
 		leveldesign.add(wall);
 	}
 	
-	public Room(Player player, int width, int height) {
+	public RandomRoom(Player player, int width, int height) {
 		super(width, height);
 		System.out.println("Größe des Raumes: w: " + width + " h: " + height);
 		updateLevelVariables();
@@ -57,7 +57,7 @@ public class Room extends Level {
 		
 	}
 
-	public Room(Player player) {
+	public RandomRoom(Player player) {
 		// Erzeugt Raum mit zufälliger Größe.
 		// Mindestgröße: 15 * 15, Höchstgröße: 49 * 49
 		this(player, new Random().nextInt(35) + 15, new Random().nextInt(35) + 15);

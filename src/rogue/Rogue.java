@@ -1,14 +1,8 @@
 package rogue;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.asciiscreen.level.Dungeon;
-import gtr.asciiscreen.level.Room;
+import gtr.asciiscreen.level.RandomRoom;
+import gtr.asciiscreen.level.Room1;
 import gtr.asciiscreen.level.Town;
 import gtr.asciiscreen.other.Prologue;
 import gtr.asciiscreen.other.StartScreen;
@@ -66,8 +60,12 @@ public class Rogue {
 						world = new Town(player);
 						nextLevel = world.inLevel();
 						break;
-					case Room:
-						world = new Room(player);
+					case RandomRoom:
+						world = new RandomRoom(player);
+						nextLevel = world.inLevel();
+						break;
+					case Room1:
+						world = new Room1(player);
 						nextLevel = world.inLevel();
 						break;
 					}	
