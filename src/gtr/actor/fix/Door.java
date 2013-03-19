@@ -9,6 +9,7 @@ import jade.util.datatype.Coordinate;
 
 /**
  * To make Doors usable they have to be an actor
+ * 
  * @author anti
  */
 public class Door extends Fix {
@@ -67,7 +68,8 @@ public class Door extends Fix {
 		// TODO Auto-generated method stub
 		if (player.x() == this.x() && player.y() == this.y()) {
 			nextLevel = doorDestination;
-			System.out.println(this.getDestination().toString());
+			System.out.println(this.getDestination().toString()
+					+ " (falls für Platzierung im Level genutzt");
 		}
 	}
 

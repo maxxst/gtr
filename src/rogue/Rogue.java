@@ -52,7 +52,7 @@ public class Rogue {
 					
 					switch (nextLevel.getLevelEnum()) {
 					case Dungeon:
-						world = new Dungeon(20, 20, player);
+						world = new Dungeon(100, 100, player);
 						nextLevel = world.inLevel();
 						break;
 					case StartScreen:

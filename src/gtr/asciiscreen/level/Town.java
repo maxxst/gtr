@@ -53,17 +53,27 @@ public class Town extends Level {
 				addActor(k);
 			}
 
-			//
-			// Auskommentiert. Solange Karte noch nicht fertig, lohnt es sich
-			// nicht,
-			// Dooractors anzulegen, da sich die Koordinaten der Türen beim
-			// Überarbeiten der Karten noch ändern können.
-			//
-			Door door = new Door(LevelEnum.Room, 5, 5);
+			Door door = new Door(LevelEnum.Room, 15, 5);
 			addActor(door, 35, 108);
 
 			door = new Door(LevelEnum.Room, 5, 5);
 			addActor(door, 55, 108);
+
+			// Tür des Evilhauses
+			door = new Door(LevelEnum.Dungeon, 1, 1);
+			addActor(door, 122, 110);
+
+			// Tür zum orientalischen Haus
+			door = new Door(LevelEnum.Dungeon, 1, 1);
+			addActor(door, 123, 90);
+
+			// Tür der Bad Bank
+			door = new Door(LevelEnum.Dungeon, 1, 1);
+			addActor(door, 120, 62);
+
+			// Tür der Pagode
+			door = new Door(LevelEnum.Dungeon, 1, 1);
+			addActor(door, 122, 44);
 
 			gtr.actor.fix.Door.completeDoors(this);
 
