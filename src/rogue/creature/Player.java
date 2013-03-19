@@ -115,21 +115,6 @@ public class Player extends Creature implements Camera {
 							}
 							break;
 
-						case 'u':
-						case 'i':
-						case 'o':
-						case 'j':
-						case 'k':
-						case 'l':
-						case 'm':
-						case '.':
-							dir = Direction.keyToDir(key);
-							if (dir != null)
-								attack(dir, weapon);
-							else
-								key = 0;
-							break;
-
 						case 'h': //HEALs
 							selectItem("Heiltrank");
 							break;
