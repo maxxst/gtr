@@ -38,6 +38,7 @@ Die Hauptfigur `@` agiert wie folgt:
 - `Enter`, `Eingabe`, `Leer` Item benutzen
 
 ### Mit Personen reden
+`!` und `?` sind Personen, mit denen gesprochen werden kann.
 - `p` `q` Person `↖` von dir ansprechen
 - `p` `w` Person `↑` von dir ansprechen
 - `p` `e` Person `↗` von dir ansprechen
