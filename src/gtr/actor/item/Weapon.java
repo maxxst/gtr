@@ -1,7 +1,5 @@
-	package gtr.actor.item.weapon;
+	package gtr.actor.item;
 
-import gtr.actor.item.Ammo;
-import gtr.actor.item.Item;
 import gtr.actor.moving.Projectile;
 import gtr.textbox.TextBox;
 import gtr.util.DropType;

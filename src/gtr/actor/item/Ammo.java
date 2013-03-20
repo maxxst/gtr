@@ -1,6 +1,5 @@
 package gtr.actor.item;
 
-import gtr.actor.item.weapon.Weapon;
 import gtr.util.DropType;
 import gtr.util.WeaponType;
 

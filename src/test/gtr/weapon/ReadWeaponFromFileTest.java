@@ -1,8 +1,7 @@
 package test.gtr.weapon;
 
 import static org.junit.Assert.*;
-
-import gtr.actor.item.weapon.Weapon;
+import gtr.actor.item.Weapon;
 
 import java.util.ArrayList;
 import java.util.HashMap;

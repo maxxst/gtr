@@ -1,7 +1,7 @@
 package rogue.creature;
 
 import gtr.actor.fading.DeadBody;
-import gtr.actor.item.weapon.Weapon;
+import gtr.actor.item.Weapon;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Direction;
