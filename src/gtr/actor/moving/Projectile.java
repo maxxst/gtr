@@ -87,7 +87,7 @@ public class Projectile extends Moving {
 			}
 		} else {
 			creature = world().getActorAt(Creature.class,
-					coord.getTranslated(dir));
+					coord);
 			if (creature != null) {
 				return creature.getDamage();
 			}
