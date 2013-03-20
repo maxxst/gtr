@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import rogue.creature.Creature;
+import rogue.creature.Human;
 
 /**
  * Represents anything on a Jade {@code World} that can perform an action (or be acted upon). This
@@ -137,8 +138,6 @@ public abstract class Actor extends Messenger
     
     public final void movecare(int dx, int dy)
     {
-    	System.out.println("x: " + (x() + dx) + " y: " + (y() + dy));
-    	
     	try {
     	    if (world().passableAt(x() + dx, y() + dy) && world().getActorAt(Creature.class, x() + dx, y() + dy) == null)
     	     {move (dx,dy);}
@@ -183,7 +182,20 @@ public abstract class Actor extends Messenger
         Guard.argumentIsNotNull(dir);
  
         if (world().getActorAt(Creature.class, x() + dir.dx(), y() + dir.dy()) == null)
-        setPos(x() + dir.dx(), y() + dir.dy());
+        	setPos(x() + dir.dx(), y() + dir.dy());
+    }
+    
+    public final void speakTo(Direction dir) {
+    	Human human = world().getActorAt(Human.class, x() + dir.dx(), y() + dir.dy());
+    	if (human == null)
+    		eventText("Da steht niemand, mit dem du reden kannst.");
+    	else {
+    		int i = 0;
+    		while (i < human.getMessages().size()) {
+    			displayText(human.getMessages().get(i));
+    			i++;
+    		}
+    	}
     }
 
     /**

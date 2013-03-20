@@ -6,7 +6,7 @@ import jade.util.datatype.ColoredChar;
 
 public class Human extends Creature {
 
-	protected ArrayList<String> messages;
+	private ArrayList<String> messages;
 	
 	public Human(ColoredChar face, ArrayList<String> messages) {
 		super(face);
@@ -17,5 +17,9 @@ public class Human extends Creature {
 	public void act() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public ArrayList<String> getMessages() {
+		return messages;
 	}
 }

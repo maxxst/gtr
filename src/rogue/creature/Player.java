@@ -128,6 +128,16 @@ public class Player extends Creature implements Camera {
 						case Key.reloadKey: // RELOAD
 							reload();
 							break;
+						case Key.speakToPerson: // Person anquatschen
+							key = term.getKey();
+							dir = Direction.keyToDir(key);
+							if (dir != null) {
+								speakTo(dir);
+								
+							} else {
+								key = 0;
+							}
+							break;
 
 						default:
 							dir = Direction.keyToDir(key);
@@ -171,11 +181,11 @@ public class Player extends Creature implements Camera {
 		if (item instanceof Weapon) { // Wenn es eine Waffe ist
 			Weapon weapon = (Weapon) item;
 			if (!this.weapon.equals(weapon)) {
-				//addItem(this.weapon);
+				// addItem(this.weapon);
 				this.weapon = weapon;
 				eventText("Du hast " + weapon.getName() + " angelegt.");
 			} else {
-				//this.weapon.add(weapon);
+				// this.weapon.add(weapon);
 			}
 		} else if (item instanceof Ammo) { // Wenn es Munition ist
 			Ammo ammo = (Ammo) item;
@@ -203,7 +213,7 @@ public class Player extends Creature implements Camera {
 	}
 
 	public void addItem(Item item) {
-		//world().eventText("Du erhälst: " + item.getName());
+		// world().eventText("Du erhälst: " + item.getName());
 		boolean added = false;
 		for (Item itemInList : items) {
 			if (item.equals(itemInList)) {
@@ -221,8 +231,8 @@ public class Player extends Creature implements Camera {
 
 	public void cleanItemList() {
 		for (int i = 0; i < items.size(); i++) {
-			//! System.out.print(items.get(i).getName());
-			//! System.out.println(items.get(i).getCount());
+			// ! System.out.print(items.get(i).getName());
+			// ! System.out.println(items.get(i).getCount());
 			if (items.get(i).getCount() <= 0)
 				items.remove(i);
 		}
@@ -231,15 +241,15 @@ public class Player extends Creature implements Camera {
 	public void selectItem(String name) {
 		Boolean there = false;
 		for (Item itemInList : items) {
-			//! System.out.println(name.equals(itemInList.getName()));
+			// ! System.out.println(name.equals(itemInList.getName()));
 			if (name.equals(itemInList.getName())) {
 				there = true;
-				//! System.out.print(itemInList.getName());
+				// ! System.out.print(itemInList.getName());
 				if (itemInList.isEquippable()) {
-					//System.out.println(" equip");
+					// System.out.println(" equip");
 					equip(itemInList);
 				} else {
-					//! System.out.println(" use");
+					// ! System.out.println(" use");
 					use(itemInList);
 				}
 				break;
@@ -251,7 +261,8 @@ public class Player extends Creature implements Camera {
 
 	private void reload() {
 		// System.out.println("Munition ("+weapon.getType()+")");
-		selectItem("Munition (" + weapon.getType() + ")"); //TODO besser referenzieren
+		selectItem("Munition (" + weapon.getType() + ")"); // TODO besser
+															// referenzieren
 	}
 
 	private void reload(Ammo ammo) {
