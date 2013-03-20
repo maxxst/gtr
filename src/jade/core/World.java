@@ -1,13 +1,9 @@
 package jade.core;
 
-import gtr.actor.fading.Blood;
-import gtr.actor.fading.DeadBody;
 import gtr.actor.fading.Fading;
-import gtr.actor.fix.Door;
 import gtr.actor.fix.Fix;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Moving;
-import gtr.actor.moving.Projectile;
 import rogue.creature.Monster;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;

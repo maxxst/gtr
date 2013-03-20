@@ -40,7 +40,7 @@ public class Inventar {
 	private static ArrayList<String> itemList;
 	private static String countFormat = "%03d";
 
-	private static char equippedSign = '*';
+	private static char equippedSign = '★';
 	private static int equippedItem;
 
 	/*
@@ -80,7 +80,7 @@ public class Inventar {
 		for (int i = 0; i < player.getItems().size(); i++) {
 			Item item = player.getItems().get(i);
 			String lineWithItem = "║";
-			char c = player.getWeapon().getName().equals(item.getName()) ? equippedSign
+			char c = player.getWeapon() == item ? equippedSign
 					: ' ';
 			if (c == equippedSign)
 				equippedItem = i;
@@ -136,9 +136,11 @@ public class Inventar {
 
 		showItemList();
 
-		while (inventoryScreen.size() < height - 2)
+		while (inventoryScreen.size() < height - 4)
 			inventoryScreen.add("");
 
+		inventoryScreen.add(Character.toString(equippedSign) + ": ausgerüstet");
+		inventoryScreen.add("");
 		inventoryScreen.add("Tastenbelegung:");
 		inventoryScreen
 				.add("w: ↑ | s: ↓ | Eingabe oder Enter: Item benutzen | r: Inventar verlassen");
@@ -226,6 +228,8 @@ public class Inventar {
 										formerlyEquipped);
 								
 								updatedLine += Character.toString(equippedSign);
+								
+								equippedItem = cursorAt;
 							}
 
 							else
