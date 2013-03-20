@@ -16,6 +16,10 @@ public class TextBox {
 		displayText(term, text);
 	}
 	
+	public static void displayEventText(String text, Terminal term) {
+		displayText(term, text);
+	}
+	
 	private static String createHorizontalLine() {
 		char horChar = '-';
 		String horLine = Character.toString(horChar);
