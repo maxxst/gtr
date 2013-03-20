@@ -38,14 +38,14 @@ public class Katze extends Monster
 		 */
 			switch (i)
 			{
-			case 1:move(3,0); i=i+1;break;
-			case 2:move(2,2);i=i+1;break;
-			case 3:move(0,3);i=i+1;break;
-			case 4:move(-2,2);i=i+1; if ( Math.abs(player.x() - x())+Math.abs(player.y() - y())<=10){displayText("Katze: Miau!");}break;
-			case 5:move(-3,0);i=i+1;break;
-			case 6:move(-2,-2);i=i+1;break;
-			case 7:move(0,-3);i=i+1;break;
-			case 8:move(2,-2);i=1; if  (Math.abs(player.x() - x())+Math.abs(player.y() - y())<=10){displayText("Katze: Meew.");};break;
+			case 1:movecare(3,0); i=i+1;break;
+			case 2:movecare(2,2);i=i+1;break;
+			case 3:movecare(0,3);i=i+1;break;
+			case 4:movecare(-2,2);i=i+1; if ( Math.abs(player.x() - x())+Math.abs(player.y() - y())<=10){displayText("Katze: Miau!");}break;
+			case 5:movecare(-3,0);i=i+1;break;
+			case 6:movecare(-2,-2);i=i+1;break;
+			case 7:movecare(0,-3);i=i+1;break;
+			case 8:movecare(2,-2);i=1; if  (Math.abs(player.x() - x())+Math.abs(player.y() - y())<=10){displayText("Katze: Meew.");};break;
 			
 			}
 		Direction dir = findPlayerInRange();

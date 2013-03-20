@@ -137,23 +137,27 @@ public abstract class Actor extends Messenger
     
     public final void movecare(int dx, int dy)
     {
+    	System.out.println("x: " + (x() + dx) + " y: " + (y() + dy));
     	
-    	    if (world().passableAt(dx,dy) && world().getActorAt(Creature.class, dx,dy)!=null)
+    	try {
+    	    if (world().passableAt(x() + dx, y() + dy) && world().getActorAt(Creature.class, x() + dx, y() + dy) == null)
     	     {move (dx,dy);}
     	    else
     	    { int i = (int) (Math.random()*8+1);
     	      switch (i)
     	      	{
-    	      	case 1: movecare (dx+1, y() + dy);break;
-    	      	case 2: movecare (dx+1, y() + dy-1);break;
-    	      	case 3: movecare (dx, y() + dy-1);break;
-    	      	case 4: movecare (dx-1, y() + dy-1);break;
-    	      	case 5: movecare (dx-1, y() + dy);break;
-    	      	case 6: movecare (dx-1, y() + dy+1);break;
-    	      	case 7: movecare (dx, y() + dy+1);break;
-    	      	case 8: movecare (dx+1, y() + dy+1);break;
+    	      	case 1: movecare (dx+1, dy);break;
+    	      	case 2: movecare (dx+1, dy-1);break;
+    	      	case 3: movecare (dx, dy-1);break;
+    	      	case 4: movecare (dx-1, dy-1);break;
+    	      	case 5: movecare (dx-1, dy);break;
+    	      	case 6: movecare (dx-1, dy+1);break;
+    	      	case 7: movecare (dx, dy+1);break;
+    	      	case 8: movecare (dx+1, dy+1);break;
     	       }
     	      }
+    	} catch (IndexOutOfBoundsException e) {
+    	}
 
     }
 

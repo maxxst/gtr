@@ -89,7 +89,12 @@ public class Town extends Level {
 
 		} else
 			setActorsInWorld();
-
+		try{
+			System.out.println(player.world().getMappingLevelActor().get(player.getCurrentLevel().getLevelEnum())[2].x());
+		}
+		catch (NullPointerException e) {
+			
+		}
 	}
 
 	@Override

@@ -113,6 +113,8 @@ public class Rogue extends JApplet {
 			world.getMappingLevelActor().put(
 					player.getCurrentLevel().getLevelEnum(),
 					world.getActors(Actor.class).toArray(new Actor[0]));
+			
+//			System.out.println(world.getActors(Actor.class).toArray(new Actor[0])[10].x());
 
 		}
 		// System.exit(0);

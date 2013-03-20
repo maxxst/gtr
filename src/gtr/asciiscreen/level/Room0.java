@@ -53,8 +53,6 @@ public class Room0 extends Level {
 		addActor(k, 11, 5);
 		
 		addActor(player, posDoor.x(), posDoor.y() - 1);
-		System.out.println("test: " + Human.class.cast(player.world().getActor(Human.class)).x());
-
 	}
 
 	@Override
