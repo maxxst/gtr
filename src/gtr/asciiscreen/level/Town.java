@@ -53,7 +53,7 @@ public class Town extends Level {
 			Door door = new Door(LevelEnum.RandomRoom, 15, 5);
 			addActor(door, 35, 108);
 
-			door = new Door(LevelEnum.RandomRoom, 5, 5);
+			door = new Door(LevelEnum.Room0, 5, 5);
 			addActor(door, 55, 108);
 			
 			// Tür des nordöstlichen Hauses im ersten Distrikt
@@ -75,6 +75,12 @@ public class Town extends Level {
 			// Tür der Pagode
 			door = new Door(LevelEnum.Dungeon, 1, 1);
 			addActor(door, 122, 44);
+			
+			// Tür des Hauses, was südlich dem nordöstlichen Haus des ersten Distrikts steht.
+			door = new Door(LevelEnum.Room2, 1, 1);
+			addActor(door, 117, 63);
+			
+			//
 
 			gtr.actor.fix.Door.completeDoors(this);
 

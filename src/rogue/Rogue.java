@@ -89,7 +89,19 @@ public class Rogue extends JApplet {
 				world = new RandomRoom(player);
 				nextLevel = world.inLevel();
 				break;
+			case Room0:
+				world = new Room1(player);
+				nextLevel = world.inLevel();
+				break;
 			case Room1:
+				world = new Room1(player);
+				nextLevel = world.inLevel();
+				break;
+			case Room2:
+				world = new Room1(player);
+				nextLevel = world.inLevel();
+				break;
+			case Room3:
 				world = new Room1(player);
 				nextLevel = world.inLevel();
 				break;
