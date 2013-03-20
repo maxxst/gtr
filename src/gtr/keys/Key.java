@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author anti
  * 
  */
-public class Keys {
+public class Key {
 
 	/**
 	 * Tasten, die in allen Spielbildschirmen dieselbe Belegung aufweisen
@@ -21,10 +21,14 @@ public class Keys {
 	 */
 	private static ArrayList<Character> inventoryKeys = setInventoryKeys();
 
-	/**
-	 * Standardtaste zum Öffnen des Inventars
+	/*
+	 * Standardtasten
 	 */
-	private static char openInventoryKey = 'i';
+	public final static char openInventoryKey = 'i';
+	public final static char reloadKey = 'r';
+	public final static char healPotionKey = 'h';
+	public final static char skipKey = 's';
+	
 
 	/**
 	 * Alle Tasten, die eine Belegung aufweisen. (Muss von allen Klassenvariablen

@@ -13,6 +13,7 @@ public class Hud {
 		String statusBar = " LP: " + Integer.toString(Messenger.getPlayer().getHp()); // die ersten fünf Zeichen
 		statusBar += "	";
 		statusBar += " Ammo: " + Integer.toString(Messenger.getPlayer().getWeapon().getCount());
+		statusBar += " (" + Messenger.getPlayer().getWeapon().getType() + ")";
 		statusBar += "	";
 		
 		int healthPotionCount = 0;
@@ -23,6 +24,9 @@ public class Hud {
 				break;
 			}
 		statusBar += " Heiltränke: " + Integer.toString(healthPotionCount);
+		
+		statusBar += "	";
+		statusBar += " Waffe: " + Messenger.getPlayer().getWeapon().getName();
 		
 		return statusBar;
 		

@@ -6,6 +6,7 @@ import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
+import gtr.keys.Key;
 import gtr.util.datatype.Location;
 
 import java.awt.event.KeyEvent;
@@ -79,7 +80,7 @@ public class Player extends Creature implements Camera {
 			while (key == 0) {
 				key = term.getKey();
 
-				if (gtr.keys.Keys.isUniversalKey(key))
+				if (gtr.keys.Key.isUniversalKey(key))
 					switch (key) {
 					case KeyEvent.VK_ESCAPE:
 						System.exit(0);
@@ -94,7 +95,7 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Prologue"))
 					switch (key) {
-					case 's':
+					case Key.skipKey:
 						// nextLevel = new Location(LevelEnum.Town, new
 						// Coordinate(6, 114));
 						nextLevel = new Location(LevelEnum.Town,
@@ -103,7 +104,7 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Level"))
 
-					if (key == gtr.keys.Keys.getOpenInventoryKey()) {
+					if (key == gtr.keys.Key.getOpenInventoryKey()) {
 						gtr.asciiscreen.other.Inventar
 								.showInventory(term, this);
 						world().changeAndRefreshScreenAndTick(term, false);
@@ -111,7 +112,6 @@ public class Player extends Creature implements Camera {
 					} else {
 						switch (key) {
 						case ' ':
-							System.out.println("Leertaste");
 							key = term.getKey();
 							dir = Direction.keyToDir(key);
 							if (dir != null)
@@ -121,11 +121,11 @@ public class Player extends Creature implements Camera {
 							}
 							break;
 
-						case 'h': // HEALs
+						case Key.healPotionKey: // HEALs
 							selectItem("Heiltrank");
 							break;
 
-						case 'f': // RELOAD
+						case Key.reloadKey: // RELOAD
 							reload();
 							break;
 
@@ -245,7 +245,7 @@ public class Player extends Creature implements Camera {
 
 	private void reload() {
 		// System.out.println("Munition ("+weapon.getType()+")");
-		selectItem("Munition (" + weapon.getType() + ")");
+		selectItem("Munition (" + weapon.getType() + ")"); //TODO besser referenzieren
 	}
 
 	private void reload(Ammo ammo) {

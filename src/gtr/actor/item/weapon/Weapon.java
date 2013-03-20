@@ -3,6 +3,7 @@
 import gtr.actor.item.Ammo;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Projectile;
+import gtr.textbox.TextBox;
 import gtr.util.DropType;
 import gtr.util.WeaponType;
 import jade.util.datatype.Coordinate;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import rogue.creature.Creature;
+import rogue.creature.Player;
 
 /**
  * Weapons that can be equipped by monsters or
@@ -204,7 +206,7 @@ public class Weapon extends Item {
 		if (holder() != null) {
 			if(getCount() > 0 || (type.equals(WeaponType.melee.toString()))){
 				Random randomGenerator = new Random();
-		    	System.out.println(((Creature) holder()).attackText());
+				world().displayText(((Creature) holder()).attackText());
 		    	if (!isProjectile()){
 		    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
 			    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
@@ -216,14 +218,14 @@ public class Weapon extends Item {
 			    		}
 			    		if( enemy != null){
 			    			if(randomGenerator.nextFloat() < hitProb){
-								System.out.println(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
+			    				world().displayText(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
 								enemy.getDamage();
 							} else {
 								i = range.getTo() + 1;
-								System.out.println(((Creature) holder()).missText()); //TODO Schaden zufuegen!
+								world().displayText(((Creature) holder()).missText()); //TODO Schaden zufuegen!
 							}
 						} else {
-							System.out.println(((Creature) holder()).missText());
+							world().displayText(((Creature) holder()).missText());
 						}
 			    	}
 		    	} else {
@@ -234,9 +236,9 @@ public class Weapon extends Item {
 		    	else
 		    		setCount(1);
 			} else
-				System.out.println(getName() + " is empty!");
+				world().displayText(getName() + " ist leer!");
 		} else {
-			System.out.println("no weapon equipped");
+			world().displayText("Keine Waffe ausgerüstet");
 		}
 	 
 	}
