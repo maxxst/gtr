@@ -49,7 +49,7 @@ public class Town extends Level {
 				Katze k = new Katze();
 				addActor(k);
 			}
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 2; i++) {
 				Yakuza Y = new Yakuza();
 				addActor(Y);
 			}
@@ -83,10 +83,8 @@ public class Town extends Level {
 			addActor(door, 122, 44);
 			
 			// Tür des Hauses, was südlich dem nordöstlichen Haus des ersten Distrikts steht.
-			door = new Door(LevelEnum.Room2, 1, 1);
-			addActor(door, 117, 63);
-			
-			//
+			door = new Door(LevelEnum.Room3, 1, 1);
+			addActor(door, 63, 117);
 
 			gtr.actor.fix.Door.completeDoors(this);
 

@@ -69,7 +69,7 @@ public class Door extends Fix {
 		if (player.x() == this.x() && player.y() == this.y()) {
 			nextLevel = doorDestination;
 			System.out.println(this.getDestination().toString()
-					+ " (falls für Platzierung im Level genutzt");
+					+ " (falls für Platzierung im Level genutzt)");
 		}
 	}
 
