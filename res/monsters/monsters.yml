@@ -92,7 +92,6 @@
   weapons:
     - "MP7"
     - "HK P30"
-	- "Nunchucks"
   drops: "common"
 - name: "Heisenberg"
   face: "H"
