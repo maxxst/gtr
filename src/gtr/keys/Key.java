@@ -30,7 +30,7 @@ public class Key {
 	public final static char skipKey = 's';
 	public final static char skipAllMessages = 'P';
 	public final static char speakToPerson = 'p';
-	public final static char help = KeyEvent.VK_F1;
+	public final static char help = 'o';
 	
 
 	/**

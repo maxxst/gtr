@@ -245,6 +245,7 @@ public class Inventar {
 						}
 
 						showItemList();
+						break;
 
 					default:
 						break;

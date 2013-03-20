@@ -56,6 +56,7 @@ public class Help extends OtherScreen {
 		helpScreen.add("Leertaste, dann c: ↘");
 		helpScreen.add("");
 		helpScreen.add("Inventar");
+		helpScreen.add("");
 		helpScreen.add(Character.toString(Key.openInventoryKey) + ": Inventar öffnen, Inventar schließen");
 		helpScreen.add("w: ↑ in der Itemliste");
 		helpScreen.add("s: ↓ in der Itemliste");

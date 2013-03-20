@@ -104,55 +104,54 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Level"))
 
-					if (key == gtr.keys.Key.getOpenInventoryKey()) {
+					switch (key) {
+					case Key.openInventoryKey:
 						gtr.asciiscreen.other.Inventar
 								.showInventory(term, this);
 						world().changeAndRefreshScreenAndTick(term, false);
 						key = 0;
-					} else {
-						switch (key) {
-						case ' ':
-							key = term.getKey();
-							dir = Direction.keyToDir(key);
-							if (dir != null)
-								attack(dir, weapon, 0.8F);
-							else {
-								key = 0;
-							}
-							break;
-
-						case Key.healPotionKey: // HEALs
-							selectItem("Heiltrank");
-							break;
-
-						case Key.reloadKey: // RELOAD
-							reload();
-							break;
-						case Key.speakToPerson: // Person anquatschen
-							key = term.getKey();
-							dir = Direction.keyToDir(key);
-							if (dir != null) {
-								speakTo(dir);
-
-							} else {
-								key = 0;
-							}
-							break;
-						case 'ä':
-							gtr.asciiscreen.other.Help.showHelp(term, this);
-							world().changeAndRefreshScreenAndTick(term, false);
+						break;
+					case ' ':
+						key = term.getKey();
+						dir = Direction.keyToDir(key);
+						if (dir != null)
+							attack(dir, weapon, 0.8F);
+						else {
 							key = 0;
-							break;
-						default:
-							dir = Direction.keyToDir(key);
-							if (dir != null)
-								move(dir);
-							else
-								key = 0;
-							break;
 						}
+						break;
 
+					case Key.healPotionKey: // HEALs
+						selectItem("Heiltrank");
+						break;
+
+					case Key.reloadKey: // RELOAD
+						reload();
+						break;
+					case Key.speakToPerson: // Person anquatschen
+						key = term.getKey();
+						dir = Direction.keyToDir(key);
+						if (dir != null) {
+							speakTo(dir);
+
+						} else {
+							key = 0;
+						}
+						break;
+					case Key.help:
+						gtr.asciiscreen.other.Help.showHelp(term, this);
+						world().changeAndRefreshScreenAndTick(term, false);
+						key = 0;
+						break;
+					default:
+						dir = Direction.keyToDir(key);
+						if (dir != null)
+							move(dir);
+						else
+							key = 0;
+						break;
 					}
+
 				else
 					key = 0;
 			}
