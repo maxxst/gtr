@@ -6,6 +6,7 @@ import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
+import gtr.keys.Key;
 import gtr.util.datatype.Location;
 
 import java.awt.event.KeyEvent;
@@ -79,7 +80,7 @@ public class Player extends Creature implements Camera {
 			while (key == 0) {
 				key = term.getKey();
 
-				if (gtr.keys.Keys.isUniversalKey(key))
+				if (gtr.keys.Key.isUniversalKey(key))
 					switch (key) {
 					case KeyEvent.VK_ESCAPE:
 						System.exit(0);
@@ -87,14 +88,14 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("StartScreen"))
 					switch (key) {
-					case 's':
+					case Key.skipKey:
 						nextLevel = new Location(LevelEnum.Prologue,
 								new Coordinate(1, 1));
 						break;
 					}
 				else if (screenType.name().equals("Prologue"))
 					switch (key) {
-					case 's':
+					case Key.skipKey:
 						// nextLevel = new Location(LevelEnum.Town, new
 						// Coordinate(6, 114));
 						nextLevel = new Location(LevelEnum.Town,
@@ -103,7 +104,7 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("Level"))
 
-					if (key == gtr.keys.Keys.getOpenInventoryKey()) {
+					if (key == gtr.keys.Key.getOpenInventoryKey()) {
 						gtr.asciiscreen.other.Inventar
 								.showInventory(term, this);
 						world().changeAndRefreshScreenAndTick(term, false);
@@ -111,7 +112,6 @@ public class Player extends Creature implements Camera {
 					} else {
 						switch (key) {
 						case ' ':
-							System.out.println("Leertaste");
 							key = term.getKey();
 							dir = Direction.keyToDir(key);
 							if (dir != null)
@@ -121,11 +121,11 @@ public class Player extends Creature implements Camera {
 							}
 							break;
 
-						case 'h': // HEALs
+						case Key.healPotionKey: // HEALs
 							selectItem("Heiltrank");
 							break;
 
-						case 'f': // RELOAD
+						case Key.reloadKey: // RELOAD
 							reload();
 							break;
 
@@ -173,6 +173,7 @@ public class Player extends Creature implements Camera {
 			if (!this.weapon.equals(weapon)) {
 				//addItem(this.weapon);
 				this.weapon = weapon;
+				eventText("Du hast " + weapon.getName() + " angelegt");
 			} else {
 				//this.weapon.add(weapon);
 			}
@@ -186,15 +187,15 @@ public class Player extends Creature implements Camera {
 	}
 
 	public String attackText() {
-		return "Du greifst an mit: " + weapon.getName();
+		return "Du greifst mit " + weapon.getName() + " an";
 	}
 
 	public String hitText() {
-		return "Du triffst";
+		return " .. und .. triffst";
 	}
 
 	public String missText() {
-		return "Du verfehlst";
+		return " .. und .. verfehlst";
 	}
 
 	public ArrayList<Item> getItems() {
@@ -202,53 +203,59 @@ public class Player extends Creature implements Camera {
 	}
 
 	public void addItem(Item item) {
+		//world().eventText("Du erhälst: " + item.getName());
 		boolean added = false;
 		for (Item itemInList : items) {
 			if (item.equals(itemInList)) {
-				itemInList.add(item);
 				added = true;
+				eventText("Vorrat an " + item.getName() + " erhöht");
+				itemInList.add(item);
 				break;
 			}
 		}
-		if (!added)
+		if (!added) {
+			eventText("Du erhälst: " + item.getName());
 			items.add(item);
-
-		System.out.println("Du erhälst: " + item.getName());
+		}
 	}
 
 	public void cleanItemList() {
 		for (int i = 0; i < items.size(); i++) {
-			System.out.print(items.get(i).getName());
-			System.out.println(items.get(i).getCount());
+			//! System.out.print(items.get(i).getName());
+			//! System.out.println(items.get(i).getCount());
 			if (items.get(i).getCount() <= 0)
 				items.remove(i);
 		}
 	}
 
 	public void selectItem(String name) {
+		Boolean there = false;
 		for (Item itemInList : items) {
-			System.out.println(name.equals(itemInList.getName()));
+			//! System.out.println(name.equals(itemInList.getName()));
 			if (name.equals(itemInList.getName())) {
-				System.out.print(itemInList.getName());
+				there = true;
+				//! System.out.print(itemInList.getName());
 				if (itemInList.isEquippable()) {
-					System.out.println(" equip");
+					//System.out.println(" equip");
 					equip(itemInList);
 				} else {
-					System.out.println(" use");
+					//! System.out.println(" use");
 					use(itemInList);
 				}
 				break;
 			}
-
 		}
+		if (!there)
+			eventText(name + "nicht im Inventar");
 	}
 
 	private void reload() {
 		// System.out.println("Munition ("+weapon.getType()+")");
-		selectItem("Munition (" + weapon.getType() + ")");
+		selectItem("Munition (" + weapon.getType() + ")"); //TODO besser referenzieren
 	}
 
 	private void reload(Ammo ammo) {
+		eventText("Du lädst nach ..");
 		int n = ammo.getCount();
 		if (n > 20)
 			n = 20;

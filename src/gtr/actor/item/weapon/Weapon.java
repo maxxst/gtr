@@ -3,6 +3,7 @@
 import gtr.actor.item.Ammo;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Projectile;
+import gtr.textbox.TextBox;
 import gtr.util.DropType;
 import gtr.util.WeaponType;
 import jade.util.datatype.Coordinate;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import rogue.creature.Creature;
+import rogue.creature.Player;
 
 /**
  * Weapons that can be equipped by monsters or
@@ -201,11 +203,13 @@ public class Weapon extends Item {
 	 * @param hitProbability Chance to hit an enemy in range 
 	 */
 	public void use(Direction dir, float hitProb){
+		String text = null;
 		if (holder() != null) {
 			if(getCount() > 0 || (type.equals(WeaponType.melee.toString()))){
 				Random randomGenerator = new Random();
-		    	System.out.println(((Creature) holder()).attackText());
+				text = ((Creature) holder()).attackText();
 		    	if (!isProjectile()){
+		    		Boolean hit = false;
 		    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
 			    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
 			    		Creature enemy = null;
@@ -216,16 +220,18 @@ public class Weapon extends Item {
 			    		}
 			    		if( enemy != null){
 			    			if(randomGenerator.nextFloat() < hitProb){
-								System.out.println(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
+			    				hit = true;
 								enemy.getDamage();
-							} else {
+							} else { //miss
 								i = range.getTo() + 1;
-								System.out.println(((Creature) holder()).missText()); //TODO Schaden zufuegen!
 							}
-						} else {
-							System.out.println(((Creature) holder()).missText());
+						} else {//no miss 
 						}
 			    	}
+		    		if (hit)
+		    			text += ((Creature) holder()).hitText();
+		    		else
+		    			text += ((Creature) holder()).missText();
 		    	} else {
 		    		world().addActor(new Projectile(dir, this), pos());
 		    	}
@@ -233,12 +239,15 @@ public class Weapon extends Item {
 		    		super.use();
 		    	else
 		    		setCount(1);
-			} else
-				System.out.println(getName() + " is empty!");
+			} else {
+				if (holder() instanceof Player) 
+					text = getName() + " ist leer!";
+			}
 		} else {
-			System.out.println("no weapon equipped");
+			if (holder() instanceof Player) 
+				text = "Keine Waffe ausgerüstet";
 		}
-	 
+		eventText(text);
 	}
 
 	public Range getRange() {

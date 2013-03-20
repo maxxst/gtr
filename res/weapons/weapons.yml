@@ -3,7 +3,29 @@
   range:
     from: 1
     to: 1
+- name: "Laserschwert"
+  type: "melee"
+  range:
+    from: 1
+    to: 2
+    only_rare: True
+- name: "Messer"
+  type: "melee"
+  range:
+    from: 1
+    to: 1
 - name: "Pistole"
+  type: "light"
+  range:
+    from: 1
+    to: 3
+- name: "Punisher"
+  type: "light"
+  range:
+    from: 1
+    to: 3
+  breakthrough: 10
+- name: "Walter PPK"
   type: "light"
   range:
     from: 1
@@ -15,6 +37,16 @@
     to: 10
   speed: 2
   area: True
+- name: "M41A"
+  type: "heavy"
+  range:
+    from: 5
+    to: 15
+- name: "Scharfschützengewehr"
+  type: "heavy"
+  range:
+    from: 10
+    to: 25
 - name: "Bogen des Robin Hood"
   type: "middle"
   range:
@@ -23,3 +55,17 @@
   speed: 4
   breakthrough: 10
   only_rare: True
+- name: "Steinschleuder"
+  type: "light"
+  range:
+    from: 1
+    to: 2
+- name: "Krausers Bogen"
+  type: "middle"
+  range:
+    from: 1
+    to: 10
+  speed: 5
+  breakthrough: 8
+  only_rare: True
+  area: True

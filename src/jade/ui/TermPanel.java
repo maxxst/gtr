@@ -23,7 +23,7 @@ public class TermPanel extends Terminal
 {
     public static final int DEFAULT_COLS = 80;
 //    public static final int DEFAULT_ROWS = 24;
-    public static final int DEFAULT_ROWS = 31;
+    public static final int DEFAULT_ROWS = 37;
     public static final int DEFAULT_ROWS_WITHOUT_OUTPUT = 27;
     public static final int DEFAULT_SIZE = 12;
     

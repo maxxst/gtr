@@ -51,6 +51,9 @@ public class Item extends Actor{
 	
 	public void add(Item item){
 		this.count += item.getCount();
+		
+		//if(item.getName() != null)
+			//world().eventText("Vorrat an " + item.getName() + " erhöht");
 	}
 	
 	// bei Waffen die Anzahl der Munition

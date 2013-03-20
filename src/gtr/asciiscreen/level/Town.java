@@ -35,29 +35,25 @@ public class Town extends Level {
 
 		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
 
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 100; i++) {
 				addActor(new Junkie());
 
 			}
-			for (int i = 0; i < 1; i++) {
+			for (int i = 0; i < 15; i++) {
 				addActor(new Ninja());
 			}
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 50; i++) {
 				addActor(new Dealer());
 			}
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < 20; i++) {
 				Katze k = new Katze();
 				addActor(k);
-			}
-			for (int i = 0; i < 200; i++) {
-				Yakuza Y= new Yakuza();
-				addActor(Y);
 			}
 
 			Door door = new Door(LevelEnum.RandomRoom, 15, 5);
 			addActor(door, 35, 108);
 
-			door = new Door(LevelEnum.RandomRoom, 5, 5);
+			door = new Door(LevelEnum.Room0, 5, 5);
 			addActor(door, 55, 108);
 			
 			// Tür des nordöstlichen Hauses im ersten Distrikt
@@ -79,6 +75,12 @@ public class Town extends Level {
 			// Tür der Pagode
 			door = new Door(LevelEnum.Dungeon, 1, 1);
 			addActor(door, 122, 44);
+			
+			// Tür des Hauses, was südlich dem nordöstlichen Haus des ersten Distrikts steht.
+			door = new Door(LevelEnum.Room2, 1, 1);
+			addActor(door, 117, 63);
+			
+			//
 
 			gtr.actor.fix.Door.completeDoors(this);
 
@@ -111,3 +113,4 @@ public class Town extends Level {
 	}
 
 }
+

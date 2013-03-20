@@ -1,14 +1,11 @@
 package jade.core;
 
-import gtr.actor.fading.Blood;
-import gtr.actor.fading.DeadBody;
 import gtr.actor.fading.Fading;
-import gtr.actor.fix.Door;
 import gtr.actor.fix.Fix;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Moving;
-import gtr.actor.moving.Projectile;
 import rogue.creature.Monster;
+import gtr.textbox.TextBox;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
@@ -744,7 +741,8 @@ public abstract class World extends Messenger {
 		if (screenType.equals(gtr.asciiscreen.ScreenType.Level))
 			term.bufferString(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT - 1, gtr.hud.Hud.getHud());
 		
-		
+		term.bufferString(new Coordinate(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT), gtr.textbox.TextBox.getHorizontalLine());
+		term.bufferString(new Coordinate(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT + 5), gtr.textbox.TextBox.getHorizontalLine());
 		term.bufferCameras();
 		term.refreshScreen();
 
@@ -784,5 +782,13 @@ public abstract class World extends Messenger {
 			face = ColoredChar.create('.');
 			actors = new HashSet<Actor>();
 		}
+	}
+	
+	public void displayText(String text){
+		TextBox.displayText(text, getActor(Player.class).getTerm());
+	}
+	
+	public void eventText(String text){
+		TextBox.displayEventText(getActor(Player.class).getTerm(), text);
 	}
 }
