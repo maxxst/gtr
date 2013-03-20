@@ -6,16 +6,14 @@
 - name: "Laserschwert"
   type: "melee"
   range:
-    from:1
-    to:2
+    from: 1
+    to: 2
     only_rare: True
 - name: "Messer"
   type: "melee"
   range:
-    from:1
-    to:1
-
-
+    from: 1
+    to: 1
 - name: "Pistole"
   type: "light"
   range:
@@ -26,14 +24,12 @@
   range:
     from: 1
     to: 3
-  breakthrough:10
+  breakthrough: 10
 - name: "Walter PPK"
   type: "light"
   range:
     from: 1
     to: 3
-
-
 - name: "Raketenwerfer"
   type: "heavy"
   range:
@@ -46,13 +42,11 @@
   range:
     from: 5
     to: 15
-- name: "Scharfschützengewehr halbaut."
+- name: "Scharfschützengewehr"
   type: "heavy"
   range:
     from: 10
     to: 25
-  
-
 - name: "Bogen des Robin Hood"
   type: "middle"
   range:
