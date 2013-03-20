@@ -11,6 +11,7 @@ public class Human extends Creature {
 	public Human(ColoredChar face, ArrayList<String> messages) {
 		super(face);
 		this.messages = messages;
+		this.messages.set(this.messages.size() - 1, this.messages.get(this.messages.size() - 1) + " ✓");
 	}
 
 	@Override

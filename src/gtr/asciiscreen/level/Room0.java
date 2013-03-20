@@ -45,11 +45,17 @@ public class Room0 extends Level {
 
 		
 		ArrayList<String> messages = new ArrayList<String>();
-		messages.add("Hallo!");
-		messages.add("Wie gehts dir?");
-		Human h = new Human(ColoredChar.create('p', Color.red), messages);
+		messages.add("Es gibt fünf Yakuza-Häuser auf dieser Insel.");
+		messages.add("In jedem befindet sich ein Boss der Yakuza.");
+		messages.add("Zuerst sei es Wo Fatt.");
+		messages.add("Dann sei es Tao Bai Bai.");
+		messages.add("Dann sei es Wing Zang.");
+		messages.add("Dann sei es Muten Roschi.");
+		messages.add("Und zum Schluss sei es Xing Po.");
+		
+		Human person2 = new Human(ColoredChar.create('!', Color.red), messages);
 		Katze k = new Katze();
-		addActor(h, 10, 5);
+		addActor(person2, 10, 5);
 		addActor(k, 11, 5);
 		
 		addActor(player, posDoor.x(), posDoor.y() - 1);

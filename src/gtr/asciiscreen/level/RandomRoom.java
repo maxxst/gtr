@@ -2,13 +2,17 @@ package gtr.asciiscreen.level;
 
 import jade.core.Messenger;
 import jade.ui.Terminal;
+import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
 import gtr.actor.fix.Door;
 import gtr.util.datatype.Location;
+import rogue.creature.Human;
+import rogue.creature.Katze;
 import rogue.creature.Player;
 
 public class RandomRoom extends Level {
@@ -53,6 +57,16 @@ public class RandomRoom extends Level {
 		System.out.println(lastLevel.toString());
 		addActor(new Door(lastLevel, exit), posDoor);
 		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
+		
+		ArrayList<String> messages = new ArrayList<String>();
+		messages.add("Sie brachten dich, als es noch dunkel war.");
+		messages.add("Du kannst von Glück reden, dass du überlebtest.");
+		messages.add("Junge, merk dir eines:");
+		messages.add("Xing Po wird sein Urteil fällen,");
+		messages.add("ob du willst oder nicht!");
+		
+		Human person2 = new Human(ColoredChar.create('!', Color.red), messages);
+		addActor(person2);
 		
 	}
 

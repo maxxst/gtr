@@ -28,6 +28,7 @@ public class Key {
 	public final static char reloadKey = 'r';
 	public final static char healPotionKey = 'h';
 	public final static char skipKey = 's';
+	public final static char skipAllMessages = 'P';
 	public final static char speakToPerson = 'p';
 	
 
