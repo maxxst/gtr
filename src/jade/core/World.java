@@ -741,7 +741,8 @@ public abstract class World extends Messenger {
 		if (screenType.equals(gtr.asciiscreen.ScreenType.Level))
 			term.bufferString(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT - 1, gtr.hud.Hud.getHud());
 		
-		
+		term.bufferString(new Coordinate(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT), gtr.textbox.TextBox.getHorizontalLine());
+		term.bufferString(new Coordinate(0, TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT + 5), gtr.textbox.TextBox.getHorizontalLine());
 		term.bufferCameras();
 		term.refreshScreen();
 
