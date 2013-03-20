@@ -74,7 +74,7 @@ public class Projectile extends Moving {
 	 */
 	private boolean impact(Coordinate coord) {
 		Creature creature;
-		System.out.print("boom.");
+		eventText("Projektil schlägt ein");
 		if (weapon.isArea()) {
 			for (Direction dir : Direction.values()) {
 				try {

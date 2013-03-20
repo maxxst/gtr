@@ -787,4 +787,8 @@ public abstract class World extends Messenger {
 	public void displayText(String text){
 		TextBox.displayText(text, getActor(Player.class).getTerm());
 	}
+	
+	public void eventText(String text){
+		TextBox.displayEventText(getActor(Player.class).getTerm(), text);
+	}
 }
