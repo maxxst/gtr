@@ -127,14 +127,14 @@ public class Monster extends Creature {
 	}
 	
 	public String attackText(){
-		return name + " greift an mit: " + weapon.getName();
+		return name + " greift an mit: " + weapon.getName() + " .. und .. ";
 	}
 	
 	public String hitText(){
-		return name + " trifft";
+		return "trifft";
 	}
 	
 	public String missText(){
-		return name + " verfehlt";
+		return "verfehlt";
 	}
 }

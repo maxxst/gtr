@@ -88,7 +88,7 @@ public class Player extends Creature implements Camera {
 					}
 				else if (screenType.name().equals("StartScreen"))
 					switch (key) {
-					case 's':
+					case Key.skipKey:
 						nextLevel = new Location(LevelEnum.Prologue,
 								new Coordinate(1, 1));
 						break;
@@ -173,6 +173,7 @@ public class Player extends Creature implements Camera {
 			if (!this.weapon.equals(weapon)) {
 				//addItem(this.weapon);
 				this.weapon = weapon;
+				eventText("Du hast " + weapon.getName() + " angelegt");
 			} else {
 				//this.weapon.add(weapon);
 			}
@@ -186,15 +187,15 @@ public class Player extends Creature implements Camera {
 	}
 
 	public String attackText() {
-		return "Du greifst an mit: " + weapon.getName();
+		return "Du greifst mit " + weapon.getName() + " an";
 	}
 
 	public String hitText() {
-		return "Du triffst";
+		return " .. und .. triffst";
 	}
 
 	public String missText() {
-		return "Du verfehlst";
+		return " .. und .. verfehlst";
 	}
 
 	public ArrayList<Item> getItems() {
@@ -202,45 +203,49 @@ public class Player extends Creature implements Camera {
 	}
 
 	public void addItem(Item item) {
+		//world().eventText("Du erhälst: " + item.getName());
 		boolean added = false;
 		for (Item itemInList : items) {
 			if (item.equals(itemInList)) {
 				itemInList.add(item);
 				added = true;
+				eventText("Vorrat an " + item.getName() + " erhöht");
 				break;
 			}
 		}
 		if (!added)
+			eventText("Du erhälst: " + item.getName());
 			items.add(item);
-
-		System.out.println("Du erhälst: " + item.getName());
 	}
 
 	public void cleanItemList() {
 		for (int i = 0; i < items.size(); i++) {
-			System.out.print(items.get(i).getName());
-			System.out.println(items.get(i).getCount());
+			//! System.out.print(items.get(i).getName());
+			//! System.out.println(items.get(i).getCount());
 			if (items.get(i).getCount() <= 0)
 				items.remove(i);
 		}
 	}
 
 	public void selectItem(String name) {
+		Boolean there = false;
 		for (Item itemInList : items) {
-			System.out.println(name.equals(itemInList.getName()));
+			//! System.out.println(name.equals(itemInList.getName()));
 			if (name.equals(itemInList.getName())) {
-				System.out.print(itemInList.getName());
+				there = true;
+				//! System.out.print(itemInList.getName());
 				if (itemInList.isEquippable()) {
-					System.out.println(" equip");
+					//System.out.println(" equip");
 					equip(itemInList);
 				} else {
-					System.out.println(" use");
+					//! System.out.println(" use");
 					use(itemInList);
 				}
 				break;
 			}
-
 		}
+		if (!there)
+			eventText(name + "nicht im Inventar");
 	}
 
 	private void reload() {
@@ -249,6 +254,7 @@ public class Player extends Creature implements Camera {
 	}
 
 	private void reload(Ammo ammo) {
+		eventText("Du lädst nach ..");
 		int n = ammo.getCount();
 		if (n > 20)
 			n = 20;
