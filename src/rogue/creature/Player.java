@@ -245,7 +245,7 @@ public class Player extends Creature implements Camera {
 
 	private void reload() {
 		// System.out.println("Munition ("+weapon.getType()+")");
-		selectItem("Munition (" + weapon.getType() + ")");
+		selectItem("Munition (" + weapon.getType() + ")"); //TODO besser referenzieren
 	}
 
 	private void reload(Ammo ammo) {
