@@ -182,7 +182,7 @@ public class Inventar {
 
 				key = term.getKey();
 
-				if (key == gtr.keys.Keys.getOpenInventoryKey())
+				if (key == gtr.keys.Key.getOpenInventoryKey())
 					break;
 				else {
 
