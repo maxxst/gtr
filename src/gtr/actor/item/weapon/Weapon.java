@@ -169,6 +169,10 @@ public class Weapon extends Item {
 			setCount(1);
 	}
 	
+	/**
+	 * generate random Weapon by dropType
+	 * @param dropType
+	 */
 	public Weapon(DropType dropType) {
 		this(WeaponType.getRandom().toString());
 		// TODO Auto-generated constructor stub
