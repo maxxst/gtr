@@ -72,4 +72,8 @@ public class Item extends Actor{
 	public boolean equals(Item item){
 		return getName().equals(item.getName());
 	}
+	
+	public String getDescription(){
+		return "";
+	}
 }

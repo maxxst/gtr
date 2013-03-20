@@ -37,7 +37,7 @@
     to: 10
   speed: 2
   area: True
-- name: "M41A"
+- name: "M4A1"
   type: "heavy"
   range:
     from: 5

@@ -31,5 +31,8 @@ public class HealthPotion extends Potion {
 			((Creature) holder()).addHp(heals);
 		super.use();
 	}
-
+	
+	public String getDescription(){
+		return "+ " + heals + " Lebenspunkte";
+	}
 }

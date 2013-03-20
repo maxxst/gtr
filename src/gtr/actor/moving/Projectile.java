@@ -3,8 +3,7 @@ package gtr.actor.moving;
 import java.awt.Color;
 
 import rogue.creature.Creature;
-
-import gtr.actor.item.weapon.Weapon;
+import gtr.actor.item.Weapon;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 import jade.util.datatype.Direction;
@@ -87,7 +86,7 @@ public class Projectile extends Moving {
 			}
 		} else {
 			creature = world().getActorAt(Creature.class,
-					coord.getTranslated(dir));
+					coord);
 			if (creature != null) {
 				return creature.getDamage();
 			}

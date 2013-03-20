@@ -4,7 +4,7 @@ import gtr.actor.fading.Blood;
 import gtr.actor.item.Ammo;
 import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
-import gtr.actor.item.weapon.Weapon;
+import gtr.actor.item.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.keys.Key;
 import gtr.util.datatype.Location;

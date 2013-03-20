@@ -84,7 +84,7 @@ public class Inventar {
 			if (c == equippedSign)
 				equippedItem = i;
 			lineWithItem += " " + String.format(countFormat, item.getCount())
-					+ "║" + item.getName();
+					+ "║" + item.getName() + " (" + item.getDescription() + ")";
 			while (lineWithItem.length() < width - 2)
 				lineWithItem += " ";
 			lineWithItem += "║" + Character.toString(c);

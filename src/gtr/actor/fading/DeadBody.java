@@ -4,7 +4,7 @@ import gtr.actor.item.Ammo;
 import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.Potion;
-import gtr.actor.item.weapon.Weapon;
+import gtr.actor.item.Weapon;
 import gtr.util.DropType;
 import gtr.util.ItemType;
 
@@ -65,8 +65,11 @@ public class DeadBody extends Fading {
      */
     private boolean loot(){
     	boolean isPlayerThere = (world().getActorAt(Player.class, pos()) != null);
-    	if (isPlayerThere)	
+    	if (isPlayerThere) {
+    		if(drop instanceof Weapon)
+    			drop.attach(world().getActorAt(Player.class, pos()));
     		world().getActorAt(Player.class, pos()).addItem(drop);
+    	}
     	
     	return isPlayerThere;
     }

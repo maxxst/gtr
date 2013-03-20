@@ -1,7 +1,7 @@
 package rogue.creature;
 
-import gtr.actor.item.weapon.Weapon;
-import gtr.actor.item.weapon.Weapon.Range;
+import gtr.actor.item.Weapon;
+import gtr.actor.item.Weapon.Range;
 import gtr.creature.Movement;
 
 import java.awt.Color;

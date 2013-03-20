@@ -1,6 +1,5 @@
 package gtr.actor.item;
 
-import gtr.actor.item.weapon.Weapon;
 import gtr.util.DropType;
 import gtr.util.WeaponType;
 
@@ -72,5 +71,9 @@ public class Ammo extends Item {
 	
 	public boolean isEquippable() {
 		return true;
+	}
+	
+	public String getDescription(){
+		return "+20 " + getType() + " Munition" ;
 	}
 }
