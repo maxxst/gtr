@@ -35,8 +35,9 @@ public class StartScreen extends OtherScreen {
 			updateLevelVariables();
 
 		Messenger.player = player;
+		player.getTerm().clearBuffer();
 		createAsciiScreen(leveldesign, this, player.getTerm());
-
+		
 		setPlayerOnScreen(leveldesign);
 	}
 
