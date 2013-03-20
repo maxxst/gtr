@@ -177,6 +177,7 @@ public abstract class Actor extends Messenger
     {
         Guard.argumentIsNotNull(dir);
  
+        if (world().getActorAt(Creature.class, x() + dir.dx(), y() + dir.dy()) == null)
         setPos(x() + dir.dx(), y() + dir.dy());
     }
 
