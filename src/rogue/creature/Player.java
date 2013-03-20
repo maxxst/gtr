@@ -207,15 +207,16 @@ public class Player extends Creature implements Camera {
 		boolean added = false;
 		for (Item itemInList : items) {
 			if (item.equals(itemInList)) {
-				itemInList.add(item);
 				added = true;
 				eventText("Vorrat an " + item.getName() + " erhöht");
+				itemInList.add(item);
 				break;
 			}
 		}
-		if (!added)
+		if (!added) {
 			eventText("Du erhälst: " + item.getName());
 			items.add(item);
+		}
 	}
 
 	public void cleanItemList() {
