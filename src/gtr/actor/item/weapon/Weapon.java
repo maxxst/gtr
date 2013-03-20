@@ -333,4 +333,8 @@ public class Weapon extends Item {
 	public boolean equals(Weapon weapon){
 		return this.getName().equals(weapon.getName());
 	}
+	
+	public String getDescription(){
+		return "von " + getRangeFrom() + " bis " + getRangeTo();
+	}
 }

@@ -26,7 +26,7 @@ public class Hud {
 		statusBar += " Heiltränke: " + Integer.toString(healthPotionCount);
 		
 		statusBar += "	";
-		statusBar += " Waffe: " + Messenger.getPlayer().getWeapon().getName();
+		statusBar += " Waffe: " + Messenger.getPlayer().getWeapon().getName() + " (" + Messenger.getPlayer().getWeapon().getDescription() + ")";
 		
 		return statusBar;
 		

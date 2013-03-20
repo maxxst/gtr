@@ -73,4 +73,8 @@ public class Ammo extends Item {
 	public boolean isEquippable() {
 		return true;
 	}
+	
+	public String getDescription(){
+		return "+20 " + getType() + " Munition" ;
+	}
 }
