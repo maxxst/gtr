@@ -17,7 +17,7 @@ MP7:
   type: "middle"
   range:
     from: 1
-    to: 10 
+    to: 7 
   dmg: 3.0
 MP5:
   name: "MP5"

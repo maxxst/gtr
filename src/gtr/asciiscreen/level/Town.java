@@ -35,19 +35,23 @@ public class Town extends Level {
 
 		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
 
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 1; i++) {
 				addActor(new Junkie());
 
 			}
-			for (int i = 0; i < 15; i++) {
+			for (int i = 0; i < 1; i++) {
 				addActor(new Ninja());
 			}
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 5; i++) {
 				addActor(new Dealer());
 			}
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 2; i++) {
 				Katze k = new Katze();
 				addActor(k);
+			}
+			for (int i = 0; i < 200; i++) {
+				Yakuza Y= new Yakuza();
+				addActor(Y);
 			}
 
 			Door door = new Door(LevelEnum.RandomRoom, 15, 5);
