@@ -37,6 +37,18 @@ Die Hauptfigur `@` agiert wie folgt:
 - `s` `↓` in der Itemliste
 - `Enter`, `Eingabe`, `Leer` Item benutzen
 
+### Mit Personen reden
+- `p` `q` Person `↖` von dir ansprechen
+- `p` `w` Person `↑` von dir ansprechen
+- `p` `e` Person `↗` von dir ansprechen
+- `p` `a` Person `←` von dir ansprechen
+- `p` `s` Person `↓` von dir ansprechen
+- `p` `d` Person `→` von dir ansprechen
+- `p` `y`, `p` `z` Person `↙` von dir ansprechen
+- `p` `c` Person `↘` von dir ansprechen
+- `p` nächsten Satz der Person anzeigen
+- `P` Gespräch sofort beenden
+
 
 ## Geschichte
 Gestranded auf einer spärlich besiedelten Insel wacht $name auf. Nackt. Neben ihm liegt nur eine Pistole mit einem halben Magazin. $name kommt langsam zu sich und nimmt entfernte Stimmen wahr…
