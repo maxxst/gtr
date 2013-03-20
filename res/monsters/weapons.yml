@@ -110,3 +110,10 @@ Messer:
     from: 1
     to: 1 
   dmg: 1.5
+Zunge:
+  name: "Zunge"
+  type: "melee"
+  range:
+    from: 1
+    to: 2 
+  dmg: 3.5

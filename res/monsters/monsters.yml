@@ -41,7 +41,7 @@
     - "M14"
     - "G36"
     - "MP7"
-  drops: "common"
+  drops: "uncommon"
 - name: "Polizist"
   face: "P"
   movement:
@@ -51,14 +51,14 @@
     - "HK P30"
     - "Schlagstock"
   drops: "common"
-- name: "Wahnsinninger"
+- name: "Wahnsinniger"
   face: "W"
   movement:
     start: 1
     multiplikator: 0
   weapons:
     - "Raketenwerfer"
-  drops: "common"
+  drops: "uncommon"
 - name: "Irrer"
   face: "I"
   movement:
@@ -66,7 +66,7 @@
     multiplikator: 0
   weapons:
     - "AK 47"
-  drops: "common"
+  drops: "uncommon"
 - name: "Bürger"
   face: "B"
   movement:
@@ -74,7 +74,7 @@
     multiplikator: 0
   weapons:
     - "Faust"
-  drops: "common"
+  drops: "none"
 - name: "Korrupter Polizist"
   face: "R"
   movement:
@@ -92,7 +92,7 @@
   weapons:
     - "MP7"
     - "HK P30"
-  drops: "common"
+  drops: "uncommon"
 - name: "Heisenberg"
   face: "H"
   movement:
@@ -100,7 +100,7 @@
     multiplikator: 1
   weapons:
     - "Knallquecksilber"
-  drops: "common"
+  drops: "rare"
 - name: "Neo"
   face: "N"
   movement:
@@ -108,7 +108,7 @@
     multiplikator: 1
   weapons:
     - "Matrixschlag"
-  drops: "common"
+  drops: "rare"
 - name: "Lorelei"
   face: "L"
   movement:
@@ -116,7 +116,7 @@
     multiplikator: 1
   weapons:
     - "Platzhalter"
-  drops: "common"
+  drops: "rare"
 - name: "Agathe"
   face: "A"
   movement:
@@ -124,7 +124,7 @@
     multiplikator: 1
   weapons:
     - "Großkatana"
-  drops: "common"
+  drops: "rare"
 - name: "Siegfried"
   face: "S"
   movement:
@@ -132,4 +132,44 @@
     multiplikator: 1
   weapons:
     - "Platzhalter"
-  drops: "common"
+  drops: "rare"
+- name: "Xing Po"
+  face: "X"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Platzhalter"
+  drops: "mythic"
+- name: "Tao BaiBai"
+  face: "T"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Zunge"
+  drops: "mythic"
+- name: "Muten Roschi"
+  face: "M"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Platzhalter"
+  drops: "mythic"
+- name: "Wo Fatt"
+  face: "W"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Platzhalter"
+  drops: "mythic"
+- name: "Wing Zang"
+  face: "Z"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Platzhalter"
+  drops: "mythic"
