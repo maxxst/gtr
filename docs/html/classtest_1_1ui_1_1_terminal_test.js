@@ -1,0 +1,26 @@
+var classtest_1_1ui_1_1_terminal_test =
+[
+    [ "bufferCharInt", "classtest_1_1ui_1_1_terminal_test.html#a14135424db1d1f11471d27f9b9c66448", null ],
+    [ "bufferGetChar", "classtest_1_1ui_1_1_terminal_test.html#a8bc077e7250d39c34efff75fb3c8020f", null ],
+    [ "bufferGetCharInt", "classtest_1_1ui_1_1_terminal_test.html#ac97604b94530a3fb2f66f60a8308c930", null ],
+    [ "bufferNullCoord", "classtest_1_1ui_1_1_terminal_test.html#ac47dada23c8575e7e0200748dffb0d15", null ],
+    [ "bufferNullStringCoord", "classtest_1_1ui_1_1_terminal_test.html#ad37f7f2801e1b5c894a4ae84e4dbbd8c", null ],
+    [ "bufferNullStringCoordColor", "classtest_1_1ui_1_1_terminal_test.html#aac6ef144363f2fb84bbaca6771df2b57", null ],
+    [ "bufferNullStringInt", "classtest_1_1ui_1_1_terminal_test.html#a08958d88eac42a9defe0f0fc7bffc208", null ],
+    [ "bufferNullStringIntColor", "classtest_1_1ui_1_1_terminal_test.html#ae32fc45b4e5017b33e812fd1dafc74e7", null ],
+    [ "bufferNullTile", "classtest_1_1ui_1_1_terminal_test.html#a87f006e0d09404ea1510b7560a30ad69", null ],
+    [ "bufferStringCoord", "classtest_1_1ui_1_1_terminal_test.html#a0ef7d4af63ece7842160550ce6e35057", null ],
+    [ "bufferStringCoordColor", "classtest_1_1ui_1_1_terminal_test.html#a23439fcce6a1c5af267d456fa181fd73", null ],
+    [ "bufferStringCoordNull", "classtest_1_1ui_1_1_terminal_test.html#a73f83947e6d86e9daa8e0fbe5140365c", null ],
+    [ "bufferStringCoordNullColor", "classtest_1_1ui_1_1_terminal_test.html#a647300c6866bb988010219b4c5f21ccd", null ],
+    [ "bufferStringInt", "classtest_1_1ui_1_1_terminal_test.html#a7aac0dea133413b158cf831ab2493993", null ],
+    [ "bufferStringIntColor", "classtest_1_1ui_1_1_terminal_test.html#ae7de1f8ed63c408a36414052962c3de4", null ],
+    [ "bufferStringIntNullColor", "classtest_1_1ui_1_1_terminal_test.html#a1e037908b6224a14b69ce4f1a39e8f60", null ],
+    [ "bufferStringNullCoordColor", "classtest_1_1ui_1_1_terminal_test.html#aa1b52847982ea54966b62f2e4af5045b", null ],
+    [ "charAtIntCallsCoord", "classtest_1_1ui_1_1_terminal_test.html#abf38a8efe5fb50370a0c79e8de5b6b4f", null ],
+    [ "clearBufferNulls", "classtest_1_1ui_1_1_terminal_test.html#a627121c6bfc78bd63f0bacb4e8fa3dda", null ],
+    [ "getUnbufferedChar", "classtest_1_1ui_1_1_terminal_test.html#afcf7da14112116ef15f2e025bf078ba4", null ],
+    [ "initConcreteTerm", "classtest_1_1ui_1_1_terminal_test.html#ab60b07de1f68227be94368b70c101fb5", null ],
+    [ "saveRecallBuffer", "classtest_1_1ui_1_1_terminal_test.html#ab90b9c4471299b628675042ae9d1be19", null ],
+    [ "saveRecallOverwritesOld", "classtest_1_1ui_1_1_terminal_test.html#a4c6637cd074bdaac03858f7aa3a476e2", null ]
+];

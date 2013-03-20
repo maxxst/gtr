@@ -1,0 +1,25 @@
+var classtest_1_1ui_1_1_camera_test =
+[
+    [ "bufferCameraDirectional", "classtest_1_1ui_1_1_camera_test.html#a06e86d0a11705a6e535f84fb5a363c20", null ],
+    [ "bufferCamerasBuffsMany", "classtest_1_1ui_1_1_camera_test.html#a39034d1ab74eb982f2597a25b1044c84", null ],
+    [ "bufferCamerasBuffsNone", "classtest_1_1ui_1_1_camera_test.html#a35fcb173410961aa45bb4660a7937099", null ],
+    [ "bufferCamerasBuffsOne", "classtest_1_1ui_1_1_camera_test.html#ad4550219e5dff9a28f6a15ce17c10716", null ],
+    [ "bufferCameraSquare", "classtest_1_1ui_1_1_camera_test.html#a1067aa6305d3338a99281528d10da678", null ],
+    [ "bufferNullCamera", "classtest_1_1ui_1_1_camera_test.html#a0a4a742467fab6d920b6356868b2d29e", null ],
+    [ "bufferRelativeCoordinate", "classtest_1_1ui_1_1_camera_test.html#a53dacadd492aad99e458f58e9465b6ce", null ],
+    [ "bufferRelativeNullCamera", "classtest_1_1ui_1_1_camera_test.html#a2561029e3724d926beabee027283e9e0", null ],
+    [ "bufferRelativeNullChar", "classtest_1_1ui_1_1_camera_test.html#a9661cda24163ffa7df6ec3e27654cd79", null ],
+    [ "bufferRelativeNullCoordinate", "classtest_1_1ui_1_1_camera_test.html#a8df248525ee269c102de0581f8cae6c3", null ],
+    [ "bufferRelativeSquare", "classtest_1_1ui_1_1_camera_test.html#a047ca32803fe1a665f2c34c8402c6b9b", null ],
+    [ "bufferRelativeUnregistered", "classtest_1_1ui_1_1_camera_test.html#a1db088e477e927124fffe147ab2c1974", null ],
+    [ "bufferUnregisteredCamera", "classtest_1_1ui_1_1_camera_test.html#ae53f3a09dc649f9b3f032565144c4e3e", null ],
+    [ "init", "classtest_1_1ui_1_1_camera_test.html#af49d29e16b9677f2320d880317e2370b", null ],
+    [ "nullCameraCenter", "classtest_1_1ui_1_1_camera_test.html#a92b758709fedb7fa16ad3f1887db667c", null ],
+    [ "registerCameraAdds", "classtest_1_1ui_1_1_camera_test.html#a09fbc12fd358f928627eda614cd7b4c9", null ],
+    [ "registerIntCallCoord", "classtest_1_1ui_1_1_camera_test.html#aa4ccc8e4ae560ff7e2bc8aa92ab8b545", null ],
+    [ "registerNullCamera", "classtest_1_1ui_1_1_camera_test.html#a31b5164bcd5e88463882a822cbc5b90e", null ],
+    [ "registerNullLocation", "classtest_1_1ui_1_1_camera_test.html#a63a0884bc89e02e9068e8bf0a6ea8b05", null ],
+    [ "unregisterCameraRemoves", "classtest_1_1ui_1_1_camera_test.html#a0b914a1770c47295b175e35b7167a600", null ],
+    [ "unregisteredCameraCenter", "classtest_1_1ui_1_1_camera_test.html#a96d7c13d87515d91771f0d14332998c4", null ],
+    [ "unregisterUnregisteredNoOp", "classtest_1_1ui_1_1_camera_test.html#a28b0fe9ab3428f5d6e427f61334ae607", null ]
+];

@@ -1,0 +1,26 @@
+var classtest_1_1util_1_1_dice_test =
+[
+    [ "chanceResultMatchesPercent", "classtest_1_1util_1_1_dice_test.html#a7b9b32ac60046c759e2d83317d3c30ab", null ],
+    [ "chooseEmptyList", "classtest_1_1util_1_1_dice_test.html#aa433949f867e7ccb6e187870b497f149", null ],
+    [ "chooseNullList", "classtest_1_1util_1_1_dice_test.html#a2412ebda0e0364b9931137913ea99f16", null ],
+    [ "chooseUniformDistribution", "classtest_1_1util_1_1_dice_test.html#ac7061dfe1c9632a376a1e8e8e32abb82", null ],
+    [ "constructorReseedSequences", "classtest_1_1util_1_1_dice_test.html#a11678b4e673e04da052fac2f7b484251", null ],
+    [ "defaultChanceOdds", "classtest_1_1util_1_1_dice_test.html#a2346736ca21220f52c6247bc4307cd18", null ],
+    [ "defaultChanceTotal", "classtest_1_1util_1_1_dice_test.html#ab65f6ce3fd1024b9597b948d67c47573", null ],
+    [ "globalInstance", "classtest_1_1util_1_1_dice_test.html#a5b249c16b76333dc21affc0f24a19740", null ],
+    [ "initDice", "classtest_1_1util_1_1_dice_test.html#a84cc60fa0c913f7035405f9f597eaeb2", null ],
+    [ "negativeOdds", "classtest_1_1util_1_1_dice_test.html#a9bb1babdb876f36d8b201c7ea5ca390c", null ],
+    [ "nextIntMaxBounds", "classtest_1_1util_1_1_dice_test.html#a3b491cb28afbcf1391c92ff249a23dbe", null ],
+    [ "nextIntMaxUniform", "classtest_1_1util_1_1_dice_test.html#ab6f6d5e741b289446cec30f8ffe43d3c", null ],
+    [ "nextIntNegMax", "classtest_1_1util_1_1_dice_test.html#afe1e8f821f1c81b49b1ba06d8205fa77", null ],
+    [ "nextIntNegRange", "classtest_1_1util_1_1_dice_test.html#a66f4289580309d40ea94cabef011f2b4", null ],
+    [ "nextIntNonNegative", "classtest_1_1util_1_1_dice_test.html#aac7b5ca214f65828333b73e65e2b494c", null ],
+    [ "nextIntRangeBounded", "classtest_1_1util_1_1_dice_test.html#a531e230e15696f9c481673e0e7b7a77b", null ],
+    [ "nextIntRangeUniform", "classtest_1_1util_1_1_dice_test.html#ac560d223e6c53d19e6eb3f01ade8bd4e", null ],
+    [ "nextIntZeroMax", "classtest_1_1util_1_1_dice_test.html#a7a32720dbb5c638b22119633afdaf660", null ],
+    [ "oddsTooHigh", "classtest_1_1util_1_1_dice_test.html#aa643f79511535d8ff9df86e9b9a7a3d2", null ],
+    [ "perfectOdds", "classtest_1_1util_1_1_dice_test.html#a73c91a1d33ac7bc761993f39e6a5aad2", null ],
+    [ "reseededSequences", "classtest_1_1util_1_1_dice_test.html#a48a90e3bcefb990d0cd8e710bff24c11", null ],
+    [ "seedCurrentTime", "classtest_1_1util_1_1_dice_test.html#abc08e26cac18d9911c6699804b3f4713", null ],
+    [ "zeroOdds", "classtest_1_1util_1_1_dice_test.html#ad2d29e8b2cb51990f6f4b41090cc126f", null ]
+];
