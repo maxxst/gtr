@@ -102,7 +102,7 @@
     - "Knallquecksilber"
   drops: "rare"
 - name: "Neo"
-  face: "N"
+  face: "O"
   movement:
     start: 10
     multiplikator: 1
