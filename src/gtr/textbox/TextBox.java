@@ -12,11 +12,11 @@ public class TextBox {
 		return horizontalLine;
 	}
 	
-	public static void displayText(String text, Terminal term) {
-		displayText(term, text);
+	public static void displayEventText(String text, Terminal term) {
+		displayEventText(term, text);
 	}
 	
-	public static void displayEventText(String text, Terminal term) {
+	public static void displayText(String text, Terminal term) {
 		displayText(term, text);
 	}
 	
@@ -28,7 +28,7 @@ public class TextBox {
 		return horLine;
 	}
 
-	public static void displayText(Terminal term, String text) {
+	public static void displayEventText(Terminal term, String text) {
 		
 		String textWithSpaces = text;
 		while (textWithSpaces.length() < TermPanel.DEFAULT_COLS)
@@ -47,7 +47,7 @@ public class TextBox {
 		term.refreshScreen();
 	}
 	
-	public static void displayEventText(Terminal term, String text) {
+	public static void displayText(Terminal term, String text) {
 		
 		String textWithSpaces = text;
 		while (textWithSpaces.length() < TermPanel.DEFAULT_COLS)
