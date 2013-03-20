@@ -1,9 +1,7 @@
 package gtr.asciiscreen.other;
 
 import jade.core.Messenger;
-import jade.ui.TermPanel;
 import jade.ui.Terminal;
-import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 

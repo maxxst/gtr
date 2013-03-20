@@ -5,6 +5,7 @@ import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Extension of the world by the GTR team
@@ -46,7 +47,7 @@ public abstract class AsciiScreen extends World {
 		return floorChars.contains(c);
 	}
 
-	public static void showAsciiScreen(ArrayList<String> leveldesign,
+	public static void showAsciiScreen(List<String> leveldesign,
 			World world, Terminal term) {
 
 		term.clearBuffer();
@@ -85,7 +86,7 @@ public abstract class AsciiScreen extends World {
 	 *            Karte
 	 * @return
 	 */
-	public static int getHeight(ArrayList<String> leveldesign) {
+	public static int getHeight(List<String> leveldesign) {
 		return leveldesign.size();
 	}
 
@@ -96,7 +97,7 @@ public abstract class AsciiScreen extends World {
 	 *            Karte
 	 * @return Breite der Karte
 	 */
-	public static int getWidth(ArrayList<String> leveldesign) {
+	public static int getWidth(List<String> leveldesign) {
 		return leveldesign.get(0).length();
 	}
 	

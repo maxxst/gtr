@@ -133,12 +133,16 @@ public class Player extends Creature implements Camera {
 							dir = Direction.keyToDir(key);
 							if (dir != null) {
 								speakTo(dir);
-								
+
 							} else {
 								key = 0;
 							}
 							break;
-
+						case 'ä':
+							gtr.asciiscreen.other.Help.showHelp(term, this);
+							world().changeAndRefreshScreenAndTick(term, false);
+							key = 0;
+							break;
 						default:
 							dir = Direction.keyToDir(key);
 							if (dir != null)
