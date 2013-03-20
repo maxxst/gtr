@@ -7,7 +7,10 @@ import jade.util.datatype.Coordinate;
 import rogue.creature.Player;
 
 public class TextBox {
-
+	
+	public static void displayText(String text, Terminal term) {
+		displayText(term, text);
+	}
 	
 	public static void displayText(Terminal term, String text) {
 		

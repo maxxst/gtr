@@ -9,6 +9,7 @@ import gtr.actor.item.Item;
 import gtr.actor.moving.Moving;
 import gtr.actor.moving.Projectile;
 import rogue.creature.Monster;
+import gtr.textbox.TextBox;
 import gtr.util.datatype.Location;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
@@ -784,5 +785,9 @@ public abstract class World extends Messenger {
 			face = ColoredChar.create('.');
 			actors = new HashSet<Actor>();
 		}
+	}
+	
+	public void displayText(String text){
+		TextBox.displayText(text, getActor(Player.class).getTerm());
 	}
 }
