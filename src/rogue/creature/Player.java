@@ -173,7 +173,7 @@ public class Player extends Creature implements Camera {
 			if (!this.weapon.equals(weapon)) {
 				//addItem(this.weapon);
 				this.weapon = weapon;
-				eventText("Du hast " + weapon.getName() + " angelegt");
+				eventText("Du hast " + weapon.getName() + " angelegt.");
 			} else {
 				//this.weapon.add(weapon);
 			}
@@ -246,7 +246,7 @@ public class Player extends Creature implements Camera {
 			}
 		}
 		if (!there)
-			eventText(name + "nicht im Inventar");
+			eventText(name + " nicht im Inventar.");
 	}
 
 	private void reload() {
