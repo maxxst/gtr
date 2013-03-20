@@ -24,7 +24,7 @@ public class Keys {
 	/**
 	 * Standardtaste zum Öffnen des Inventars
 	 */
-	private static char openInventoryKey = 'r';
+	private static char openInventoryKey = 'i';
 
 	/**
 	 * Alle Tasten, die eine Belegung aufweisen. (Muss von allen Klassenvariablen
