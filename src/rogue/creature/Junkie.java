@@ -30,12 +30,24 @@ public class Junkie extends Monster {
 			  System.out.print("Junkie: ");
 			  switch (i)
 				{
-				 case 1: System.out.println("Das Zeug, das blaue Zeug!"); break;
-				 case 2: System.out.println("Ey man, hast du was?"); break;
-				 case 3: System.out.println("Science Bitch!"); break;
-				 case 4: System.out.println("Ich brauche Drogen den ganzen Tag... *trälla*"); break;
-				 case 5: System.out.println("Ich brauch was vom blauen Crystal, haste was für mich?"); break;
-				 case 6: System.out.println("Heisenberg ist ein Gott!"); break;
+				 case 1:gtr.textbox.TextBox.displayText(player.getTerm(),
+							"Junkie: Das Zeug, das blaue Zeug!");
+				 		break;
+				 case 2:gtr.textbox.TextBox.displayText(player.getTerm(),
+							"Junkie: Ey man, hast du was?");
+				 		break;
+				 case 3:gtr.textbox.TextBox.displayText(player.getTerm(),
+							"Junkie: Science Bitch!");
+						break;
+				 case 4:gtr.textbox.TextBox.displayText(player.getTerm(),
+							"Junkie: Ich brauche Drogen den ganzen Tag... *trälla*");
+				 		break;
+				 case 5:gtr.textbox.TextBox.displayText(player.getTerm(),
+							"Junkie: Ich brauch was vom blauen Crystal, haste was für mich?");
+					 	break;
+				 case 6:gtr.textbox.TextBox.displayText(player.getTerm(),
+							"Junkie: Heisenberg ist ein Gott!");
+						break;
 				} 
 		  }
 			  

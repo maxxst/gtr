@@ -30,16 +30,28 @@ public class Katze extends Monster
 		public Katze(Color color){
 			super(ColoredChar.create('K', color));
 		}
-		
-
+	
+		int i =1;
 		
 		public void act() 
 		{
 		/*
 		 * Wenn hund in nähe, dann andere richtung (wegrennen);
-		 * wenn hund nicht in nähe "runden" laufen alle auf streife, sprich am gleichen punkt nach x zügen wieder sein
-		move();
-		*/
+		 */
+			switch (i)
+			{
+			case 1:move(3,0); i=i+1;break;
+			case 2:move(2,2);i=i+1;break;
+			case 3:move(0,3);i=i+1;break;
+			case 4:move(-2,2);i=i+1; if ( Math.abs(player.x() - x())+Math.abs(player.y() - y())<=10){gtr.textbox.TextBox.displayText(player.getTerm(),
+					"Katze: Miau!");}break;
+			case 5:move(-3,0);i=i+1;break;
+			case 6:move(-2,-2);i=i+1;break;
+			case 7:move(0,-3);i=i+1;break;
+			case 8:move(2,-2);i=1; if  (Math.abs(player.x() - x())+Math.abs(player.y() - y())<=10){gtr.textbox.TextBox.displayText(player.getTerm(),
+					"Katze: Miau!");};break;
+			
+			}
 		Direction dir = findPlayerInRange();
 		if(dir != null)
 			{ //angreifbar
