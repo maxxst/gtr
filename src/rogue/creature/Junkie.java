@@ -27,7 +27,6 @@ public class Junkie extends Monster {
 		  // int i = (int) (Math.random()*x+y); erzeugt eine Zufallszahl in den grenzen y bis x
 		  int i = (int) (Math.random()*12+1);
 		  if (i <= 6){
-			  System.out.print("Junkie: ");
 			  switch (i)
 				{
 				 case 1:displayText("Junkie: Das Zeug, das blaue Zeug!");

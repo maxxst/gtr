@@ -154,21 +154,5 @@ public class Monster extends Creature {
 		return i;
 		 
 	}
-	/*
-	 * 8   |1|   2
-	 * ____|_|____
-	 * 7___|9|___3
-	 *     | |
-	 * 6   |5|   4
-	 */
-	public int getQuadrantTest()
-	{	 int i = 0;
-		 int x = x()-player.x();
-		 int y = y()-player.y();
-		 if (x==0){if (y>0){i=1;}if(y==0){i=9;}if(y<0){i=5;}}
-		 if (x<0){if(y>0){i=8;}if(y==0){i=7;}if(y<0){i=6;}}
-		 if (x>0){if(y>0){i=2;}if(y==0){i=3;}if(y<0){i=4;}}
-		return i;
-		 
-	}
+
 }

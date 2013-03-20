@@ -1,3 +1,10 @@
+Bombe:
+  name: "Bombe"
+  type: "heavy"
+  range:
+    from: 0
+    to: 1 
+  dmg: 3.0
 G36:
   name: "MP5"
   type: "middle"

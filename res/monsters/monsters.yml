@@ -67,6 +67,14 @@
   weapons:
     - "AK 47"
   drops: "uncommon"
+- name: "Verrückter Ivan"
+  face: "Ï"
+  movement:
+    start: 2
+    multiplikator: 0
+  weapons:
+    - "AK 47"
+  drops: "uncommon"
 - name: "Bürger"
   face: "B"
   movement:
