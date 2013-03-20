@@ -83,20 +83,15 @@ public class Ninja extends Monster
 		 System.out.print("Ninja: ");
 	     switch (i)
 			{
-			 case 1:gtr.textbox.TextBox.displayText(player.getTerm(),
-						"Ninja: Hayjaaaaaa!"); 
+			 case 1:displayText("Ninja: Hayjaaaaaa!"); 
 			 		break;
-			 case 2:gtr.textbox.TextBox.displayText(player.getTerm(),
-						"Ninja: Banzai!");  
+			 case 2:displayText("Ninja: Banzai!");  
 				 	break;
-			 case 3:gtr.textbox.TextBox.displayText(player.getTerm(),
-						"Ninja: Requiescat in Pache.");
+			 case 3:displayText("Ninja: Requiescat in Pache.");
 			 		break;
-			 case 4:gtr.textbox.TextBox.displayText(player.getTerm(),
-						"Ninja: KAMIKAZE!");
+			 case 4:displayText("Ninja: KAMIKAZE!");
 			 		break;
-			 case 5:gtr.textbox.TextBox.displayText(player.getTerm(),
-						"Ninja: Du noch viel lernen musst, junger Padawan.");
+			 case 5:displayText("Ninja: Du noch viel lernen musst, junger Padawan.");
 			 		break;
 			}
 		 }

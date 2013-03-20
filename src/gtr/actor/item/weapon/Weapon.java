@@ -203,11 +203,13 @@ public class Weapon extends Item {
 	 * @param hitProbability Chance to hit an enemy in range 
 	 */
 	public void use(Direction dir, float hitProb){
+		String text = null;
 		if (holder() != null) {
 			if(getCount() > 0 || (type.equals(WeaponType.melee.toString()))){
 				Random randomGenerator = new Random();
-				world().displayText(((Creature) holder()).attackText());
+				text = ((Creature) holder()).attackText();
 		    	if (!isProjectile()){
+		    		Boolean hit = false;
 		    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
 			    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
 			    		Creature enemy = null;
@@ -218,16 +220,18 @@ public class Weapon extends Item {
 			    		}
 			    		if( enemy != null){
 			    			if(randomGenerator.nextFloat() < hitProb){
-			    				world().displayText(((Creature) holder()).hitText()); //TODO Schaden zufuegen!
+			    				hit = true;
 								enemy.getDamage();
-							} else {
+							} else { //miss
 								i = range.getTo() + 1;
-								world().displayText(((Creature) holder()).missText()); //TODO Schaden zufuegen!
 							}
-						} else {
-							world().displayText(((Creature) holder()).missText());
+						} else {//no miss 
 						}
 			    	}
+		    		if (hit)
+		    			text += ((Creature) holder()).hitText();
+		    		else
+		    			text += ((Creature) holder()).missText();
 		    	} else {
 		    		world().addActor(new Projectile(dir, this), pos());
 		    	}
@@ -235,12 +239,15 @@ public class Weapon extends Item {
 		    		super.use();
 		    	else
 		    		setCount(1);
-			} else
-				world().displayText(getName() + " ist leer!");
+			} else {
+				if (holder() instanceof Player) 
+					text = getName() + " ist leer!";
+			}
 		} else {
-			world().displayText("Keine Waffe ausgerüstet");
+			if (holder() instanceof Player) 
+				text = "Keine Waffe ausgerüstet";
 		}
-	 
+		eventText(text);
 	}
 
 	public Range getRange() {

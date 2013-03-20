@@ -6,6 +6,7 @@ import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 import jade.util.datatype.Direction;
 import jade.util.datatype.MutableCoordinate;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -340,4 +341,14 @@ public abstract class Actor extends Messenger
         for(Actor held : holds)
             held.propagatePos(pos);
     }
+    
+	protected void eventText(String text){
+		if(player != null && text != null)
+			gtr.textbox.TextBox.displayEventText(player.getTerm(), text);
+	}
+	
+	protected void displayText(String text){
+		if(player != null && text != null)
+			gtr.textbox.TextBox.displayText(player.getTerm(), text);
+	}
 }
