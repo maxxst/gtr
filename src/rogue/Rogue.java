@@ -4,7 +4,10 @@ import javax.swing.JApplet;
 
 import gtr.asciiscreen.level.Dungeon;
 import gtr.asciiscreen.level.RandomRoom;
+import gtr.asciiscreen.level.Room0;
 import gtr.asciiscreen.level.Room1;
+import gtr.asciiscreen.level.Room2;
+import gtr.asciiscreen.level.Room3;
 import gtr.asciiscreen.level.Town;
 import gtr.asciiscreen.other.Prologue;
 import gtr.asciiscreen.other.StartScreen;
@@ -90,7 +93,7 @@ public class Rogue extends JApplet {
 				nextLevel = world.inLevel();
 				break;
 			case Room0:
-				world = new Room1(player);
+				world = new Room0(player);
 				nextLevel = world.inLevel();
 				break;
 			case Room1:
@@ -98,11 +101,11 @@ public class Rogue extends JApplet {
 				nextLevel = world.inLevel();
 				break;
 			case Room2:
-				world = new Room1(player);
+				world = new Room2(player);
 				nextLevel = world.inLevel();
 				break;
 			case Room3:
-				world = new Room1(player);
+				world = new Room3(player);
 				nextLevel = world.inLevel();
 				break;
 			}

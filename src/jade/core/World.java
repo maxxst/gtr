@@ -4,6 +4,7 @@ import gtr.actor.fading.Fading;
 import gtr.actor.fix.Fix;
 import gtr.actor.item.Item;
 import gtr.actor.moving.Moving;
+import rogue.creature.Human;
 import rogue.creature.Monster;
 import gtr.textbox.TextBox;
 import gtr.util.datatype.Location;
@@ -58,6 +59,7 @@ public abstract class World extends Messenger {
 		//Erstelle eine zeichenOrdnung
 		drawOrder = new ArrayList<Class<? extends Actor>>();
 		drawOrder.add(Player.class);
+		drawOrder.add(Human.class);
 		drawOrder.add(Monster.class);
 		drawOrder.add(Item.class);
 		drawOrder.add(Moving.class);
@@ -75,6 +77,7 @@ public abstract class World extends Messenger {
 		actOrder.add(Moving.class); //noch hinzufügen
 		actOrder.add(Item.class); //noch hinzufügen
 		actOrder.add(Monster.class); // Monster
+		actOrder.add(Human.class);
 		
 	}
 

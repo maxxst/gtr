@@ -96,6 +96,7 @@ public enum Direction
                 return SOUTHEAST;
             case '1':
             case 'y':
+            case 'z':
                 return SOUTHWEST;
             case '9':
             case 'e':

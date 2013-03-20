@@ -1,13 +1,9 @@
 package rogue.creature;
 
-import java.util.Random;
-
 import gtr.actor.fading.DeadBody;
 import gtr.actor.item.weapon.Weapon;
-import gtr.actor.item.weapon.Weapon.Range;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
-import jade.util.datatype.Coordinate;
 import jade.util.datatype.Direction;
 
 public abstract class Creature extends Actor

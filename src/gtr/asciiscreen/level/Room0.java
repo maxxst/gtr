@@ -2,10 +2,14 @@ package gtr.asciiscreen.level;
 
 import jade.core.Messenger;
 import jade.ui.Terminal;
+import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
+import rogue.creature.Human;
+import rogue.creature.Katze;
 import rogue.creature.Player;
 
 import gtr.actor.fix.Door;
@@ -15,7 +19,7 @@ import gtr.util.datatype.Location;
 public class Room0 extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/room3.txt");
+			.readScreenFile("res/maps/room0.txt");
 
 	public Room0(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
@@ -39,7 +43,17 @@ public class Room0 extends Level {
 		addActor(new Door(lastLevel, exit), posDoor);
 		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
 
+		
+		ArrayList<String> messages = new ArrayList<String>();
+		messages.add("Hallo!");
+		messages.add("Wie gehts dir?");
+		Human h = new Human(ColoredChar.create('p', Color.red), messages);
+		Katze k = new Katze();
+		addActor(h, 10, 5);
+		addActor(k, 11, 5);
+		
 		addActor(player, posDoor.x(), posDoor.y() - 1);
+		System.out.println("test: " + Human.class.cast(player.world().getActor(Human.class)).x());
 
 	}
 

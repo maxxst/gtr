@@ -1,11 +1,9 @@
 package rogue.creature;
 
-import jade.util.Dice;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Direction;
 
 import java.awt.Color;
-import java.util.Arrays;
 
 //Ninjas tarnen sich als schwarzes Zeichen und handeln nicht, bis der Spieler in Reichweite ist, dann springen 
 //Sie gnadenlos zu ihrem ziel und stossen zu.

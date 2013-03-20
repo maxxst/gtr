@@ -1,6 +1,5 @@
 package rogue.creature;
 
-import gtr.actor.item.Item;
 import gtr.actor.item.weapon.Weapon;
 import gtr.actor.item.weapon.Weapon.Range;
 import gtr.creature.Movement;

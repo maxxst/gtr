@@ -2,7 +2,6 @@ package rogue.creature;
 
 import jade.util.Dice;
 import jade.util.datatype.ColoredChar;
-import jade.util.datatype.Coordinate;
 import jade.util.datatype.Direction;
 
 import java.awt.Color;
