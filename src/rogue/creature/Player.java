@@ -170,10 +170,10 @@ public class Player extends Creature implements Camera {
 		if (item instanceof Weapon) { // Wenn es eine Waffe ist
 			Weapon weapon = (Weapon) item;
 			if (!this.weapon.equals(weapon)) {
-				addItem(this.weapon);
+				//addItem(this.weapon);
 				this.weapon = weapon;
 			} else {
-				this.weapon.add(weapon);
+				//this.weapon.add(weapon);
 			}
 		} else if (item instanceof Ammo) { // Wenn es Munition ist
 			Ammo ammo = (Ammo) item;
@@ -202,9 +202,6 @@ public class Player extends Creature implements Camera {
 
 	public void addItem(Item item) {
 		boolean added = false;
-		if (item.equals(weapon)) {
-			weapon.add(item);
-		}
 		for (Item itemInList : items) {
 			if (item.equals(itemInList)) {
 				itemInList.add(item);
