@@ -15,7 +15,7 @@ import gtr.util.datatype.Location;
 public class Room1 extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/room1.txt");
+			.readScreenFile("res/maps/room2.txt");
 
 	public Room1(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
@@ -41,6 +41,11 @@ public class Room1 extends Level {
 
 		addActor(player, posDoor.x(), posDoor.y() - 1);
 
+		if (!getMappingLevelActor().containsKey(currentLevel.getLevelEnum())) {
+			
+		} else 
+			setActorsInWorld();
+		
 	}
 
 	@Override

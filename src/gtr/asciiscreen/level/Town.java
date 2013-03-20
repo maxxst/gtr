@@ -33,7 +33,7 @@ public class Town extends Level {
 		else
 			addActor(player, currentLevel.getCoordinate());
 
-		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
+		if (!getMappingLevelActor().containsKey(currentLevel.getLevelEnum())) {
 
 			for (int i = 0; i < 100; i++) {
 				addActor(new Junkie());
@@ -53,10 +53,13 @@ public class Town extends Level {
 				Yakuza Y = new Yakuza();
 				addActor(Y);
 			}
-			Door door = new Door(LevelEnum.RandomRoom, 15, 5);
+			
+			// Tür des ersten Hauses, wenn man von der Insel kommt
+			Door door = new Door(LevelEnum.Room0, 15, 5);
 			addActor(door, 35, 108);
 
-			door = new Door(LevelEnum.Room0, 5, 5);
+			// Tür des Hauses rechts neben dem ersten Haus, wenn man von der Insel kommt
+			door = new Door(LevelEnum.Room2, 5, 5);
 			addActor(door, 55, 108);
 			
 			// Tür des nordöstlichen Hauses im ersten Distrikt
@@ -89,12 +92,6 @@ public class Town extends Level {
 
 		} else
 			setActorsInWorld();
-		try{
-			System.out.println(player.world().getMappingLevelActor().get(player.getCurrentLevel().getLevelEnum())[2].x());
-		}
-		catch (NullPointerException e) {
-			
-		}
 	}
 
 	@Override

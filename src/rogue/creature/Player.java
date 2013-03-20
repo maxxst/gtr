@@ -99,7 +99,7 @@ public class Player extends Creature implements Camera {
 						// nextLevel = new Location(LevelEnum.Town, new
 						// Coordinate(6, 114));
 						nextLevel = new Location(LevelEnum.Town,
-								new Coordinate(35, 109));
+								new Coordinate(71, 112));
 						break;
 					}
 				else if (screenType.name().equals("Level"))

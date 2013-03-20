@@ -2,10 +2,13 @@ package gtr.asciiscreen.level;
 
 import jade.core.Messenger;
 import jade.ui.Terminal;
+import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
+import rogue.creature.Human;
 import rogue.creature.Player;
 
 import gtr.actor.fix.Door;
@@ -40,6 +43,23 @@ public class Room2 extends Level {
 		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
 
 		addActor(player, posDoor.x(), posDoor.y() - 1);
+
+		if (!getMappingLevelActor().containsKey(currentLevel.getLevelEnum())) {
+
+			ArrayList<String> messages = new ArrayList<String>();
+			messages.add("Es gibt fünf Yakuza-Häuser auf dieser Insel.");
+			messages.add("In jedem befindet sich ein Boss der Yakuza.");
+			messages.add("Zuerst sei es Wo Fatt.");
+			messages.add("Dann sei es Tao Bai Bai.");
+			messages.add("Dann sei es Wing Zang.");
+			messages.add("Dann sei es Muten Roschi.");
+			messages.add("Und zum Schluss sei es Xing Po.");
+
+			Human person = new Human(ColoredChar.create('!', Color.red),
+					messages);
+			addActor(person, 13, 7);
+		} else
+			setActorsInWorld();
 
 	}
 

@@ -1,6 +1,8 @@
 package gtr.asciiscreen.level;
 
+import jade.core.Actor;
 import jade.core.Messenger;
+import jade.core.World;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
@@ -15,11 +17,13 @@ import rogue.creature.Human;
 import rogue.creature.Katze;
 import rogue.creature.Player;
 
+//FEHLERHAFT! NICHT BENUTZEN!
+
 public class RandomRoom extends Level {
 
 	private ArrayList<String> leveldesign;
 	private Coordinate posDoor;
-	
+
 	private void createRoom(int width, int height) {
 		// TODO Auto-generated method stub
 		leveldesign = new ArrayList<String>();
@@ -43,37 +47,48 @@ public class RandomRoom extends Level {
 			wall += standardWall;
 		leveldesign.add(wall);
 	}
-	
+
 	public RandomRoom(Player player, int width, int height) {
 		super(width, height);
 		System.out.println("Größe des Raumes: w: " + width + " h: " + height);
 		updateLevelVariables();
-		
+
 		Messenger.player = player;
-		
+
 		createRoom(width, height);
 		createAsciiScreen(leveldesign, this, player.getTerm());
 		addActor(player, width / 2, height - 2);
-		System.out.println(lastLevel.toString());
+
 		addActor(new Door(lastLevel, exit), posDoor);
 		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
-		
-		ArrayList<String> messages = new ArrayList<String>();
-		messages.add("Sie brachten dich, als es noch dunkel war.");
-		messages.add("Du kannst von Glück reden, dass du überlebtest.");
-		messages.add("Junge, merk dir eines:");
-		messages.add("Xing Po wird sein Urteil fällen,");
-		messages.add("ob du willst oder nicht!");
-		
-		Human person2 = new Human(ColoredChar.create('!', Color.red), messages);
-		addActor(person2);
-		
+
+		if (getMappingLevelActor().containsKey(currentLevel.getLevelEnum()) == false) {
+			
+		} else {
+			
+			// FEHLERHAFT
+			Actor[] actors = getMappingLevelActor().get(
+					currentLevel.getLevelEnum());
+			for (int i = 0; i < actors.length; i++) {
+				if (!actors[i].held() && actors[i].face().ch() != exit) {
+					Coordinate pos = getOpenTile();
+					while (!(pos.x() < actors[i].world().width() && pos.y() < actors[i].world().height()))
+						pos = getOpenTile();
+					
+					actors[i].setPos(getOpenTile());
+				}
+			}
+
+			setActorsInWorld();
+		}
+
 	}
 
 	public RandomRoom(Player player) {
 		// Erzeugt Raum mit zufälliger Größe.
 		// Mindestgröße: 15 * 15, Höchstgröße: 49 * 49
-		this(player, new Random().nextInt(35) + 15, new Random().nextInt(35) + 15);
+		this(player, new Random().nextInt(35) + 15,
+				new Random().nextInt(35) + 15);
 	}
 
 	@Override

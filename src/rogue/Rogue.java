@@ -31,6 +31,7 @@ public class Rogue extends JApplet {
 
 		StartGame("start_screen", player);
 		while (player.expired()) {
+			World.getMappingLevelActor().clear();
 			player = new Player(term); // setzt den Spieler ins Terminal
 			StartGame("end_screen", player);
 		}
@@ -110,11 +111,9 @@ public class Rogue extends JApplet {
 				break;
 			}
 
-			world.getMappingLevelActor().put(
+			World.getMappingLevelActor().put(
 					player.getCurrentLevel().getLevelEnum(),
 					world.getActors(Actor.class).toArray(new Actor[0]));
-			
-//			System.out.println(world.getActors(Actor.class).toArray(new Actor[0])[10].x());
 
 		}
 		// System.exit(0);

@@ -42,23 +42,25 @@ public class Room0 extends Level {
 				}
 		addActor(new Door(lastLevel, exit), posDoor);
 		addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
-
-		
-		ArrayList<String> messages = new ArrayList<String>();
-		messages.add("Es gibt fünf Yakuza-Häuser auf dieser Insel.");
-		messages.add("In jedem befindet sich ein Boss der Yakuza.");
-		messages.add("Zuerst sei es Wo Fatt.");
-		messages.add("Dann sei es Tao Bai Bai.");
-		messages.add("Dann sei es Wing Zang.");
-		messages.add("Dann sei es Muten Roschi.");
-		messages.add("Und zum Schluss sei es Xing Po.");
-		
-		Human person2 = new Human(ColoredChar.create('!', Color.red), messages);
-		Katze k = new Katze();
-		addActor(person2, 10, 5);
-		addActor(k, 11, 5);
 		
 		addActor(player, posDoor.x(), posDoor.y() - 1);
+
+		if (!getMappingLevelActor().containsKey(currentLevel.getLevelEnum())) {
+			ArrayList<String> messages = new ArrayList<String>();
+			messages.add("Sie brachten dich, als es noch dunkel war.");
+			messages.add("Du kannst von Glück reden, dass du überlebtest.");
+			messages.add("Junge, merk dir eines:");
+			messages.add("Xing Po wird sein Urteil fällen,");
+			messages.add("ob du willst oder nicht!");
+
+			Human person = new Human(ColoredChar.create('!', Color.red),
+					messages);
+
+			Katze k = new Katze();
+			addActor(person, 22, 10);
+			addActor(k, 11, 5);
+		} else
+			setActorsInWorld();
 	}
 
 	@Override
