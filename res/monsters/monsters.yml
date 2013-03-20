@@ -32,4 +32,104 @@
   weapons:
     - "Kralle"
   drops: "common"
-   
+- name: "Exsoldat"
+  face: "E"
+  movement:
+    start: 4
+    multiplikator: 1
+  weapons:
+    - "M14"
+    - "G36"
+    - "MP7"
+  drops: "common"
+- name: "Polizist"
+  face: "P"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "HK P30"
+    - "Schlagstock"
+  drops: "common"
+- name: "Wahnsinninger"
+  face: "W"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "Raketenwerfer"
+  drops: "common"
+- name: "Irrer"
+  face: "I"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "AK 47"
+  drops: "common"
+- name: "Bürger"
+  face: "B"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "Faust"
+  drops: "common"
+- name: "Korrupter Polizist"
+  face: "R"
+  movement:
+    start: 1
+    multiplikator: 0
+  weapons:
+    - "HK P30"
+    - "Schlagstock"
+  drops: "common"
+- name: "Yakuza"
+  face: "Y"
+  movement:
+    start: 3
+    multiplikator: 0
+  weapons:
+    - "MP7"
+    - "HK P30"
+  drops: "common"
+- name: "Heisenberg"
+  face: "H"
+  movement:
+    start: 1
+    multiplikator: 1
+  weapons:
+    - "Knallquecksilber"
+  drops: "common"
+- name: "Neo"
+  face: "N"
+  movement:
+    start: 10
+    multiplikator: 1
+  weapons:
+    - "Matrixschlag"
+  drops: "common"
+- name: "Lorelei"
+  face: "L"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Platzhalter"
+  drops: "common"
+- name: "Agathe"
+  face: "A"
+  movement:
+    start: 8
+    multiplikator: 1
+  weapons:
+    - "Großkatana"
+  drops: "common"
+- name: "Siegfried"
+  face: "S"
+  movement:
+    start: 5
+    multiplikator: 1
+  weapons:
+    - "Platzhalter"
+  drops: "common"

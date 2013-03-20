@@ -40,6 +40,9 @@ public class Inventar {
 	private static ArrayList<String> itemList;
 	private static String countFormat = "%03d";
 
+	private static char equippedSign = '*';
+	private static int equippedItem;
+
 	/*
 	 * ENDE: Variablen, die nicht geändert werden dürfen
 	 */
@@ -57,19 +60,19 @@ public class Inventar {
 		cursorAt = 0;
 		// Erstellt Rahmen für Einträge der Liste aller Items im Inventar
 		String borderTop = "╔════╦";
-		while (borderTop.length() < width - 3)
+		while (borderTop.length() < width - 2)
 			borderTop += "═";
-		borderTop += "╦═╗";
+		borderTop += "╗";
 
 		String borderBetween = "╠════╬";
-		while (borderBetween.length() < width - 3)
+		while (borderBetween.length() < width - 2)
 			borderBetween += "═";
-		borderBetween += "╬═╣";
+		borderBetween += "╣";
 
 		String borderBottom = "╚════╩";
-		while (borderBottom.length() < width - 3)
+		while (borderBottom.length() < width - 2)
 			borderBottom += "═";
-		borderBottom += "╩═╝";
+		borderBottom += "╝";
 
 		itemList.add(borderTop);
 
@@ -77,11 +80,15 @@ public class Inventar {
 		for (int i = 0; i < player.getItems().size(); i++) {
 			Item item = player.getItems().get(i);
 			String lineWithItem = "║";
+			char c = player.getWeapon().getName().equals(item.getName()) ? equippedSign
+					: ' ';
+			if (c == equippedSign)
+				equippedItem = i;
 			lineWithItem += " " + String.format(countFormat, item.getCount())
 					+ "║" + item.getName();
-			while (lineWithItem.length() < width - 3)
+			while (lineWithItem.length() < width - 2)
 				lineWithItem += " ";
-			lineWithItem += "║" + Integer.toString(i + 1) + "║";
+			lineWithItem += "║" + Character.toString(c);
 
 			itemList.add(lineWithItem);
 			itemList.add(borderBetween);
@@ -109,12 +116,11 @@ public class Inventar {
 
 		inventoryScreen.add("Inventar"); // erste Zeile des Inventars
 		inventoryScreen.add(""); // zweite Zeile des Inventars
-		
+
 		String tableHead = " Anz. Item";
-		while (tableHead.length() < width - 4)
+		while (tableHead.length() < width)
 			tableHead += " ";
-		tableHead += "Nr.";
-		
+
 		inventoryScreen.add(tableHead);
 
 		for (int x = 0; x < itemList_ArrayListSize; x++) {
@@ -203,10 +209,27 @@ public class Inventar {
 
 						if (selectedItem.getCount() != 0) {
 							String s = itemList.get(p);
+
 							String updatedLine = s.substring(0, 2)
 									+ String.format(countFormat,
 											selectedItem.getCount())
-									+ s.substring(5, s.length());
+									+ s.substring(5, s.length() - 1);
+							if (selectedItem.getClass().getSimpleName()
+									.equals("Weapon")
+									&& s.charAt(width - 1) != equippedSign) {
+
+								String formerlyEquipped = itemList
+										.get(equippedItem * 2 + 1);
+								formerlyEquipped = formerlyEquipped.substring(
+										0, formerlyEquipped.length() - 1) + " ";
+								itemList.set(equippedItem * 2 + 1,
+										formerlyEquipped);
+								
+								updatedLine += Character.toString(equippedSign);
+							}
+
+							else
+								updatedLine += " ";
 
 							itemList.set(p, updatedLine);
 						} else {
