@@ -18,18 +18,24 @@ Die Hauptfigur `@` agiert wie folgt:
 - `a` `←`
 - `s` `↓`
 - `d` `→`
-- `z` `↙`
+- `y`, `z` `↙`
 - `c` `↘`
 
 ### Schießen
-- `u` `↖`
-- `i` `↑`
-- `o` `↗`
-- `j` `←`
-- `k` `↓`
-- `l` `→`
-- `m` `↙`
-- `.` `↘`
+- `Leer` `q` `↖`
+- `Leer` `w` `↑`
+- `Leer` `e` `↗`
+- `Leer` `a` `←`
+- `Leer` `s` `↓`
+- `Leer` `d` `→`
+- `Leer` `y`, `Leer` `z` `↙`
+- `Leer` `c` `↘`
+
+### Inventar
+- `i` Inventar öffnen, Inventar schließen
+- `w` `↑` in der Itemliste
+- `s` `↓` in der Itemliste
+- `Enter`, `Eingabe`, `Leer` Item benutzen
 
 
 ## Geschichte
