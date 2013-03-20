@@ -157,6 +157,7 @@ public abstract class Actor extends Messenger
     	       }
     	      }
     	} catch (IndexOutOfBoundsException e) {
+    	} catch (StackOverflowError e) {
     	}
 
     }
