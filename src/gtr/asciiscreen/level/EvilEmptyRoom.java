@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import rogue.creature.Player;
 
 import gtr.actor.fix.Door;
-import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.ReadFile;
 import gtr.util.datatype.Location;
 

@@ -5,6 +5,11 @@ import java.awt.Color;
 import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
+/**
+ * 
+ * @author maxx
+ *
+ */
 public class Fading extends Actor {
 	protected int turnsLeft = 10;
 	protected int alpha = 255;

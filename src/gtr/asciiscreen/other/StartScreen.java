@@ -4,9 +4,7 @@ import gtr.asciiscreen.ScreenType;
 import gtr.util.ReadFile;
 import gtr.util.datatype.Location;
 import jade.core.Messenger;
-import jade.ui.TermPanel;
 import jade.ui.Terminal;
-import jade.util.datatype.ColoredChar;
 
 import java.util.ArrayList;
 

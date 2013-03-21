@@ -10,7 +10,6 @@ import rogue.creature.Monster;
 import rogue.creature.Player;
 import rogue.creature.Yakuza;
 
-import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.ReadFile;
 import gtr.util.datatype.Location;
 

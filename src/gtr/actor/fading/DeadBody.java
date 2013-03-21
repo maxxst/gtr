@@ -3,17 +3,13 @@ package gtr.actor.fading;
 import gtr.actor.item.Ammo;
 import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
-import gtr.actor.item.Potion;
 import gtr.actor.item.Weapon;
 import gtr.util.DropType;
 import gtr.util.ItemType;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Random;
 
 import rogue.creature.Player;
-import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
 /**

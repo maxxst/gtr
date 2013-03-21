@@ -2,19 +2,14 @@ package gtr.asciiscreen.level;
 
 import jade.core.Actor;
 import jade.core.Messenger;
-import jade.core.World;
 import jade.ui.Terminal;
-import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
 import gtr.actor.fix.Door;
 import gtr.util.datatype.Location;
-import rogue.creature.Human;
-import rogue.creature.Katze;
 import rogue.creature.Player;
 
 //FEHLERHAFT! NICHT BENUTZEN!

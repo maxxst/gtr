@@ -73,11 +73,6 @@ public class Door extends Fix {
 					+ " (falls für Platzierung im Level genutzt)");
 			
 			lastLevel_posBeforeDoor = new Location(currentLevel.getLevelEnum(), Messenger.pos[0]);
-			
-			
-			
-			
-			
 		}
 	}
 
