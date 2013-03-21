@@ -1,3 +1,10 @@
+M14:
+  name: "M14"
+  type: "middle"
+  range:
+    from: 1
+    to: 5 
+  dmg: 3.0
 Raketenwerfer:
   name: "Raketenwerfer"
   type: "heavy"

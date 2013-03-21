@@ -49,21 +49,25 @@ public class Town extends Level {
 				Katze k = new Katze();
 				addActor(k);
 			}
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 5; i++) {
 				Yakuza Y = new Yakuza();
 				addActor(Y);
 			}
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 10; i++) {
 				Iwan Ï = new Iwan();
 				addActor(Ï);
 			}
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 10; i++) {
 				Irrer I = new Irrer();
 				addActor(I);
 			}
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 10; i++) {
 				Wahnsinniger W = new Wahnsinniger();
 				addActor(W);
+			}
+			for (int i = 0; i < 100; i++) {
+				Exsoldat E = new Exsoldat();
+				addActor(E);
 			}
 			
 			// Tür des ersten Hauses, wenn man von der Insel kommt

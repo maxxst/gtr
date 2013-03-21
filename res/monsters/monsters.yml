@@ -35,7 +35,7 @@
 - name: "Exsoldat"
   face: "E"
   movement:
-    start: 4
+    start: 2
     multiplikator: 1
   weapons:
     - "M14"
@@ -166,7 +166,7 @@
     - "Platzhalter"
   drops: "mythic"
 - name: "Wo Fatt"
-  face: "W"
+  face: "F"
   movement:
     start: 5
     multiplikator: 1
