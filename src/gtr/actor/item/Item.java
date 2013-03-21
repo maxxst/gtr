@@ -1,9 +1,7 @@
 package gtr.actor.item;
 
-import java.util.Random;
 
 import jade.core.Actor;
-import rogue.creature.Player;
 import jade.util.datatype.ColoredChar;
 
 /**
@@ -56,7 +54,10 @@ public class Item extends Actor{
 			//world().eventText("Vorrat an " + item.getName() + " erhöht");
 	}
 	
-	// bei Waffen die Anzahl der Munition
+	/**
+	 * Zählt, wie viele Einheiten (bei Waffen Munition) davon vorhanden sind
+	 * @return Anzahl der Einheiten
+	 */
 	public int getCount(){
 		return count;
 	}
@@ -65,6 +66,10 @@ public class Item extends Actor{
 		this.count = count;
 	}
 
+	/**
+	 * Überprüft, ob man sich mit diesem Item ausrüsten kann
+	 * @return true, wenn Spieler mit diesem Item ausrüstbar
+	 */
 	public boolean isEquippable() {
 		return false;
 	}

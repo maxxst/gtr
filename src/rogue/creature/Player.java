@@ -2,7 +2,6 @@ package rogue.creature;
 
 import gtr.actor.fading.Blood;
 import gtr.actor.item.Ammo;
-import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
@@ -42,20 +41,18 @@ public class Player extends Creature implements Camera {
 		addItem(weapon);
 
 		// testweise
-		
+		/*
 		Weapon weapon2 = new Weapon("Raketenwerfer", this);
 		Weapon weapon3 = new Weapon("Schwert", this);
 		Weapon weapon4 = new Weapon("Bogen des Robin Hood", this);
 		addItem(new Weapon("M4A1", this));
 		addItem(weapon2);
 		/*
-		System.out.println("Anzahl: " + items.get(0).getCount());
-		addItem(new HealthPotion(this));
-		addItem(new HealthPotion(this));
-		addItem(weapon3);
-		addItem(weapon4);
-		*/
-		
+		 * System.out.println("Anzahl: " + items.get(0).getCount()); addItem(new
+		 * HealthPotion(this)); addItem(new HealthPotion(this));
+		 * addItem(weapon3); addItem(weapon4);
+		 */
+
 		System.out.println("Items:");
 		for (Item item : items)
 			System.out.println(item.getName() + " " + item.getCount());
@@ -101,10 +98,10 @@ public class Player extends Creature implements Camera {
 				else if (screenType.name().equals("Prologue"))
 					switch (key) {
 					case Key.skipKey:
-						 nextLevel = new Location(LevelEnum.Town, new
-						 Coordinate(4, 115));
-//						nextLevel = new Location(LevelEnum.Town,
-//								new Coordinate(63, 118));
+						nextLevel = new Location(LevelEnum.Town,
+								new Coordinate(4, 115));
+						// nextLevel = new Location(LevelEnum.Town,
+						// new Coordinate(63, 118));
 						break;
 					}
 				else if (screenType.name().equals("Level"))
@@ -151,7 +148,8 @@ public class Player extends Creature implements Camera {
 					default:
 						dir = Direction.keyToDir(key);
 						if (dir != null)
-							move(dir);
+//							move(dir);
+							move(dir, this);
 						else
 							key = 0;
 						break;

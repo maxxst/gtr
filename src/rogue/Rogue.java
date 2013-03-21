@@ -2,14 +2,8 @@ package rogue;
 
 import javax.swing.JApplet;
 
-import gtr.asciiscreen.level.Asylum;
-import gtr.asciiscreen.level.Dungeon;
-import gtr.asciiscreen.level.RandomRoom;
-import gtr.asciiscreen.level.Room0;
-import gtr.asciiscreen.level.Room1;
-import gtr.asciiscreen.level.Room2;
-import gtr.asciiscreen.level.Room3;
-import gtr.asciiscreen.level.Town;
+import gtr.asciiscreen.level.*;
+import gtr.asciiscreen.other.HappyEndScreen;
 import gtr.asciiscreen.other.Prologue;
 import gtr.asciiscreen.other.StartScreen;
 import gtr.util.datatype.Location;
@@ -76,7 +70,7 @@ public class Rogue extends JApplet {
 
 			switch (nextLevel.getLevelEnum()) {
 			case Dungeon:
-				world = new Dungeon(100, 100, player);
+				world = new Dungeon(50, 50, player);
 				nextLevel = world.inLevel();
 				break;
 			case StartScreen:
@@ -94,25 +88,50 @@ public class Rogue extends JApplet {
 				world = new RandomRoom(player);
 				nextLevel = world.inLevel();
 				break;
-			case Room0:
-				world = new Room0(player);
+			case House0:
+				world = new House0(player);
 				nextLevel = world.inLevel();
 				break;
-			case Room1:
-				world = new Room1(player);
+			case House1:
+				world = new House1(player);
 				nextLevel = world.inLevel();
 				break;
-			case Room2:
-				world = new Room2(player);
+			case House2:
+				world = new House2(player);
 				nextLevel = world.inLevel();
 				break;
-			case Room3:
-				world = new Room3(player);
+			case House3:
+				world = new House3(player);
 				nextLevel = world.inLevel();
 				break;
 			case Asylum:
 				world = new Asylum(player);
 				nextLevel = world.inLevel();
+				break;
+			case House4:
+				world = new House4(player);
+				nextLevel = world.inLevel();
+				break;
+			case House5:
+				world = new House5(player);
+				nextLevel = world.inLevel();
+				break;
+			case House6:
+				world = new House6(player);
+				nextLevel = world.inLevel();
+				break;
+			case Boss_empty_room:
+				world = new EvilEmptyRoom(player);
+				nextLevel = world.inLevel();
+				break;
+			case BossRoom:
+				world = new EvilBossRoom(player);
+				nextLevel = world.inLevel();
+				break;
+			case HappyEndScreen:
+				world = new HappyEndScreen(player);
+				nextLevel = world.inLevel();
+				break;
 			}
 
 			World.getMappingLevelActor().put(

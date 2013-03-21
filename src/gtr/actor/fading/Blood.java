@@ -2,7 +2,6 @@ package gtr.actor.fading;
 
 import java.awt.Color;
 
-import jade.core.Actor;
 import jade.util.datatype.ColoredChar;
 
 /**

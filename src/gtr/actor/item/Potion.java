@@ -2,6 +2,11 @@ package gtr.actor.item;
 
 import jade.util.datatype.ColoredChar;
 
+/**
+ * 
+ * @author maxx
+ *
+ */
 public class Potion extends Item {
 
 	public Potion(ColoredChar face) {

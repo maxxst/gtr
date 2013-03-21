@@ -7,6 +7,12 @@ import jade.util.datatype.Direction;
 import java.awt.Color;
 import java.util.Arrays;
 
+
+/**
+ * 
+ * @author mitamo
+ *
+ */
 public class Iwan extends Monster {
 	public Iwan() 
 	{

@@ -78,7 +78,6 @@ public class Ninja extends Monster
 		 int i = (int) (Math.random()*10+1);
 		 if (i<=5)
 		 {
-		 System.out.print("Ninja: ");
 	     switch (i)
 			{
 			 case 1:displayText("Ninja: Hayjaaaaaa!"); 

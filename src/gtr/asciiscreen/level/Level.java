@@ -14,6 +14,8 @@ public abstract class Level extends AsciiScreen {
 
 	protected static final char standardWall = '#';
 	protected static final char exit = '▒';
+	protected static final char upstairs = '⇗';
+	protected static final char downstairs = '⇘';
 
 	public Level(int width, int height) {
 		super(width, height);
@@ -26,21 +28,30 @@ public abstract class Level extends AsciiScreen {
 		return exit;
 	}
 
-	protected static void createExitAndAddDoorActorsAndPlayer(Level l, ArrayList<String> leveldesign) {
+	protected static void createExitAndAddDoorActorsAndPlayer(Level l,
+			ArrayList<String> leveldesign) {
 		// finde ▒ und erstelle Dooractor
 		Coordinate posDoor = null;
 		for (int y = 0; y < gtr.asciiscreen.AsciiScreen.getHeight(leveldesign); y++)
-			for (int x = 0; x < gtr.asciiscreen.AsciiScreen.getWidth(leveldesign); x++)
+			for (int x = 0; x < gtr.asciiscreen.AsciiScreen
+					.getWidth(leveldesign); x++)
 				if (leveldesign.get(y).charAt(x) == exit) {
 					posDoor = new Coordinate(x, y);
 					break;
 				}
-		l.addActor(new Door(lastLevel, exit), posDoor);
-		l.addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
+		if (!lastLevel.getLevelEnum().equals(LevelEnum.Dungeon)) {
 
+			l.addActor(new Door(lastLevel, exit), posDoor);
+			l.addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
+		} else if (lastLevel.getLevelEnum().equals(LevelEnum.Dungeon) && currentLevel.getLevelEnum().equals(LevelEnum.BossRoom)) {
+			l.addActor(new Door(lastLevel.getLevelEnum(), -1, -1, exit), posDoor);
+			l.addActor(new Door(lastLevel.getLevelEnum(), -1, -1, exit), posDoor.x() + 1, posDoor.y());
+		}
+		
+		
 		l.addActor(player, posDoor.x(), posDoor.y() - 1);
 	}
-	
+
 	@Override
 	public Location inLevel() {
 		Terminal term = player.getTerm();

@@ -5,6 +5,11 @@ import jade.util.datatype.Direction;
 
 import java.awt.Color;
 
+/**
+ * 
+ * @author mitamo
+ *
+ */
 public class Katze extends Monster 
 {
 	private static Color getColor (){

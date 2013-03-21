@@ -149,7 +149,7 @@
   weapons:
     - "Platzhalter"
   drops: "mythic"
-- name: "Tao BaiBai"
+- name: "Tao Bai Bai"
   face: "T"
   movement:
     start: 5

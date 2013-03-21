@@ -1,7 +1,6 @@
 	package gtr.actor.item;
 
 import gtr.actor.moving.Projectile;
-import gtr.textbox.TextBox;
 import gtr.util.DropType;
 import gtr.util.WeaponType;
 import jade.util.datatype.Coordinate;

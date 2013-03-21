@@ -7,6 +7,11 @@ import java.util.Random;
 
 import jade.util.datatype.ColoredChar;
 
+/**
+ * Munition für die Waffen
+ * @author maxx
+ *
+ */
 public class Ammo extends Item {
 	private String type;
 	

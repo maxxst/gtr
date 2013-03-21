@@ -3,6 +3,7 @@ package gtr.asciiscreen.other;
 import jade.ui.TermPanel;
 import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
+import jade.util.datatype.Coordinate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,10 @@ public class Help extends OtherScreen {
 
 	private static void createHelp() {
 		helpScreen = new ArrayList<String>();
-		helpScreen.add("Hilfe");
+		helpScreen.add("HILFE");
+		helpScreen.add("---------------");
+		helpScreen.add("");
+		helpScreen.add("Tastenbelegung:");
 		helpScreen.add("");
 		helpScreen.add("Laufen");
 		helpScreen.add("");
@@ -74,11 +78,77 @@ public class Help extends OtherScreen {
 		helpScreen.add("p, dann d: Person → von dir ansprechen");
 		helpScreen.add("p, dann y oder z: Person ↙ von dir ansprechen");
 		helpScreen.add("p, dann c: Person ↘ von dir ansprechen");
+		helpScreen.add("P: Gespräch mit Person sofort beenden");
+		helpScreen.add("");
+		helpScreen.add("Anderes");
+		helpScreen.add("");
+		helpScreen.add("r: Munition benutzen");
+		helpScreen.add("h: Heiltrank benutzen");
+		helpScreen.add("");
+		helpScreen.add("Hilfe");
+		helpScreen.add("");
+		helpScreen.add("o: Hilfe aufrufen, Hilfe beenden");
+		helpScreen.add("w: ↑ in Hilfebildschirm");
+		helpScreen.add("s: ↓ in Hilfebildschirm");
+		helpScreen.add("");
+		helpScreen.add("Erklärung der Zeichen:");
+		helpScreen.add("");
+		helpScreen.add("Begehbare Zeichen");
+		helpScreen.add("");
+		for (int i = 0; i < gtr.asciiscreen.AsciiScreen.getFloorChars().size(); i++)
+			helpScreen.add(gtr.asciiscreen.AsciiScreen.getFloorChars().get(i).toString());
+		helpScreen.add("");
+		helpScreen.add("Tür: []");
+		helpScreen.add("");
+		helpScreen.add("Gegner/Monster (nicht alle im Spiel vorhanden):");
+		helpScreen.add("");
+		helpScreen.add("A: Agathe");
+		helpScreen.add("B: Bürger");
+		helpScreen.add("D: Dealer");
+		helpScreen.add("E: Exsoldat");
+		helpScreen.add("F: Wo Fatt");
+		helpScreen.add("H: Heisenberg");
+		helpScreen.add("I: Irrer");
+		helpScreen.add("Ï: Verrückter Ivan");
+		helpScreen.add("J: Junkie");
+		helpScreen.add("K: Katze");
+		helpScreen.add("L: Lorelei");
+		helpScreen.add("M: Muten Roschi");
+		helpScreen.add("N: Ninja");
+		helpScreen.add("P: Polizist");
+		helpScreen.add("R: Korrupter Polizist");
+		helpScreen.add("S: Siegfried");
+		helpScreen.add("T: Tao Bai Bai");
+		helpScreen.add("W: Wahnsinniger");
+		helpScreen.add("Y: Yakuza");
+		helpScreen.add("Z: Wing Zang");
+		helpScreen.add("0: Neo");
+		helpScreen.add("");
+		helpScreen.add("DANKSAGUNG:");
+		helpScreen.add("---------------");
+		helpScreen.add("");
+		helpScreen.add("");
+		helpScreen.add("Infos zur Spielerstellung");
+		helpScreen.add("---------------");
+		helpScreen.add("");
+		helpScreen.add("An der Spielerstellung beteiligte Personen:");
+		helpScreen.add("");
+		helpScreen.add("Antonio (anti)");
+		helpScreen.add("Maximilian (maxx)");
+		helpScreen.add("Pascal (mitamo)");
+		helpScreen.add("Robert (sonnal-flexxusz)");
+		helpScreen.add("im Rahmen des Softwarepraktikums des Studiengangs Informatik (Nebenfach");
+		helpScreen.add("und lehramtsbezogener), Dozent: Till Zoppke");
+		helpScreen.add("");
+		helpScreen.add("Github-Projekt: https://github.com/maxstauss/gtr");
+		helpScreen.add("Github-Website: http://maxstauss.github.com/gtr/");
+		helpScreen.add("");
 		
-		helpScreen.add("###");
-		helpScreen.add("###");
-		helpScreen.add("###");
-
+		helpScreen.add("Benutzt wurde das  „Jade Rogue“ (© 2011, Jeffrey Lund, ");
+		helpScreen.add("http://code.google.com/p/jaderogue/)");
+		helpScreen.add("");
+		helpScreen.add("");
+		
 		while (helpScreen.size() < TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT)
 			helpScreen.add("");
 
@@ -114,16 +184,22 @@ public class Help extends OtherScreen {
 				}
 				term.bufferChar(x, y, coloredChar);
 			}
+		lowerBar();
 		term.refreshScreen();
 
+	}
+	
+	private static void lowerBar() {
+		term.bufferString(new Coordinate(0, TermPanel.DEFAULT_ROWS - 1), "w: ↑ | s: ↓ | o: Hilfe schließen");
+		
 	}
 
 	public static void showHelp(Terminal term, Player player) {
 		gtr.asciiscreen.AsciiScreen.showAsciiScreen(
-
 		createHelpScreen(term, player), player.world(), term);
+		lowerBar();
+		
 		term.refreshScreen();
-
 		try {
 
 			char key = 0;

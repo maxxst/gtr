@@ -7,6 +7,8 @@ import jade.util.Guard;
 import jade.util.Lambda;
 import jade.util.Lambda.FilterFunc;
 import jade.util.Lambda.MapFunc;
+import jade.util.datatype.Coordinate;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,6 +26,8 @@ public abstract class Messenger
     protected static Location nextLevel;
     protected static Location currentLevel;
     protected static Location lastLevel;
+    protected static Coordinate[] pos;
+    protected static Location lastLevel_posBeforeDoor;
     protected static boolean quit = false;
 	protected static ScreenType screenType;
 	protected static Player player;
@@ -143,7 +147,7 @@ public abstract class Messenger
 	}
 
 	public void setMappingLevelActor(HashMap<LevelEnum, Actor[]> mappingLevelActor) {
-		this.mappingLevelActor = mappingLevelActor;
+		Messenger.mappingLevelActor = mappingLevelActor;
 	}
 
 	public static Player getPlayer() {
