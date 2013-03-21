@@ -104,8 +104,8 @@ __Umgebungen/Szenerie/Story/Waffen/Gegner/Dialoge müssen extern geladen werden 
 
 
 #### Tastatur
-- `WASD`-Steuerung
-- `Leertaste` - Schießen
+- `WASD` Steuerung
+- `Leertaste` Schießen
 - `I` Inventar
 
 #### NPCs 
