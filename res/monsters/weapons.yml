@@ -25,7 +25,7 @@ G36:
   type: "middle"
   range:
     from: 1
-    to: 12 
+    to: 5 
   dmg: 4.0
 AK 47:
   name: "AK47"
