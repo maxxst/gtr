@@ -73,7 +73,7 @@
     start: 2
     multiplikator: 0
   weapons:
-    - "AK 47"
+    - "Bombe"
   drops: "uncommon"
 - name: "Bürger"
   face: "B"

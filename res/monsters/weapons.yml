@@ -1,3 +1,11 @@
+Raketenwerfer:
+  name: "Raketenwerfer"
+  type: "heavy"
+  range:
+    from: 1
+    to: 10
+  speed: 2
+  area: True
 Bombe:
   name: "Bombe"
   type: "heavy"
