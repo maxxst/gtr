@@ -57,20 +57,20 @@ public class Town extends Level {
 			}
 
 			// Tür des ersten Hauses, wenn man von der Insel kommt
-			Door door = new Door(LevelEnum.Room0, 15, 5);
+			Door door = new Door(LevelEnum.House0, 15, 5);
 			addActor(door, 35, 108);
 
 			// Tür des Hauses rechts neben dem ersten Haus, wenn man von der
 			// Insel kommt
-			door = new Door(LevelEnum.Room2, 5, 5);
+			door = new Door(LevelEnum.House2, 5, 5);
 			addActor(door, 55, 108);
 
 			// Tür des nordöstlichen Hauses im ersten Distrikt
-			door = new Door(LevelEnum.Room1, 5, 5);
+			door = new Door(LevelEnum.House1, 5, 5);
 			addActor(door, 71, 111);
 
 			// Tür des Evilhauses
-			door = new Door(LevelEnum.Dungeon, 1, 1);
+			door = new Door(LevelEnum.Boss_empty_room, 1, 1);
 			addActor(door, 122, 110);
 
 			// Tür zum orientalischen Haus
@@ -87,12 +87,24 @@ public class Town extends Level {
 
 			// Tür des Hauses, was südlich dem nordöstlichen Haus des ersten
 			// Distrikts steht.
-			door = new Door(LevelEnum.Room3, 1, 1);
+			door = new Door(LevelEnum.House3, 1, 1);
 			addActor(door, 63, 117);
 
 			// Tür zum Asyl
 			door = new Door(LevelEnum.Asylum, 1, 1);
 			addActor(door, 20, 83);
+
+			// Tür zum südöstlichen Haus im ersten Distrikt
+			door = new Door(LevelEnum.House4, 1, 1);
+			addActor(door, 84, 119);
+
+			// Tür zum südwestlichen Haus im zweiten Distrikt
+			door = new Door(LevelEnum.House5, 1, 1);
+			addActor(door, 5, 99);
+
+			// Tür zum südwestlichen Haus im zweiten Distrikt
+			door = new Door(LevelEnum.House6, 1, 1);
+			addActor(door, 57, 87);
 
 			gtr.actor.fix.Door.completeDoors(this);
 

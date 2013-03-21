@@ -107,11 +107,15 @@ public abstract class AsciiScreen extends World {
 		Dungeon,
 		Town,
 		RandomRoom,
-		Room0,
-		Room1,
-		Room2,
-		Room3,
-		Asylum
+		House0,
+		House1,
+		House2,
+		House3,
+		Asylum,
+		House4,
+		House5,
+		House6,
+		Boss_empty_room
 	}
 	
 }

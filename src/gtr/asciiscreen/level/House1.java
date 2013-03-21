@@ -8,12 +8,12 @@ import rogue.creature.Player;
 
 import gtr.util.ReadFile;
 
-public class Room1 extends Level {
+public class House1 extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
 			.readScreenFile("res/maps/room2.txt");
 
-	public Room1(Player player) {
+	public House1(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
 				gtr.asciiscreen.AsciiScreen.getHeight(leveldesign));
 
