@@ -208,32 +208,9 @@ public class Weapon extends Item {
 		String text = null;
 		if (holder() != null) {
 			if(getCount() > 0 || (type.equals(WeaponType.melee.toString()))){
-				Random randomGenerator = new Random();
 				text = ((Creature) holder()).attackText();
 		    	if (!isProjectile()){
-		    		Boolean hit = false;
-		    		for(int i=getRangeFrom(); i<=getRangeTo();i++){
-			    		Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
-			    		Creature enemy = null;
-			    		try {
-			    			enemy = world().getActorsAt(Creature.class, coord).toArray(new Creature[0])[0];
-			    		}
-			    		catch (ArrayIndexOutOfBoundsException e) {
-			    		}
-			    		if( enemy != null){
-			    			if(randomGenerator.nextFloat() < hitProb){
-			    				hit = true;
-								enemy.getDamage();
-							} else { //miss
-								i = range.getTo() + 1;
-							}
-						} else {//no miss 
-						}
-			    	}
-		    		if (hit)
-		    			text += ((Creature) holder()).hitText();
-		    		else
-		    			text += ((Creature) holder()).missText();
+		    		text += fireWeapon(dir, hitProb);
 		    	} else {
 		    		world().addActor(new Projectile(dir, this), pos());
 		    	}
@@ -250,6 +227,43 @@ public class Weapon extends Item {
 				text = "Keine Waffe ausgerüstet";
 		}
 		eventText(text);
+	}
+	
+	public String fireWeapon(Direction dir, float hitProb){
+		String text = "";
+		Boolean hit = false;
+		Random randomGenerator = new Random();
+		for(int i=1; i<=getRangeTo();i++){
+			Coordinate coord = new Coordinate( (holder().x()+dir.dx()*i), (holder().y()+dir.dy()*i) );
+			if (world().passableAt(coord)){
+				if(i >= getRangeFrom()){
+					Creature enemy = null;
+		    		try {
+		    			enemy = world().getActorsAt(Creature.class, coord).toArray(new Creature[0])[0];
+		    		}
+		    		catch (ArrayIndexOutOfBoundsException e) {
+		    		}
+		    		if( enemy != null){
+		    			if(randomGenerator.nextFloat() < hitProb){
+		    				hit = true;
+							enemy.getDamage();
+						} else { //miss
+							i = range.getTo() + 1;
+						}
+					} else {//no miss 
+					}
+				}
+			} else {
+				System.out.println("Wand.");
+				break;
+			}
+    	}
+		if (hit)
+			text += ((Creature) holder()).hitText();
+		else
+			text += ((Creature) holder()).missText();
+		
+		return text;
 	}
 
 	public Range getRange() {
