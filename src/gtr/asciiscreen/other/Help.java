@@ -124,6 +124,29 @@ public class Help extends OtherScreen {
 		helpScreen.add("Z: Wing Zang");
 		helpScreen.add("0: Neo");
 		helpScreen.add("");
+		helpScreen.add("DANKSAGUNG:");
+		helpScreen.add("---------------");
+		helpScreen.add("");
+		helpScreen.add("");
+		helpScreen.add("Infos zur Spielerstellung");
+		helpScreen.add("---------------");
+		helpScreen.add("");
+		helpScreen.add("An der Spielerstellung beteiligte Personen:");
+		helpScreen.add("");
+		helpScreen.add("Antonio (anti)");
+		helpScreen.add("Maximilian (maxx)");
+		helpScreen.add("Pascal (mitamo)");
+		helpScreen.add("Robert (sonnal-flexxusz)");
+		helpScreen.add("im Rahmen des Softwarepraktikums des Studiengangs Informatik (Nebenfach");
+		helpScreen.add("und lehramtsbezogener), Dozent: Till Zoppke");
+		helpScreen.add("");
+		helpScreen.add("Github-Projekt: https://github.com/maxstauss/gtr");
+		helpScreen.add("Github-Website: http://maxstauss.github.com/gtr/");
+		helpScreen.add("");
+		
+		helpScreen.add("Benutzt wurde das  „Jade Rogue“ (© 2011, Jeffrey Lund, ");
+		helpScreen.add("http://code.google.com/p/jaderogue/)");
+		helpScreen.add("");
 		helpScreen.add("");
 		
 		while (helpScreen.size() < TermPanel.DEFAULT_ROWS_WITHOUT_OUTPUT)
