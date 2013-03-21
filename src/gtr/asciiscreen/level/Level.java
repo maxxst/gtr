@@ -43,8 +43,12 @@ public abstract class Level extends AsciiScreen {
 
 			l.addActor(new Door(lastLevel, exit), posDoor);
 			l.addActor(new Door(lastLevel, exit), posDoor.x() + 1, posDoor.y());
-
+		} else if (lastLevel.getLevelEnum().equals(LevelEnum.Dungeon) && currentLevel.getLevelEnum().equals(LevelEnum.BossRoom)) {
+			l.addActor(new Door(lastLevel.getLevelEnum(), -1, -1, exit), posDoor);
+			l.addActor(new Door(lastLevel.getLevelEnum(), -1, -1, exit), posDoor.x() + 1, posDoor.y());
 		}
+		
+		
 		l.addActor(player, posDoor.x(), posDoor.y() - 1);
 	}
 

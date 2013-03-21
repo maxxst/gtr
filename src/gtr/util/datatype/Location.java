@@ -34,7 +34,10 @@ public class Location {
 	}
 	
 	public String toString() {
-		return "LevelEnum: " + levelEnum.toString() + ", " + "Koordinaten: " + coordinate.toString();
+		return "LevelEnum: " + 
+	levelEnum.toString() + ", " + 
+				"Koordinaten: " +
+	coordinate.toString();
 	}
 	
 	public boolean equals(Location location) {

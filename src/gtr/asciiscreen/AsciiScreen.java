@@ -115,7 +115,9 @@ public abstract class AsciiScreen extends World {
 		House4,
 		House5,
 		House6,
-		Boss_empty_room
+		Boss_empty_room,
+		BossRoom,
+		HappyEndScreen
 	}
 	
 }

@@ -2,7 +2,6 @@ package rogue.creature;
 
 import gtr.actor.fading.Blood;
 import gtr.actor.item.Ammo;
-import gtr.actor.item.HealthPotion;
 import gtr.actor.item.Item;
 import gtr.actor.item.Weapon;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
@@ -100,7 +99,7 @@ public class Player extends Creature implements Camera {
 					switch (key) {
 					case Key.skipKey:
 						nextLevel = new Location(LevelEnum.Town,
-								new Coordinate(122, 111));
+								new Coordinate(122, 112));
 						// nextLevel = new Location(LevelEnum.Town,
 						// new Coordinate(63, 118));
 						break;
@@ -149,7 +148,8 @@ public class Player extends Creature implements Camera {
 					default:
 						dir = Direction.keyToDir(key);
 						if (dir != null)
-							move(dir);
+//							move(dir);
+							move(dir, this);
 						else
 							key = 0;
 						break;

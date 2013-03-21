@@ -3,6 +3,7 @@ package gtr.actor.fix;
 import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
 import jade.core.Actor;
+import jade.core.Messenger;
 import jade.core.World;
 import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
@@ -70,6 +71,13 @@ public class Door extends Fix {
 			nextLevel = doorDestination;
 			System.out.println(this.getDestination().toString()
 					+ " (falls für Platzierung im Level genutzt)");
+			
+			lastLevel_posBeforeDoor = new Location(currentLevel.getLevelEnum(), Messenger.pos[0]);
+			
+			
+			
+			
+			
 		}
 	}
 

@@ -1,29 +1,23 @@
 package gtr.asciiscreen.level;
 
 import gtr.actor.fix.Door;
-import gtr.asciiscreen.AsciiScreen.LevelEnum;
 import gtr.util.datatype.Location;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import jade.core.Actor;
 import jade.core.Messenger;
-import jade.core.World;
 import jade.gen.Generator;
 import jade.gen.map.Cellular;
 import jade.ui.Terminal;
-import jade.util.datatype.ColoredChar;
 import jade.util.datatype.Coordinate;
-import rogue.creature.Monster;
 import rogue.creature.Player;
 import rogue.creature.Yakuza;
 
 public class Dungeon extends Level {
 	private final static Generator gen = getLevelGenerator();
 	private Yakuza y;
-	private static Coordinate actorPos;
 
 	public Dungeon(int width, int height, Player player) {
 		super(width, height);
@@ -33,16 +27,21 @@ public class Dungeon extends Level {
 		Messenger.player = player;
 		gen.generate(this);
 
+		// alte Treppe entfernen
 		try {
 			Actor[] actors = getMappingLevelActor().get(
 					player.getCurrentLevel().getLevelEnum());
 
 			ArrayList<Actor> actorList = new ArrayList<Actor>(
 					Arrays.asList(actors));
+			int tmp = 0;
 			for (int i = 0; i < actorList.size(); i++)
-				if (actorList.get(i).face().ch() == upstairs) {
+				if (actorList.get(i).face().ch() == upstairs
+						|| actorList.get(i).face().ch() == downstairs) {
 					actorList.remove(i);
-					break;
+					tmp++;
+					if (tmp == 2)
+						break;
 				}
 			getMappingLevelActor().put(player.getCurrentLevel().getLevelEnum(),
 					actorList.toArray(new Actor[0]));
@@ -50,6 +49,7 @@ public class Dungeon extends Level {
 
 		}
 
+		// neue Treppe und Position des Spielers
 		Coordinate actorPos = null;
 		Coordinate openTile = null;
 		while (actorPos == null) {
@@ -68,11 +68,33 @@ public class Dungeon extends Level {
 				actorPos = new Coordinate(openTile.x(), openTile.y() + 1);
 
 		}
+
 		// Treppe
 		addActor(new Door(new Location(LevelEnum.Boss_empty_room,
 				new Coordinate(8, 14)), upstairs), openTile);
-
 		addActor(player, actorPos);
+
+		Coordinate openTile2 = null;
+		// Treppe zum {Zwischen, End}gegner
+		while (openTile2 == null) {
+			openTile2 = getOpenTile();
+			if (!(passableAt(openTile2.x(), openTile2.y() + 1)
+					&& passableAt(openTile2.x(), openTile2.y() + 1)
+					&& passableAt(openTile2.x(), openTile2.y() - 1)
+					&& passableAt(openTile2.x() + 1, openTile2.y())
+					&& passableAt(openTile2.x() - 1, openTile2.y())
+					&& passableAt(openTile2.x() - 1, openTile2.y() + 1)
+					&& passableAt(openTile2.x() + 1, openTile2.y() + 1)
+					&& passableAt(openTile2.x() + 1, openTile2.y() - 1) && passableAt(
+						openTile2.x() - 1, openTile2.y() - 1))) {
+				openTile2 = null;
+			}
+
+		}
+		// Treppe
+		addActor(new Door(
+				new Location(LevelEnum.BossRoom, new Coordinate(1, 1)),
+				downstairs), openTile2);
 
 		if (!getMappingLevelActor().containsKey(currentLevel.getLevelEnum())) {
 

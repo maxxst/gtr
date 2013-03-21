@@ -3,6 +3,7 @@ package rogue;
 import javax.swing.JApplet;
 
 import gtr.asciiscreen.level.*;
+import gtr.asciiscreen.other.HappyEndScreen;
 import gtr.asciiscreen.other.Prologue;
 import gtr.asciiscreen.other.StartScreen;
 import gtr.util.datatype.Location;
@@ -106,18 +107,31 @@ public class Rogue extends JApplet {
 			case Asylum:
 				world = new Asylum(player);
 				nextLevel = world.inLevel();
+				break;
 			case House4:
 				world = new House4(player);
 				nextLevel = world.inLevel();
+				break;
 			case House5:
 				world = new House5(player);
 				nextLevel = world.inLevel();
+				break;
 			case House6:
 				world = new House6(player);
 				nextLevel = world.inLevel();
+				break;
 			case Boss_empty_room:
 				world = new EvilEmptyRoom(player);
 				nextLevel = world.inLevel();
+				break;
+			case BossRoom:
+				world = new EvilBossRoom(player);
+				nextLevel = world.inLevel();
+				break;
+			case HappyEndScreen:
+				world = new HappyEndScreen(player);
+				nextLevel = world.inLevel();
+				break;
 			}
 
 			World.getMappingLevelActor().put(

@@ -14,6 +14,7 @@ import java.util.Set;
 
 import rogue.creature.Creature;
 import rogue.creature.Human;
+import rogue.creature.Player;
 
 /**
  * Represents anything on a Jade {@code World} that can perform an action (or be
@@ -209,6 +210,18 @@ public abstract class Actor extends Messenger {
 
 		if (world().getActorAt(Creature.class, x() + dir.dx(), y() + dir.dy()) == null)
 			setPos(x() + dir.dx(), y() + dir.dy());
+	}
+
+	public final void move(Direction dir, Player player) {
+		if (Messenger.pos == null)
+			Messenger.pos = new Coordinate[2];
+		try {
+			Messenger.pos[0] = Messenger.pos[1];
+		} catch (NullPointerException e) {
+
+		}
+		Messenger.pos[1] = new Coordinate(player.x(), player.y());
+		move(dir);
 	}
 
 	public final void speakTo(Direction dir) {
