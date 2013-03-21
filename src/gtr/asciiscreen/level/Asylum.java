@@ -14,7 +14,7 @@ import gtr.util.ReadFile;
 public class Asylum extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/asylum.txt");
+			.readScreenFile("/res/maps/asylum.txt");
 
 	public Asylum(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

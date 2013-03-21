@@ -12,7 +12,7 @@ import rogue.creature.*;
 public class Town extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/main_map.txt");
+			.readScreenFile("/res/maps/main_map.txt");
 
 	public Town(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

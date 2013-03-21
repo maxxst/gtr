@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class ReadWeaponFromFileTest {
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
-			.readYamlArrayList("specs/yaml/weapons.yml");
+			.readYamlArrayList("/specs/yaml/weapons.yml");
 	
 	public final static int speedDefault = -1;
 	public final static boolean areaDefault = false;

@@ -14,7 +14,7 @@ import gtr.util.datatype.Location;
 public class EvilEmptyRoom extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/empty_room.txt");
+			.readScreenFile("/res/maps/empty_room.txt");
 
 	public EvilEmptyRoom(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

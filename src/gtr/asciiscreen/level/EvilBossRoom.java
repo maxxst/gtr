@@ -16,7 +16,7 @@ import gtr.util.datatype.Location;
 public class EvilBossRoom extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/bossroom.txt");
+			.readScreenFile("/res/maps/bossroom.txt");
 
 	public EvilBossRoom(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

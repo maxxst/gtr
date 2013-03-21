@@ -13,7 +13,7 @@ import gtr.util.datatype.Location;
 
 public class HappyEndScreen extends OtherScreen {
 
-	private static ArrayList<String> leveldesign = ReadFile.readScreenFile("res/screens/happy_end_screen.txt");
+	private static ArrayList<String> leveldesign = ReadFile.readScreenFile("/res/screens/happy_end_screen.txt");
 
 	public HappyEndScreen(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),

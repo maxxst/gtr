@@ -24,9 +24,9 @@ public class Monster extends Creature {
 	
 
 	public final static ArrayList<?> monsterList = gtr.util.ReadFile
-			.readYamlArrayList("res/monsters/monsters.yml");
+			.readYamlArrayList("/res/monsters/monsters.yml");
 	public final static HashMap<?,?> monsterWeaponList = gtr.util.ReadFile
-			.readYamlHashMap("res/monsters/weapons.yml");
+			.readYamlHashMap("/res/monsters/weapons.yml");
 	
 	private String name;
 	private Movement movement;

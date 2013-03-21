@@ -16,7 +16,7 @@ import gtr.util.datatype.Location;
 public class House6 extends Level {
 
 	private final static ArrayList<String> leveldesign = ReadFile
-			.readScreenFile("res/maps/room3.txt");
+			.readScreenFile("/res/maps/room3.txt");
 
 	public House6(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
