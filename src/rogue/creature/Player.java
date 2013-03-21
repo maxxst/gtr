@@ -241,7 +241,7 @@ public class Player extends Creature implements Camera {
 		for (int i = 0; i < items.size(); i++) {
 			// ! System.out.print(items.get(i).getName());
 			// ! System.out.println(items.get(i).getCount());
-			if (items.get(i).getCount() <= 0)
+			if (items.get(i).getCount() <= 0 && !items.get(i).isEquippable())
 				items.remove(i);
 		}
 	}
