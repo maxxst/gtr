@@ -66,8 +66,7 @@ public class DeadBody extends Fading {
     private boolean loot(){
     	boolean isPlayerThere = (world().getActorAt(Player.class, pos()) != null);
     	if (isPlayerThere) {
-    		if(drop instanceof Weapon)
-    			drop.attach(world().getActorAt(Player.class, pos()));
+    		drop.attach(world().getActorAt(Player.class, pos()));
     		world().getActorAt(Player.class, pos()).addItem(drop);
     	}
     	
