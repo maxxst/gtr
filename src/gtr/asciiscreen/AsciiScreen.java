@@ -38,6 +38,10 @@ public abstract class AsciiScreen extends World {
 		return c;
 	}
 	
+	public static ArrayList<Character> getFloorChars() {
+		return floorChars;
+	}
+	
 	/**
 	 * Finds out if a char belongs to the Floor
 	 * @param char that possibly is a floorcharacter

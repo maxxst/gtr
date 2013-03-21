@@ -99,7 +99,7 @@ public class Player extends Creature implements Camera {
 					switch (key) {
 					case Key.skipKey:
 						nextLevel = new Location(LevelEnum.Town,
-								new Coordinate(122, 112));
+								new Coordinate(4, 115));
 						// nextLevel = new Location(LevelEnum.Town,
 						// new Coordinate(63, 118));
 						break;

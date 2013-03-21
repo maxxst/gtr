@@ -22,6 +22,8 @@ public class Town extends Level {
 		Messenger.player = player;
 
 		createAsciiScreen(leveldesign, this, player.getTerm());
+		
+		gtr.textbox.TextBox.displayEventText(player.getTerm(), "Drücke o zum Aufrufen der Hilfe.");
 
 		// int x = TermPanel.DEFAULT_COLS / 2;
 		// int y = TermPanel.DEFAULT_ROWS / 2;
@@ -74,16 +76,20 @@ public class Town extends Level {
 			addActor(door, 122, 110);
 
 			// Tür zum orientalischen Haus
-			door = new Door(LevelEnum.Dungeon, 1, 1);
+			door = new Door(LevelEnum.Boss_empty_room, 1, 1);
 			addActor(door, 123, 90);
 
 			// Tür der Bad Bank
-			door = new Door(LevelEnum.Dungeon, 1, 1);
+			door = new Door(LevelEnum.Boss_empty_room, 1, 1);
 			addActor(door, 120, 62);
 
 			// Tür der Pagode
-			door = new Door(LevelEnum.Dungeon, 1, 1);
+			door = new Door(LevelEnum.Boss_empty_room, 1, 1);
 			addActor(door, 122, 44);
+
+			// Tür der Pagode
+			door = new Door(LevelEnum.Boss_empty_room, 1, 1);
+			addActor(door, 73, 20);
 
 			// Tür des Hauses, was südlich dem nordöstlichen Haus des ersten
 			// Distrikts steht.
