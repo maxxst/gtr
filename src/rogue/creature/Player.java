@@ -39,6 +39,9 @@ public class Player extends Creature implements Camera {
 		weapon = new Weapon("Pistole", this);
 		weapon.setCount(6); // halbes Magazin und so
 		addItem(weapon);
+		
+		addItem(new Weapon("Raketenwerfer", this));
+		addItem(new Weapon("Raketenwerfer", this));
 
 		// testweise
 		/*

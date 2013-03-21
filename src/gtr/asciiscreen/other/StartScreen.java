@@ -16,11 +16,11 @@ public class StartScreen extends OtherScreen {
 
 	public StartScreen(Player player, String screen) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(ReadFile
-				.readScreenFile("res/screens/"+screen+".txt")),
+				.readScreenFile("/res/screens/"+screen+".txt")),
 				gtr.asciiscreen.AsciiScreen.getHeight(ReadFile
-						.readScreenFile("res/screens/"+screen+".txt")));
+						.readScreenFile("/res/screens/"+screen+".txt")));
 		
-		leveldesign = ReadFile.readScreenFile("res/screens/"+screen+".txt");
+		leveldesign = ReadFile.readScreenFile("/res/screens/"+screen+".txt");
 
 		screenType = ScreenType.StartScreen;
 

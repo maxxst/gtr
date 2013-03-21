@@ -21,14 +21,14 @@ public class ReadFile {
 	 *         der Karte sind.
 	 */
 	public static ArrayList<String> readScreenFile(String file) {
-
 		int width = Integer.MIN_VALUE;
 
 		// Lese Datei ein
 		ArrayList<String> layout = new ArrayList<String>();
 		try {
 			BufferedReader bufferedReader = new BufferedReader(
-					new InputStreamReader(new FileInputStream(file), "UTF-8"));
+					new InputStreamReader(
+							ReadFile.class.getResourceAsStream(file), "UTF-8"));
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
 				layout.add(line);
@@ -62,27 +62,28 @@ public class ReadFile {
 		// Lese Datei ein
 		Object object = null;
 		try {
-			object = new YamlReader(new InputStreamReader(new FileInputStream(file), "UTF-8")).read();
+			object = new YamlReader(new InputStreamReader(
+					ReadFile.class.getResourceAsStream(file), "UTF-8")).read();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ArrayList.class.cast(object);
 	}
-	
-	public static HashMap<?,?> readYamlHashMap(String file){
+
+	public static HashMap<?, ?> readYamlHashMap(String file) {
 		// Lese Datei ein
 		Object object = null;
 		try {
-			object = new YamlReader(new InputStreamReader(new FileInputStream(
-					file), "UTF-8")).read();
+			object = new YamlReader(new InputStreamReader(
+					ReadFile.class.getResourceAsStream(file), "UTF-8")).read();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return HashMap.class.cast(object);
 	}
-	
+
 	/**
 	 * Liest eine YAML-Datei ein.
 	 * 
@@ -96,7 +97,8 @@ public class ReadFile {
 		// Lese Datei ein
 		Object object = null;
 		try {
-			object = new YamlReader(new InputStreamReader(new FileInputStream(file), "UTF-8")).read();
+			object = new YamlReader(new InputStreamReader(
+					ReadFile.class.getResourceAsStream(file), "UTF-8")).read();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

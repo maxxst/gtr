@@ -24,7 +24,7 @@ import rogue.creature.Player;
 public class Weapon extends Item {
 	
 	public final static ArrayList<?> weaponList = gtr.util.ReadFile
-			.readYamlArrayList("res/weapons/weapons.yml");
+			.readYamlArrayList("/res/weapons/weapons.yml");
 
 	private String type;
 	private Range range;

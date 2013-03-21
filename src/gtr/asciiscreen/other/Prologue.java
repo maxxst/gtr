@@ -13,7 +13,7 @@ import gtr.util.datatype.Location;
 
 public class Prologue extends OtherScreen {
 
-	private static ArrayList<String> leveldesign = ReadFile.readScreenFile("res/screens/prologue.txt");
+	private static ArrayList<String> leveldesign = ReadFile.readScreenFile("/res/screens/prologue.txt");
 
 	public Prologue(Player player) {
 		super(gtr.asciiscreen.AsciiScreen.getWidth(leveldesign),
