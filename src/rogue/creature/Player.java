@@ -42,11 +42,13 @@ public class Player extends Creature implements Camera {
 		addItem(weapon);
 
 		// testweise
-		/*
+		
 		Weapon weapon2 = new Weapon("Raketenwerfer", this);
 		Weapon weapon3 = new Weapon("Schwert", this);
 		Weapon weapon4 = new Weapon("Bogen des Robin Hood", this);
+		addItem(new Weapon("M4A1", this));
 		addItem(weapon2);
+		/*
 		System.out.println("Anzahl: " + items.get(0).getCount());
 		addItem(new HealthPotion(this));
 		addItem(new HealthPotion(this));
