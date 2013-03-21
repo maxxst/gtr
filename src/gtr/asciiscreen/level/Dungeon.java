@@ -11,10 +11,11 @@ import jade.ui.Terminal;
 import jade.util.datatype.ColoredChar;
 import rogue.creature.Monster;
 import rogue.creature.Player;
+import rogue.creature.Yakuza;
 
 public class Dungeon extends Level {
 	private final static Generator gen = getLevelGenerator();
-	private Monster monster;
+	private Yakuza y;
 
 	public Dungeon(int width, int height, Player player) {
 		super(width, height);
@@ -25,8 +26,8 @@ public class Dungeon extends Level {
 		gen.generate(this);
 		addActor(player);
 
-		monster = new Monster(ColoredChar.create('D', Color.red));
-		addActor(monster);
+		y = new Yakuza();
+		addActor(y);
 	}
 
 	private static Generator getLevelGenerator() {
@@ -38,13 +39,10 @@ public class Dungeon extends Level {
 
 		while (!player.expired()) {
 
-			if (player.x() == monster.x() && player.y() == monster.y()) {
-				nextLevel = new Location(LevelEnum.StartScreen);
-			}
+			
 
 			if (nextLevel != null) {
 				this.removeActor(player);
-				this.removeActor(monster);
 				break; // Verlassen der while-Schleife
 			}
 
