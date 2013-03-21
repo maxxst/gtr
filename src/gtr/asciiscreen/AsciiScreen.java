@@ -110,7 +110,8 @@ public abstract class AsciiScreen extends World {
 		Room0,
 		Room1,
 		Room2,
-		Room3
+		Room3,
+		Asylum
 	}
 	
 }

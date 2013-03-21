@@ -2,6 +2,7 @@ package rogue;
 
 import javax.swing.JApplet;
 
+import gtr.asciiscreen.level.Asylum;
 import gtr.asciiscreen.level.Dungeon;
 import gtr.asciiscreen.level.RandomRoom;
 import gtr.asciiscreen.level.Room0;
@@ -109,6 +110,9 @@ public class Rogue extends JApplet {
 				world = new Room3(player);
 				nextLevel = world.inLevel();
 				break;
+			case Asylum:
+				world = new Asylum(player);
+				nextLevel = world.inLevel();
 			}
 
 			World.getMappingLevelActor().put(
