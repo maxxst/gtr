@@ -209,7 +209,8 @@ public class Inventar {
 						int p = cursorAt * 2 + 1; // Index ausgewähltes Item in
 													// itemList<String>
 
-						if (selectedItem.getCount() != 0) {
+						if (selectedItem.getCount() != 0 || selectedItem.getClass().getSimpleName()
+								.equals("Weapon")) {
 							String s = itemList.get(p);
 
 							String updatedLine = s.substring(0, 2)
@@ -239,9 +240,6 @@ public class Inventar {
 								updatedLine += " ";
 
 							itemList.set(p, updatedLine);
-						} else {
-							itemList.remove(p);
-							itemList.remove(p);
 						}
 
 						showItemList();
